@@ -65,5 +65,13 @@ namespace GtkSharp
 
             Gtk.GtkSharpWidgetDestroy(out handle.pointer);
         }
+
+        public void QueueDraw()
+        {
+            if(handle.IsNullPointer)
+                return;
+            
+            Gtk.GtkSharpWidgetQueueDraw(out handle.pointer);
+        }
     }
 }

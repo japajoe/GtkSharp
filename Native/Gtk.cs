@@ -33,6 +33,9 @@ namespace GtkSharp.Native
         internal static extern void GtkSharpEntryBufferInsertedCallbackConnect(out IntPtr buffer, GtkEntryBufferInsertedCallback callback);
 
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpDrawingAreaDrawCallbackConnect(out IntPtr widget, GtkDrawingAreaDrawCallback callback);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpWidgetShow(out IntPtr widget);
 
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
@@ -46,6 +49,12 @@ namespace GtkSharp.Native
 
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpWidgetDestroy(out IntPtr widget);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpWidgetSetMargins(out IntPtr widget, double top, double left, double bottom, double right);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpWidgetQueueDraw(out IntPtr widget);
 
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpWindowCreate(out IntPtr widget);
@@ -148,5 +157,8 @@ namespace GtkSharp.Native
 
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpScrolledWindowGetScrollPosition(out IntPtr widget, out IntPtr horizontalAdjustment, out IntPtr verticalAdjustment, out double x, out double y);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpDrawingAreaCreate(out IntPtr widget, int width, int height);
     }
 }

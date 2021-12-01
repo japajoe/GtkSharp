@@ -6,8 +6,10 @@ namespace GtkSharp
 {
     public class Entry : Widget
     {
+        public event EntrySubmitEvent onSubmit;
         public event EntryChangedEvent onChanged;
 
+        private GtkCallback onSubmitNative;
         private GtkEntryBufferDeletedCallback onDeletedNative;
         private GtkEntryBufferInsertedCallback onInsertedCallback;
         private GtkEntryBufferPointer buffer;
@@ -33,12 +35,13 @@ namespace GtkSharp
 
             Gtk.GtkSharpTextEntryCreate(out handle.pointer, out buffer.pointer);
 
+            onSubmitNative = GtkSharpDelegate.Create<GtkCallback>(this, "OnSubmit");
             onDeletedNative = GtkSharpDelegate.Create<GtkEntryBufferDeletedCallback>(this, "OnDeleted");
             onInsertedCallback = GtkSharpDelegate.Create<GtkEntryBufferInsertedCallback>(this, "OnInserted");
 
+            Gtk.GtkSharpCallbackConnect(out handle.pointer, "submit", onSubmitNative);
             Gtk.GtkSharpEntryBufferDeletedCallbackConnect(out buffer.pointer, onDeletedNative);
             Gtk.GtkSharpEntryBufferInsertedCallbackConnect(out buffer.pointer, onInsertedCallback);
-
         }
 
         public void SetText(string text)
@@ -77,6 +80,11 @@ namespace GtkSharp
 
             Gtk.GtkSharpTextEntryClearText(out handle.pointer, out buffer.pointer);
             this.text = string.Empty;
+        }
+
+        private void OnSubmit(IntPtr widget, IntPtr data)
+        {
+            onSubmit?.Invoke();
         }
 
         private void OnDeleted(IntPtr textbuffer, uint position, uint n_chars, IntPtr data)
