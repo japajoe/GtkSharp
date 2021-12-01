@@ -10,4 +10,5 @@ namespace GtkSharp.Native
     internal delegate bool GtkDrawingAreaDrawCallback(IntPtr widget, IntPtr cr, IntPtr data);
     internal delegate void GtkSpinButtonValueChangedCallback(IntPtr widget, IntPtr data);
     internal delegate void GtkToggleButtonValueChangedCallback(IntPtr widget, IntPtr data);
+    internal delegate void GtkNoteBookSelectedIndexChangedCallback(IntPtr notebook, IntPtr page, uint page_num, IntPtr data);
 }

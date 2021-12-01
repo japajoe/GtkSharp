@@ -43,6 +43,9 @@ namespace GtkSharp.Native
         internal static extern void GtkSharpToggleButtonValueChangedCallbackConnect(out IntPtr widget, GtkToggleButtonValueChangedCallback callback);
 
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpNoteBookSelectedIndexChangedCallbackConnect(out IntPtr widget, GtkNoteBookSelectedIndexChangedCallback callback);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpWidgetShow(out IntPtr widget);
 
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
@@ -89,6 +92,12 @@ namespace GtkSharp.Native
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpButtonSetText(out IntPtr widget, string text);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void GtkSharpButtonSetImage(out IntPtr widget, out IntPtr image);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void GtkSharpImageCreateFromIconName(out IntPtr widget, string iconName, GtkIconSize size);
 
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpLabelCreate(out IntPtr widget, string text);
@@ -184,7 +193,25 @@ namespace GtkSharp.Native
         internal static extern void GtkSharpToggleButtonGetValue(out IntPtr widget, out bool value);
 
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpToggleButtonSetValue(out IntPtr widget, bool value);        
+        internal static extern void GtkSharpToggleButtonSetValue(out IntPtr widget, bool value);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpNoteBookCreate(out IntPtr widget);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpNoteBookAppend(out IntPtr widget, out IntPtr child, out IntPtr tabLabel);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpNoteBookRemove(out IntPtr widget, int index);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpNoteBookGetSelectedIndex(out IntPtr widget, out int index);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpNoteBookSetSelectedIndex(out IntPtr widget, int index);
+        
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpNoteBookGetPageCount(out IntPtr widget, out int count);
 
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpDrawingAreaCreate(out IntPtr widget, int width, int height);

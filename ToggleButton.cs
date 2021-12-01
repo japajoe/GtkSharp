@@ -5,7 +5,7 @@ namespace GtkSharp
 {
     public class ToggleButton : Widget
     {
-        public event SpinButtonValueChanged onChanged;
+        public event ToggleButtonValueChangedEvent onChanged;
 
         private bool buttonValue;
         private GtkToggleButtonValueChangedCallback onValueChangedNative;

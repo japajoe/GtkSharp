@@ -31,6 +31,14 @@ namespace GtkSharp
             Gtk.GtkSharpButtonSetText(out handle.pointer, text);
         }
 
+        public void SetImage(Image image)
+        {
+            if(handle.IsNullPointer)
+                return;
+
+            Gtk.GtkSharpButtonSetImage(out handle.pointer, out image.handle.pointer);
+        }
+
         private void OnClicked(IntPtr widget, IntPtr data)
         {
             onClick?.Invoke();

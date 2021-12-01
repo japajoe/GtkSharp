@@ -11,6 +11,7 @@ namespace GtkSharp
     public delegate void TextViewChangedEvent();
     public delegate void SourceViewChangedEvent();
     public delegate void DrawEvent(Cairo cr);
-    public delegate void SpinButtonValueChanged();
-    public delegate void ToggleButtonValueChanged();
+    public delegate void SpinButtonValueChangedEvent();
+    public delegate void ToggleButtonValueChangedEvent();
+    public delegate void NoteBookSelectedIndexChanged(uint index);
 }

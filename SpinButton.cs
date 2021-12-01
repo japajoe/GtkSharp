@@ -5,7 +5,7 @@ namespace GtkSharp
 {
     public class SpinButton : Widget
     {
-        public event SpinButtonValueChanged onChanged;
+        public event SpinButtonValueChangedEvent onChanged;
 
         private double buttonValue;
         private GtkSpinButtonValueChangedCallback onValueChangedNative;
