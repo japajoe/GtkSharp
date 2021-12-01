@@ -2,7 +2,7 @@ using GtkSharp.Native;
 
 namespace GtkSharp
 {
-    public class Application
+    public class ApplicationBase
     {        
         public Window window;
         public event WindowClosingEvent onClosing;
@@ -12,14 +12,14 @@ namespace GtkSharp
         private int width;
         private int height;        
 
-        public Application()
+        public ApplicationBase()
         {
             this.title = "GtkSharpApplication";
-            this.width = 512;
-            this.height = 512;
+            this.width = 128;
+            this.height = 128;
         }
 
-        public Application(string title, int width, int height)
+        public ApplicationBase(string title, int width, int height)
         {
             this.title = title;
             this.width = width;
