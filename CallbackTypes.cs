@@ -1,4 +1,4 @@
-using System;
+using GtkSharp.Drawing;
 
 namespace GtkSharp
 {
@@ -10,5 +10,5 @@ namespace GtkSharp
     public delegate void EntrySubmitEvent();
     public delegate void TextViewChangedEvent();
     public delegate void SourceViewChangedEvent();
-    public delegate void DrawEvent(IntPtr cr);
+    public delegate void DrawEvent(Cairo cr);
 }

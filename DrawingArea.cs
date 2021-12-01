@@ -1,5 +1,6 @@
 using System;
 using GtkSharp.Native;
+using GtkSharp.Drawing;
 
 namespace GtkSharp
 {
@@ -8,18 +9,23 @@ namespace GtkSharp
         public event DrawEvent onDraw;
 
         private GtkDrawingAreaDrawCallback onDrawNative;
+        private Cairo cairo;
 
         public DrawingArea(int width, int height)
         {
             Gtk.GtkSharpDrawingAreaCreate(out handle.pointer, width, height);
             SetSize(width, height);
+            
+            cairo = new Cairo();
             onDrawNative = GtkSharpDelegate.Create<GtkDrawingAreaDrawCallback>(this, "OnDraw");
+
             Gtk.GtkSharpDrawingAreaDrawCallbackConnect(out handle.pointer, onDrawNative);
         }
 
         private bool OnDraw(IntPtr widget, IntPtr cr, IntPtr data)
         {
-            onDraw?.Invoke(cr);
+            cairo.cr.pointer = cr;
+            onDraw?.Invoke(cairo);
             return false;
         }
     }

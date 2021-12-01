@@ -50,6 +50,14 @@ namespace GtkSharp
             Gtk.GtkSharpWidgetShow(out handle.pointer);
         }
 
+        public void ShowAll()
+        {
+            if(handle.IsNullPointer)
+                return;
+
+            Gtk.GtkSharpWidgetShowAll(out handle.pointer);
+        }
+
         public void Focus()
         {
             if(handle.IsNullPointer)
