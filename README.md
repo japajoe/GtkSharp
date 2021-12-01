@@ -55,10 +55,7 @@ namespace GtkSharpApplication
 
             scrolledWindow.Add(sourceView);
 
-            box.Show();
-            button1.Show();
-            scrolledWindow.Show();
-            sourceView.Show();            
+            box.ShowAll();
         }
 
         private void OnButton1Clicked()
