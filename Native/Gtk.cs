@@ -37,6 +37,12 @@ namespace GtkSharp.Native
         internal static extern void GtkSharpDrawingAreaDrawCallbackConnect(out IntPtr widget, GtkDrawingAreaDrawCallback callback);
 
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpSpinButtonValueChangedCallbackConnect(out IntPtr widget, GtkSpinButtonValueChangedCallback callback);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpToggleButtonValueChangedCallbackConnect(out IntPtr widget, GtkToggleButtonValueChangedCallback callback);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpWidgetShow(out IntPtr widget);
 
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
@@ -161,6 +167,24 @@ namespace GtkSharp.Native
 
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpScrolledWindowGetScrollPosition(out IntPtr widget, out IntPtr horizontalAdjustment, out IntPtr verticalAdjustment, out double x, out double y);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpSpinButtonCreate(out IntPtr widget, double value, double valueMin, double valueMax, double stepSize);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpSpinButtonGetValue(out IntPtr widget, out double value);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpSpinButtonSetValue(out IntPtr widget, double value);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpToggleButtonCreate(out IntPtr widget, bool value, string label);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpToggleButtonGetValue(out IntPtr widget, out bool value);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpToggleButtonSetValue(out IntPtr widget, bool value);        
 
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpDrawingAreaCreate(out IntPtr widget, int width, int height);

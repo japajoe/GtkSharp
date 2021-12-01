@@ -21,7 +21,7 @@ namespace GtkSharp
             }
             set
             {
-                SetText(text);            
+                SetText(value);            
             }
         }
 
