@@ -17,24 +17,24 @@ namespace GtkSharpApplication
     {
         static void Main(string[] args)
         {
-            TestApplication application = new TestApplication("GtkSharpApplication", 512, 512);
+            Application application = new Application("GtkSharpApplication", 512, 512);
             application.Run(args);
         }
     }
 
-    public class TestApplication : Application
+    public class Application : ApplicationBase
     {
         private Box box;
         private ScrolledWindow scrolledWindow;
         private Button button1;
         private SourceView sourceView;
 
-        public TestApplication() : base()
+        public Application() : base()
         {
 
         }
 
-        public TestApplication(string title, int width, int height) : base(title, width, height)
+        public Application(string title, int width, int height) : base(title, width, height)
         {
 
         }
