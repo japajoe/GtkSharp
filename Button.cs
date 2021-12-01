@@ -12,14 +12,14 @@ namespace GtkSharp
         {
             Gtk.GtkSharpButtonCreate(out handle.pointer, "Button");
             onButtonClickedNative = GtkSharpDelegate.Create<GtkCallback>(this, "OnClicked");
-            Gtk.GtkSharpSignalConnect(out handle.pointer, "clicked", onButtonClickedNative);            
+            Gtk.GtkSharpCallbackConnect(out handle.pointer, "clicked", onButtonClickedNative);            
         }
 
         public Button(string text, int width, int height)
         {
             Gtk.GtkSharpButtonCreate(out handle.pointer, text);
             onButtonClickedNative = GtkSharpDelegate.Create<GtkCallback>(this, "OnClicked");
-            Gtk.GtkSharpSignalConnect(out handle.pointer, "clicked", onButtonClickedNative);            
+            Gtk.GtkSharpCallbackConnect(out handle.pointer, "clicked", onButtonClickedNative);            
             SetSize(width, height);
         }
 

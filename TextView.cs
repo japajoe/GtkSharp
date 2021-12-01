@@ -1,3 +1,4 @@
+using System;
 using System.Text;
 using GtkSharp.Native;
 
@@ -5,6 +6,9 @@ namespace GtkSharp
 {
     public class TextView : Widget
     {
+        public event TextViewChangedEvent onChanged;
+
+        private GtkTextBufferChangedCallback onChangedNative;
         private GtkTextBufferPointer buffer;
         private StringBuilder stringBuilder;
         private string text;
@@ -26,6 +30,10 @@ namespace GtkSharp
             this.text = string.Empty;
             this.stringBuilder = new StringBuilder(4096);
             Gtk.GtkSharpTextViewCreate(out handle.pointer, out buffer.pointer);
+
+            onChangedNative = GtkSharpDelegate.Create<GtkTextBufferChangedCallback>(this, "OnChanged");
+
+            Gtk.GtkSharpTextBufferChangedCallbackConnect(out buffer.pointer, onChangedNative);            
         }
 
         public void SetText(string text)
@@ -64,6 +72,11 @@ namespace GtkSharp
 
             Gtk.GtkSharpTextViewClearText(out handle.pointer, out buffer.pointer);
             this.text = string.Empty;
+        }
+
+        private void OnChanged(IntPtr widget, IntPtr data)
+        {
+            onChanged?.Invoke();
         }
     }
 }

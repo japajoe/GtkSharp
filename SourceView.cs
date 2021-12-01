@@ -1,3 +1,4 @@
+using System;
 using System.Text;
 using GtkSharp.Native;
 
@@ -5,6 +6,9 @@ namespace GtkSharp
 {
     public class SourceView : Widget
     {
+        public event SourceViewChangedEvent onChanged;
+
+        private GtkSourceBufferChangedCallback onChangedNative;
         private GtkSourceBufferPointer buffer;
         private StringBuilder stringBuilder;
         private string text;
@@ -27,6 +31,10 @@ namespace GtkSharp
             this.stringBuilder = new StringBuilder(4096);
             string languageString = GetLanguageString(language);
             Gtk.GtkSharpSourceViewCreate(out handle.pointer, out buffer.pointer, languageString);
+
+            onChangedNative = GtkSharpDelegate.Create<GtkSourceBufferChangedCallback>(this, "OnChanged");
+
+            Gtk.GtkSharpSourceBufferChangedCallbackConnect(out buffer.pointer, onChangedNative);
         }
 
         public void SetText(string text)
@@ -93,6 +101,11 @@ namespace GtkSharp
                     return "c";
             }
         }
+
+        private void OnChanged(IntPtr widget, IntPtr data)
+        {
+            onChanged?.Invoke();
+        }        
     }
 
     public enum SourceLanguage
