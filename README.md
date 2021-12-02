@@ -27,7 +27,7 @@ namespace GtkSharpApplication
         private Box box;
         private MenuBar menuBar;
         private ScrolledWindow scrolledWindow;
-        private Button button1;
+        private Button button;
         private SourceView sourceView;
 
         public Application() : base()
@@ -45,15 +45,15 @@ namespace GtkSharpApplication
             box = new Box(GtkOrientation.Vertical, 0, false);
             menuBar = new MenuBar();
             scrolledWindow = new ScrolledWindow(GtkOrientation.Vertical, GtkPolicyType.Automatic, GtkPolicyType.Automatic);
-            button1 = new Button("Compile", 100, 20);
+            button = new Button("Compile", 100, 20);
             sourceView = new SourceView(SourceLanguage.CSharp);
             sourceView.ToggleLineNumbers(true);
 
-            button1.onClick += OnButton1Clicked;
+            button.onClick += OnButtonClicked;
 
             window.Add(box);
             box.Add(menuBar, false, false, 0);
-            box.Add(button1, false, false, 0);
+            box.Add(button, false, false, 0);
             box.Add(scrolledWindow, true, true, 0);
 
             scrolledWindow.Add(sourceView);
@@ -68,10 +68,24 @@ namespace GtkSharpApplication
             window.ShowAll();
         }
 
-        private void OnButton1Clicked()
+        private void OnButtonClicked()
         {
-            string text = sourceView.GetText();
-            System.Console.WriteLine(text);
+            System.Console.WriteLine(sourceView.Text);
+        }
+
+        private void OnMenuItemOpenClicked()
+        {
+            System.Console.WriteLine("Clicked open");
+        }
+
+        private void OnMenuItemSaveClicked()
+        {
+            System.Console.WriteLine("Clicked save");
+        }        
+
+        private void OnMenuItemExitClicked()
+        {
+            System.Console.WriteLine("Clicked exit");
         }
     }
 }
