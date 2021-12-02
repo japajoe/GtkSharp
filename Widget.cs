@@ -81,5 +81,13 @@ namespace GtkSharp
             
             Gtk.GtkSharpWidgetQueueDraw(out handle.pointer);
         }
+
+        public void SetMargins(double top, double left, double bottom, double right)
+        {
+            if(handle.IsNullPointer)
+                return;
+
+            Gtk.GtkSharpWidgetSetMargins(out handle.pointer, top, left, bottom, right);
+        }
     }
 }
