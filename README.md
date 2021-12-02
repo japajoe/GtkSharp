@@ -25,6 +25,7 @@ namespace GtkSharpApplication
     public class Application : ApplicationBase
     {
         private Box box;
+        private MenuBar menuBar;
         private ScrolledWindow scrolledWindow;
         private Button button1;
         private SourceView sourceView;
@@ -42,6 +43,7 @@ namespace GtkSharpApplication
         public override void Initialize()
         {
             box = new Box(GtkOrientation.Vertical, 0, false);
+            menuBar = new MenuBar();
             scrolledWindow = new ScrolledWindow(GtkOrientation.Vertical, GtkPolicyType.Automatic, GtkPolicyType.Automatic);
             button1 = new Button("Compile", 100, 20);
             sourceView = new SourceView(SourceLanguage.CSharp);
@@ -50,12 +52,20 @@ namespace GtkSharpApplication
             button1.onClick += OnButton1Clicked;
 
             window.Add(box);
+            box.Add(menuBar, false, false, 0);
             box.Add(button1, false, false, 0);
             box.Add(scrolledWindow, true, true, 0);
 
             scrolledWindow.Add(sourceView);
 
-            box.ShowAll();
+            MenuCreationInfo info = new MenuCreationInfo("File");
+            info.AddItem("Open", OnMenuItemOpenClicked);
+            info.AddItem("Save", OnMenuItemSaveClicked);
+            info.AddItem("Exit", OnMenuItemExitClicked);            
+
+            menuBar.AddMenu(info);
+
+            window.ShowAll();
         }
 
         private void OnButton1Clicked()
