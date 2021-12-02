@@ -94,10 +94,19 @@ namespace GtkSharp.Native
         internal static extern void GtkSharpButtonSetText(out IntPtr widget, string text);
 
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void GtkSharpButtonSetImage(out IntPtr widget, out IntPtr image);
+        internal static extern void GtkSharpButtonSetImage(out IntPtr widget, out IntPtr image);
 
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void GtkSharpImageCreateFromIconName(out IntPtr widget, string iconName, GtkIconSize size);
+        internal static extern void GtkSharpImageCreateFromIconName(out IntPtr widget, string iconName, GtkIconSize size);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpImageCreateFromFile(out IntPtr widget, string filepath);
+        
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpImageCreateFromPixbuf(out IntPtr widget, out IntPtr pixbuf);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpImageGetPixbuf(out IntPtr widget, out IntPtr pixbuf);
 
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpLabelCreate(out IntPtr widget, string text);
