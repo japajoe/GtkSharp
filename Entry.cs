@@ -39,7 +39,7 @@ namespace GtkSharp
             onDeletedNative = GtkSharpDelegate.Create<GtkEntryBufferDeletedCallback>(this, "OnDeleted");
             onInsertedCallback = GtkSharpDelegate.Create<GtkEntryBufferInsertedCallback>(this, "OnInserted");
 
-            Gtk.GtkSharpCallbackConnect(out handle.pointer, "submit", onSubmitNative);
+            Gtk.GtkSharpCallbackConnect(out handle.pointer, "submit", onSubmitNative, out handle.pointer);
             Gtk.GtkSharpEntryBufferDeletedCallbackConnect(out buffer.pointer, onDeletedNative);
             Gtk.GtkSharpEntryBufferInsertedCallbackConnect(out buffer.pointer, onInsertedCallback);
         }
@@ -64,7 +64,10 @@ namespace GtkSharp
             Gtk.GtkSharpEntryBufferGetLength(out buffer.pointer, out length);
 
             if(length > stringBuilder.Capacity)
+            {
+                stringBuilder.Capacity = (int)length;
                 stringBuilder.EnsureCapacity((int)length);
+            }
 
             Gtk.GtkSharpTextEntryGetText(out handle.pointer, out buffer.pointer, stringBuilder);
 

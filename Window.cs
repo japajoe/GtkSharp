@@ -20,7 +20,7 @@ namespace GtkSharp
         {
             Gtk.GtkSharpWindowCreate(out handle.pointer);
             onWindowClosingNative = GtkSharpDelegate.Create<GtkCallback>(this, "OnClosing");
-            Gtk.GtkSharpCallbackConnect(out handle.pointer, "destroy", onWindowClosingNative);
+            Gtk.GtkSharpCallbackConnect(out handle.pointer, "destroy", onWindowClosingNative, out handle.pointer);
         }
 
         public void SetTitle(string title)

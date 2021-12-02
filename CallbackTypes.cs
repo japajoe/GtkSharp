@@ -14,4 +14,5 @@ namespace GtkSharp
     public delegate void SpinButtonValueChangedEvent();
     public delegate void ToggleButtonValueChangedEvent();
     public delegate void NoteBookSelectedIndexChanged(uint index);
+    public delegate void MenuItemClickedEvent();
 }

@@ -19,7 +19,7 @@ namespace GtkSharp.Native
         internal static extern void GtkSharpMainQuit();
 
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpCallbackConnect(out IntPtr widget, string eventName, GtkCallback callback);
+        internal static extern void GtkSharpCallbackConnect(out IntPtr widget, string eventName, GtkCallback callback, out IntPtr userdata);
 
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpTextBufferChangedCallbackConnect(out IntPtr buffer, GtkTextBufferChangedCallback callback);
@@ -224,6 +224,21 @@ namespace GtkSharp.Native
 
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpDrawingAreaCreate(out IntPtr widget, int width, int height);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpMenuBarCreate(out IntPtr widget);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpMenuCreate(out IntPtr widget);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpMenuItemCreateWithlabel(out IntPtr widget, string label);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpMenuItemSetSubMenu(out IntPtr menuItem, out IntPtr menuWidget);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpMenuShellAppend(out IntPtr menuBar, out IntPtr menuItem);
 
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpCairoFill(out IntPtr cr);

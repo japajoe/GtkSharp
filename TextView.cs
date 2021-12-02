@@ -56,7 +56,10 @@ namespace GtkSharp
             Gtk.GtkSharpTextBufferGetLength(out buffer.pointer, out length);
 
             if(length > stringBuilder.Capacity)
+            {
+                stringBuilder.Capacity = (int)length;
                 stringBuilder.EnsureCapacity((int)length);
+            }
 
             Gtk.GtkSharpTextViewGetText(out handle.pointer, out buffer.pointer, stringBuilder);            
             
