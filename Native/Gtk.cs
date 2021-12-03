@@ -262,6 +262,15 @@ namespace GtkSharp.Native
         internal static extern void GtkSharpFileChooserSetFileName(out IntPtr widget, string name);
 
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpColorChooserDialogCreate(out IntPtr widget, out IntPtr parentWindow, string title);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpColorChooserGetRGBA(out IntPtr widget, out GdkRGBA selectedColor);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpColorChooserSetRGBA(out IntPtr widget, GdkRGBA selectedColor);        
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpDialogRun(out IntPtr widget, out GtkResponseType response);
 
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
