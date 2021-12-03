@@ -51,6 +51,11 @@ namespace GtkSharp
 
             Gtk.GtkSharpWindowAdd(out handle.pointer, out child.handle.pointer);
         }
+
+        public void Close()
+        {
+            Destroy();
+        }
          
         private void OnClosing(IntPtr widget, IntPtr data)
         {

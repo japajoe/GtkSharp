@@ -46,6 +46,11 @@ namespace GtkSharp
 
         }
 
+        public void Quit()
+        {
+            window.Close();
+        }
+
         private void OnClosing()
         {
             onClosing?.Invoke();

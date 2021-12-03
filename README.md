@@ -85,7 +85,12 @@ namespace GtkSharpApplication
 
         private void OnMenuItemSaveClicked()
         {
-            Console.WriteLine("Clicked save");
+            SaveFileDialog dialog = new SaveFileDialog(window);
+
+            if(dialog.ShowDialog() == GtkResponseType.Accept)
+            {
+                Console.WriteLine("Selected " + dialog.FileName);
+            }
         }        
 
         private void OnMenuItemExitClicked()
