@@ -352,6 +352,15 @@ namespace GtkSharp.Native
         internal static extern void GtkSharpProgressBarGetShowText(out IntPtr widget, out bool show);
 
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpSpinnerCreate(out IntPtr widget);
+        
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpSpinnerStart(out IntPtr widget);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpSpinnerStop(out IntPtr widget);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpCairoFill(out IntPtr cr);
 
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
