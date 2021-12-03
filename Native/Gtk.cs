@@ -241,6 +241,30 @@ namespace GtkSharp.Native
         internal static extern void GtkSharpMenuShellAppend(out IntPtr menuBar, out IntPtr menuItem);
 
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpFileChooserDialogCreate(out IntPtr widget, out IntPtr parentWindow, string title, GtkFileChooserAction action, string firstButtonText, GtkResponseType firstButtonResponse, string secondButtonText, GtkResponseType secondButtonResponse);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpFileChooserGetFileName(out IntPtr widget, StringBuilder text);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpFileChooserGetFileNameLength(out IntPtr widget, out int length);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpFileChooserGetOverwriteConfirmation(out IntPtr widget, out bool confirm);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpFileChooserSetOverwriteConfirmation(out IntPtr widget, bool confirm);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpFileChooserSetCurrentName(out IntPtr widget, string name);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpFileChooserSetFileName(out IntPtr widget, string name);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpDialogRun(out IntPtr widget, out GtkResponseType response);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpCairoFill(out IntPtr cr);
 
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]

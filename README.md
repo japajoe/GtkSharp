@@ -8,7 +8,7 @@ See https://github.com/japajoe/gtk
 Please take note that this is a work in progress. I'll try to make it as complete as possible overtime, but for now it's just a proof of concept.
 
 ```csharp
-﻿using System;
+using System;
 using GtkSharp;
 
 namespace GtkSharpApplication
@@ -70,22 +70,27 @@ namespace GtkSharpApplication
 
         private void OnButtonClicked()
         {
-            System.Console.WriteLine(sourceView.Text);
+            Console.WriteLine(sourceView.Text);
         }
 
         private void OnMenuItemOpenClicked()
         {
-            System.Console.WriteLine("Clicked open");
+            OpenFileDialog dialog = new OpenFileDialog(window);
+
+            if(dialog.ShowDialog() == GtkResponseType.Accept)
+            {
+                Console.WriteLine("Selected " + dialog.FileName);
+            }
         }
 
         private void OnMenuItemSaveClicked()
         {
-            System.Console.WriteLine("Clicked save");
+            Console.WriteLine("Clicked save");
         }        
 
         private void OnMenuItemExitClicked()
         {
-            System.Console.WriteLine("Clicked exit");
+            Console.WriteLine("Clicked exit");
         }
     }
 }
