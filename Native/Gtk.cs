@@ -274,6 +274,84 @@ namespace GtkSharp.Native
         internal static extern void GtkSharpDialogRun(out IntPtr widget, out GtkResponseType response);
 
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpSeparatorCreate(out IntPtr widget, GtkOrientation orientation);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpLevelBarCreate(out IntPtr widget, double minValue, double maxValue);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpLevelBarAddOffsetValue(out IntPtr widget, string name, double value);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpLevelBarGetValue(out IntPtr widget, out double value);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpLevelBarSetValue(out IntPtr widget, double value);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpLevelBarGetMinValue(out IntPtr widget, out double value);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpLevelBarSetMinValue(out IntPtr widget, double value);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpLevelBarGetMaxValue(out IntPtr widget, out double value);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpLevelBarSetMaxValue(out IntPtr widget, double value);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpLevelBarGetMode(out IntPtr widget, out GtkLevelBarMode mode);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpLevelBarSetMode(out IntPtr widget, GtkLevelBarMode mode);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpProgressBarCreate(out IntPtr widget);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpProgressBarPulse(out IntPtr widget);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpProgressBarSetText(out IntPtr widget, string text);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpProgressBarSetfraction(out IntPtr widget, double value);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpProgressBarSetPulseStep(out IntPtr widget, double value);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpProgressBarSetInverted(out IntPtr widget, bool inverted);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpProgressBarGetText(out IntPtr widget, StringBuilder text);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpProgressBarGetTextLength(out IntPtr widget, out int length);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpProgressBarGetFraction(out IntPtr widget, out double value);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpProgressBarGetPulsestep(out IntPtr widget, out double value);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpProgressBarGetInverted(out IntPtr widget, out bool value);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpProgressBarSetEllipsize(out IntPtr widget, PangoEllipsizeMode mode);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpProgressBarGetEllipsize(out IntPtr widget, out PangoEllipsizeMode mode);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpProgressBarSetShowText(out IntPtr widget, bool show);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpProgressBarGetShowText(out IntPtr widget, out bool show);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpCairoFill(out IntPtr cr);
 
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
@@ -341,6 +419,5 @@ namespace GtkSharp.Native
 
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpCairoClip(out IntPtr cr);
-
     }
 }
