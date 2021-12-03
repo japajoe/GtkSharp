@@ -95,7 +95,7 @@ namespace GtkSharpApplication
 
         private void OnMenuItemExitClicked()
         {
-            Console.WriteLine("Clicked exit");
+            Quit();
         }
     }
 }
