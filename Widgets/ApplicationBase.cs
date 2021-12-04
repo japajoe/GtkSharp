@@ -29,7 +29,7 @@ namespace GtkSharp
         public void Run(string[] args)
         {
             Gtk.GtkSharpInit(args.Length, args);
-            window = new Window();
+            window = new Window(GtkWindowType.TopLevel);
 
             Initialize();
 

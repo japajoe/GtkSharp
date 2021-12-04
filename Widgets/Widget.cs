@@ -89,5 +89,13 @@ namespace GtkSharp
 
             Gtk.GtkSharpWidgetSetMargins(out handle.pointer, top, left, bottom, right);
         }
+
+        public void AddEvents(GdkEventMask events)
+        {
+            if(handle.IsNullPointer)
+                return;
+
+            Gtk.GtkSharpWidgetAddEvents(out handle.pointer, events);
+        }
     }
 }

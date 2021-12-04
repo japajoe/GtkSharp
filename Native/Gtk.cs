@@ -70,16 +70,10 @@ namespace GtkSharp.Native
         internal static extern void GtkSharpWidgetQueueDraw(out IntPtr widget);
 
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowCreate(out IntPtr widget);
+        internal static extern void GtkSharpWidgetAddEvents(out IntPtr widget, GdkEventMask events);
 
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowAdd(out IntPtr widget, out IntPtr child);
-
-        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetStyleSheet(out IntPtr widget, string path);
-
-        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetTitle(out IntPtr widget, string title);
+        internal static extern void GtkSharpContainerAdd(out IntPtr widget, out IntPtr child);
 
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpBoxCreate(out IntPtr widget, GtkOrientation orientation, int spacing, bool homogeneous);
