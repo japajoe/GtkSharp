@@ -46,14 +46,14 @@ namespace GtkSharp.Native
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpContainerAdd(out IntPtr widget, out IntPtr child);
         
-        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpButtonCreate(out IntPtr widget, string text);
+        // [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        // internal static extern void GtkSharpButtonCreate(out IntPtr widget, string text);
         
-        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpButtonSetText(out IntPtr widget, string text);
+        // [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        // internal static extern void GtkSharpButtonSetText(out IntPtr widget, string text);
 
-        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpButtonSetImage(out IntPtr widget, out IntPtr image);
+        // [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        // internal static extern void GtkSharpButtonSetImage(out IntPtr widget, out IntPtr image);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpImageCreateFromIconName(out IntPtr widget, string iconName, GtkIconSize size);
