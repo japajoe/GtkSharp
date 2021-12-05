@@ -1,5 +1,5 @@
-using System;
 using GtkSharp.Native;
+using GtkSharp.Native.Widgets;
 
 namespace GtkSharp
 {
@@ -29,17 +29,22 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpWidgetSetSize(out handle.pointer, ref width, ref height);
-            this.width = width;
-            this.height = height;
+            NativeWidget.GtkSharpWidgetSetSizeRequest(out handle.pointer, width, height);
+            CalculatePreferredSize();            
         }
 
-        public void CalculaterPreferredSize()
+        public void CalculatePreferredSize()
         {
             if(handle.IsNullPointer)
                 return;
+            
+            GtkRequisition naturalSize;
+            GtkRequisition minimumSize;
 
-            Gtk.GtkSharpWidgetCalculatePreferredSize(out handle.pointer, ref width, ref height);
+            NativeWidget.GtkSharpWidgetGetPreferredSize(out handle.pointer, out minimumSize, out naturalSize);
+            
+            width  = naturalSize.width;
+            height = naturalSize.height;
         }
 
         public void Show()
@@ -47,7 +52,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpWidgetShow(out handle.pointer);
+            NativeWidget.GtkSharpWidgetShow(out handle.pointer);
         }
 
         public void ShowAll()
@@ -55,7 +60,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpWidgetShowAll(out handle.pointer);
+            NativeWidget.GtkSharpWidgetShowAll(out handle.pointer);
         }
 
         public void Focus()
@@ -63,7 +68,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpWidgetSetFocus(out handle.pointer);
+            NativeWidget.GtkSharpWidgetGrabFocus(out handle.pointer);
         }
 
         public void Destroy()
@@ -71,7 +76,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpWidgetDestroy(out handle.pointer);
+            NativeWidget.GtkSharpWidgetDestroy(out handle.pointer);
         }
 
         public void QueueDraw()
@@ -79,15 +84,18 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
             
-            Gtk.GtkSharpWidgetQueueDraw(out handle.pointer);
+            NativeWidget.GtkSharpWidgetQueueDraw(out handle.pointer);
         }
 
-        public void SetMargins(double top, double left, double bottom, double right)
+        public void SetMargins(int top, int left, int bottom, int right)
         {
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpWidgetSetMargins(out handle.pointer, top, left, bottom, right);
+            NativeWidget.GtkSharpWidgetSetMarginBottom(out handle.pointer, bottom);
+            NativeWidget.GtkSharpWidgetSetMarginTop(out handle.pointer, bottom);
+            NativeWidget.GtkSharpWidgetSetMarginLeft(out handle.pointer, bottom);
+            NativeWidget.GtkSharpWidgetSetMarginRight(out handle.pointer, bottom);
         }
 
         public void AddEvents(GdkEventMask events)
@@ -95,7 +103,8 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpWidgetAddEvents(out handle.pointer, events);
+            int e = (int)events;
+            NativeWidget.GtkSharpWidgetAddEvents(out handle.pointer, e);
         }
     }
 }

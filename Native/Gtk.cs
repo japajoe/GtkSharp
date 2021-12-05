@@ -46,33 +46,6 @@ namespace GtkSharp.Native
         internal static extern void GtkSharpNoteBookSelectedIndexChangedCallbackConnect(out IntPtr widget, GtkNoteBookSelectedIndexChangedCallback callback);
 
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWidgetShow(out IntPtr widget);
-
-        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWidgetShowAll(out IntPtr widget);
-
-        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWidgetSetSize(out IntPtr widget, ref int width, ref int height);
-
-        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWidgetCalculatePreferredSize(out IntPtr widget, ref int width, ref int height);
-
-        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWidgetSetFocus(out IntPtr widget);
-
-        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWidgetDestroy(out IntPtr widget);
-
-        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWidgetSetMargins(out IntPtr widget, double top, double left, double bottom, double right);
-
-        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWidgetQueueDraw(out IntPtr widget);
-
-        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWidgetAddEvents(out IntPtr widget, GdkEventMask events);
-
-        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpContainerAdd(out IntPtr widget, out IntPtr child);
 
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
