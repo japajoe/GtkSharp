@@ -24,11 +24,11 @@ namespace GtkSharp
 
         public SpinButton(double value, double valueMin, double valueMax, double stepSize)
         {
-            Gtk.GtkSharpSpinButtonCreate(out handle.pointer, value, valueMin, valueMax, stepSize);
+            Gtk.GtkSharpSpinButtonCreate(out handle, value, valueMin, valueMax, stepSize);
             
             onValueChangedNative = GtkSharpDelegate.Create<GtkSpinButtonValueChangedCallback>(this, "OnValueChanged");
 
-            Gtk.GtkSharpSpinButtonValueChangedCallbackConnect(out handle.pointer, onValueChangedNative);
+            Gtk.GtkSharpSpinButtonValueChangedCallbackConnect(out handle, onValueChangedNative);
         }
 
         public void SetValue(double value)
@@ -36,7 +36,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpSpinButtonSetValue(out handle.pointer, value);
+            Gtk.GtkSharpSpinButtonSetValue(out handle, value);
             this.buttonValue = value;
         }
 
@@ -45,7 +45,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return 0;
             
-            Gtk.GtkSharpSpinButtonGetValue(out handle.pointer, out buttonValue);                      
+            Gtk.GtkSharpSpinButtonGetValue(out handle, out buttonValue);                      
             return buttonValue;
         }
 

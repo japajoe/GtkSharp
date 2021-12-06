@@ -32,7 +32,7 @@ namespace GtkSharp
             this.stringBuilder = new StringBuilder(4096);
             
             NativeTextView.GtkSharpTextViewCreate(out handle);
-            NativeTextView.GtkSharpTextViewGetBuffer(out handle, out buffer.pointer);
+            NativeTextView.GtkSharpTextViewGetBuffer(out handle, out buffer);
 
             onChangedNative = GtkSharpDelegate.Create<GtkTextBufferChangedCallback>(this, "OnChanged");
 

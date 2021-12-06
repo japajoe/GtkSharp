@@ -57,10 +57,10 @@ namespace GtkSharp
             this.text = string.Empty;
             this.stringBuilder = new StringBuilder(4096);
 
-            NativeSourceView.GtkSharpSourceLanguageManagerGetDefault(out sourceLanguageManager.pointer);
-            NativeSourceView.GtkSharpSourceLanguageManagerGetLanguage(out sourceLanguageManager.pointer, out sourceLanguage.pointer, languageString);
-            NativeSourceView.GtkSharpSourceBufferCreateWithLanguage(out buffer.pointer, out sourceLanguage.pointer);
-            NativeSourceView.GtkSharpSourceViewCreateWithBuffer(out handle, out buffer.pointer);
+            NativeSourceView.GtkSharpSourceLanguageManagerGetDefault(out sourceLanguageManager);
+            NativeSourceView.GtkSharpSourceLanguageManagerGetLanguage(out sourceLanguageManager, out sourceLanguage, languageString);
+            NativeSourceView.GtkSharpSourceBufferCreateWithLanguage(out buffer, out sourceLanguage);
+            NativeSourceView.GtkSharpSourceViewCreateWithBuffer(out handle, out buffer);
             NativeSourceView.GtkSharpSourceViewSetTabWidth(out handle, 4);
 
             onChangedNative = GtkSharpDelegate.Create<GtkSourceBufferChangedCallback>(this, "OnChanged");

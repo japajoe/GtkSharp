@@ -33,9 +33,9 @@ namespace GtkSharp
 
         public NoteBook()
         {
-            Gtk.GtkSharpNoteBookCreate(out handle.pointer);
+            Gtk.GtkSharpNoteBookCreate(out handle);
             onSelectedIndexChangedNative = GtkSharpDelegate.Create<GtkNoteBookSelectedIndexChangedCallback>(this, "OnSelectedIndexChanged");
-            Gtk.GtkSharpNoteBookSelectedIndexChangedCallbackConnect(out handle.pointer, onSelectedIndexChangedNative);
+            Gtk.GtkSharpNoteBookSelectedIndexChangedCallbackConnect(out handle, onSelectedIndexChangedNative);
         }
 
         public void Append(Widget child, Widget label)
@@ -43,7 +43,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpNoteBookAppend(out handle.pointer, out child.handle.pointer, out label.handle.pointer);
+            Gtk.GtkSharpNoteBookAppend(out handle, out child.handle.pointer, out label.handle.pointer);
         }
 
         public void Remove(int index)
@@ -51,7 +51,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpNoteBookRemove(out handle.pointer, index);
+            Gtk.GtkSharpNoteBookRemove(out handle, index);
         }
 
         public int GetPageCount()
@@ -59,7 +59,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return 0;
 
-            Gtk.GtkSharpNoteBookGetPageCount(out handle.pointer, out pageCount);
+            Gtk.GtkSharpNoteBookGetPageCount(out handle, out pageCount);
 
             return pageCount;
         }
@@ -69,7 +69,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return -1;
 
-            Gtk.GtkSharpNoteBookGetSelectedIndex(out handle.pointer, out selectedIndex);
+            Gtk.GtkSharpNoteBookGetSelectedIndex(out handle, out selectedIndex);
             return selectedIndex;
         }
 
@@ -78,7 +78,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpNoteBookSetSelectedIndex(out handle.pointer, index);
+            Gtk.GtkSharpNoteBookSetSelectedIndex(out handle, index);
             selectedIndex = index;
         }
 

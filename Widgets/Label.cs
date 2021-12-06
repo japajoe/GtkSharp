@@ -6,12 +6,12 @@ namespace GtkSharp
     {
         public Label()
         {
-            Gtk.GtkSharpLabelCreate(out handle.pointer, "Label");
+            Gtk.GtkSharpLabelCreate(out handle, "Label");
         }
 
         public Label(string text)
         {
-            Gtk.GtkSharpLabelCreate(out handle.pointer, text);
+            Gtk.GtkSharpLabelCreate(out handle, text);
         }
 
         public void SetText(string text)
@@ -19,7 +19,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpLabelSetText(out handle.pointer, text);
+            Gtk.GtkSharpLabelSetText(out handle, text);
         }
     }
 }

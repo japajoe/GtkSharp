@@ -13,8 +13,8 @@ namespace GtkSharp
         {
             GtkResponseType response = GtkResponseType.None;
 
-            Gtk.GtkSharpFileChooserDialogCreate(out handle.pointer,
-                                                out parent.handle.pointer,
+            Gtk.GtkSharpFileChooserDialogCreate(out handle,
+                                                out parent.handle,
                                                 title,
                                                 GtkFileChooserAction.Open,
                                                 "_Cancel",
@@ -22,12 +22,12 @@ namespace GtkSharp
                                                 "_Open",
                                                 GtkResponseType.Accept);
 
-            Gtk.GtkSharpDialogRun(out handle.pointer, out response);
+            Gtk.GtkSharpDialogRun(out handle, out response);
 
             if(response == GtkResponseType.Accept)
             {
                 int length = 0;
-                Gtk.GtkSharpFileChooserGetFileNameLength(out handle.pointer, out length);
+                Gtk.GtkSharpFileChooserGetFileNameLength(out handle, out length);
 
                 if(length > 0)
                 {
@@ -38,7 +38,7 @@ namespace GtkSharp
                     }
                     
                     stringBuilder.Clear();
-                    Gtk.GtkSharpFileChooserGetFileName(out handle.pointer, stringBuilder);
+                    Gtk.GtkSharpFileChooserGetFileName(out handle, stringBuilder);
                     fileName = stringBuilder.ToString().Substring(0, length);
                 }
             }

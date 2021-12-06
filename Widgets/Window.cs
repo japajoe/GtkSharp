@@ -58,7 +58,7 @@ namespace GtkSharp
             this.AddEvents(events);
 
             onWindowClosingNative = GtkSharpDelegate.Create<GtkCallback>(this, "OnClosing");
-            Gtk.GtkSharpCallbackConnect(out handle.pointer, "destroy", onWindowClosingNative, out handle.pointer);
+            Gtk.GtkSharpCallbackConnect(out handle, "destroy", onWindowClosingNative, out handle.pointer);
         }
 
         public string GetTitle()
@@ -99,7 +99,7 @@ namespace GtkSharp
             if(child.handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpContainerAdd(out handle.pointer, out child.handle.pointer);
+            Gtk.GtkSharpContainerAdd(out handle, out child.handle.pointer);
         }
 
         public void SetPosition(GtkWindowPosition position)
@@ -118,7 +118,7 @@ namespace GtkSharp
             if(widget.handle.IsNullPointer)
                 return;
 
-            NativeWindow.GtkSharpWindowSetFocus(out handle, out widget.handle.pointer);
+            NativeWindow.GtkSharpWindowSetFocus(out handle, out widget.handle);
         }
 
         public Widget GetFocusedWidget()
@@ -127,7 +127,7 @@ namespace GtkSharp
                 return null;
 
             Widget widget = new Widget();
-            NativeWindow.GtkSharpWindowGetFocus(out handle, out widget.handle.pointer);
+            NativeWindow.GtkSharpWindowGetFocus(out handle, out widget.handle);
             return widget;
         }
 

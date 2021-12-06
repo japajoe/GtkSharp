@@ -13,13 +13,13 @@ namespace GtkSharp
 
         public DrawingArea(int width, int height)
         {
-            Gtk.GtkSharpDrawingAreaCreate(out handle.pointer, width, height);
+            Gtk.GtkSharpDrawingAreaCreate(out handle, width, height);
             SetSize(width, height);
             
             cairo = new Cairo();
             onDrawNative = GtkSharpDelegate.Create<GtkDrawingAreaDrawCallback>(this, "OnDraw");
 
-            Gtk.GtkSharpDrawingAreaDrawCallbackConnect(out handle.pointer, onDrawNative);
+            Gtk.GtkSharpDrawingAreaDrawCallbackConnect(out handle, onDrawNative);
         }
 
         private bool OnDraw(IntPtr widget, IntPtr cr, IntPtr data)

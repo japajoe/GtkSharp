@@ -6,7 +6,7 @@ namespace GtkSharp
     {
         public Paned(GtkOrientation orientation)
         {
-            Gtk.GtkSharpPanedCreate(out handle.pointer, orientation);
+            Gtk.GtkSharpPanedCreate(out handle, orientation);
         }
 
         public void Add(Widget child, uint location, bool resize, bool shrink)
@@ -17,7 +17,7 @@ namespace GtkSharp
             if(child.handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpPanedAdd(out handle.pointer, out child.handle.pointer, location, resize, shrink);
+            Gtk.GtkSharpPanedAdd(out handle, out child.handle.pointer, location, resize, shrink);
         }
 
         public void SetSeparatorPosition(int position)
@@ -25,7 +25,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpPanedSetSeparatorPosition(out handle.pointer, position);
+            Gtk.GtkSharpPanedSetSeparatorPosition(out handle, position);
         }
     }
 }

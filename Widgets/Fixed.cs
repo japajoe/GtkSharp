@@ -6,7 +6,7 @@ namespace GtkSharp
     {
         public Fixed(int width, int height)
         {
-            Gtk.GtkSharpFixedCreate(out handle.pointer, width, height);
+            Gtk.GtkSharpFixedCreate(out handle, width, height);
         }
 
         public void Add(Widget child, int x, int y)
@@ -17,7 +17,7 @@ namespace GtkSharp
             if(child.handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpFixedAdd(out handle.pointer, out child.handle.pointer, x, y);
+            Gtk.GtkSharpFixedAdd(out handle, out child.handle.pointer, x, y);
         }
     }
 }

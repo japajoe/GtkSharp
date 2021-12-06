@@ -6,7 +6,7 @@ namespace GtkSharp
     {
         public Spinner()
         {
-            Gtk.GtkSharpSpinnerCreate(out handle.pointer);
+            Gtk.GtkSharpSpinnerCreate(out handle);
         }
 
         public void Start()
@@ -14,7 +14,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpSpinnerStart(out handle.pointer);
+            Gtk.GtkSharpSpinnerStart(out handle);
         }
 
         public void Stop()
@@ -22,7 +22,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpSpinnerStop(out handle.pointer);
+            Gtk.GtkSharpSpinnerStop(out handle);
         }        
     }
 }

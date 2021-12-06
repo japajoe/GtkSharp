@@ -12,7 +12,7 @@ namespace GtkSharp
 
         public MenuBar()
         {
-            Gtk.GtkSharpMenuBarCreate(out handle.pointer);
+            Gtk.GtkSharpMenuBarCreate(out handle);
             onMenuItemClickedNative = GtkSharpDelegate.Create<GtkCallback>(this, "OnMenuItemClicked");
         }
         
@@ -36,7 +36,7 @@ namespace GtkSharp
                 MenuItem item = new MenuItem(menuInfo[currentIndex].items[i]);
                 menuWidget.ShellAppend(item);
                 callbacks.Add(item.handle.pointer, menuInfo[currentIndex].callbacks[index]);                
-                Gtk.GtkSharpCallbackConnect(out item.handle.pointer, "activate", onMenuItemClickedNative, out item.handle.pointer);                
+                Gtk.GtkSharpCallbackConnect(out item.handle, "activate", onMenuItemClickedNative, out item.handle.pointer);                
             }
         }
 
@@ -58,7 +58,7 @@ namespace GtkSharp
     {
         public Menu()
         {
-            Gtk.GtkSharpMenuCreate(out handle.pointer);
+            Gtk.GtkSharpMenuCreate(out handle);
         }
 
         public void ShellAppend(MenuItem menuItem)
@@ -71,7 +71,7 @@ namespace GtkSharp
     {
         public MenuItem(string label)
         {
-            Gtk.GtkSharpMenuItemCreateWithlabel(out handle.pointer, label);
+            Gtk.GtkSharpMenuItemCreateWithlabel(out handle, label);
         }
 
         public void SetSubMenu(Menu menu)

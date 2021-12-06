@@ -1,4 +1,3 @@
-using System;
 using System.Text;
 using System.Runtime.InteropServices;
 
@@ -67,10 +66,10 @@ namespace GtkSharp.Native.Widgets
         internal static extern void GtkSharpButtonGetAlignment(out GtkWidgetPointer button, out float xalign, out float yalign);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpButtonSetImage(out GtkWidgetPointer button, out IntPtr image);
+        internal static extern void GtkSharpButtonSetImage(out GtkWidgetPointer button, out GtkWidgetPointer image);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpButtonGetImage(out GtkWidgetPointer button, out IntPtr image);
+        internal static extern void GtkSharpButtonGetImage(out GtkWidgetPointer button, out GtkWidgetPointer image);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpButtonSetImagePosition(out GtkWidgetPointer button, GtkPositionType positionType);
@@ -85,6 +84,6 @@ namespace GtkSharp.Native.Widgets
         internal static extern void GtkSharpButtonGetAlwaysShowImage(out GtkWidgetPointer button, out bool alwaysShow);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpButtonGetEventWindow(out GtkWidgetPointer button, out IntPtr window);        
+        internal static extern void GtkSharpButtonGetEventWindow(out GtkWidgetPointer button, out GdkWindowPointer window);        
     }
 }

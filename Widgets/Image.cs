@@ -18,29 +18,29 @@ namespace GtkSharp
 
         public Image(string iconName, GtkIconSize size)
         {
-            Gtk.GtkSharpImageCreateFromIconName(out handle.pointer, iconName, size);
+            Gtk.GtkSharpImageCreateFromIconName(out handle, iconName, size);
 
             if(!handle.IsNullPointer)
             {
-                Gtk.GtkSharpImageGetPixbuf(out handle.pointer, out pixbuf.pointer);
+                Gtk.GtkSharpImageGetPixbuf(out handle, out pixbuf);
                 format = ImageFormat.FromPixbuf(pixbuf);
             }
         }
 
         public Image(string filepath)
         {
-            Gtk.GtkSharpImageCreateFromFile(out handle.pointer, filepath);
+            Gtk.GtkSharpImageCreateFromFile(out handle, filepath);
 
             if(!handle.IsNullPointer)
             {
-                Gtk.GtkSharpImageGetPixbuf(out handle.pointer, out pixbuf.pointer);
+                Gtk.GtkSharpImageGetPixbuf(out handle, out pixbuf);
                 format = ImageFormat.FromPixbuf(pixbuf);
             }            
         }
 
         public Image(GdkPixbufPointer pixbuf)
         {
-            Gtk.GtkSharpImageCreateFromPixbuf(out handle.pointer, out pixbuf.pointer);
+            Gtk.GtkSharpImageCreateFromPixbuf(out handle, out pixbuf);
             this.pixbuf = pixbuf;
             format = ImageFormat.FromPixbuf(pixbuf);
         }

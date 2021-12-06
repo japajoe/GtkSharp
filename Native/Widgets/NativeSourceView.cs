@@ -1,4 +1,3 @@
-using System;
 using System.Runtime.InteropServices;
 
 namespace GtkSharp.Native.Widgets
@@ -12,7 +11,7 @@ namespace GtkSharp.Native.Widgets
         internal static extern void GtkSharpSourceViewCreate(out GtkWidgetPointer sourceView);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpSourceViewCreateWithBuffer(out GtkWidgetPointer sourceView, out IntPtr sourceBuffer);
+        internal static extern void GtkSharpSourceViewCreateWithBuffer(out GtkWidgetPointer sourceView, out GtkSourceBufferPointer sourceBuffer);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpSourceViewSetShowLineNumbers(out GtkWidgetPointer sourceView, bool show);
@@ -51,10 +50,10 @@ namespace GtkSharp.Native.Widgets
         internal static extern void GtkSharpSourceViewGetIndentOnTab(out GtkWidgetPointer sourceView, out bool enable);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpSourceViewIndentLines(out GtkWidgetPointer sourceView, out IntPtr start, out IntPtr end);
+        internal static extern void GtkSharpSourceViewIndentLines(out GtkWidgetPointer sourceView, out GtkTextIterPointer start, out GtkTextIterPointer end);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpSourceViewUnindentLines(out GtkWidgetPointer sourceView, out IntPtr start, out IntPtr end);
+        internal static extern void GtkSharpSourceViewUnindentLines(out GtkWidgetPointer sourceView, out GtkTextIterPointer start, out GtkTextIterPointer end);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpSourceViewSetHighlightCurrentLine(out GtkWidgetPointer sourceView, bool highlight);
@@ -81,10 +80,10 @@ namespace GtkSharp.Native.Widgets
         internal static extern void GtkSharpSourceViewGetShowLineMarks(out GtkWidgetPointer sourceView, out bool show);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpSourceViewSetMarkAttributes(out GtkWidgetPointer sourceView, string category, out IntPtr attributes, int priority);
+        internal static extern void GtkSharpSourceViewSetMarkAttributes(out GtkWidgetPointer sourceView, string category, out GtkSourceMarkAttributesPointer attributes, int priority);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpSourceViewGetMarkAttributes(out GtkWidgetPointer sourceView, string category, out IntPtr attributes, out int priority);
+        internal static extern void GtkSharpSourceViewGetMarkAttributes(out GtkWidgetPointer sourceView, string category, out GtkSourceMarkAttributesPointer attributes, out int priority);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpSourceViewSetSmartBackspace(out GtkWidgetPointer sourceView, bool smartBackspace);
@@ -105,13 +104,13 @@ namespace GtkSharp.Native.Widgets
         internal static extern void GtkSharpSourceViewGetDrawSpaces(out GtkWidgetPointer sourceView, out GtkSourceDrawSpacesFlags flags);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpSourceViewGetVisualColumn(out GtkWidgetPointer sourceView, out IntPtr iter, out uint column);
+        internal static extern void GtkSharpSourceViewGetVisualColumn(out GtkWidgetPointer sourceView, out GtkTextIterPointer iter, out uint column);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpSourceViewGetCompletion(out GtkWidgetPointer sourceView, out IntPtr sourceCompletion);
+        internal static extern void GtkSharpSourceViewGetCompletion(out GtkWidgetPointer sourceView, out GtkSourceCompletionPointer sourceCompletion);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpSourceViewGetGutter(out GtkWidgetPointer sourceView, GtkTextWindowType windowType, out IntPtr sourceGutter);
+        internal static extern void GtkSharpSourceViewGetGutter(out GtkWidgetPointer sourceView, GtkTextWindowType windowType, out GtkSourceGutterPointer sourceGutter);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpSourceViewSetBackgroundPattern(out GtkWidgetPointer sourceView, GtkSourceBackgroundPatternType backgroundPattern);
@@ -120,12 +119,12 @@ namespace GtkSharp.Native.Widgets
         internal static extern void GtkSharpSourceViewGetBackgroundPattern(out GtkWidgetPointer sourceView, out GtkSourceBackgroundPatternType backgroundPattern);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpSourceLanguageManagerGetDefault(out IntPtr languageManager);
+        internal static extern void GtkSharpSourceLanguageManagerGetDefault(out GtkSourceLanguageManagerPointer languageManager);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpSourceLanguageManagerGetLanguage(out IntPtr languageManager, out IntPtr sourceLanguage, string language);
+        internal static extern void GtkSharpSourceLanguageManagerGetLanguage(out GtkSourceLanguageManagerPointer languageManager, out GtkSourceLanguagePointer sourceLanguage, string language);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpSourceBufferCreateWithLanguage(out IntPtr sourceBuffer, out IntPtr language);
+        internal static extern void GtkSharpSourceBufferCreateWithLanguage(out GtkSourceBufferPointer sourceBuffer, out GtkSourceLanguagePointer language);
     }
 }

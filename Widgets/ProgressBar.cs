@@ -83,7 +83,7 @@ namespace GtkSharp
         public ProgressBar(GtkOrientation orientation)
         {
             stringBuilder = new StringBuilder(1024);
-            Gtk.GtkSharpProgressBarCreate(out handle.pointer);
+            Gtk.GtkSharpProgressBarCreate(out handle);
         }
 
         public void Pulse()
@@ -91,7 +91,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpProgressBarPulse(out handle.pointer);
+            Gtk.GtkSharpProgressBarPulse(out handle);
         }
 
         public void SetText(string text)
@@ -99,7 +99,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpProgressBarSetText(out handle.pointer, text);
+            Gtk.GtkSharpProgressBarSetText(out handle, text);
             this.text = text;
         }
 
@@ -111,7 +111,7 @@ namespace GtkSharp
             stringBuilder.Clear();
 
             int length = 0;
-            Gtk.GtkSharpProgressBarGetTextLength(out handle.pointer, out length);
+            Gtk.GtkSharpProgressBarGetTextLength(out handle, out length);
 
             if(length > stringBuilder.Capacity)
             {
@@ -119,7 +119,7 @@ namespace GtkSharp
                 stringBuilder.EnsureCapacity(length);
             }
 
-            Gtk.GtkSharpProgressBarGetText(out handle.pointer, stringBuilder);
+            Gtk.GtkSharpProgressBarGetText(out handle, stringBuilder);
 
             text = stringBuilder.ToString().Substring(0, length);
             
@@ -132,7 +132,7 @@ namespace GtkSharp
                 return 0;
 
             double value;
-            Gtk.GtkSharpProgressBarGetFraction(out handle.pointer, out value);
+            Gtk.GtkSharpProgressBarGetFraction(out handle, out value);
             return value;
         }
 
@@ -141,7 +141,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpProgressBarSetfraction(out handle.pointer, value);
+            Gtk.GtkSharpProgressBarSetfraction(out handle, value);
         }
 
         public double GetPulseStep()
@@ -150,7 +150,7 @@ namespace GtkSharp
                 return 0;
 
             double value;
-            Gtk.GtkSharpProgressBarGetPulsestep(out handle.pointer, out value);
+            Gtk.GtkSharpProgressBarGetPulsestep(out handle, out value);
             return value;
         }        
 
@@ -159,7 +159,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpProgressBarSetPulseStep(out handle.pointer, value);
+            Gtk.GtkSharpProgressBarSetPulseStep(out handle, value);
         }
 
         public bool GetInverted()
@@ -168,7 +168,7 @@ namespace GtkSharp
                 return false;
                             
             bool value;
-            Gtk.GtkSharpProgressBarGetInverted(out handle.pointer, out value);
+            Gtk.GtkSharpProgressBarGetInverted(out handle, out value);
             return value;
         }        
 
@@ -177,7 +177,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpProgressBarSetInverted(out handle.pointer, inverted);
+            Gtk.GtkSharpProgressBarSetInverted(out handle, inverted);
         }
 
         public PangoEllipsizeMode GetEllipsize()
@@ -186,7 +186,7 @@ namespace GtkSharp
                 return PangoEllipsizeMode.None;
                             
             PangoEllipsizeMode mode;
-            Gtk.GtkSharpProgressBarGetEllipsize(out handle.pointer, out mode);
+            Gtk.GtkSharpProgressBarGetEllipsize(out handle, out mode);
             return mode;
         }        
 
@@ -195,7 +195,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpProgressBarSetEllipsize(out handle.pointer, mode);
+            Gtk.GtkSharpProgressBarSetEllipsize(out handle, mode);
         }
 
         public bool GetShowText()
@@ -204,7 +204,7 @@ namespace GtkSharp
                 return false;
 
             bool value;
-            Gtk.GtkSharpProgressBarGetShowText(out handle.pointer, out value);
+            Gtk.GtkSharpProgressBarGetShowText(out handle, out value);
             return value;
         }
 
@@ -213,7 +213,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpProgressBarSetShowText(out handle.pointer, show);
+            Gtk.GtkSharpProgressBarSetShowText(out handle, show);
         }
     }
 }

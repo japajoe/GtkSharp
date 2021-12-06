@@ -6,7 +6,7 @@ namespace GtkSharp
     {
         public Separator(GtkOrientation orientation)
         {
-            Gtk.GtkSharpSeparatorCreate(out handle.pointer, orientation);
+            Gtk.GtkSharpSeparatorCreate(out handle, orientation);
         }
     }
 }

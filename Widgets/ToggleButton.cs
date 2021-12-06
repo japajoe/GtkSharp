@@ -24,11 +24,11 @@ namespace GtkSharp
 
         public ToggleButton(bool value, string text)
         {
-            Gtk.GtkSharpToggleButtonCreate(out handle.pointer, value, text);
+            Gtk.GtkSharpToggleButtonCreate(out handle, value, text);
             
             onValueChangedNative = GtkSharpDelegate.Create<GtkToggleButtonValueChangedCallback>(this, "OnValueChanged");
 
-            Gtk.GtkSharpToggleButtonValueChangedCallbackConnect(out handle.pointer, onValueChangedNative);
+            Gtk.GtkSharpToggleButtonValueChangedCallbackConnect(out handle, onValueChangedNative);
         }
 
         public void SetValue(bool value)
@@ -36,7 +36,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpToggleButtonSetValue(out handle.pointer, value);
+            Gtk.GtkSharpToggleButtonSetValue(out handle, value);
             this.buttonValue = value;
         }
 
@@ -45,7 +45,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return false;
             
-            Gtk.GtkSharpToggleButtonGetValue(out handle.pointer, out buttonValue);                      
+            Gtk.GtkSharpToggleButtonGetValue(out handle, out buttonValue);                      
             return buttonValue;
         }
 

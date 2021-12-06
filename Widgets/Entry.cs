@@ -32,13 +32,13 @@ namespace GtkSharp
         {
             stringBuilder = new StringBuilder(1024);
 
-            Gtk.GtkSharpTextEntryCreate(out handle.pointer, out buffer.pointer);
+            Gtk.GtkSharpTextEntryCreate(out handle, out buffer.pointer);
 
             onSubmitNative = GtkSharpDelegate.Create<GtkCallback>(this, "OnSubmit");
             onDeletedNative = GtkSharpDelegate.Create<GtkEntryBufferDeletedCallback>(this, "OnDeleted");
             onInsertedCallback = GtkSharpDelegate.Create<GtkEntryBufferInsertedCallback>(this, "OnInserted");
 
-            Gtk.GtkSharpCallbackConnect(out handle.pointer, "submit", onSubmitNative, out handle.pointer);
+            Gtk.GtkSharpCallbackConnect(out handle, "submit", onSubmitNative, out handle.pointer);
             Gtk.GtkSharpEntryBufferDeletedCallbackConnect(out buffer.pointer, onDeletedNative);
             Gtk.GtkSharpEntryBufferInsertedCallbackConnect(out buffer.pointer, onInsertedCallback);
         }
@@ -48,7 +48,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpTextEntrySetText(out handle.pointer, out buffer.pointer, text);
+            Gtk.GtkSharpTextEntrySetText(out handle, out buffer.pointer, text);
             this.text = text;
         }
 
@@ -68,7 +68,7 @@ namespace GtkSharp
                 stringBuilder.EnsureCapacity((int)length);
             }
 
-            Gtk.GtkSharpTextEntryGetText(out handle.pointer, out buffer.pointer, stringBuilder);
+            Gtk.GtkSharpTextEntryGetText(out handle, out buffer.pointer, stringBuilder);
 
             this.text = stringBuilder.ToString().Substring(0, (int)length);
             
@@ -80,7 +80,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpTextEntryClearText(out handle.pointer, out buffer.pointer);
+            Gtk.GtkSharpTextEntryClearText(out handle, out buffer.pointer);
             this.text = string.Empty;
         }
 

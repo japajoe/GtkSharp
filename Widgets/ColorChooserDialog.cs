@@ -28,15 +28,15 @@ namespace GtkSharp
         {
             GtkResponseType response = GtkResponseType.None;
 
-            Gtk.GtkSharpColorChooserDialogCreate(out handle.pointer,
+            Gtk.GtkSharpColorChooserDialogCreate(out handle,
                                                 out parent.handle.pointer,
                                                 title);
 
-            Gtk.GtkSharpDialogRun(out handle.pointer, out response);
+            Gtk.GtkSharpDialogRun(out handle, out response);
 
             if(response == GtkResponseType.Ok)
             {
-                Gtk.GtkSharpColorChooserGetRGBA(out handle.pointer, out color);
+                Gtk.GtkSharpColorChooserGetRGBA(out handle, out color);
             }
             
             this.Destroy();            
