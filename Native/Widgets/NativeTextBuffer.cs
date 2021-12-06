@@ -7,25 +7,25 @@ namespace GtkSharp.Native.Widgets
     internal static class NativeTextBuffer
     {
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextBufferSetText(out IntPtr buffer, string text, int length);
+        internal static extern void GtkSharpTextBufferSetText(out GtkTextBufferPointer buffer, string text, int length);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextBufferDelete(out IntPtr buffer, out IntPtr iterStart, out IntPtr iterEnd);
+        internal static extern void GtkSharpTextBufferDelete(out GtkTextBufferPointer buffer, out GtkTextIterPointer iterStart, out GtkTextIterPointer iterEnd);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextBufferGetText(out IntPtr buffer, out IntPtr iterStart, out IntPtr iterEnd, bool includeHiddenChars, StringBuilder text);
+        internal static extern void GtkSharpTextBufferGetText(out GtkTextBufferPointer buffer, out GtkTextIterPointer iterStart, out GtkTextIterPointer iterEnd, bool includeHiddenChars, StringBuilder text);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextBufferGetTextLength(out IntPtr buffer, out IntPtr iterStart, out IntPtr iterEnd, bool includeHiddenChars, out int length);
+        internal static extern void GtkSharpTextBufferGetTextLength(out GtkTextBufferPointer buffer, out GtkTextIterPointer iterStart, out GtkTextIterPointer iterEnd, bool includeHiddenChars, out int length);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextBufferGetBounds(out IntPtr buffer, out IntPtr iterStart, out IntPtr iterEnd);
+        internal static extern void GtkSharpTextBufferGetBounds(out GtkTextBufferPointer buffer, out GtkTextIterPointer iterStart, out GtkTextIterPointer iterEnd);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextBufferGetCharCount(out IntPtr buffer, out int count);
+        internal static extern void GtkSharpTextBufferGetCharCount(out GtkTextBufferPointer buffer, out int count);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextIterFree(out IntPtr textIter);
+        internal static extern void GtkSharpTextIterFree(out GtkTextIterPointer textIter);
 
     }
 }

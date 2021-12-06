@@ -73,7 +73,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            NativeTextBuffer.GtkSharpTextBufferSetText(out buffer.pointer, text, text.Length);
+            NativeSourceBuffer.GtkSharpTextBufferSetText(out buffer, text, text.Length);
             
             this.text = text;
         }
@@ -87,7 +87,7 @@ namespace GtkSharp
 
             int length = 0;
 
-            NativeTextBuffer.GtkSharpTextBufferGetCharCount(out buffer.pointer, out length);
+            NativeSourceBuffer.GtkSharpTextBufferGetCharCount(out buffer, out length);
 
             if(length > stringBuilder.Capacity)
             {
@@ -98,12 +98,12 @@ namespace GtkSharp
             GtkTextIterPointer iterStart;
             GtkTextIterPointer iterEnd;
             
-            NativeTextBuffer.GtkSharpTextBufferGetBounds(out buffer.pointer, out iterStart.pointer, out iterEnd.pointer);
-            NativeTextBuffer.GtkSharpTextBufferGetText(out buffer.pointer, out iterStart.pointer, out iterEnd.pointer, true, stringBuilder);
-            NativeTextBuffer.GtkSharpTextIterFree(out iterStart.pointer);
-            NativeTextBuffer.GtkSharpTextIterFree(out iterEnd.pointer);            
+            NativeSourceBuffer.GtkSharpTextBufferGetBounds(out buffer, out iterStart, out iterEnd);
+            NativeSourceBuffer.GtkSharpTextBufferGetText(out buffer, out iterStart, out iterEnd, true, stringBuilder);
+            NativeSourceBuffer.GtkSharpTextIterFree(out iterStart);
+            NativeSourceBuffer.GtkSharpTextIterFree(out iterEnd);            
             
-            text = stringBuilder.ToString().Substring(0, (int)length);
+            text = stringBuilder.ToString().Substring(0, length);
             
             return text;
         }
@@ -116,10 +116,10 @@ namespace GtkSharp
             GtkTextIterPointer iterStart;
             GtkTextIterPointer iterEnd;
 
-            NativeTextBuffer.GtkSharpTextBufferGetBounds(out buffer.pointer, out iterStart.pointer, out iterEnd.pointer);
-            NativeTextBuffer.GtkSharpTextBufferDelete(out buffer.pointer, out iterStart.pointer, out iterEnd.pointer);
-            NativeTextBuffer.GtkSharpTextIterFree(out iterStart.pointer);
-            NativeTextBuffer.GtkSharpTextIterFree(out iterEnd.pointer);             
+            NativeSourceBuffer.GtkSharpTextBufferGetBounds(out buffer, out iterStart, out iterEnd);
+            NativeSourceBuffer.GtkSharpTextBufferDelete(out buffer, out iterStart, out iterEnd);
+            NativeSourceBuffer.GtkSharpTextIterFree(out iterStart);
+            NativeSourceBuffer.GtkSharpTextIterFree(out iterEnd);             
 
             this.text = string.Empty;
         }

@@ -45,10 +45,10 @@ namespace GtkSharp.Native.Widgets
         internal static extern void GtkSharpBoxSetChildPacking(out GtkWidgetPointer box, out GtkWidgetPointer child, bool expand, bool fill, uint padding, GtkPackType packType);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpBoxSetCenterWidget(out GtkWidgetPointer box, out IntPtr widget);
+        internal static extern void GtkSharpBoxSetCenterWidget(out GtkWidgetPointer box, out GtkWidgetPointer widget);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpBoxGetCenterWidget(out GtkWidgetPointer box, out IntPtr widget);
+        internal static extern void GtkSharpBoxGetCenterWidget(out GtkWidgetPointer box, out GtkWidgetPointer widget);
 
     }
 }
