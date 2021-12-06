@@ -7,7 +7,8 @@ namespace GtkSharp
 {
     public class Button : Widget
     {
-        private StringBuilder stringBuilder;        
+        private StringBuilder stringBuilder;
+        private string text = string.Empty;
         private GtkCallback onButtonClickedNative;
         public event ButtonClickedEvent onClick;
 
@@ -25,12 +26,13 @@ namespace GtkSharp
             NativeButton.GtkSharpButtonCreateWithLabel(out handle.pointer, text);
             onButtonClickedNative = GtkSharpDelegate.Create<GtkCallback>(this, "OnClicked");
             Gtk.GtkSharpCallbackConnect(out handle.pointer, "clicked", onButtonClickedNative, out handle.pointer);
+            this.text = text;
         }
 
         public string GetText()
         {
             if(handle.IsNullPointer)
-                return string.Empty;
+                return this.text;
 
             stringBuilder.Clear();
 
@@ -45,9 +47,9 @@ namespace GtkSharp
 
             NativeButton.GtkSharpButtonGetLabel(out handle.pointer, stringBuilder);
 
-            string text = stringBuilder.ToString().Substring(0, (int)length);
+            this.text = stringBuilder.ToString().Substring(0, (int)length);
             
-            return text;
+            return this.text;
         }
 
         public void SetText(string text)
@@ -55,6 +57,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
+            this.text = text;
             NativeButton.GtkSharpButtonSetLabel(out handle.pointer, text);
         }
 

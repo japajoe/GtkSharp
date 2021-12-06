@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace GtkSharp.Native
 {
     [StructLayout(LayoutKind.Sequential)]
-    public struct GListPointer
+    public struct GtkClipboardPointer
     {
         public IntPtr pointer;
 

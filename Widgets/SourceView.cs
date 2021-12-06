@@ -1,6 +1,7 @@
 using System;
 using System.Text;
 using GtkSharp.Native;
+using GtkSharp.Native.Widgets;
 
 namespace GtkSharp
 {
@@ -10,6 +11,8 @@ namespace GtkSharp
 
         private GtkSourceBufferChangedCallback onChangedNative;
         private GtkSourceBufferPointer buffer;
+        private GtkSourceLanguageManagerPointer sourceLanguageManager;
+        private GtkSourceLanguagePointer sourceLanguage;
         private StringBuilder stringBuilder;
         private string text;
 
@@ -30,7 +33,12 @@ namespace GtkSharp
             this.text = string.Empty;
             this.stringBuilder = new StringBuilder(4096);
             string languageString = GetLanguageString(language);
-            Gtk.GtkSharpSourceViewCreate(out handle.pointer, out buffer.pointer, languageString);
+
+            NativeSourceView.GtkSharpSourceLanguageManagerGetDefault(out sourceLanguageManager.pointer);
+            NativeSourceView.GtkSharpSourceLanguageManagerGetLanguage(out sourceLanguageManager.pointer, out sourceLanguage.pointer, languageString);
+            NativeSourceView.GtkSharpSourceBufferCreateWithLanguage(out buffer.pointer, out sourceLanguage.pointer);
+            NativeSourceView.GtkSharpSourceViewCreateWithBuffer(out handle.pointer, out buffer.pointer);
+            NativeSourceView.GtkSharpSourceViewSetTabWidth(out handle.pointer, 4);
 
             onChangedNative = GtkSharpDelegate.Create<GtkSourceBufferChangedCallback>(this, "OnChanged");
 
@@ -42,7 +50,8 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpSourceViewSetText(out handle.pointer, out buffer.pointer, text);
+            NativeTextBuffer.GtkSharpTextBufferSetText(out buffer.pointer, text, text.Length);
+            
             this.text = text;
         }
 
@@ -53,16 +62,23 @@ namespace GtkSharp
 
             stringBuilder.Clear();
 
-            uint length = 0;
-            Gtk.GtkSharpSourceBufferGetLength(out buffer.pointer, out length);
+            int length = 0;
+
+            NativeTextBuffer.GtkSharpTextBufferGetCharCount(out buffer.pointer, out length);
 
             if(length > stringBuilder.Capacity)
             {
-                stringBuilder.Capacity = (int)length;
-                stringBuilder.EnsureCapacity((int)length);
+                stringBuilder.Capacity = length;
+                stringBuilder.EnsureCapacity(length);
             }
 
-            Gtk.GtkSharpSourceViewGetText(out handle.pointer, out buffer.pointer, stringBuilder);            
+            GtkTextIterPointer iterStart;
+            GtkTextIterPointer iterEnd;
+            
+            NativeTextBuffer.GtkSharpTextBufferGetBounds(out buffer.pointer, out iterStart.pointer, out iterEnd.pointer);
+            NativeTextBuffer.GtkSharpTextBufferGetText(out buffer.pointer, out iterStart.pointer, out iterEnd.pointer, true, stringBuilder);
+            NativeTextBuffer.GtkSharpTextIterFree(out iterStart.pointer);
+            NativeTextBuffer.GtkSharpTextIterFree(out iterEnd.pointer);            
             
             text = stringBuilder.ToString().Substring(0, (int)length);
             
@@ -74,7 +90,14 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpSourceViewClearText(out handle.pointer, out buffer.pointer);
+            GtkTextIterPointer iterStart;
+            GtkTextIterPointer iterEnd;
+
+            NativeTextBuffer.GtkSharpTextBufferGetBounds(out buffer.pointer, out iterStart.pointer, out iterEnd.pointer);
+            NativeTextBuffer.GtkSharpTextBufferDelete(out buffer.pointer, out iterStart.pointer, out iterEnd.pointer);
+            NativeTextBuffer.GtkSharpTextIterFree(out iterStart.pointer);
+            NativeTextBuffer.GtkSharpTextIterFree(out iterEnd.pointer);             
+
             this.text = string.Empty;
         }
 
@@ -82,8 +105,8 @@ namespace GtkSharp
         {
             if(handle.IsNullPointer)
                 return;
-
-            Gtk.GtkSharpSourceViewToggleLineNumbers(out handle.pointer, visible);
+                
+            NativeSourceView.GtkSharpSourceViewSetShowLineNumbers(out handle.pointer, visible);
         }
 
         public static string GetLanguageString(SourceLanguage language)

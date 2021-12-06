@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace GtkSharp.Native
 {
     [StructLayout(LayoutKind.Sequential)]
-    public struct GdkPixbufPointer
+    public struct GtkSourceCompletionPointer
     {
         public IntPtr pointer;
 

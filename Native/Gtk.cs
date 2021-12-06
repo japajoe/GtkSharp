@@ -45,15 +45,6 @@ namespace GtkSharp.Native
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpContainerAdd(out IntPtr widget, out IntPtr child);
-        
-        // [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        // internal static extern void GtkSharpButtonCreate(out IntPtr widget, string text);
-        
-        // [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        // internal static extern void GtkSharpButtonSetText(out IntPtr widget, string text);
-
-        // [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        // internal static extern void GtkSharpButtonSetImage(out IntPtr widget, out IntPtr image);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpImageCreateFromIconName(out IntPtr widget, string iconName, GtkIconSize size);
@@ -99,27 +90,6 @@ namespace GtkSharp.Native
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpTextViewClearText(out IntPtr widget, out IntPtr buffer);
-
-        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextBufferGetLength(out IntPtr buffer, out uint length);
-
-        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpSourceViewCreate(out IntPtr widget, out IntPtr buffer, string language);
-
-        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpSourceViewSetText(out IntPtr widget, out IntPtr buffer, string text);
-
-        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpSourceViewGetText(out IntPtr widget, out IntPtr buffer, StringBuilder text);
-
-        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpSourceViewClearText(out IntPtr widget, out IntPtr buffer);
-
-        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpSourceViewToggleLineNumbers(out IntPtr widget, bool visible);
-
-        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpSourceBufferGetLength(out IntPtr buffer, out uint length);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpFixedCreate(out IntPtr widget, int width, int height);

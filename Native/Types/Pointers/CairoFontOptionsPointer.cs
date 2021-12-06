@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace GtkSharp.Native
 {
     [StructLayout(LayoutKind.Sequential)]
-    public struct GErrorPointer
+    public struct CairoFontOptionsPointer
     {
         public IntPtr pointer;
 

@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace GtkSharp.Native
 {
     [StructLayout(LayoutKind.Sequential)]
-    public struct GtkSourceBufferPointer
+    public struct PangoContextPointer
     {
         public IntPtr pointer;
 

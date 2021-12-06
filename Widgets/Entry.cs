@@ -14,7 +14,7 @@ namespace GtkSharp
         private GtkEntryBufferInsertedCallback onInsertedCallback;
         private GtkEntryBufferPointer buffer;
         private StringBuilder stringBuilder;
-        private string text;
+        private string text = string.Empty;
 
         public string Text
         {
@@ -31,7 +31,6 @@ namespace GtkSharp
         public Entry()
         {
             stringBuilder = new StringBuilder(1024);
-            text = string.Empty;
 
             Gtk.GtkSharpTextEntryCreate(out handle.pointer, out buffer.pointer);
 
@@ -71,7 +70,7 @@ namespace GtkSharp
 
             Gtk.GtkSharpTextEntryGetText(out handle.pointer, out buffer.pointer, stringBuilder);
 
-            text = stringBuilder.ToString().Substring(0, (int)length);
+            this.text = stringBuilder.ToString().Substring(0, (int)length);
             
             return this.text;
         }
