@@ -15,7 +15,7 @@ namespace GtkSharp
         public Button()
         {
             stringBuilder = new StringBuilder(1024);
-            NativeButton.GtkSharpButtonCreate(out handle.pointer);
+            NativeButton.GtkSharpButtonCreate(out handle);
             onButtonClickedNative = GtkSharpDelegate.Create<GtkCallback>(this, "OnClicked");
             Gtk.GtkSharpCallbackConnect(out handle.pointer, "clicked", onButtonClickedNative, out handle.pointer);            
         }
@@ -23,7 +23,7 @@ namespace GtkSharp
         public Button(string text)
         {
             stringBuilder = new StringBuilder(1024);
-            NativeButton.GtkSharpButtonCreateWithLabel(out handle.pointer, text);
+            NativeButton.GtkSharpButtonCreateWithLabel(out handle, text);
             onButtonClickedNative = GtkSharpDelegate.Create<GtkCallback>(this, "OnClicked");
             Gtk.GtkSharpCallbackConnect(out handle.pointer, "clicked", onButtonClickedNative, out handle.pointer);
             this.text = text;
@@ -37,7 +37,7 @@ namespace GtkSharp
             stringBuilder.Clear();
 
             int length = 0;
-            NativeButton.GtkSharpButtonGetLabelLength(out handle.pointer, out length);
+            NativeButton.GtkSharpButtonGetLabelLength(out handle, out length);
 
             if(length > stringBuilder.Capacity)
             {
@@ -45,7 +45,7 @@ namespace GtkSharp
                 stringBuilder.EnsureCapacity((int)length);
             }
 
-            NativeButton.GtkSharpButtonGetLabel(out handle.pointer, stringBuilder);
+            NativeButton.GtkSharpButtonGetLabel(out handle, stringBuilder);
 
             this.text = stringBuilder.ToString().Substring(0, (int)length);
             
@@ -58,7 +58,7 @@ namespace GtkSharp
                 return;
 
             this.text = text;
-            NativeButton.GtkSharpButtonSetLabel(out handle.pointer, text);
+            NativeButton.GtkSharpButtonSetLabel(out handle, text);
         }
 
         public void SetImage(Image image)
@@ -69,7 +69,7 @@ namespace GtkSharp
             if(image.handle.IsNullPointer)
                 return;                
 
-            NativeButton.GtkSharpButtonSetImage(out handle.pointer, out image.handle.pointer);
+            NativeButton.GtkSharpButtonSetImage(out handle, out image.handle.pointer);
         }
 
         private void OnClicked(IntPtr widget, IntPtr data)

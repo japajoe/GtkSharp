@@ -7,7 +7,7 @@ namespace GtkSharp
     {
         public Box()
         {
-            NativeBox.GtkSharpBoxCreate(out handle.pointer, GtkOrientation.Vertical, 0);
+            NativeBox.GtkSharpBoxCreate(out handle, GtkOrientation.Vertical, 0);
             SetHomogeneous(false);
         }
 
@@ -25,7 +25,7 @@ namespace GtkSharp
 
         public Box(GtkOrientation orientation, int spacing, bool homogeneous)
         {
-            NativeBox.GtkSharpBoxCreate(out handle.pointer, orientation, spacing);
+            NativeBox.GtkSharpBoxCreate(out handle, orientation, spacing);
             SetHomogeneous(homogeneous);
         }
 
@@ -35,7 +35,7 @@ namespace GtkSharp
                 return false;
 
             bool homogeneous;
-            NativeBox.GtkSharpBoxGetHomogeneous(out handle.pointer, out homogeneous);
+            NativeBox.GtkSharpBoxGetHomogeneous(out handle, out homogeneous);
             return homogeneous;
         }
 
@@ -44,7 +44,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            NativeBox.GtkSharpBoxSetHomogeneous(out handle.pointer, homogeneous);
+            NativeBox.GtkSharpBoxSetHomogeneous(out handle, homogeneous);
         }
 
         public void Add(Widget child, bool expand, bool fill, uint padding)
@@ -55,7 +55,7 @@ namespace GtkSharp
             if(child.handle.IsNullPointer)
                 return;
 
-            NativeBox.GtkSharpBoxPackStart(out handle.pointer, out child.handle.pointer, expand, fill, padding);            
+            NativeBox.GtkSharpBoxPackStart(out handle, out child.handle, expand, fill, padding);            
         }
     }
 }

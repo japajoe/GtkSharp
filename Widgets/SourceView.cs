@@ -28,17 +28,40 @@ namespace GtkSharp
             }
         }
 
-        public SourceView(SourceLanguage language)
+        public bool LineNumbers
+        {
+            get
+            {
+                return GetShowLineNumbers();
+            }
+            set
+            {
+                SetShowLineNumbers(value);
+            }
+        }
+
+        public int TabWidth
+        {
+            get
+            {
+                return GetTabWidth();
+            }
+            set
+            {
+                SetTabWidth(value);
+            }
+        }
+
+        public SourceView(string languageString)
         {            
             this.text = string.Empty;
             this.stringBuilder = new StringBuilder(4096);
-            string languageString = GetLanguageString(language);
 
             NativeSourceView.GtkSharpSourceLanguageManagerGetDefault(out sourceLanguageManager.pointer);
             NativeSourceView.GtkSharpSourceLanguageManagerGetLanguage(out sourceLanguageManager.pointer, out sourceLanguage.pointer, languageString);
             NativeSourceView.GtkSharpSourceBufferCreateWithLanguage(out buffer.pointer, out sourceLanguage.pointer);
-            NativeSourceView.GtkSharpSourceViewCreateWithBuffer(out handle.pointer, out buffer.pointer);
-            NativeSourceView.GtkSharpSourceViewSetTabWidth(out handle.pointer, 4);
+            NativeSourceView.GtkSharpSourceViewCreateWithBuffer(out handle, out buffer.pointer);
+            NativeSourceView.GtkSharpSourceViewSetTabWidth(out handle, 4);
 
             onChangedNative = GtkSharpDelegate.Create<GtkSourceBufferChangedCallback>(this, "OnChanged");
 
@@ -101,45 +124,48 @@ namespace GtkSharp
             this.text = string.Empty;
         }
 
-        public void ToggleLineNumbers(bool visible)
+        public bool GetShowLineNumbers()
+        {
+            if(handle.IsNullPointer)
+                return false;
+            
+            bool visible;
+            NativeSourceView.GtkSharpSourceViewGetShowLineNumbers(out handle, out visible);
+            return visible;
+        }
+
+       public void SetShowLineNumbers(bool visible)
         {
             if(handle.IsNullPointer)
                 return;
                 
-            NativeSourceView.GtkSharpSourceViewSetShowLineNumbers(out handle.pointer, visible);
+            NativeSourceView.GtkSharpSourceViewSetShowLineNumbers(out handle, visible);
         }
 
-        public static string GetLanguageString(SourceLanguage language)
+        public void SetTabWidth(int width)
         {
-            switch(language)
-            {
-                case SourceLanguage.C:
-                    return "c";
-                case SourceLanguage.CPP:
-                    return "cpp";
-                case SourceLanguage.CSharp:
-                    return "c-sharp";
-                case SourceLanguage.GLSL:
-                    return "glsl";
-                case SourceLanguage.Lua:
-                    return "lua";
-                default:
-                    return "c";
-            }
+            if(handle.IsNullPointer)
+                return;
+
+            if(width < 1)
+                width = 1;
+
+            NativeSourceView.GtkSharpSourceViewSetTabWidth(out handle, width);
+        }
+
+        public int GetTabWidth()
+        {
+            if(handle.IsNullPointer)
+                return 1;
+            
+            int width;
+            NativeSourceView.GtkSharpSourceViewGetTabWidth(out handle, out width);
+            return width;
         }
 
         private void OnChanged(IntPtr widget, IntPtr data)
         {
             onChanged?.Invoke();
         }        
-    }
-
-    public enum SourceLanguage
-    {
-        C,
-        CPP,
-        CSharp,
-        GLSL,
-        Lua        
     }
 }

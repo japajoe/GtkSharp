@@ -78,18 +78,6 @@ namespace GtkSharp.Native
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpEntryBufferGetLength(out IntPtr buffer, out uint length);
-
-        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewCreate(out IntPtr widget, out IntPtr buffer);
-
-        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewSetText(out IntPtr widget, out IntPtr buffer, string text);
-
-        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewGetText(out IntPtr widget, out IntPtr buffer, StringBuilder text);
-
-        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewClearText(out IntPtr widget, out IntPtr buffer);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpFixedCreate(out IntPtr widget, int width, int height);

@@ -52,7 +52,7 @@ namespace GtkSharp
         public Window(GtkWindowType type)
         {
             stringBuilder = new StringBuilder(1024);
-            NativeWindow.GtkSharpWindowCreate(out handle.pointer, type);
+            NativeWindow.GtkSharpWindowCreate(out handle, type);
 
             GdkEventMask events = GdkEventMask.KeyPress | GdkEventMask.ButtonPress | GdkEventMask.PointerMotion;
             this.AddEvents(events);
@@ -69,7 +69,7 @@ namespace GtkSharp
             stringBuilder.Clear();
 
             int length = 0;
-            NativeWindow.GtkSharpWindowGetTitleLength(out handle.pointer, out length);
+            NativeWindow.GtkSharpWindowGetTitleLength(out handle, out length);
 
             if(length > stringBuilder.Capacity)
             {
@@ -77,7 +77,7 @@ namespace GtkSharp
                 stringBuilder.EnsureCapacity(length);
             }
 
-            NativeWindow.GtkSharpWindowGetTitle(out handle.pointer, stringBuilder);
+            NativeWindow.GtkSharpWindowGetTitle(out handle, stringBuilder);
 
             string title = stringBuilder.ToString().Substring(0, (int)length);            
             return title;
@@ -88,7 +88,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            NativeWindow.GtkSharpWindowSetTitle(out handle.pointer, title);
+            NativeWindow.GtkSharpWindowSetTitle(out handle, title);
         }
 
         public void Add(Widget child)
@@ -107,7 +107,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            NativeWindow.GtkSharpWindowSetPosition(out handle.pointer, position);
+            NativeWindow.GtkSharpWindowSetPosition(out handle, position);
         }
 
         public void SetFocusedWidget(Widget widget)
@@ -118,7 +118,7 @@ namespace GtkSharp
             if(widget.handle.IsNullPointer)
                 return;
 
-            NativeWindow.GtkSharpWindowSetFocus(out handle.pointer, out widget.handle.pointer);
+            NativeWindow.GtkSharpWindowSetFocus(out handle, out widget.handle.pointer);
         }
 
         public Widget GetFocusedWidget()
@@ -127,7 +127,7 @@ namespace GtkSharp
                 return null;
 
             Widget widget = new Widget();
-            NativeWindow.GtkSharpWindowGetFocus(out handle.pointer, out widget.handle.pointer);
+            NativeWindow.GtkSharpWindowGetFocus(out handle, out widget.handle.pointer);
             return widget;
         }
 
@@ -137,7 +137,7 @@ namespace GtkSharp
                 return false;
 
             bool hide;
-            NativeWindow.GtkSharpWindowGetHideTitlebarWhenMaximized(out handle.pointer, out hide);
+            NativeWindow.GtkSharpWindowGetHideTitlebarWhenMaximized(out handle, out hide);
             return hide;
         }
 
@@ -145,7 +145,7 @@ namespace GtkSharp
         {
             if(handle.IsNullPointer)
                 return;
-            NativeWindow.GtkSharpWindowSetHideTitlebarWhenMaximized(out handle.pointer, hide);
+            NativeWindow.GtkSharpWindowSetHideTitlebarWhenMaximized(out handle, hide);
         }
 
         public bool GetResizable()
@@ -154,7 +154,7 @@ namespace GtkSharp
                 return false;
 
             bool resizable;
-            NativeWindow.GtkSharpWindowGetResizable(out handle.pointer, out resizable);
+            NativeWindow.GtkSharpWindowGetResizable(out handle, out resizable);
             return resizable;
         }
 
@@ -163,7 +163,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            NativeWindow.GtkSharpWindowSetResizable(out handle.pointer, resizable);
+            NativeWindow.GtkSharpWindowSetResizable(out handle, resizable);
         }        
 
         public void Close()

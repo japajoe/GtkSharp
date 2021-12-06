@@ -30,7 +30,9 @@ namespace GtkSharp
         {
             this.text = string.Empty;
             this.stringBuilder = new StringBuilder(4096);
-            Gtk.GtkSharpTextViewCreate(out handle.pointer, out buffer.pointer);
+            
+            NativeTextView.GtkSharpTextViewCreate(out handle);
+            NativeTextView.GtkSharpTextViewGetBuffer(out handle, out buffer.pointer);
 
             onChangedNative = GtkSharpDelegate.Create<GtkTextBufferChangedCallback>(this, "OnChanged");
 
@@ -42,7 +44,8 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpTextViewSetText(out handle.pointer, out buffer.pointer, text);
+            NativeTextBuffer.GtkSharpTextBufferSetText(out buffer.pointer, text, text.Length);
+            
             this.text = text;
         }
 
@@ -91,6 +94,12 @@ namespace GtkSharp
 
             this.text = string.Empty;
         }
+
+        public void SetReadOnly(bool readOnly)
+        {
+            if(handle.IsNullPointer)
+                return;
+        }        
 
         private void OnChanged(IntPtr widget, IntPtr data)
         {

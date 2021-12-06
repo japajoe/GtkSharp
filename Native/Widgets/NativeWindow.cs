@@ -10,196 +10,196 @@ namespace GtkSharp.Native.Widgets
         internal static extern void GtkSharpWindowGetType(out uint type);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowCreate(out IntPtr window, GtkWindowType type);
+        internal static extern void GtkSharpWindowCreate(out GtkWidgetPointer window, GtkWindowType type);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetTitle(out IntPtr window, string title);
+        internal static extern void GtkSharpWindowSetTitle(out GtkWidgetPointer window, string title);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetTitle(out IntPtr window, StringBuilder title);
+        internal static extern void GtkSharpWindowGetTitle(out GtkWidgetPointer window, StringBuilder title);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetTitleLength(out IntPtr window, out int length);
+        internal static extern void GtkSharpWindowGetTitleLength(out GtkWidgetPointer window, out int length);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetWmclass(out IntPtr window, string wmclassName, string wmclassClass);
+        internal static extern void GtkSharpWindowSetWmclass(out GtkWidgetPointer window, string wmclassName, string wmclassClass);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetRole(out IntPtr window, string role);
+        internal static extern void GtkSharpWindowSetRole(out GtkWidgetPointer window, string role);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetStartupId(out IntPtr window, string startupId);
+        internal static extern void GtkSharpWindowSetStartupId(out GtkWidgetPointer window, string startupId);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetRole(out IntPtr window, StringBuilder role);
+        internal static extern void GtkSharpWindowGetRole(out GtkWidgetPointer window, StringBuilder role);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetRoleLength(out IntPtr window, out int length);
+        internal static extern void GtkSharpWindowGetRoleLength(out GtkWidgetPointer window, out int length);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowAddAccelGroup(out IntPtr window, out IntPtr accelGroup);
+        internal static extern void GtkSharpWindowAddAccelGroup(out GtkWidgetPointer window, out IntPtr accelGroup);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowRemoveAccelGroup(out IntPtr window, out IntPtr accelGroup);
+        internal static extern void GtkSharpWindowRemoveAccelGroup(out GtkWidgetPointer window, out IntPtr accelGroup);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetPosition(out IntPtr window, GtkWindowPosition position);
+        internal static extern void GtkSharpWindowSetPosition(out GtkWidgetPointer window, GtkWindowPosition position);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowActivateFocus(out IntPtr window);
+        internal static extern void GtkSharpWindowActivateFocus(out GtkWidgetPointer window);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetFocus(out IntPtr window, out IntPtr focus);
+        internal static extern void GtkSharpWindowSetFocus(out GtkWidgetPointer window, out IntPtr focus);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetFocus(out IntPtr window, out IntPtr focus);
+        internal static extern void GtkSharpWindowGetFocus(out GtkWidgetPointer window, out IntPtr focus);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetDefault(out IntPtr window, out IntPtr defaultWidget);
+        internal static extern void GtkSharpWindowSetDefault(out GtkWidgetPointer window, out IntPtr defaultWidget);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetDefaultWidget(out IntPtr window, out IntPtr defaultWidget);
+        internal static extern void GtkSharpWindowGetDefaultWidget(out GtkWidgetPointer window, out IntPtr defaultWidget);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowActivateDefault(out IntPtr window);
+        internal static extern void GtkSharpWindowActivateDefault(out GtkWidgetPointer window);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetTransientFor(out IntPtr window, out IntPtr parent);
+        internal static extern void GtkSharpWindowSetTransientFor(out GtkWidgetPointer window, out IntPtr parent);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetTransientFor(out IntPtr window, out IntPtr parent);
+        internal static extern void GtkSharpWindowGetTransientFor(out GtkWidgetPointer window, out IntPtr parent);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetAttachedTo(out IntPtr window, out IntPtr attachWidget);
+        internal static extern void GtkSharpWindowSetAttachedTo(out GtkWidgetPointer window, out IntPtr attachWidget);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetAttachedTo(out IntPtr window);
+        internal static extern void GtkSharpWindowGetAttachedTo(out GtkWidgetPointer window);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetOpacity(out IntPtr window, double opacity);
+        internal static extern void GtkSharpWindowSetOpacity(out GtkWidgetPointer window, double opacity);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetOpacity(out IntPtr window, out double opacity);
+        internal static extern void GtkSharpWindowGetOpacity(out GtkWidgetPointer window, out double opacity);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetTypeHint(out IntPtr window, GdkWindowTypeHint hint);
+        internal static extern void GtkSharpWindowSetTypeHint(out GtkWidgetPointer window, GdkWindowTypeHint hint);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetTypeHint(out IntPtr window, out GdkWindowTypeHint hint);
+        internal static extern void GtkSharpWindowGetTypeHint(out GtkWidgetPointer window, out GdkWindowTypeHint hint);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetSkipTaskbarHint(out IntPtr window, bool hint);
+        internal static extern void GtkSharpWindowSetSkipTaskbarHint(out GtkWidgetPointer window, bool hint);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetSkipTaskbarHint(out IntPtr window, out bool hint);
+        internal static extern void GtkSharpWindowGetSkipTaskbarHint(out GtkWidgetPointer window, out bool hint);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetSkipPagerHint(out IntPtr window, bool hint);
+        internal static extern void GtkSharpWindowSetSkipPagerHint(out GtkWidgetPointer window, bool hint);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetSkipPagerHint(out IntPtr window, out bool hint);
+        internal static extern void GtkSharpWindowGetSkipPagerHint(out GtkWidgetPointer window, out bool hint);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetUrgencyHint(out IntPtr window, bool hint);
+        internal static extern void GtkSharpWindowSetUrgencyHint(out GtkWidgetPointer window, bool hint);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetUrgencyHint(out IntPtr window, out bool hint);
+        internal static extern void GtkSharpWindowGetUrgencyHint(out GtkWidgetPointer window, out bool hint);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetAcceptFocus(out IntPtr window, bool accept);
+        internal static extern void GtkSharpWindowSetAcceptFocus(out GtkWidgetPointer window, bool accept);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetAcceptFocus(out IntPtr window, out bool accept);
+        internal static extern void GtkSharpWindowGetAcceptFocus(out GtkWidgetPointer window, out bool accept);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetFocusOnMap(out IntPtr window, bool focus);
+        internal static extern void GtkSharpWindowSetFocusOnMap(out GtkWidgetPointer window, bool focus);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetFocusOnMap(out IntPtr window, out bool focus);
+        internal static extern void GtkSharpWindowGetFocusOnMap(out GtkWidgetPointer window, out bool focus);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetDestroyWithParent(out IntPtr window, bool setting);
+        internal static extern void GtkSharpWindowSetDestroyWithParent(out GtkWidgetPointer window, bool setting);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetDestroyWithParent(out IntPtr window, out bool setting);
+        internal static extern void GtkSharpWindowGetDestroyWithParent(out GtkWidgetPointer window, out bool setting);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetHideTitlebarWhenMaximized(out IntPtr window, bool setting);
+        internal static extern void GtkSharpWindowSetHideTitlebarWhenMaximized(out GtkWidgetPointer window, bool setting);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetHideTitlebarWhenMaximized(out IntPtr window, out bool setting);
+        internal static extern void GtkSharpWindowGetHideTitlebarWhenMaximized(out GtkWidgetPointer window, out bool setting);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetMnemonicsVisible(out IntPtr window, bool setting);
+        internal static extern void GtkSharpWindowSetMnemonicsVisible(out GtkWidgetPointer window, bool setting);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetMnemonicsVisible(out IntPtr window, out bool setting);
+        internal static extern void GtkSharpWindowGetMnemonicsVisible(out GtkWidgetPointer window, out bool setting);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetFocusVisible(out IntPtr window, bool setting);
+        internal static extern void GtkSharpWindowSetFocusVisible(out GtkWidgetPointer window, bool setting);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetFocusVisible(out IntPtr window, out bool setting);
+        internal static extern void GtkSharpWindowGetFocusVisible(out GtkWidgetPointer window, out bool setting);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetResizable(out IntPtr window, bool resizable);
+        internal static extern void GtkSharpWindowSetResizable(out GtkWidgetPointer window, bool resizable);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetResizable(out IntPtr window, out bool resizable);
+        internal static extern void GtkSharpWindowGetResizable(out GtkWidgetPointer window, out bool resizable);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetGravity(out IntPtr window, GdkGravity gravity);
+        internal static extern void GtkSharpWindowSetGravity(out GtkWidgetPointer window, GdkGravity gravity);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetGravity(out IntPtr window, out GdkGravity gravity);
+        internal static extern void GtkSharpWindowGetGravity(out GtkWidgetPointer window, out GdkGravity gravity);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetGeometryHints(out IntPtr window, out IntPtr geometryWidget, out IntPtr geometry, GdkWindowHints geomMask);
+        internal static extern void GtkSharpWindowSetGeometryHints(out GtkWidgetPointer window, out IntPtr geometryWidget, out IntPtr geometry, GdkWindowHints geomMask);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetScreen(out IntPtr window, out IntPtr screen);
+        internal static extern void GtkSharpWindowSetScreen(out GtkWidgetPointer window, out IntPtr screen);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetScreen(out IntPtr window, out IntPtr screen);
+        internal static extern void GtkSharpWindowGetScreen(out GtkWidgetPointer window, out IntPtr screen);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowIsActive(out IntPtr window, out bool isActive);
+        internal static extern void GtkSharpWindowIsActive(out GtkWidgetPointer window, out bool isActive);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowHasToplevelFocus(out IntPtr window, out bool hasToplevelFocus);
+        internal static extern void GtkSharpWindowHasToplevelFocus(out GtkWidgetPointer window, out bool hasToplevelFocus);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetDecorated(out IntPtr window, bool setting);
+        internal static extern void GtkSharpWindowSetDecorated(out GtkWidgetPointer window, bool setting);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetDecorated(out IntPtr window, out bool setting);
+        internal static extern void GtkSharpWindowGetDecorated(out GtkWidgetPointer window, out bool setting);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetDeletable(out IntPtr window, bool setting);
+        internal static extern void GtkSharpWindowSetDeletable(out GtkWidgetPointer window, bool setting);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetDeletable(out IntPtr window, out bool setting);
+        internal static extern void GtkSharpWindowGetDeletable(out GtkWidgetPointer window, out bool setting);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetIconList(out IntPtr window, out IntPtr list);
+        internal static extern void GtkSharpWindowSetIconList(out GtkWidgetPointer window, out IntPtr list);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetIconList(out IntPtr window, out IntPtr list);
+        internal static extern void GtkSharpWindowGetIconList(out GtkWidgetPointer window, out IntPtr list);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetIcon(out IntPtr window, out IntPtr icon);
+        internal static extern void GtkSharpWindowSetIcon(out GtkWidgetPointer window, out IntPtr icon);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetIconName(out IntPtr window, string name);
+        internal static extern void GtkSharpWindowSetIconName(out GtkWidgetPointer window, string name);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetIconFromFile(out IntPtr window, string filename, out IntPtr error);
+        internal static extern void GtkSharpWindowSetIconFromFile(out GtkWidgetPointer window, string filename, out IntPtr error);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetIcon(out IntPtr window, out IntPtr icon);
+        internal static extern void GtkSharpWindowGetIcon(out GtkWidgetPointer window, out IntPtr icon);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetIconName(out IntPtr window);
+        internal static extern void GtkSharpWindowGetIconName(out GtkWidgetPointer window);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpWindowSetDefaultIconList(out IntPtr list);
@@ -226,151 +226,151 @@ namespace GtkSharp.Native.Widgets
         internal static extern void GtkSharpWindowSetAutoStartupNotification(bool setting);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetModal(out IntPtr window, bool modal);
+        internal static extern void GtkSharpWindowSetModal(out GtkWidgetPointer window, bool modal);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetModal(out IntPtr window, out bool modal);
+        internal static extern void GtkSharpWindowGetModal(out GtkWidgetPointer window, out bool modal);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpWindowListToplevels(out IntPtr list);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetHasUserRefCount(out IntPtr window, bool setting);
+        internal static extern void GtkSharpWindowSetHasUserRefCount(out GtkWidgetPointer window, bool setting);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowAddMnemonic(out IntPtr window, uint keyval, out IntPtr target);
+        internal static extern void GtkSharpWindowAddMnemonic(out GtkWidgetPointer window, uint keyval, out IntPtr target);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowRemoveMnemonic(out IntPtr window, uint keyval, out IntPtr target);
+        internal static extern void GtkSharpWindowRemoveMnemonic(out GtkWidgetPointer window, uint keyval, out IntPtr target);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowMnemonicActivate(out IntPtr window, uint keyval, GdkModifierType modifier, out bool result);
+        internal static extern void GtkSharpWindowMnemonicActivate(out GtkWidgetPointer window, uint keyval, GdkModifierType modifier, out bool result);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetMnemonicModifier(out IntPtr window, GdkModifierType modifier);
+        internal static extern void GtkSharpWindowSetMnemonicModifier(out GtkWidgetPointer window, GdkModifierType modifier);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetMnemonicModifier(out IntPtr window, out GdkModifierType modifier);
+        internal static extern void GtkSharpWindowGetMnemonicModifier(out GtkWidgetPointer window, out GdkModifierType modifier);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowActivateKey(out IntPtr window, out IntPtr evnt);
+        internal static extern void GtkSharpWindowActivateKey(out GtkWidgetPointer window, out IntPtr evnt);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowPropagateKeyEvent(out IntPtr window, out IntPtr evnt);
+        internal static extern void GtkSharpWindowPropagateKeyEvent(out GtkWidgetPointer window, out IntPtr evnt);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowPresent(out IntPtr window);
+        internal static extern void GtkSharpWindowPresent(out GtkWidgetPointer window);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowPresentWithTime(out IntPtr window, uint timestamp);
+        internal static extern void GtkSharpWindowPresentWithTime(out GtkWidgetPointer window, uint timestamp);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowIconify(out IntPtr window);
+        internal static extern void GtkSharpWindowIconify(out GtkWidgetPointer window);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowDeiconify(out IntPtr window);
+        internal static extern void GtkSharpWindowDeiconify(out GtkWidgetPointer window);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowStick(out IntPtr window);
+        internal static extern void GtkSharpWindowStick(out GtkWidgetPointer window);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowUnstick(out IntPtr window);
+        internal static extern void GtkSharpWindowUnstick(out GtkWidgetPointer window);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowMaximize(out IntPtr window);
+        internal static extern void GtkSharpWindowMaximize(out GtkWidgetPointer window);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowUnmaximize(out IntPtr window);
+        internal static extern void GtkSharpWindowUnmaximize(out GtkWidgetPointer window);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowFullscreen(out IntPtr window);
+        internal static extern void GtkSharpWindowFullscreen(out GtkWidgetPointer window);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowUnfullscreen(out IntPtr window);
+        internal static extern void GtkSharpWindowUnfullscreen(out GtkWidgetPointer window);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowFullscreenOnMonitor(out IntPtr window, out IntPtr screen, int monitor);
+        internal static extern void GtkSharpWindowFullscreenOnMonitor(out GtkWidgetPointer window, out IntPtr screen, int monitor);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowClose(out IntPtr window);
+        internal static extern void GtkSharpWindowClose(out GtkWidgetPointer window);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetKeepAbove(out IntPtr window, bool setting);
+        internal static extern void GtkSharpWindowSetKeepAbove(out GtkWidgetPointer window, bool setting);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetKeepBelow(out IntPtr window, bool setting);
+        internal static extern void GtkSharpWindowSetKeepBelow(out GtkWidgetPointer window, bool setting);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowBeginResizeDrag(out IntPtr window, GdkWindowEdge edge, int button, int rootX, int rootY, uint timestamp);
+        internal static extern void GtkSharpWindowBeginResizeDrag(out GtkWidgetPointer window, GdkWindowEdge edge, int button, int rootX, int rootY, uint timestamp);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowBeginMoveDrag(out IntPtr window, int button, int rootX, int rootY, uint timestamp);
+        internal static extern void GtkSharpWindowBeginMoveDrag(out GtkWidgetPointer window, int button, int rootX, int rootY, uint timestamp);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetDefaultSize(out IntPtr window, int width, int height);
+        internal static extern void GtkSharpWindowSetDefaultSize(out GtkWidgetPointer window, int width, int height);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetDefaultSize(out IntPtr window, out int width, out int height);
+        internal static extern void GtkSharpWindowGetDefaultSize(out GtkWidgetPointer window, out int width, out int height);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowResize(out IntPtr window, int width, int height);
+        internal static extern void GtkSharpWindowResize(out GtkWidgetPointer window, int width, int height);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetSize(out IntPtr window, out int width, out int height);
+        internal static extern void GtkSharpWindowGetSize(out GtkWidgetPointer window, out int width, out int height);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowMove(out IntPtr window, int x, int y);
+        internal static extern void GtkSharpWindowMove(out GtkWidgetPointer window, int x, int y);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetPosition(out IntPtr window, out int rootX, out int rootY);
+        internal static extern void GtkSharpWindowGetPosition(out GtkWidgetPointer window, out int rootX, out int rootY);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowParseGeometry(out IntPtr window, string geometry);
+        internal static extern void GtkSharpWindowParseGeometry(out GtkWidgetPointer window, string geometry);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetDefaultGeometry(out IntPtr window, int width, int height);
+        internal static extern void GtkSharpWindowSetDefaultGeometry(out GtkWidgetPointer window, int width, int height);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowResizeToGeometry(out IntPtr window, int width, int height);
+        internal static extern void GtkSharpWindowResizeToGeometry(out GtkWidgetPointer window, int width, int height);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetGroup(out IntPtr window, out IntPtr group);
+        internal static extern void GtkSharpWindowGetGroup(out GtkWidgetPointer window, out IntPtr group);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowHasGroup(out IntPtr window, out bool hasGroup);
+        internal static extern void GtkSharpWindowHasGroup(out GtkWidgetPointer window, out bool hasGroup);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowReshowWithInitialSize(out IntPtr window);
+        internal static extern void GtkSharpWindowReshowWithInitialSize(out GtkWidgetPointer window);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetWindowType(out IntPtr window);
+        internal static extern void GtkSharpWindowGetWindowType(out GtkWidgetPointer window);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetApplication(out IntPtr window, out IntPtr application);
+        internal static extern void GtkSharpWindowGetApplication(out GtkWidgetPointer window, out IntPtr application);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetApplication(out IntPtr window, out IntPtr application);
+        internal static extern void GtkSharpWindowSetApplication(out GtkWidgetPointer window, out IntPtr application);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetHasResizeGrip(out IntPtr window, bool value);
+        internal static extern void GtkSharpWindowSetHasResizeGrip(out GtkWidgetPointer window, bool value);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetHasResizeGrip(out IntPtr window, out bool value);
+        internal static extern void GtkSharpWindowGetHasResizeGrip(out GtkWidgetPointer window, out bool value);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowResizeGripIsVisible(out IntPtr window, out bool value);
+        internal static extern void GtkSharpWindowResizeGripIsVisible(out GtkWidgetPointer window, out bool value);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetResizeGripArea(out IntPtr window, out GdkRectangle rect);
+        internal static extern void GtkSharpWindowGetResizeGripArea(out GtkWidgetPointer window, out GdkRectangle rect);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowSetTitlebar(out IntPtr window, out IntPtr titlebar);
+        internal static extern void GtkSharpWindowSetTitlebar(out GtkWidgetPointer window, out IntPtr titlebar);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowGetTitlebar(out IntPtr window, out IntPtr titlebar);
+        internal static extern void GtkSharpWindowGetTitlebar(out GtkWidgetPointer window, out IntPtr titlebar);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpWindowIsMaximized(out IntPtr window, out bool value);
+        internal static extern void GtkSharpWindowIsMaximized(out GtkWidgetPointer window, out bool value);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpWindowSetInteractiveDebugging(bool enable);        
