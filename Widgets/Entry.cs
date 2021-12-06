@@ -1,6 +1,7 @@
 using System;
 using System.Text;
 using GtkSharp.Native;
+using GtkSharp.Native.Widgets;
 
 namespace GtkSharp
 {
@@ -32,7 +33,8 @@ namespace GtkSharp
         {
             stringBuilder = new StringBuilder(1024);
 
-            Gtk.GtkSharpTextEntryCreate(out handle, out buffer.pointer);
+            NativeEntry.GtkSharpEntryCreate(out handle);
+            NativeEntry.GtkSharpEntryGetBuffer(out handle, out buffer);
 
             onSubmitNative = GtkSharpDelegate.Create<GtkCallback>(this, "OnSubmit");
             onDeletedNative = GtkSharpDelegate.Create<GtkEntryBufferDeletedCallback>(this, "OnDeleted");
@@ -45,22 +47,22 @@ namespace GtkSharp
 
         public void SetText(string text)
         {
-            if(handle.IsNullPointer)
-                return;
+            if(buffer.IsNullPointer)
+                return;                
 
-            Gtk.GtkSharpTextEntrySetText(out handle, out buffer.pointer, text);
+            NativeEntryBuffer.GtkSharpEntryBufferSetText(out buffer, text, -1);
             this.text = text;
         }
 
         public string GetText()
         {
-            if(handle.IsNullPointer)
+            if(buffer.IsNullPointer)
                 return string.Empty;
 
             stringBuilder.Clear();
 
-            uint length = 0;
-            Gtk.GtkSharpEntryBufferGetLength(out buffer.pointer, out length);
+            int length = 0;            
+            NativeEntryBuffer.GtkSharpEntryBufferGetTextLength(out buffer, out length);
 
             if(length > stringBuilder.Capacity)
             {
@@ -68,7 +70,7 @@ namespace GtkSharp
                 stringBuilder.EnsureCapacity((int)length);
             }
 
-            Gtk.GtkSharpTextEntryGetText(out handle, out buffer.pointer, stringBuilder);
+            NativeEntryBuffer.GtkSharpEntryBufferGetText(out buffer, stringBuilder);
 
             this.text = stringBuilder.ToString().Substring(0, (int)length);
             
@@ -77,10 +79,11 @@ namespace GtkSharp
 
         public void Clear()
         {
-            if(handle.IsNullPointer)
-                return;
+            if(buffer.IsNullPointer)
+                return;                
 
-            Gtk.GtkSharpTextEntryClearText(out handle, out buffer.pointer);
+            uint newPosition;
+            NativeEntryBuffer.GtkSharpEntryBufferDeleteText(out buffer, 0, -1, out newPosition);
             this.text = string.Empty;
         }
 

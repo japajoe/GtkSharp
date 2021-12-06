@@ -70,7 +70,7 @@ namespace GtkSharp
 
         public void SetText(string text)
         {
-            if(handle.IsNullPointer)
+            if(buffer.IsNullPointer)
                 return;
 
             NativeSourceBuffer.GtkSharpTextBufferSetText(out buffer, text, text.Length);
@@ -80,7 +80,7 @@ namespace GtkSharp
 
         public string GetText()
         {
-            if(handle.IsNullPointer)
+            if(buffer.IsNullPointer)
                 return string.Empty;            
 
             stringBuilder.Clear();
@@ -110,7 +110,7 @@ namespace GtkSharp
 
         public void Clear()
         {
-            if(handle.IsNullPointer)
+            if(buffer.IsNullPointer)
                 return;
 
             GtkTextIterPointer iterStart;

@@ -26,6 +26,18 @@ namespace GtkSharp
             }
         }
 
+        public bool ReadOnly
+        {
+            get
+            {
+                return GetReadOnly();
+            }
+            set
+            {
+                SetReadOnly(value);
+            }
+        }
+
         public TextView()
         {
             this.text = string.Empty;
@@ -41,7 +53,7 @@ namespace GtkSharp
 
         public void SetText(string text)
         {
-            if(handle.IsNullPointer)
+            if(buffer.IsNullPointer)
                 return;
 
             NativeTextBuffer.GtkSharpTextBufferSetText(out buffer, text, text.Length);
@@ -51,7 +63,7 @@ namespace GtkSharp
 
         public string GetText()
         {
-            if(handle.IsNullPointer)
+            if(buffer.IsNullPointer)
                 return string.Empty;            
 
             stringBuilder.Clear();
@@ -81,7 +93,7 @@ namespace GtkSharp
 
         public void Clear()
         {
-            if(handle.IsNullPointer)
+            if(buffer.IsNullPointer)
                 return;
 
             GtkTextIterPointer iterStart;
@@ -95,10 +107,25 @@ namespace GtkSharp
             this.text = string.Empty;
         }
 
+        public bool GetReadOnly()
+        {
+            if(handle.IsNullPointer)
+                return false;
+            
+            bool readOnly;
+            NativeTextView.GtkSharpTextViewGetEditable(out handle, out readOnly);
+            
+            //Invert value because true means 'editable' which means readonly is false
+            return !readOnly;
+        }
+
         public void SetReadOnly(bool readOnly)
         {
             if(handle.IsNullPointer)
                 return;
+
+            //Invert value because true means 'editable' which means readonly is false
+            NativeTextView.GtkSharpTextViewSetEditable(out handle, !readOnly);
         }        
 
         private void OnChanged(IntPtr widget, IntPtr data)
