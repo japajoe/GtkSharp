@@ -26,51 +26,70 @@ namespace GtkSharpApplication
     {
         private Box box;
         private MenuBar menuBar;
-        private ScrolledWindow scrolledWindow;
-        private Button button;
+        private Fixed fixedPanel;
+        private Paned paned;
+        private Button buttonExecute;
+        private ScrolledWindow scrolledSource;
+        private ScrolledWindow scrolledLog;
         private SourceView sourceView;
+        private TextView textViewLog;
 
         public Application() : base()
         {
-
+            
         }
 
         public Application(string title, int width, int height) : base(title, width, height)
         {
-
+            
         }
 
         public override void Initialize()
         {
             box = new Box(GtkOrientation.Vertical, 0, false);
             menuBar = new MenuBar();
-            scrolledWindow = new ScrolledWindow(GtkOrientation.Vertical, GtkPolicyType.Automatic, GtkPolicyType.Automatic);
-            button = new Button("Compile", 100, 20);
+            fixedPanel = new Fixed(100, 50);
+            paned = new Paned(GtkOrientation.Vertical);
+            scrolledSource = new ScrolledWindow(GtkOrientation.Vertical, GtkPolicyType.Automatic, GtkPolicyType.Automatic);
+            scrolledLog = new ScrolledWindow(GtkOrientation.Vertical, GtkPolicyType.Automatic, GtkPolicyType.Automatic);
+            buttonExecute = new Button("Execute");
             sourceView = new SourceView("c-sharp");
-            sourceView.LineNumbers = true;
+            textViewLog = new TextView();
 
-            button.onClick += OnButtonClicked;
+            box.SetMargins(5, 5, 5, 5);
+            sourceView.LineNumbers = true;
+            buttonExecute.onClick += Execute;
 
             window.Add(box);
             box.Add(menuBar, false, false, 0);
-            box.Add(button, false, false, 0);
-            box.Add(scrolledWindow, true, true, 0);
+            box.Add(fixedPanel, false, false, 0);
+            fixedPanel.Add(buttonExecute, 10, 10);
+            box.Add(paned, true, true, 0);
+            paned.Add(scrolledSource, 0, false, false);
+            paned.Add(scrolledLog, 1, false, false);
+            
+            scrolledSource.Add(sourceView);
+            scrolledLog.Add(textViewLog);
 
-            scrolledWindow.Add(sourceView);
+            textViewLog.ReadOnly = true;
 
-            MenuCreationInfo info = new MenuCreationInfo("File");
-            info.AddItem("Open", OnMenuItemOpenClicked);
-            info.AddItem("Save", OnMenuItemSaveClicked);
-            info.AddItem("Exit", OnMenuItemExitClicked);            
+            MenuCreationInfo infoFile = new MenuCreationInfo("File");
+            infoFile.AddItem("Open", OnMenuItemOpenClicked);
+            infoFile.AddItem("Save", OnMenuItemSaveClicked);
+            infoFile.AddItem("Exit", OnMenuItemExitClicked);
 
-            menuBar.AddMenu(info);
+            MenuCreationInfo infoEdit = new MenuCreationInfo("Edit");
+            infoEdit.AddItem("Clear Log", OnMenuItemClearLogClicked);
+
+            menuBar.AddMenu(infoFile);
+            menuBar.AddMenu(infoEdit);
 
             window.ShowAll();
         }
 
-        private void OnButtonClicked()
+        private void Execute()
         {
-            Console.WriteLine(sourceView.Text);
+            textviewLog.Text = sourceView.Text;
         }
 
         private void OnMenuItemOpenClicked()
@@ -79,23 +98,47 @@ namespace GtkSharpApplication
 
             if(dialog.ShowDialog() == GtkResponseType.Accept)
             {
-                Console.WriteLine("Selected " + dialog.FileName);
+                if(File.Exists(dialog.FileName))
+                {
+                    string text = File.ReadAllText(dialog.FileName);
+                    sourceView.Text = text;
+                }
             }
         }
 
         private void OnMenuItemSaveClicked()
         {
+            string text = sourceView.Text;
+
+            if(text.Length == 0)
+            {
+                textViewLog.Text = "Nothing to save...";
+                return;
+            }
+
             SaveFileDialog dialog = new SaveFileDialog(window);
 
             if(dialog.ShowDialog() == GtkResponseType.Accept)
             {
-                Console.WriteLine("Selected " + dialog.FileName);
+                string filename = dialog.FileName;
+                if(!filename.EndsWith(".cs"))
+                {
+                    filename += ".cs";
+                }
+
+                File.WriteAllText(filename, text);
+                textViewLog.Text = "File saved as " + filename;
             }
         }        
 
         private void OnMenuItemExitClicked()
         {
             Quit();
+        }
+
+        private void OnMenuItemClearLogClicked()
+        {
+            textViewLog.Clear();
         }
     }
 }
