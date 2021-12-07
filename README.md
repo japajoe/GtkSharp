@@ -46,8 +46,8 @@ namespace GtkSharpApplication
             menuBar = new MenuBar();
             scrolledWindow = new ScrolledWindow(GtkOrientation.Vertical, GtkPolicyType.Automatic, GtkPolicyType.Automatic);
             button = new Button("Compile", 100, 20);
-            sourceView = new SourceView(SourceLanguage.CSharp);
-            sourceView.ToggleLineNumbers(true);
+            sourceView = new SourceView("c-sharp");
+            sourceView.LineNumbers = true;
 
             button.onClick += OnButtonClicked;
 
