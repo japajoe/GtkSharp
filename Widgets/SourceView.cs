@@ -65,7 +65,7 @@ namespace GtkSharp
 
             onChangedNative = GtkSharpDelegate.Create<GtkSourceBufferChangedCallback>(this, "OnChanged");
 
-            Gtk.GtkSharpSourceBufferChangedCallbackConnect(out buffer.pointer, onChangedNative);
+            Gtk.GtkSharpSignalConnect(out buffer.pointer, "changed", onChangedNative.ToIntPtr(), out buffer.pointer);
         }
 
         public void SetText(string text)

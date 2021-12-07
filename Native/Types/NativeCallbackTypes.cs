@@ -16,4 +16,5 @@ namespace GtkSharp.Native
     internal delegate void GtkGLAreaRealizeCallback(IntPtr area);
     internal delegate void GtkGLAreaUnRealizeCallback(IntPtr area);
     internal delegate bool GtkGLAreaRenderCallback(IntPtr area, IntPtr context);
+    internal delegate void GtkWindowSizeAllocateCallback(IntPtr widget, IntPtr allocation);
 }

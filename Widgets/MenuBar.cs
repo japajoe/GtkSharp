@@ -35,8 +35,8 @@ namespace GtkSharp
                 int index = i;
                 MenuItem item = new MenuItem(menuInfo[currentIndex].items[i]);
                 menuWidget.ShellAppend(item);
-                callbacks.Add(item.handle.pointer, menuInfo[currentIndex].callbacks[index]);                
-                Gtk.GtkSharpCallbackConnect(out item.handle, "activate", onMenuItemClickedNative, out item.handle.pointer);                
+                callbacks.Add(item.handle.pointer, menuInfo[currentIndex].callbacks[index]);
+                Gtk.GtkSharpSignalConnect(out item.handle.pointer, "activate", onMenuItemClickedNative.ToIntPtr(), out item.handle.pointer);
             }
         }
 

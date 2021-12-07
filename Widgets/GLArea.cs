@@ -36,9 +36,9 @@ namespace GtkSharp
             onUnRealizeNative = GtkSharpDelegate.Create<GtkGLAreaUnRealizeCallback>(this, "OnUnRealize");
             onRenderNative = GtkSharpDelegate.Create<GtkGLAreaRenderCallback>(this, "OnRender");
 
-            Gtk.GtkSharpSignalConnect(out handle, "realize", onRealizeNative.ToIntPtr(), out handle.pointer);
-            Gtk.GtkSharpSignalConnect(out handle, "unrealize", onUnRealizeNative.ToIntPtr(), out handle.pointer);
-            Gtk.GtkSharpSignalConnect(out handle, "render", onRenderNative.ToIntPtr(), out handle.pointer);
+            Gtk.GtkSharpSignalConnect(out handle.pointer, "realize", onRealizeNative.ToIntPtr(), out handle.pointer);
+            Gtk.GtkSharpSignalConnect(out handle.pointer, "unrealize", onUnRealizeNative.ToIntPtr(), out handle.pointer);
+            Gtk.GtkSharpSignalConnect(out handle.pointer, "render", onRenderNative.ToIntPtr(), out handle.pointer);
         }
 
         public void QueueRender()

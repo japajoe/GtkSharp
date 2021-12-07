@@ -35,7 +35,7 @@ namespace GtkSharp
         {
             Gtk.GtkSharpNoteBookCreate(out handle);
             onSelectedIndexChangedNative = GtkSharpDelegate.Create<GtkNoteBookSelectedIndexChangedCallback>(this, "OnSelectedIndexChanged");
-            Gtk.GtkSharpNoteBookSelectedIndexChangedCallbackConnect(out handle, onSelectedIndexChangedNative);
+            Gtk.GtkSharpSignalConnectAfter(out handle.pointer, "switch-page", onSelectedIndexChangedNative.ToIntPtr(), out handle.pointer);
         }
 
         public void Append(Widget child, Widget label)

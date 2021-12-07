@@ -5,6 +5,11 @@ namespace GtkSharp
 {
     public class LevelBar : Widget
     {
+        public LevelBar(GtkOrientation orientation, double minValue, double maxValue)
+        {
+            NativeLevelBar.GtkSharpLevelBarCreate(out handle, minValue, maxValue);
+        }
+
         public double MinValue
         {
             get
@@ -49,12 +54,7 @@ namespace GtkSharp
             {
                 SetMode(value);
             }
-        }
-
-        public LevelBar(GtkOrientation orientation, double minValue, double maxValue)
-        {
-            NativeLevelBar.GtkSharpLevelBarCreate(out handle, minValue, maxValue);
-        }
+        }        
 
         public void AddOffsetValue(double value, string name)
         {

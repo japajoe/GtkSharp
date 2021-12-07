@@ -19,7 +19,7 @@ namespace GtkSharp
             cairo = new Cairo();
             onDrawNative = GtkSharpDelegate.Create<GtkDrawingAreaDrawCallback>(this, "OnDraw");
 
-            Gtk.GtkSharpDrawingAreaDrawCallbackConnect(out handle, onDrawNative);
+            Gtk.GtkSharpSignalConnect(out handle.pointer, "draw", onDrawNative.ToIntPtr(), out handle.pointer);
         }
 
         private bool OnDraw(IntPtr widget, IntPtr cr, IntPtr data)

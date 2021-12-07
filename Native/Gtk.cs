@@ -17,37 +17,10 @@ namespace GtkSharp.Native
         internal static extern void GtkSharpMainQuit();
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpSignalConnect(out GtkWidgetPointer widget, string eventName, IntPtr callback, out IntPtr userdata);
+        internal static extern void GtkSharpSignalConnect(out IntPtr widget, string eventName, IntPtr callback, out IntPtr userdata);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpSignalConnectAfter(out GtkWidgetPointer widget, string eventName, IntPtr callback, out IntPtr userdata);        
-
-        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpCallbackConnect(out GtkWidgetPointer widget, string eventName, GtkCallback callback, out IntPtr userdata);
-
-        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextBufferChangedCallbackConnect(out IntPtr buffer, GtkTextBufferChangedCallback callback);
-
-        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpSourceBufferChangedCallbackConnect(out IntPtr buffer, GtkSourceBufferChangedCallback callback);
-
-        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpEntryBufferDeletedCallbackConnect(out IntPtr buffer, GtkEntryBufferDeletedCallback callback);
-        
-        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpEntryBufferInsertedCallbackConnect(out IntPtr buffer, GtkEntryBufferInsertedCallback callback);
-
-        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpDrawingAreaDrawCallbackConnect(out GtkWidgetPointer widget, GtkDrawingAreaDrawCallback callback);
-
-        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpSpinButtonValueChangedCallbackConnect(out GtkWidgetPointer widget, GtkSpinButtonValueChangedCallback callback);
-
-        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpToggleButtonValueChangedCallbackConnect(out GtkWidgetPointer widget, GtkToggleButtonValueChangedCallback callback);
-
-        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNoteBookSelectedIndexChangedCallbackConnect(out GtkWidgetPointer widget, GtkNoteBookSelectedIndexChangedCallback callback);
+        internal static extern void GtkSharpSignalConnectAfter(out IntPtr widget, string eventName, IntPtr callback, out IntPtr userdata);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpContainerAdd(out GtkWidgetPointer widget, out IntPtr child);

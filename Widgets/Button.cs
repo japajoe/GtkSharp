@@ -17,7 +17,7 @@ namespace GtkSharp
             stringBuilder = new StringBuilder(1024);
             NativeButton.GtkSharpButtonCreate(out handle);
             onButtonClickedNative = GtkSharpDelegate.Create<GtkCallback>(this, "OnClicked");
-            Gtk.GtkSharpCallbackConnect(out handle, "clicked", onButtonClickedNative, out handle.pointer);            
+            Gtk.GtkSharpSignalConnect(out handle.pointer, "clicked", onButtonClickedNative.ToIntPtr(), out handle.pointer);
         }
 
         public Button(string text)
@@ -25,7 +25,7 @@ namespace GtkSharp
             stringBuilder = new StringBuilder(1024);
             NativeButton.GtkSharpButtonCreateWithLabel(out handle, text);
             onButtonClickedNative = GtkSharpDelegate.Create<GtkCallback>(this, "OnClicked");
-            Gtk.GtkSharpCallbackConnect(out handle, "clicked", onButtonClickedNative, out handle.pointer);
+            Gtk.GtkSharpSignalConnect(out handle.pointer, "clicked", onButtonClickedNative.ToIntPtr(), out handle.pointer);
             this.text = text;
         }
 
