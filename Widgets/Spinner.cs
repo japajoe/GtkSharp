@@ -1,4 +1,4 @@
-using GtkSharp.Native;
+using GtkSharp.Native.Widgets;
 
 namespace GtkSharp
 {
@@ -6,7 +6,7 @@ namespace GtkSharp
     {
         public Spinner()
         {
-            Gtk.GtkSharpSpinnerCreate(out handle);
+            NativeSpinner.GtkSharpSpinnerCreate(out handle);
         }
 
         public void Start()
@@ -14,7 +14,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpSpinnerStart(out handle);
+            NativeSpinner.GtkSharpSpinnerStart(out handle);
         }
 
         public void Stop()
@@ -22,7 +22,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpSpinnerStop(out handle);
+            NativeSpinner.GtkSharpSpinnerStop(out handle);
         }        
     }
 }

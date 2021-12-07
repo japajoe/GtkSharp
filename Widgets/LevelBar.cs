@@ -1,4 +1,5 @@
 using GtkSharp.Native;
+using GtkSharp.Native.Widgets;
 
 namespace GtkSharp
 {
@@ -52,7 +53,7 @@ namespace GtkSharp
 
         public LevelBar(GtkOrientation orientation, double minValue, double maxValue)
         {
-            Gtk.GtkSharpLevelBarCreate(out handle, minValue, maxValue);
+            NativeLevelBar.GtkSharpLevelBarCreate(out handle, minValue, maxValue);
         }
 
         public void AddOffsetValue(double value, string name)
@@ -60,7 +61,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpLevelBarAddOffsetValue(out handle, name, value);
+            NativeLevelBar.GtkSharpLevelBarAddOffsetValue(out handle, name, value);
         }
 
         public double GetValue()
@@ -69,7 +70,7 @@ namespace GtkSharp
                 return 0;
 
             double value;
-            Gtk.GtkSharpLevelBarGetValue(out handle, out value);
+            NativeLevelBar.GtkSharpLevelBarGetValue(out handle, out value);
             return value;
         }
 
@@ -78,7 +79,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpLevelBarSetValue(out handle, value);
+            NativeLevelBar.GtkSharpLevelBarSetValue(out handle, value);
         }
 
         public double GetMinValue()
@@ -87,7 +88,7 @@ namespace GtkSharp
                 return 0;
 
             double value;
-            Gtk.GtkSharpLevelBarGetMinValue(out handle, out value);
+            NativeLevelBar.GtkSharpLevelBarGetMinValue(out handle, out value);
             return value;
         }
 
@@ -96,7 +97,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpLevelBarSetMinValue(out handle, value);
+            NativeLevelBar.GtkSharpLevelBarSetMinValue(out handle, value);
         }
 
         public double GetMaxValue()
@@ -105,7 +106,7 @@ namespace GtkSharp
                 return 0;
 
             double value;
-            Gtk.GtkSharpLevelBarGetMaxValue(out handle, out value);
+            NativeLevelBar.GtkSharpLevelBarGetMaxValue(out handle, out value);
             return value;
         }
 
@@ -114,7 +115,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpLevelBarSetMaxValue(out handle, value);
+            NativeLevelBar.GtkSharpLevelBarSetMaxValue(out handle, value);
         }
 
         public GtkLevelBarMode GetMode()
@@ -123,7 +124,7 @@ namespace GtkSharp
                 return GtkLevelBarMode.Continuous;
 
             GtkLevelBarMode mode;
-            Gtk.GtkSharpLevelBarGetMode(out handle, out mode);
+            NativeLevelBar.GtkSharpLevelBarGetMode(out handle, out mode);
             return mode;
         }
 
@@ -132,7 +133,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpLevelBarSetMode(out handle, mode);
+            NativeLevelBar.GtkSharpLevelBarSetMode(out handle, mode);
         }        
     }
 }

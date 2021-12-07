@@ -1,5 +1,6 @@
 using System.Text;
 using GtkSharp.Native;
+using GtkSharp.Native.Widgets;
 
 namespace GtkSharp
 {
@@ -83,7 +84,7 @@ namespace GtkSharp
         public ProgressBar(GtkOrientation orientation)
         {
             stringBuilder = new StringBuilder(1024);
-            Gtk.GtkSharpProgressBarCreate(out handle);
+            NativeProgressBar.GtkSharpProgressBarCreate(out handle);
         }
 
         public void Pulse()
@@ -91,7 +92,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpProgressBarPulse(out handle);
+            NativeProgressBar.GtkSharpProgressBarPulse(out handle);
         }
 
         public void SetText(string text)
@@ -99,7 +100,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpProgressBarSetText(out handle, text);
+            NativeProgressBar.GtkSharpProgressBarSetText(out handle, text);
             this.text = text;
         }
 
@@ -111,7 +112,7 @@ namespace GtkSharp
             stringBuilder.Clear();
 
             int length = 0;
-            Gtk.GtkSharpProgressBarGetTextLength(out handle, out length);
+            NativeProgressBar.GtkSharpProgressBarGetTextLength(out handle, out length);
 
             if(length > stringBuilder.Capacity)
             {
@@ -119,7 +120,7 @@ namespace GtkSharp
                 stringBuilder.EnsureCapacity(length);
             }
 
-            Gtk.GtkSharpProgressBarGetText(out handle, stringBuilder);
+            NativeProgressBar.GtkSharpProgressBarGetText(out handle, stringBuilder);
 
             text = stringBuilder.ToString().Substring(0, length);
             
@@ -132,7 +133,7 @@ namespace GtkSharp
                 return 0;
 
             double value;
-            Gtk.GtkSharpProgressBarGetFraction(out handle, out value);
+            NativeProgressBar.GtkSharpProgressBarGetFraction(out handle, out value);
             return value;
         }
 
@@ -141,7 +142,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpProgressBarSetfraction(out handle, value);
+            NativeProgressBar.GtkSharpProgressBarSetfraction(out handle, value);
         }
 
         public double GetPulseStep()
@@ -150,7 +151,7 @@ namespace GtkSharp
                 return 0;
 
             double value;
-            Gtk.GtkSharpProgressBarGetPulsestep(out handle, out value);
+            NativeProgressBar.GtkSharpProgressBarGetPulsestep(out handle, out value);
             return value;
         }        
 
@@ -159,7 +160,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpProgressBarSetPulseStep(out handle, value);
+            NativeProgressBar.GtkSharpProgressBarSetPulseStep(out handle, value);
         }
 
         public bool GetInverted()
@@ -168,7 +169,7 @@ namespace GtkSharp
                 return false;
                             
             bool value;
-            Gtk.GtkSharpProgressBarGetInverted(out handle, out value);
+            NativeProgressBar.GtkSharpProgressBarGetInverted(out handle, out value);
             return value;
         }        
 
@@ -177,7 +178,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpProgressBarSetInverted(out handle, inverted);
+            NativeProgressBar.GtkSharpProgressBarSetInverted(out handle, inverted);
         }
 
         public PangoEllipsizeMode GetEllipsize()
@@ -186,7 +187,7 @@ namespace GtkSharp
                 return PangoEllipsizeMode.None;
                             
             PangoEllipsizeMode mode;
-            Gtk.GtkSharpProgressBarGetEllipsize(out handle, out mode);
+            NativeProgressBar.GtkSharpProgressBarGetEllipsize(out handle, out mode);
             return mode;
         }        
 
@@ -195,7 +196,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpProgressBarSetEllipsize(out handle, mode);
+            NativeProgressBar.GtkSharpProgressBarSetEllipsize(out handle, mode);
         }
 
         public bool GetShowText()
@@ -204,7 +205,7 @@ namespace GtkSharp
                 return false;
 
             bool value;
-            Gtk.GtkSharpProgressBarGetShowText(out handle, out value);
+            NativeProgressBar.GtkSharpProgressBarGetShowText(out handle, out value);
             return value;
         }
 
@@ -213,7 +214,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpProgressBarSetShowText(out handle, show);
+            NativeProgressBar.GtkSharpProgressBarSetShowText(out handle, show);
         }
     }
 }
