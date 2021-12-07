@@ -7,6 +7,8 @@ See https://github.com/japajoe/gtk
 # Example
 Please take note that this is a work in progress. I'll try to make it as complete as possible overtime, but for now it's just a proof of concept.
 
+![](GtkSharpExample.png)
+
 ```csharp
 using System;
 using GtkSharp;
