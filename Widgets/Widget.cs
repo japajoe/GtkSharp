@@ -1,13 +1,19 @@
+using System;
 using GtkSharp.Native;
 using GtkSharp.Native.Widgets;
+using GtkSharp.Drawing;
 
 namespace GtkSharp
 {
     public class Widget
     {
         internal GtkWidgetPointer handle;
+        
         private int width;
         private int height;
+        private Cairo cairo;
+        private DrawEvent onDrawCallback;
+        private GtkWidgetDrawCallback onDrawNative;
 
         public int Width
         {
@@ -22,6 +28,29 @@ namespace GtkSharp
         public GtkWidgetPointer Handle
         {
             get { return handle; }
+        }
+
+        public DrawEvent onDraw
+        {
+            get
+            {
+                return onDrawCallback;
+            }
+            set
+            {
+                onDrawCallback += value;
+                RegisterDrawCallback();
+            }
+        }
+
+        private void RegisterDrawCallback()
+        {
+            if(cairo == null)
+            {
+                cairo = new Cairo();
+                onDrawNative = GtkSharpDelegate.Create<GtkWidgetDrawCallback>(this, "OnDraw");
+                Gtk.GtkSharpSignalConnect(out handle.pointer, "draw", onDrawNative.ToIntPtr(), out handle.pointer);
+            }
         }
 
         public void SetSize(int width, int height)
@@ -106,5 +135,17 @@ namespace GtkSharp
             int e = (int)events;
             NativeWidget.GtkSharpWidgetAddEvents(out handle, e);
         }
+
+        private bool OnDraw(IntPtr widget, IntPtr cr, IntPtr data)
+        {
+            cairo.cr.pointer = cr;
+            
+            if(onDraw != null)
+            {
+                return onDraw(cairo);
+            }
+
+            return false;
+        }      
     }
 }
