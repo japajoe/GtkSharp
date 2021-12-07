@@ -13,4 +13,7 @@ namespace GtkSharp.Native
     internal delegate void GtkNoteBookSelectedIndexChangedCallback(IntPtr notebook, IntPtr page, uint page_num, IntPtr data);
     internal delegate void GDestroyNotify(IntPtr data);
     internal delegate bool GtkTickCallback(IntPtr widget, IntPtr frame_clock,  IntPtr user_data);
+    internal delegate void GtkGLAreaRealizeCallback(IntPtr area);
+    internal delegate void GtkGLAreaUnRealizeCallback(IntPtr area);
+    internal delegate bool GtkGLAreaRenderCallback(IntPtr area, IntPtr context);
 }

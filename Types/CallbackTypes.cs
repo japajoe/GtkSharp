@@ -15,4 +15,7 @@ namespace GtkSharp
     public delegate void ToggleButtonValueChangedEvent();
     public delegate void NoteBookSelectedIndexChanged(uint index);
     public delegate void MenuItemClickedEvent();
+    public delegate void GLAreaRenderEvent();
+    public delegate void GLAreaRealizeEvent();
+    public delegate void GLAreaUnRealizeEvent();
 }
