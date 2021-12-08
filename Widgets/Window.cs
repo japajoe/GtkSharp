@@ -59,8 +59,8 @@ namespace GtkSharp
             GdkEventMask events = GdkEventMask.KeyPress | GdkEventMask.ButtonPress | GdkEventMask.PointerMotion;
             this.AddEvents(events);            
 
-            onClosingNative = GtkSharpDelegate.Create<GtkCallback>(this, "OnClosing");
-            onSizeAllocateNative = GtkSharpDelegate.Create<GtkWindowSizeAllocateCallback>(this, "OnSizeAllocate");
+            onClosingNative = OnClosing;
+            onSizeAllocateNative = OnSizeAllocate;
             
             Gtk.GtkSharpSignalConnect(out handle.pointer, "destroy", onClosingNative.ToIntPtr(), out handle.pointer);
             Gtk.GtkSharpSignalConnect(out handle.pointer, "size-allocate", onSizeAllocateNative.ToIntPtr(), out handle.pointer);

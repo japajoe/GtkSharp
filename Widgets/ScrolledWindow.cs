@@ -20,9 +20,7 @@ namespace GtkSharp
             if(child.handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpScrolledWindowAdd(out handle, out child.handle.pointer);
-
-            
+            Gtk.GtkSharpScrolledWindowAdd(out handle, out child.handle.pointer);            
         }
 
         public void GetScrollPosition(out double x, out double y)

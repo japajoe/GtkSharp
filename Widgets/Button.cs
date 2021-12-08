@@ -28,14 +28,14 @@ namespace GtkSharp
         {
             this.text = text;
             stringBuilder = new StringBuilder(1024);
-            NativeButton.GtkSharpButtonCreateWithLabel(out handle, text);            
+            NativeButton.GtkSharpButtonCreateWithLabel(out handle, text);
 
-            onButtonActivate = GtkSharpDelegate.Create<GtkButtonActivateCallback>(this, "OnActivate");
-            onButtonClicked = GtkSharpDelegate.Create<GtkButtonClickedCallback>(this, "OnClicked");
-            onButtonEnter = GtkSharpDelegate.Create<GtkButtonEnterCallback>(this, "OnEnter");
-            onButtonLeave = GtkSharpDelegate.Create<GtkButtonLeaveCallback>(this, "OnLeave");
-            onButtonPressed = GtkSharpDelegate.Create<GtkButtonPressedCallback>(this, "OnPressed");
-            onButtonReleased = GtkSharpDelegate.Create<GtkButtonReleasedCallback>(this, "OnReleased");            
+            onButtonActivate = OnActivate;
+            onButtonClicked = OnClicked;
+            onButtonEnter = OnEnter;
+            onButtonLeave = OnLeave;
+            onButtonPressed = OnPressed;
+            onButtonReleased = OnReleased;
             
             Gtk.GtkSharpSignalConnect(out handle.pointer, "activate", onButtonActivate.ToIntPtr(), out handle.pointer);
             Gtk.GtkSharpSignalConnect(out handle.pointer, "clicked", onButtonClicked.ToIntPtr(), out handle.pointer);

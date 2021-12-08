@@ -63,7 +63,7 @@ namespace GtkSharp
             NativeSourceView.GtkSharpSourceViewCreateWithBuffer(out handle, out buffer);
             NativeSourceView.GtkSharpSourceViewSetTabWidth(out handle, 4);
 
-            onChangedNative = GtkSharpDelegate.Create<GtkSourceBufferChangedCallback>(this, "OnChanged");
+            onChangedNative = OnChanged;
 
             Gtk.GtkSharpSignalConnect(out buffer.pointer, "changed", onChangedNative.ToIntPtr(), out buffer.pointer);
         }

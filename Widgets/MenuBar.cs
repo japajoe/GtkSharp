@@ -13,7 +13,7 @@ namespace GtkSharp
         public MenuBar()
         {
             Gtk.GtkSharpMenuBarCreate(out handle);
-            onMenuItemClickedNative = GtkSharpDelegate.Create<GtkCallback>(this, "OnMenuItemClicked");
+            onMenuItemClickedNative = OnMenuItemClicked;
         }
         
         public void AddMenu(MenuCreationInfo info)

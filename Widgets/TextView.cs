@@ -46,7 +46,7 @@ namespace GtkSharp
             NativeTextView.GtkSharpTextViewCreate(out handle);
             NativeTextView.GtkSharpTextViewGetBuffer(out handle, out buffer);
 
-            onChangedNative = GtkSharpDelegate.Create<GtkTextBufferChangedCallback>(this, "OnChanged");
+            onChangedNative = OnChanged;
 
             Gtk.GtkSharpSignalConnect(out buffer.pointer, "changed", onChangedNative.ToIntPtr(), out handle.pointer);
         }

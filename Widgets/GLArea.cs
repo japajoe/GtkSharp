@@ -10,9 +10,9 @@ namespace GtkSharp
         public event GLAreaRealizeEvent onRealize;
         public event GLAreaUnRealizeEvent onUnRealize;
 
-        private GtkGLAreaRealizeCallback onRealizeNative;
-        private GtkGLAreaUnRealizeCallback onUnRealizeNative;
-        private GtkGLAreaRenderCallback onRenderNative;
+        private GtkGLAreaRealizeCallback onGLAreaRealize;
+        private GtkGLAreaUnRealizeCallback onGLAreaUnRealize;
+        private GtkGLAreaRenderCallback onGLAreaRender;
         private GdkGLContextPointer context;
 
         public bool AutoRender
@@ -32,13 +32,13 @@ namespace GtkSharp
         {
             NativeGLArea.GtkSharpGLAreaCreate(out handle);
 
-            onRealizeNative = GtkSharpDelegate.Create<GtkGLAreaRealizeCallback>(this, "OnRealize");
-            onUnRealizeNative = GtkSharpDelegate.Create<GtkGLAreaUnRealizeCallback>(this, "OnUnRealize");
-            onRenderNative = GtkSharpDelegate.Create<GtkGLAreaRenderCallback>(this, "OnRender");
+            onGLAreaRealize = OnRealize;
+            onGLAreaUnRealize = OnUnRealize;
+            onGLAreaRender = OnRender;
 
-            Gtk.GtkSharpSignalConnect(out handle.pointer, "realize", onRealizeNative.ToIntPtr(), out handle.pointer);
-            Gtk.GtkSharpSignalConnect(out handle.pointer, "unrealize", onUnRealizeNative.ToIntPtr(), out handle.pointer);
-            Gtk.GtkSharpSignalConnect(out handle.pointer, "render", onRenderNative.ToIntPtr(), out handle.pointer);
+            Gtk.GtkSharpSignalConnect(out handle.pointer, "realize", onGLAreaRealize.ToIntPtr(), out handle.pointer);
+            Gtk.GtkSharpSignalConnect(out handle.pointer, "unrealize", onGLAreaUnRealize.ToIntPtr(), out handle.pointer);
+            Gtk.GtkSharpSignalConnect(out handle.pointer, "render", onGLAreaRender.ToIntPtr(), out handle.pointer);
         }
 
         public void QueueRender()

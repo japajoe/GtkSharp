@@ -63,9 +63,8 @@ namespace GtkSharp
             if(cairo == null)
             {
                 cairo = new Cairo();
-                onDrawNative = GtkSharpDelegate.Create<GtkWidgetDrawCallback>(this, "OnDraw");
+                onDrawNative = OnDraw;
                 Gtk.GtkSharpSignalConnect(out handle.pointer, "draw", onDrawNative.ToIntPtr(), out handle.pointer);
-                
             }
         }
 

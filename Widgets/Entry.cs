@@ -58,20 +58,20 @@ namespace GtkSharp
             NativeEntry.GtkSharpEntryCreate(out handle);
             NativeEntry.GtkSharpEntryGetBuffer(out handle, out buffer);
 
-            onActivateCallback = GtkSharpDelegate.Create<GtkEntryActivateCallback>(this, "OnActivate");
-            onBackspaceCallback = GtkSharpDelegate.Create<GtkEntryBackspaceCallback>(this, "OnBackspace");
-            onCopyClipboardCallback = GtkSharpDelegate.Create<GtkEntryCopyClipboardCallback>(this, "OnCopyClipboard");
-            onCutClipboardCallback = GtkSharpDelegate.Create<GtkEntryCutClipboardCallback>(this, "OnCutClipboard");
-            onDeleteFromCursorCallback = GtkSharpDelegate.Create<GtkEntryDeleteFromCursorCallback>(this, "OnDeleteFromCursor");
-            onIconPressCallback = GtkSharpDelegate.Create<GtkEntryIconPressCallback>(this, "OnIconPress");
-            onIconReleaseCallback = GtkSharpDelegate.Create<GtkEntryIconReleaseCallback>(this, "OnIconRelease");
-            onInsertAtCursorCallback = GtkSharpDelegate.Create<GtkEntryInsertAtCursorCallback>(this, "OnInsertAtCursor");
-            onInsertEmojiCallback = GtkSharpDelegate.Create<GtkEntryInsertEmojiCallback>(this, "OnInsertEmoji");
-            onMoveCursorCallback = GtkSharpDelegate.Create<GtkEntryMoveCursorCallback>(this, "OnMoveCursor");
-            onPasteClipboardCallback = GtkSharpDelegate.Create<GtkEntryPasteClipboardCallback>(this, "OnPasteClipboard");
-            onPopulatePopupCallback = GtkSharpDelegate.Create<GtkEntryPopulatePopupCallback>(this, "OnPopulatePopup");            
-            onBufferDeletedCallback = GtkSharpDelegate.Create<GtkEntryBufferDeletedCallback>(this, "OnDeleted");
-            onBufferInsertedCallback = GtkSharpDelegate.Create<GtkEntryBufferInsertedCallback>(this, "OnInserted");
+            onActivateCallback = OnActivate;
+            onBackspaceCallback = OnBackspace;
+            onCopyClipboardCallback = OnCopyClipboard;
+            onCutClipboardCallback = OnCutClipboard;
+            onDeleteFromCursorCallback = OnDeleteFromCursor;
+            onIconPressCallback = OnIconPress;
+            onIconReleaseCallback = OnIconRelease;
+            onInsertAtCursorCallback = OnInsertAtCursor;
+            onInsertEmojiCallback = OnInsertEmoji;
+            onMoveCursorCallback = OnMoveCursor;
+            onPasteClipboardCallback = OnPasteClipboard;
+            onPopulatePopupCallback = OnPopulatePopup;
+            onBufferDeletedCallback = OnDeleted;
+            onBufferInsertedCallback = OnInserted;
 
             Gtk.GtkSharpSignalConnect(out handle.pointer, "activate", onActivateCallback.ToIntPtr(), out handle.pointer);
             Gtk.GtkSharpSignalConnect(out handle.pointer, "backspace", onBackspaceCallback.ToIntPtr(), out handle.pointer);
