@@ -30,6 +30,18 @@ namespace GtkSharp
             get { return handle; }
         }
 
+        public bool AppPaintable
+        {
+            get
+            {
+                return GetAppPaintable();
+            }
+            set
+            {
+                SetAppPaintable(value);
+            }
+        }
+
         public DrawEvent onDraw
         {
             get
@@ -45,12 +57,34 @@ namespace GtkSharp
 
         private void RegisterDrawCallback()
         {
+            if(handle.IsNullPointer)
+                return;
+
             if(cairo == null)
             {
                 cairo = new Cairo();
                 onDrawNative = GtkSharpDelegate.Create<GtkWidgetDrawCallback>(this, "OnDraw");
                 Gtk.GtkSharpSignalConnect(out handle.pointer, "draw", onDrawNative.ToIntPtr(), out handle.pointer);
+                
             }
+        }
+
+        public bool GetAppPaintable()
+        {
+            if(handle.IsNullPointer)
+                return false;
+
+            bool paintable;
+            NativeWidget.GtkSharpWidgetGetAppPaintable(out handle, out paintable);
+            return paintable;
+        }
+
+        public void SetAppPaintable(bool paintable)
+        {
+            if(handle.IsNullPointer)
+                return;
+            
+            NativeWidget.GtkSharpWidgetSetAppPaintable(out handle, paintable);
         }
 
         public void SetSize(int width, int height)

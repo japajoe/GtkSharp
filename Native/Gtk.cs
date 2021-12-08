@@ -17,6 +17,9 @@ namespace GtkSharp.Native
         internal static extern void GtkSharpMainQuit();
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpGetVersion(out uint major, out uint minor, out uint micro);
+
+        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpSignalConnect(out IntPtr widget, string eventName, IntPtr callback, out IntPtr userdata);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]

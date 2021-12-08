@@ -10,13 +10,13 @@ namespace GtkSharp
 
         private string title;
         private int width;
-        private int height;        
+        private int height;
 
         public ApplicationBase()
         {
             this.title = "GtkSharpApplication";
             this.width = 128;
-            this.height = 128;
+            this.height = 128;            
         }
 
         public ApplicationBase(string title, int width, int height)
@@ -42,6 +42,11 @@ namespace GtkSharp
         }
 
         public virtual void Initialize()
+        {
+
+        }
+
+        public void GetVersion()
         {
 
         }
