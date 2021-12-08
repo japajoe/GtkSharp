@@ -4,8 +4,10 @@ An object oriented GTK 3 wrapper for dotnetcore.
 # Dependencies
 See https://github.com/japajoe/gtk
 
+# Disclaimer
+Please take note that this is a work in progress. I'll try to make it as complete as possible overtime, but for now it's just a proof of concept. If you are in serious need of a matured C# version of GTK then I recommend having a look at https://github.com/GtkSharp/GtkSharp
+
 # Example
-Please take note that this is a work in progress. I'll try to make it as complete as possible overtime, but for now it's just a proof of concept.
 
 ![](GtkSharpExample.png)
 
