@@ -41,12 +41,6 @@ namespace GtkSharp.Native
         internal static extern void GtkSharpImageGetPixbuf(out GtkWidgetPointer widget, out GdkPixbufPointer pixbuf);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpLabelCreate(out GtkWidgetPointer widget, string text);
-
-        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpLabelSetText(out GtkWidgetPointer widget, string text);
-
-        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpEntryBufferGetLength(out IntPtr buffer, out uint length);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
