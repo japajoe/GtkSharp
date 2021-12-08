@@ -60,7 +60,7 @@ namespace GtkSharpApplication
 
             box.SetMargins(5, 5, 5, 5);
             sourceView.LineNumbers = true;
-            buttonExecute.onClick += Execute;
+            buttonExecute.onClicked += Execute;
 
             window.Add(box);
             box.Add(menuBar, false, false, 0);
