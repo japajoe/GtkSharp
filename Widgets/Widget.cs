@@ -2,18 +2,26 @@ using System;
 using GtkSharp.Native;
 using GtkSharp.Native.Widgets;
 using GtkSharp.Drawing;
+using System.Runtime.InteropServices;
 
 namespace GtkSharp
 {
     public class Widget
     {
-        internal GtkWidgetPointer handle;
+        internal GtkWidgetPointer handle;        
         
         private int width;
         private int height;
         private Cairo cairo;
-        private DrawEvent onDrawCallback;
-        private GtkWidgetDrawCallback onDrawNative;
+        private WidgetDrawEvent onDrawCallback;
+        
+        private WidgetKeyPressEvent onKeyPressCallback;
+        private WidgetKeyReleaseEvent onKeyReleaseCallback;
+        
+        private GtkWidgetDrawCallback onWidgetDraw;
+        
+        private GtkWidgetKeyPressCallback onWidgetKeyPress;
+        private GtkWidgetKeyReleaseCallback onWidgetKeyRelease;
 
         public int Width
         {
@@ -42,7 +50,7 @@ namespace GtkSharp
             }
         }
 
-        public DrawEvent onDraw
+        public WidgetDrawEvent onDraw
         {
             get
             {
@@ -50,27 +58,65 @@ namespace GtkSharp
             }
             set
             {
-                onDrawCallback += value;
-                RegisterDrawCallback();
+                onDrawCallback = value;
+
+                if(!handle.IsNullPointer)
+                {
+                    if(onWidgetDraw == null)
+                    {
+                        cairo = new Cairo();
+                        onWidgetDraw = OnDraw;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "draw", onWidgetDraw.ToIntPtr(), out handle.pointer);
+                    }
+                }
             }
         }
+
+        public WidgetKeyPressEvent onKeyPress
+        {
+            get
+            {
+                return onKeyPressCallback;
+            }
+            set
+            {
+                onKeyPressCallback = value;
+
+                if(!handle.IsNullPointer)
+                {
+                    if(onWidgetKeyPress == null)
+                    {                        
+                        onWidgetKeyPress = OnKeyPress;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "key-press-event", onWidgetKeyPress.ToIntPtr(), out handle.pointer);
+                    }
+                }
+            }
+        }
+
+        public WidgetKeyReleaseEvent onKeyRelease
+        {
+            get
+            {
+                return onKeyReleaseCallback;
+            }
+            set
+            {
+                onKeyReleaseCallback = value;
+
+                if(!handle.IsNullPointer)
+                {
+                    if(onWidgetKeyRelease == null)
+                    {                        
+                        onWidgetKeyRelease = OnKeyRelease;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "key-release-event", onWidgetKeyRelease.ToIntPtr(), out handle.pointer);
+                    }
+                }
+            }
+        }        
 
         protected virtual void RegisterCallbacks()
         {
             
-        }
-
-        private void RegisterDrawCallback()
-        {
-            if(handle.IsNullPointer)
-                return;
-
-            if(cairo == null)
-            {
-                cairo = new Cairo();
-                onDrawNative = OnDraw;
-                Gtk.GtkSharpSignalConnect(out handle.pointer, "draw", onDrawNative.ToIntPtr(), out handle.pointer);
-            }
         }
 
         public bool GetAppPaintable()
@@ -182,8 +228,26 @@ namespace GtkSharp
             {
                 return onDraw(cairo);
             }
-
             return false;
-        }      
+        }
+
+        bool OnKeyPress(IntPtr widget, GdkEventKeyPointer eventKey, IntPtr userData)
+        {
+            if(onKeyPress != null)
+            {
+                GdkEventKey key = Marshal.PtrToStructure<GdkEventKey>(eventKey.pointer);
+                return onKeyPress(key);
+            }
+            return true;
+        }
+        bool OnKeyRelease(IntPtr widget, GdkEventKeyPointer eventKey, IntPtr userData)
+        {
+            if(onKeyRelease != null)
+            {
+                GdkEventKey key = Marshal.PtrToStructure<GdkEventKey>(eventKey.pointer);
+                return onKeyRelease(key);
+            }
+            return true;
+        }
     }
 }

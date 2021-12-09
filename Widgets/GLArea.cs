@@ -172,10 +172,11 @@ namespace GtkSharp
             NativeGLArea.GtkSharpGLAreaSetAutoRender(out handle, auto);
         }
 
-        void OnCreateContext(IntPtr area, IntPtr data)
+        GdkGLContextPointer OnCreateContext(IntPtr area, IntPtr data)
         {
             NativeGLArea.GtkSharpGLAreaGetContext(out handle, out context);
             onCreateContext?.Invoke();
+            return context;
         }
 
         void OnResize(IntPtr area, int width, int height, IntPtr data)

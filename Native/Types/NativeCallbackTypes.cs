@@ -2,6 +2,8 @@ using System;
 
 namespace GtkSharp.Native
 {
+    internal delegate bool GtkWidgetKeyPressCallback(IntPtr widget, GdkEventKeyPointer eventKey, IntPtr userData);
+    internal delegate bool GtkWidgetKeyReleaseCallback(IntPtr widget, GdkEventKeyPointer eventKey, IntPtr userData);
     internal delegate void GtkCallback(IntPtr widget, IntPtr data);
 
     internal delegate void GtkButtonActivateCallback(IntPtr widget, IntPtr data);
@@ -42,7 +44,7 @@ namespace GtkSharp.Native
     internal delegate void GDestroyNotify(IntPtr data);
     internal delegate bool GtkTickCallback(IntPtr widget, IntPtr frame_clock,  IntPtr user_data);
     
-    internal delegate void GtkGLAreaCreateContextCallback(IntPtr widget, IntPtr data);
+    internal delegate GdkGLContextPointer GtkGLAreaCreateContextCallback(IntPtr widget, IntPtr data);
     internal delegate void GtkGLAreaResizeCallback(IntPtr widget, int width, int height, IntPtr data);
     internal delegate void GtkGLAreaRealizeCallback(IntPtr widget);
     internal delegate void GtkGLAreaUnRealizeCallback(IntPtr widget);

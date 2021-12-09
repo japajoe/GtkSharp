@@ -3,6 +3,10 @@ using GtkSharp.Native;
 
 namespace GtkSharp
 {
+    public delegate bool WidgetKeyPressEvent(GdkEventKey eventKey);
+    public delegate bool WidgetKeyReleaseEvent(GdkEventKey eventKey);
+    public delegate bool WidgetDrawEvent(Cairo cr);
+
     public delegate void WindowClosingEvent();
     public delegate void WindowClosedEvent();
     public delegate void WindowResizeEvent(int width, int height);
@@ -37,8 +41,7 @@ namespace GtkSharp
     public delegate void EntryChangedEvent();
     public delegate void EntrySubmitEvent();
     public delegate void TextViewChangedEvent();
-    public delegate void SourceViewChangedEvent();
-    public delegate bool DrawEvent(Cairo cr);
+    public delegate void SourceViewChangedEvent();    
     public delegate void SpinButtonValueChangedEvent();
     public delegate void ToggleButtonValueChangedEvent();
     public delegate void NoteBookSelectedIndexChanged(uint index);

@@ -55,10 +55,6 @@ namespace GtkSharp
         {
             stringBuilder = new StringBuilder(1024);
             NativeWindow.GtkSharpWindowCreate(out handle, type);
-
-            GdkEventMask events = GdkEventMask.KeyPress | GdkEventMask.ButtonPress | GdkEventMask.PointerMotion;
-            this.AddEvents(events);            
-
             RegisterCallbacks();
         }
 
