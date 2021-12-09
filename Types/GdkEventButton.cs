@@ -5,18 +5,19 @@ using GtkSharp.Native;
 namespace GtkSharp
 {
     [StructLayout(LayoutKind.Sequential)]
-    public struct GdkEventKey
+    public struct GdkEventButton
     {
         public GdkEventType type;
         public GdkWindowPointer window;
         public sbyte sendEvent;
         public uint time;
+        public double x;
+        public double y;
+        public IntPtr axes;
         public uint state;
-        public uint keyval;
-        public int length;
-        public IntPtr str;
-        public ushort hardwareKeyCode;
-        public byte group;
-        public uint isModifier;
+        public uint button;
+        public GdkDevicePointer device;
+        public double xRoot;
+        public double yRoot;
     }
 }

@@ -5,6 +5,8 @@ namespace GtkSharp
 {
     public delegate bool WidgetKeyPressEvent(GdkEventKey eventKey);
     public delegate bool WidgetKeyReleaseEvent(GdkEventKey eventKey);
+    public delegate bool WidgetButtonPressEvent(GdkEventButton eventButton);
+    public delegate bool WidgetButtonReleaseEvent(GdkEventButton eventButton);    
     public delegate bool WidgetDrawEvent(Cairo cr);
 
     public delegate void WindowClosingEvent();

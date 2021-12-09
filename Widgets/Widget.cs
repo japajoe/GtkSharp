@@ -14,14 +14,16 @@ namespace GtkSharp
         private int height;
         private Cairo cairo;
         private WidgetDrawEvent onDrawCallback;
+        private GtkWidgetDrawCallback onWidgetDraw;
         
         private WidgetKeyPressEvent onKeyPressCallback;
         private WidgetKeyReleaseEvent onKeyReleaseCallback;
-        
-        private GtkWidgetDrawCallback onWidgetDraw;
-        
+        private WidgetButtonPressEvent onButtonPressCallback;
+        private WidgetButtonReleaseEvent onButtonReleaseCallback;        
         private GtkWidgetKeyPressCallback onWidgetKeyPress;
         private GtkWidgetKeyReleaseCallback onWidgetKeyRelease;
+        private GtkWidgetButtonPressCallback onWidgetButtonPress;
+        private GtkWidgetButtonReleaseCallback onWidgetButtonRelease;        
 
         public int Width
         {
@@ -112,7 +114,49 @@ namespace GtkSharp
                     }
                 }
             }
-        }        
+        }    
+
+        public WidgetButtonPressEvent onButtonPress
+        {
+            get
+            {
+                return onButtonPressCallback;
+            }
+            set
+            {
+                onButtonPressCallback = value;
+
+                if(!handle.IsNullPointer)
+                {
+                    if(onWidgetButtonPress == null)
+                    {                        
+                        onWidgetButtonPress = OnButtonPress;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "button-press-event", onWidgetButtonPress.ToIntPtr(), out handle.pointer);
+                    }
+                }
+            }
+        }
+
+        public WidgetButtonReleaseEvent onButtonRelease
+        {
+            get
+            {
+                return onButtonReleaseCallback;
+            }
+            set
+            {
+                onButtonReleaseCallback = value;
+
+                if(!handle.IsNullPointer)
+                {
+                    if(onWidgetButtonRelease == null)
+                    {                        
+                        onWidgetButtonRelease = OnButtonRelease;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "button-release-event", onWidgetButtonRelease.ToIntPtr(), out handle.pointer);
+                    }
+                }
+            }
+        }            
 
         protected virtual void RegisterCallbacks()
         {
@@ -240,6 +284,7 @@ namespace GtkSharp
             }
             return true;
         }
+
         bool OnKeyRelease(IntPtr widget, GdkEventKeyPointer eventKey, IntPtr userData)
         {
             if(onKeyRelease != null)
@@ -249,5 +294,25 @@ namespace GtkSharp
             }
             return true;
         }
+
+        bool OnButtonPress(IntPtr widget, GdkEventButtonPointer eventButton, IntPtr userData)
+        {
+            if(onButtonPress != null)
+            {
+                GdkEventButton button = Marshal.PtrToStructure<GdkEventButton>(eventButton.pointer);
+                return onButtonPress(button);
+            }
+            return true;
+        }
+
+        bool OnButtonRelease(IntPtr widget, GdkEventButtonPointer eventButton, IntPtr userData)
+        {
+            if(onButtonRelease != null)
+            {
+                GdkEventButton button = Marshal.PtrToStructure<GdkEventButton>(eventButton.pointer);
+                return onButtonRelease(button);
+            }
+            return true;
+        }        
     }
 }
