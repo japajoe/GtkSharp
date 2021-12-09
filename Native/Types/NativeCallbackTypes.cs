@@ -2,12 +2,14 @@ using System;
 
 namespace GtkSharp.Native
 {
+    internal delegate void GtkWidgetDestroyCallback(IntPtr widget, IntPtr userData);
+    internal delegate bool GtkWidgetDestroyedCallback(IntPtr widget, GdkEventPointer evnt, IntPtr userData);
+    internal delegate void GtkWidgetSizeAllocateCallback(IntPtr widget, GtkAllocationPointer allocation);
     internal delegate bool GtkWidgetKeyPressCallback(IntPtr widget, GdkEventKeyPointer eventKey, IntPtr userData);
     internal delegate bool GtkWidgetKeyReleaseCallback(IntPtr widget, GdkEventKeyPointer eventKey, IntPtr userData);
-    internal delegate bool GtkWidgetButtonPressCallback(IntPtr widget, GdkEventButtonPointer eventKey, IntPtr userData);
-    internal delegate bool GtkWidgetButtonReleaseCallback(IntPtr widget, GdkEventButtonPointer eventKey, IntPtr userData);
-    
-    internal delegate void GtkCallback(IntPtr widget, IntPtr data);
+    internal delegate bool GtkWidgetButtonPressCallback(IntPtr widget, GdkEventButtonPointer eventButton, IntPtr userData);
+    internal delegate bool GtkWidgetButtonReleaseCallback(IntPtr widget, GdkEventButtonPointer eventButton, IntPtr userData);
+    internal delegate bool GtkWidgetMotionNotifyCallback(IntPtr widget, GdkEventMotionPointer eventMotion, IntPtr userData);
 
     internal delegate void GtkButtonActivateCallback(IntPtr widget, IntPtr data);
     internal delegate void GtkButtonClickedCallback(IntPtr widget, IntPtr data);
@@ -57,6 +59,6 @@ namespace GtkSharp.Native
 
     internal delegate void GtkMenuMoveScrollCallback(IntPtr widget, IntPtr scrollType, IntPtr data);
     internal delegate void GtkMenuPoppedUpCallback(IntPtr widget, IntPtr flippedRect, IntPtr finalRect, bool flippedX, bool flippedY, IntPtr data);
-    
-    internal delegate void GtkWindowSizeAllocateCallback(IntPtr widget, IntPtr allocation);
+
+    internal delegate void GtkMenuItemActivateCallback(IntPtr widget, IntPtr data);
 }

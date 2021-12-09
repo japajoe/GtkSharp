@@ -6,7 +6,7 @@ namespace GtkSharp
 {
     public class LevelBar : Widget
     {
-        public event GtkLevelBarOffsetChangedEvent onOffsetChanged;
+        public event LevelBarOffsetChangedEvent onOffsetChanged;
 
         private GtkLevelBarOffsetChangedCallback onLevelBarOffsetChanged;
 

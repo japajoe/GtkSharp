@@ -14,5 +14,13 @@ namespace GtkSharp
         {
             return Marshal.GetFunctionPointerForDelegate(del);
         }
+
+        public static bool IsNullPointer(this Delegate del)
+        {
+            if(del == null)
+                return true;
+
+            return del.GetInvocationList() == null;
+        }
     }
 }

@@ -6,14 +6,19 @@ namespace GtkSharp
 {
     public class MenuBar : Widget
     {
-        private GtkCallback onMenuItemClickedNative;
+        private GtkMenuItemActivateCallback onMenuItemActivateCallback;
         private List<MenuCreationInfo> menuInfo = new List<MenuCreationInfo>();
-        private Dictionary<IntPtr,MenuItemClickedEvent> callbacks = new Dictionary<IntPtr, MenuItemClickedEvent>();
+        private Dictionary<IntPtr,MenuItemActivateEvent> callbacks = new Dictionary<IntPtr, MenuItemActivateEvent>();
 
         public MenuBar()
         {
             Gtk.GtkSharpMenuBarCreate(out handle);
-            onMenuItemClickedNative = OnMenuItemClicked;
+            RegisterCallbacks();
+        }
+
+        protected override void RegisterCallbacks()
+        {
+            onMenuItemActivateCallback = OnMenuItemClicked;
         }
         
         public void AddMenu(MenuCreationInfo info)
@@ -36,7 +41,7 @@ namespace GtkSharp
                 MenuItem item = new MenuItem(menuInfo[currentIndex].items[i]);
                 menuWidget.ShellAppend(item);
                 callbacks.Add(item.handle.pointer, menuInfo[currentIndex].callbacks[index]);
-                Gtk.GtkSharpSignalConnect(out item.handle.pointer, "activate", onMenuItemClickedNative.ToIntPtr(), out item.handle.pointer);
+                Gtk.GtkSharpSignalConnect(out item.handle.pointer, "activate", onMenuItemActivateCallback.ToIntPtr(), out item.handle.pointer);
             }
         }
 
@@ -58,14 +63,14 @@ namespace GtkSharp
     {    
         public string name;
         public List<string> items = new List<string>();
-        public List<MenuItemClickedEvent> callbacks = new List<MenuItemClickedEvent>();
+        public List<MenuItemActivateEvent> callbacks = new List<MenuItemActivateEvent>();
 
         public MenuCreationInfo(string name)
         {
             this.name = name;
         }
 
-        public void AddItem(string itemName, MenuItemClickedEvent callback)
+        public void AddItem(string itemName, MenuItemActivateEvent callback)
         {
             items.Add(itemName);
             callbacks.Add(callback);

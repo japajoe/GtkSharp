@@ -13,17 +13,29 @@ namespace GtkSharp
         private int width;
         private int height;
         private Cairo cairo;
-        private WidgetDrawEvent onDrawCallback;
-        private GtkWidgetDrawCallback onWidgetDraw;
         
+        private WidgetDrawEvent onDrawCallback;
+        
+        private GtkWidgetDrawCallback onWidgetDraw;
+
+
+        private WidgetDestroyEvent onDestroyCallback;
+        private WidgetDestroyedEvent onDestroyedCallback;
+        private WidgetSizeAllocateEvent onSizeAllocateCallback;
         private WidgetKeyPressEvent onKeyPressCallback;
         private WidgetKeyReleaseEvent onKeyReleaseCallback;
         private WidgetButtonPressEvent onButtonPressCallback;
-        private WidgetButtonReleaseEvent onButtonReleaseCallback;        
+        private WidgetButtonReleaseEvent onButtonReleaseCallback;
+        private WidgetMotionNotifyEvent onMotionNotifyCallback;
+        
+        private GtkWidgetDestroyCallback onWidgetDestroy;
+        private GtkWidgetDestroyedCallback onWidgetDestroyed;
+        private GtkWidgetSizeAllocateCallback onWidgetSizeAllocate;
         private GtkWidgetKeyPressCallback onWidgetKeyPress;
         private GtkWidgetKeyReleaseCallback onWidgetKeyRelease;
         private GtkWidgetButtonPressCallback onWidgetButtonPress;
-        private GtkWidgetButtonReleaseCallback onWidgetButtonRelease;        
+        private GtkWidgetButtonReleaseCallback onWidgetButtonRelease;
+        private GtkWidgetMotionNotifyCallback onWidgetMotionNotify;
 
         public int Width
         {
@@ -64,7 +76,7 @@ namespace GtkSharp
 
                 if(!handle.IsNullPointer)
                 {
-                    if(onWidgetDraw == null)
+                    if(onWidgetDraw.IsNullPointer())
                     {
                         cairo = new Cairo();
                         onWidgetDraw = OnDraw;
@@ -73,6 +85,69 @@ namespace GtkSharp
                 }
             }
         }
+
+        public WidgetDestroyEvent onDestroy
+        {
+            get
+            {
+                return onDestroyCallback;
+            }
+            set
+            {
+                onDestroyCallback = value;                
+
+                if(!handle.IsNullPointer)
+                {
+                    if(onWidgetDestroy.IsNullPointer())
+                    {
+                        onWidgetDestroy = OnDestroy;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "destroy", onWidgetDestroy.ToIntPtr(), out handle.pointer);
+                    }
+                }
+            }
+        }
+
+        public WidgetDestroyedEvent onDestroyed
+        {
+            get
+            {
+                return onDestroyedCallback;
+            }
+            set
+            {
+                onDestroyedCallback = value;
+
+                if(!handle.IsNullPointer)
+                {
+                    if(onWidgetDestroyed.IsNullPointer())
+                    {
+                        onWidgetDestroyed = OnDestroyed;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "destroy-event", onWidgetDestroyed.ToIntPtr(), out handle.pointer);
+                    }
+                }                
+            }
+        }
+
+        public WidgetSizeAllocateEvent onSizeAllocate
+        {
+            get
+            {
+                return onSizeAllocateCallback;
+            }
+            set
+            {
+                onSizeAllocateCallback = value;
+
+                if(!handle.IsNullPointer)
+                {
+                    if(onWidgetSizeAllocate.IsNullPointer())
+                    {                        
+                        onWidgetSizeAllocate = OnSizeAllocate;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "size-allocate", onWidgetSizeAllocate.ToIntPtr(), out handle.pointer);
+                    }
+                } 
+            }
+        }        
 
         public WidgetKeyPressEvent onKeyPress
         {
@@ -86,7 +161,7 @@ namespace GtkSharp
 
                 if(!handle.IsNullPointer)
                 {
-                    if(onWidgetKeyPress == null)
+                    if(onWidgetKeyPress.IsNullPointer())
                     {                        
                         onWidgetKeyPress = OnKeyPress;
                         Gtk.GtkSharpSignalConnect(out handle.pointer, "key-press-event", onWidgetKeyPress.ToIntPtr(), out handle.pointer);
@@ -107,7 +182,7 @@ namespace GtkSharp
 
                 if(!handle.IsNullPointer)
                 {
-                    if(onWidgetKeyRelease == null)
+                    if(onWidgetKeyRelease.IsNullPointer())
                     {                        
                         onWidgetKeyRelease = OnKeyRelease;
                         Gtk.GtkSharpSignalConnect(out handle.pointer, "key-release-event", onWidgetKeyRelease.ToIntPtr(), out handle.pointer);
@@ -128,7 +203,7 @@ namespace GtkSharp
 
                 if(!handle.IsNullPointer)
                 {
-                    if(onWidgetButtonPress == null)
+                    if(onWidgetButtonPress.IsNullPointer())
                     {                        
                         onWidgetButtonPress = OnButtonPress;
                         Gtk.GtkSharpSignalConnect(out handle.pointer, "button-press-event", onWidgetButtonPress.ToIntPtr(), out handle.pointer);
@@ -149,14 +224,35 @@ namespace GtkSharp
 
                 if(!handle.IsNullPointer)
                 {
-                    if(onWidgetButtonRelease == null)
+                    if(onWidgetButtonRelease.IsNullPointer())
                     {                        
                         onWidgetButtonRelease = OnButtonRelease;
                         Gtk.GtkSharpSignalConnect(out handle.pointer, "button-release-event", onWidgetButtonRelease.ToIntPtr(), out handle.pointer);
                     }
                 }
             }
-        }            
+        }
+
+        public WidgetMotionNotifyEvent onMotionNotify
+        {
+            get
+            {
+                return onMotionNotifyCallback;
+            }
+            set
+            {
+                onMotionNotifyCallback = value;
+
+                if(!handle.IsNullPointer)
+                {
+                    if(onWidgetMotionNotify.IsNullPointer())
+                    {                        
+                        onWidgetMotionNotify = OnMotionNotify;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "motion-notify-event", onWidgetMotionNotify.ToIntPtr(), out handle.pointer);
+                    }
+                }
+            }
+        }
 
         protected virtual void RegisterCallbacks()
         {
@@ -313,6 +409,38 @@ namespace GtkSharp
                 return onButtonRelease(button);
             }
             return true;
-        }        
+        }
+
+        bool OnMotionNotify(IntPtr widget, GdkEventMotionPointer eventMotion, IntPtr userData)
+        {
+            if(onMotionNotify != null)
+            {
+                GdkEventMotion motion = Marshal.PtrToStructure<GdkEventMotion>(eventMotion.pointer);
+                return onMotionNotify(motion);
+            }
+            return true;
+        }
+
+        void OnDestroy(IntPtr widget, IntPtr userData)
+        {
+            onDestroy?.Invoke();
+        }
+
+        bool OnDestroyed(IntPtr widget, GdkEventPointer evnt, IntPtr userData)
+        {
+            System.Console.WriteLine("ONDESTROYED");
+            if(onDestroyed != null)
+                return onDestroyed();
+            return false;
+        }
+
+        void OnSizeAllocate(IntPtr widget, GtkAllocationPointer allocation)
+        {
+            if(onSizeAllocate != null)
+            {
+                GtkAllocation a = Marshal.PtrToStructure<GtkAllocation>(allocation.pointer);
+                onSizeAllocate(a);
+            }
+        }
     }
 }

@@ -6,8 +6,8 @@ namespace GtkSharp
 {
     public class Menu : Widget
     {
-        public event GtkMenuMoveScrollEvent onMoveScroll;
-        public event GtkMenuPoppedUpEvent onPoppedUp;
+        public event MenuMoveScrollEvent onMoveScroll;
+        public event MenuPoppedUpEvent onPoppedUp;
 
         private GtkMenuMoveScrollCallback onMenuMoveScroll;
         private GtkMenuPoppedUpCallback onMenuPoppedUp;

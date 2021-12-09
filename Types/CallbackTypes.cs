@@ -3,15 +3,16 @@ using GtkSharp.Native;
 
 namespace GtkSharp
 {
+    public delegate void WidgetDestroyEvent();
+    public delegate bool WidgetDestroyedEvent();
+    public delegate void WidgetSizeAllocateEvent(GtkAllocation allocation);
     public delegate bool WidgetKeyPressEvent(GdkEventKey eventKey);
     public delegate bool WidgetKeyReleaseEvent(GdkEventKey eventKey);
     public delegate bool WidgetButtonPressEvent(GdkEventButton eventButton);
-    public delegate bool WidgetButtonReleaseEvent(GdkEventButton eventButton);    
+    public delegate bool WidgetButtonReleaseEvent(GdkEventButton eventButton);
+    public delegate bool WidgetMotionNotifyEvent(GdkEventMotion eventMotion);
     public delegate bool WidgetDrawEvent(Cairo cr);
 
-    public delegate void WindowClosingEvent();
-    public delegate void WindowClosedEvent();
-    public delegate void WindowResizeEvent(int width, int height);
     public delegate void ApplicationQuitEvent();    
 
     public delegate void ButtonActivateEvent();
@@ -55,8 +56,10 @@ namespace GtkSharp
     public delegate void GLAreaRealizeEvent();
     public delegate void GLAreaUnRealizeEvent();
 
-    public delegate void GtkLevelBarOffsetChangedEvent(string name);
+    public delegate void LevelBarOffsetChangedEvent(string name);
 
-    public delegate void GtkMenuMoveScrollEvent(GtkScrollType scrollType);
-    public delegate void GtkMenuPoppedUpEvent(bool flippedX, bool flippedY);
+    public delegate void MenuMoveScrollEvent(GtkScrollType scrollType);
+    public delegate void MenuPoppedUpEvent(bool flippedX, bool flippedY);
+
+    public delegate void MenuItemActivateEvent();
 }

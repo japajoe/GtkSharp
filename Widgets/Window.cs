@@ -8,12 +8,6 @@ namespace GtkSharp
     public class Window : Widget
     {
         private StringBuilder stringBuilder;
-        private GtkCallback onClosingNative;
-        private GtkWindowSizeAllocateCallback onSizeAllocateNative;
-
-        public event WindowClosingEvent onClosing;
-        public event WindowClosedEvent onClosed;
-        public event WindowResizeEvent onResize;
 
         public string Title
         {
@@ -55,15 +49,7 @@ namespace GtkSharp
         {
             stringBuilder = new StringBuilder(1024);
             NativeWindow.GtkSharpWindowCreate(out handle, type);
-            RegisterCallbacks();
-        }
-
-        protected override void RegisterCallbacks()
-        {
-            onClosingNative = OnClosing;
-            onSizeAllocateNative = OnSizeAllocate;            
-            Gtk.GtkSharpSignalConnect(out handle.pointer, "destroy", onClosingNative.ToIntPtr(), out handle.pointer);
-            Gtk.GtkSharpSignalConnect(out handle.pointer, "size-allocate", onSizeAllocateNative.ToIntPtr(), out handle.pointer);
+            onDestroy += OnClosing;            
         }
 
         public string GetTitle()
@@ -175,20 +161,10 @@ namespace GtkSharp
         {
             Destroy();
         }
-         
-        private void OnClosing(IntPtr widget, IntPtr data)
-        {
-            onClosing?.Invoke();
-            Destroy();
-            onClosed?.Invoke();
-        }
 
-        private void OnSizeAllocate(IntPtr widget, IntPtr allocation)
+        private void OnClosing()
         {
-            int width;
-            int height;
-            NativeWindow.GtkSharpWindowGetSize(out handle, out width, out height);
-            onResize?.Invoke(width, height);
+            onDestroyed?.Invoke();
         }
     }
 }

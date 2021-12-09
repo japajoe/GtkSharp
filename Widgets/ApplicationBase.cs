@@ -5,7 +5,7 @@ namespace GtkSharp
     public class ApplicationBase
     {        
         public Window window;
-        public event WindowClosingEvent onClosing;
+        
         public event ApplicationQuitEvent onQuit;
 
         private string title;
@@ -33,8 +33,8 @@ namespace GtkSharp
 
             Initialize();
 
-            window.onClosing += OnClosing;
-            window.onClosed += OnClosed;
+            window.onDestroyed += OnClosed;
+
             window.SetTitle(title);
             window.SetSize(width, height);
             window.Show();
@@ -56,15 +56,11 @@ namespace GtkSharp
             window.Close();
         }
 
-        private void OnClosing()
-        {
-            onClosing?.Invoke();
-        }
-
-        private void OnClosed()
+        private bool OnClosed()
         {
             onQuit?.Invoke();
             Gtk.GtkSharpMainQuit();
+            return true;
         }
     }
 }
