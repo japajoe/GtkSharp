@@ -26,8 +26,12 @@ namespace GtkSharp
         {
             Gtk.GtkSharpToggleButtonCreate(out handle, value, text);
             
-            onValueChangedNative = OnValueChanged;
+            RegisterCallbacks();
+        }
 
+        protected override void RegisterCallbacks()
+        {
+            onValueChangedNative = OnValueChanged;
             Gtk.GtkSharpSignalConnect(out handle.pointer, "toggled", onValueChangedNative.ToIntPtr(), out handle.pointer);
         }
 

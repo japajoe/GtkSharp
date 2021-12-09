@@ -57,7 +57,11 @@ namespace GtkSharp
 
             NativeEntry.GtkSharpEntryCreate(out handle);
             NativeEntry.GtkSharpEntryGetBuffer(out handle, out buffer);
+            RegisterCallbacks();
+        }
 
+        protected override void RegisterCallbacks()
+        {
             onActivateCallback = OnActivate;
             onBackspaceCallback = OnBackspace;
             onCopyClipboardCallback = OnCopyClipboard;
@@ -80,15 +84,8 @@ namespace GtkSharp
             Gtk.GtkSharpSignalConnect(out handle.pointer, "delete-from-cursor", onDeleteFromCursorCallback.ToIntPtr(), out handle.pointer);
             Gtk.GtkSharpSignalConnect(out handle.pointer, "icon-press", onIconPressCallback.ToIntPtr(), out handle.pointer);
             Gtk.GtkSharpSignalConnect(out handle.pointer, "icon-release", onIconReleaseCallback.ToIntPtr(), out handle.pointer);
-            Gtk.GtkSharpSignalConnect(out handle.pointer, "insert-at-cursor", onInsertAtCursorCallback.ToIntPtr(), out handle.pointer);
-            
-            
-            if(GtkVersion.IsSupportedFeature(3, 22, 27))
-            {
-                //Only available as of 3.22.27
-                Gtk.GtkSharpSignalConnect(out handle.pointer, "insert-emoji", onInsertEmojiCallback.ToIntPtr(), out handle.pointer);
-            }
-            
+            Gtk.GtkSharpSignalConnect(out handle.pointer, "insert-at-cursor", onInsertAtCursorCallback.ToIntPtr(), out handle.pointer);            
+            Gtk.GtkSharpSignalConnect(out handle.pointer, "insert-emoji", onInsertEmojiCallback.ToIntPtr(), out handle.pointer);            
             Gtk.GtkSharpSignalConnect(out handle.pointer, "move-cursor", onMoveCursorCallback.ToIntPtr(), out handle.pointer);
             Gtk.GtkSharpSignalConnect(out handle.pointer, "paste-clipboard", onPasteClipboardCallback.ToIntPtr(), out handle.pointer);
             Gtk.GtkSharpSignalConnect(out handle.pointer, "populate-popup", onPopulatePopupCallback.ToIntPtr(), out handle.pointer);            

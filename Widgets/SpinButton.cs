@@ -26,8 +26,12 @@ namespace GtkSharp
         {
             Gtk.GtkSharpSpinButtonCreate(out handle, value, valueMin, valueMax, stepSize);
             
-            onValueChangedNative = OnValueChanged;
+            RegisterCallbacks();
+        }
 
+        protected override void RegisterCallbacks()
+        {
+            onValueChangedNative = OnValueChanged;
             Gtk.GtkSharpSignalConnect(out handle.pointer, "value-changed", onValueChangedNative.ToIntPtr(), out handle.pointer);
         }
 

@@ -24,6 +24,12 @@ namespace GtkSharp.Native
     internal delegate void GtkEntryPasteClipboardCallback(IntPtr widget, IntPtr data);
     internal delegate void GtkEntryPopulatePopupCallback(IntPtr widget, IntPtr data);
 
+    internal delegate void GtkLabelActivateCurrentLinkCallback(IntPtr widget, IntPtr data);
+    internal delegate void GtkLabelActivateLinkCallback(IntPtr widget, IntPtr uri, IntPtr data);
+    internal delegate void GtkLabelCopyClipboardCallback(IntPtr widget, IntPtr data);
+    internal delegate void GtkLabelMoveCursorCallback(IntPtr widget, GtkMovementStep step, int count, bool extendSelection, IntPtr data);
+    internal delegate void GtkLabelPopulatePopupCallback(IntPtr widget, IntPtr menu, IntPtr data);
+
     internal delegate void GtkTextBufferChangedCallback(IntPtr widget, IntPtr data);
     internal delegate void GtkSourceBufferChangedCallback(IntPtr widget, IntPtr data);
     internal delegate void GtkEntryBufferDeletedCallback(IntPtr textbuffer, uint position, uint n_chars, IntPtr data);
@@ -35,8 +41,17 @@ namespace GtkSharp.Native
     internal delegate void GtkNoteBookSelectedIndexChangedCallback(IntPtr notebook, IntPtr page, uint page_num, IntPtr data);
     internal delegate void GDestroyNotify(IntPtr data);
     internal delegate bool GtkTickCallback(IntPtr widget, IntPtr frame_clock,  IntPtr user_data);
-    internal delegate void GtkGLAreaRealizeCallback(IntPtr area);
-    internal delegate void GtkGLAreaUnRealizeCallback(IntPtr area);
-    internal delegate bool GtkGLAreaRenderCallback(IntPtr area, IntPtr context);
+    
+    internal delegate void GtkGLAreaCreateContextCallback(IntPtr widget, IntPtr data);
+    internal delegate void GtkGLAreaResizeCallback(IntPtr widget, int width, int height, IntPtr data);
+    internal delegate void GtkGLAreaRealizeCallback(IntPtr widget);
+    internal delegate void GtkGLAreaUnRealizeCallback(IntPtr widget);
+    internal delegate bool GtkGLAreaRenderCallback(IntPtr widget, IntPtr context);
+
+    internal delegate void GtkLevelBarOffsetChangedCallback(IntPtr widget, IntPtr name, IntPtr data);
+
+    internal delegate void GtkMenuMoveScrollCallback(IntPtr widget, IntPtr scrollType, IntPtr data);
+    internal delegate void GtkMenuPoppedUpCallback(IntPtr widget, IntPtr flippedRect, IntPtr finalRect, bool flippedX, bool flippedY, IntPtr data);
+    
     internal delegate void GtkWindowSizeAllocateCallback(IntPtr widget, IntPtr allocation);
 }

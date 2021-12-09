@@ -54,32 +54,6 @@ namespace GtkSharp
         }
     }
 
-    public class Menu : Widget
-    {
-        public Menu()
-        {
-            Gtk.GtkSharpMenuCreate(out handle);
-        }
-
-        public void ShellAppend(MenuItem menuItem)
-        {
-            Gtk.GtkSharpMenuShellAppend(out handle.pointer, out menuItem.handle.pointer);
-        }
-    }
-
-    public class MenuItem : Widget
-    {
-        public MenuItem(string label)
-        {
-            Gtk.GtkSharpMenuItemCreateWithlabel(out handle, label);
-        }
-
-        public void SetSubMenu(Menu menu)
-        {
-            Gtk.GtkSharpMenuItemSetSubMenu(out handle.pointer, out menu.handle.pointer);
-        }
-    }
-
     public class MenuCreationInfo
     {    
         public string name;

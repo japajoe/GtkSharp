@@ -1,3 +1,4 @@
+using System;
 using GtkSharp.Native;
 using GtkSharp.Native.Widgets;
 
@@ -5,10 +6,9 @@ namespace GtkSharp
 {
     public class LevelBar : Widget
     {
-        public LevelBar(GtkOrientation orientation, double minValue, double maxValue)
-        {
-            NativeLevelBar.GtkSharpLevelBarCreate(out handle, minValue, maxValue);
-        }
+        public event GtkLevelBarOffsetChangedEvent onOffsetChanged;
+
+        private GtkLevelBarOffsetChangedCallback onLevelBarOffsetChanged;
 
         public double MinValue
         {
@@ -54,7 +54,19 @@ namespace GtkSharp
             {
                 SetMode(value);
             }
-        }        
+        }
+
+        public LevelBar(GtkOrientation orientation, double minValue, double maxValue)
+        {
+            NativeLevelBar.GtkSharpLevelBarCreate(out handle, minValue, maxValue);
+            RegisterCallbacks();
+        }
+
+        protected override void RegisterCallbacks()
+        {
+            onLevelBarOffsetChanged = OnOffsetChanged;
+            Gtk.GtkSharpSignalConnect(out handle.pointer, "offset-changed", onLevelBarOffsetChanged.ToIntPtr(), out handle.pointer);
+        }
 
         public void AddOffsetValue(double value, string name)
         {
@@ -134,6 +146,12 @@ namespace GtkSharp
                 return;
 
             NativeLevelBar.GtkSharpLevelBarSetMode(out handle, mode);
-        }        
+        }
+
+        private void OnOffsetChanged(IntPtr widget, IntPtr name, IntPtr data)
+        {
+            string n = MarshalHelper.MarshalPtrToString(name);
+            onOffsetChanged?.Invoke(n);
+        }
     }
 }

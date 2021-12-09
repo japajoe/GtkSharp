@@ -34,6 +34,11 @@ namespace GtkSharp
         public NoteBook()
         {
             Gtk.GtkSharpNoteBookCreate(out handle);
+            RegisterCallbacks();
+        }
+
+        protected override void RegisterCallbacks()
+        {
             onSelectedIndexChangedNative = OnSelectedIndexChanged;
             Gtk.GtkSharpSignalConnectAfter(out handle.pointer, "switch-page", onSelectedIndexChangedNative.ToIntPtr(), out handle.pointer);
         }

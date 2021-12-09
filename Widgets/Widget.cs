@@ -55,6 +55,11 @@ namespace GtkSharp
             }
         }
 
+        protected virtual void RegisterCallbacks()
+        {
+            
+        }
+
         private void RegisterDrawCallback()
         {
             if(handle.IsNullPointer)

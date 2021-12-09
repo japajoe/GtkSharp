@@ -7,16 +7,6 @@ namespace GtkSharp
 {
     public class Button : Widget
     {
-        private StringBuilder stringBuilder;
-        private string text = string.Empty;
-
-        private GtkButtonActivateCallback onButtonActivate;
-        private GtkButtonClickedCallback onButtonClicked;
-        private GtkButtonEnterCallback onButtonEnter;
-        private GtkButtonLeaveCallback onButtonLeave;
-        private GtkButtonPressedCallback onButtonPressed;
-        private GtkButtonReleasedCallback onButtonReleased;
-        
         public event ButtonActivateEvent onActivate;
         public event ButtonClickedEvent onClicked;
         public event ButtonEnterEvent onEnter;
@@ -24,12 +14,25 @@ namespace GtkSharp
         public event ButtonPressedEvent onPressed;
         public event ButtonReleasedEvent onReleased;
 
+        private StringBuilder stringBuilder;
+        private string text = string.Empty;
+        private GtkButtonActivateCallback onButtonActivate;
+        private GtkButtonClickedCallback onButtonClicked;
+        private GtkButtonEnterCallback onButtonEnter;
+        private GtkButtonLeaveCallback onButtonLeave;
+        private GtkButtonPressedCallback onButtonPressed;
+        private GtkButtonReleasedCallback onButtonReleased;
+
         public Button(string text)
         {
             this.text = text;
             stringBuilder = new StringBuilder(1024);
             NativeButton.GtkSharpButtonCreateWithLabel(out handle, text);
+            RegisterCallbacks();
+        }
 
+        protected override void RegisterCallbacks()
+        {
             onButtonActivate = OnActivate;
             onButtonClicked = OnClicked;
             onButtonEnter = OnEnter;
@@ -42,7 +45,7 @@ namespace GtkSharp
             Gtk.GtkSharpSignalConnect(out handle.pointer, "enter", onButtonEnter.ToIntPtr(), out handle.pointer);
             Gtk.GtkSharpSignalConnect(out handle.pointer, "leave", onButtonLeave.ToIntPtr(), out handle.pointer);
             Gtk.GtkSharpSignalConnect(out handle.pointer, "pressed", onButtonPressed.ToIntPtr(), out handle.pointer);
-            Gtk.GtkSharpSignalConnect(out handle.pointer, "released", onButtonReleased.ToIntPtr(), out handle.pointer);            
+            Gtk.GtkSharpSignalConnect(out handle.pointer, "released", onButtonReleased.ToIntPtr(), out handle.pointer);
         }
 
         public string GetText()

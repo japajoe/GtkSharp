@@ -28,6 +28,11 @@ namespace GtkSharp
     public delegate void EntryPasteClipboardEvent();
     public delegate void EntryPopulatePopupEvent();
 
+    public delegate void LabelActivateCurrentLinkEvent();
+    public delegate void LabelActivateLinkEvent(string uri);
+    public delegate void LabelCopyClipboardEvent();
+    public delegate void LabelMoveCursorEvent(GtkMovementStep step, int count);
+    public delegate void LabelPopulatePopupEvent(Menu menu);
 
     public delegate void EntryChangedEvent();
     public delegate void EntrySubmitEvent();
@@ -38,7 +43,15 @@ namespace GtkSharp
     public delegate void ToggleButtonValueChangedEvent();
     public delegate void NoteBookSelectedIndexChanged(uint index);
     public delegate void MenuItemClickedEvent();
+    
+    public delegate void GLAreaCreateContextEvent();
+    public delegate void GLAreaResizeEvent(int width, int height);
     public delegate void GLAreaRenderEvent();
     public delegate void GLAreaRealizeEvent();
     public delegate void GLAreaUnRealizeEvent();
+
+    public delegate void GtkLevelBarOffsetChangedEvent(string name);
+
+    public delegate void GtkMenuMoveScrollEvent(GtkScrollType scrollType);
+    public delegate void GtkMenuPoppedUpEvent(bool flippedX, bool flippedY);
 }

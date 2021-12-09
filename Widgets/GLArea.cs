@@ -6,10 +6,14 @@ namespace GtkSharp
 {
     public class GLArea : Widget
     {
+        public event GLAreaCreateContextEvent onCreateContext;
+        public event GLAreaResizeEvent onResize;
         public event GLAreaRenderEvent onRender;
         public event GLAreaRealizeEvent onRealize;
         public event GLAreaUnRealizeEvent onUnRealize;
 
+        private GtkGLAreaCreateContextCallback onGLAreaCreateContext;
+        private GtkGLAreaResizeCallback onGLAreaResize;
         private GtkGLAreaRealizeCallback onGLAreaRealize;
         private GtkGLAreaUnRealizeCallback onGLAreaUnRealize;
         private GtkGLAreaRenderCallback onGLAreaRender;
@@ -27,15 +31,22 @@ namespace GtkSharp
             }
         }
 
-
         public GLArea()
         {
             NativeGLArea.GtkSharpGLAreaCreate(out handle);
+            RegisterCallbacks();
+        }
 
+        protected override void RegisterCallbacks()
+        {
+            onGLAreaCreateContext = OnCreateContext;
+            onGLAreaResize = OnResize;
             onGLAreaRealize = OnRealize;
             onGLAreaUnRealize = OnUnRealize;
             onGLAreaRender = OnRender;
 
+            Gtk.GtkSharpSignalConnect(out handle.pointer, "create-context", onGLAreaCreateContext.ToIntPtr(), out handle.pointer);
+            Gtk.GtkSharpSignalConnect(out handle.pointer, "resize", onGLAreaResize.ToIntPtr(), out handle.pointer);
             Gtk.GtkSharpSignalConnect(out handle.pointer, "realize", onGLAreaRealize.ToIntPtr(), out handle.pointer);
             Gtk.GtkSharpSignalConnect(out handle.pointer, "unrealize", onGLAreaUnRealize.ToIntPtr(), out handle.pointer);
             Gtk.GtkSharpSignalConnect(out handle.pointer, "render", onGLAreaRender.ToIntPtr(), out handle.pointer);
@@ -160,6 +171,17 @@ namespace GtkSharp
 
             NativeGLArea.GtkSharpGLAreaSetAutoRender(out handle, auto);
         }
+
+        void OnCreateContext(IntPtr area, IntPtr data)
+        {
+            NativeGLArea.GtkSharpGLAreaGetContext(out handle, out context);
+            onCreateContext?.Invoke();
+        }
+
+        void OnResize(IntPtr area, int width, int height, IntPtr data)
+        {
+            onResize?.Invoke(width, height);
+        }        
 
         private void OnRealize(IntPtr area)
         {
