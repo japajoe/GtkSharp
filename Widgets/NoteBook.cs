@@ -1,5 +1,6 @@
 using System;
 using GtkSharp.Native;
+using GtkSharp.Native.Widgets;
 
 namespace GtkSharp
 {
@@ -53,7 +54,7 @@ namespace GtkSharp
 
         public NoteBook()
         {
-            Gtk.GtkSharpNoteBookCreate(out handle);
+            NativeNoteBook.GtkSharpNotebookCreate(out handle);
         }
 
         public void Append(Widget child, Widget label)
@@ -61,7 +62,8 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpNoteBookAppend(out handle, out child.handle.pointer, out label.handle.pointer);
+            int index;
+            NativeNoteBook.GtkSharpNotebookAppendPage(out handle, out child.handle, out label.handle, out index);
         }
 
         public void Remove(int index)
@@ -69,7 +71,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpNoteBookRemove(out handle, index);
+            NativeNoteBook.GtkSharpNotebookRemovePage(out handle, index);
         }
 
         public int GetPageCount()
@@ -77,7 +79,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return 0;
 
-            Gtk.GtkSharpNoteBookGetPageCount(out handle, out pageCount);
+            NativeNoteBook.GtkSharpNotebookGetNPages(out handle, out pageCount);
 
             return pageCount;
         }
@@ -87,7 +89,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return -1;
 
-            Gtk.GtkSharpNoteBookGetSelectedIndex(out handle, out selectedIndex);
+            NativeNoteBook.GtkSharpNotebookGetCurrentPage(out handle, out selectedIndex);
             return selectedIndex;
         }
 
@@ -96,7 +98,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            Gtk.GtkSharpNoteBookSetSelectedIndex(out handle, index);
+            NativeNoteBook.GtkSharpNotebookSetCurrentPage(out handle, index);
             selectedIndex = index;
         }
 

@@ -86,24 +86,6 @@ namespace GtkSharp.Native
         internal static extern void GtkSharpToggleButtonSetValue(out GtkWidgetPointer widget, bool value);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNoteBookCreate(out GtkWidgetPointer widget);
-
-        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNoteBookAppend(out GtkWidgetPointer widget, out IntPtr child, out IntPtr tabLabel);
-
-        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNoteBookRemove(out GtkWidgetPointer widget, int index);
-
-        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNoteBookGetSelectedIndex(out GtkWidgetPointer widget, out int index);
-
-        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNoteBookSetSelectedIndex(out GtkWidgetPointer widget, int index);
-        
-        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNoteBookGetPageCount(out GtkWidgetPointer widget, out int count);
-
-        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpDrawingAreaCreate(out GtkWidgetPointer widget, int width, int height);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
