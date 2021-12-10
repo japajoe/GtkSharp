@@ -5,10 +5,9 @@ namespace GtkSharp
 {
     public class SpinButton : Widget
     {
-        public event SpinButtonValueChangedEvent onChanged;
-
         private double buttonValue;
-        private GtkSpinButtonValueChangedCallback onValueChangedNative;
+        private event SpinButtonValueChangedEvent onChangedCallback;
+        private GtkSpinButtonValueChangedCallback onSpinButtonValueChanged;
 
         public double Value
         {
@@ -22,17 +21,29 @@ namespace GtkSharp
             }
         }
 
+        public SpinButtonValueChangedEvent onChanged
+        {
+            get
+            {
+                return onChangedCallback;
+            }
+            set
+            {
+                onChangedCallback = value;
+                if(!handle.IsNullPointer)
+                {
+                    if(onSpinButtonValueChanged.IsNullPointer())
+                    {
+                        onSpinButtonValueChanged = OnValueChanged;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "value-changed", onSpinButtonValueChanged.ToIntPtr(), out handle.pointer);
+                    }
+                }
+            }
+        }
+
         public SpinButton(double value, double valueMin, double valueMax, double stepSize)
         {
             Gtk.GtkSharpSpinButtonCreate(out handle, value, valueMin, valueMax, stepSize);
-            
-            RegisterCallbacks();
-        }
-
-        protected override void RegisterCallbacks()
-        {
-            onValueChangedNative = OnValueChanged;
-            Gtk.GtkSharpSignalConnect(out handle.pointer, "value-changed", onValueChangedNative.ToIntPtr(), out handle.pointer);
         }
 
         public void SetValue(double value)
@@ -55,7 +66,7 @@ namespace GtkSharp
 
         private void OnValueChanged(IntPtr widget, IntPtr data)
         {
-            onChanged?.Invoke();
+            onChangedCallback?.Invoke();
         }
     }
 }

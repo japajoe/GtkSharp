@@ -1,4 +1,3 @@
-using System;
 using System.Text;
 using GtkSharp.Native;
 using GtkSharp.Native.Widgets;

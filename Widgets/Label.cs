@@ -7,11 +7,11 @@ namespace GtkSharp
 {
     public class Label : Widget
     {
-        public event LabelActivateCurrentLinkEvent onActivateCurrentLink;
-        public event LabelActivateLinkEvent onActivateLink;
-        public event LabelCopyClipboardEvent onCopyClipboard;
-        public event LabelMoveCursorEvent onMoveCursor;
-        public event LabelPopulatePopupEvent onPopulatePopup;
+        private event LabelActivateCurrentLinkEvent onActivateCurrentLinkCallback;
+        private event LabelActivateLinkEvent onActivateLinkCallback;
+        private event LabelCopyClipboardEvent onCopyClipboardCallback;
+        private event LabelMoveCursorEvent onMoveCursorCallback;
+        private event LabelPopulatePopupEvent onPopulatePopupCallback;
 
         private GtkLabelActivateCurrentLinkCallback onLabelActivateCurrentLink;
         private GtkLabelActivateLinkCallback onLabelActivateLink;
@@ -34,35 +34,116 @@ namespace GtkSharp
             }
         }
 
+        public LabelActivateCurrentLinkEvent onActivateCurrentLink
+        {
+            get
+            {
+                return onActivateCurrentLinkCallback;
+            }
+            set
+            {
+                onActivateCurrentLinkCallback = value;
+                if(!handle.IsNullPointer)
+                {
+                    if(onLabelActivateCurrentLink.IsNullPointer())
+                    {
+                        onLabelActivateCurrentLink = OnActivateCurrentLink;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "activate-current-link", onLabelActivateCurrentLink.ToIntPtr(), out handle.pointer);
+                    }
+                }
+            }
+        }
+
+        public LabelActivateLinkEvent onActivateLink
+        {
+            get
+            {
+                return onActivateLinkCallback;
+            }
+            set
+            {
+                onActivateLinkCallback = value;
+                if(!handle.IsNullPointer)
+                {
+                    if(onLabelActivateLink.IsNullPointer())
+                    {
+                        onLabelActivateLink = OnActivateLink;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "activate-link", onLabelActivateLink.ToIntPtr(), out handle.pointer);
+                    }
+                }
+            }
+        }
+
+        public LabelCopyClipboardEvent onCopyClipboard
+        {
+            get
+            {
+                return onCopyClipboardCallback;
+            }
+            set
+            {
+                onCopyClipboardCallback = value;
+                if(!handle.IsNullPointer)
+                {
+                    if(onLabelCopyClipboard.IsNullPointer())
+                    {
+                        onLabelCopyClipboard = OnCopyClipboard;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "copy-clipboard", onLabelCopyClipboard.ToIntPtr(), out handle.pointer);
+                    }
+                }
+            }
+        }
+
+        public LabelMoveCursorEvent onMoveCursor
+        {
+            get
+            {
+                return onMoveCursorCallback;
+            }
+            set
+            {
+                onMoveCursorCallback = value;
+                if(!handle.IsNullPointer)
+                {
+                    if(onLabelMoveCursor.IsNullPointer())
+                    {
+                        onLabelMoveCursor = OnMoveCursor;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "move-cursor", onLabelMoveCursor.ToIntPtr(), out handle.pointer);
+                    }
+                }
+            }
+        }
+
+        public LabelPopulatePopupEvent onPopulatePopup
+        {
+            get
+            {
+                return onPopulatePopupCallback;
+            }
+            set
+            {
+                onPopulatePopupCallback = value;
+                if(!handle.IsNullPointer)
+                {
+                    if(onLabelPopulatePopup.IsNullPointer())
+                    {
+                        onLabelPopulatePopup = OnPopulatePopup;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "populate-popup", onLabelPopulatePopup.ToIntPtr(), out handle.pointer);
+                    }
+                }
+            }
+        }
+
         public Label()
         {
             stringBuilder = new StringBuilder(1024);
             NativeLabel.GtkSharpLabelCreate(out handle, "Label");
-
-            RegisterCallbacks();
         }
 
         public Label(string text)
         {
             stringBuilder = new StringBuilder(1024);
             NativeLabel.GtkSharpLabelCreate(out handle, text);
-
-            RegisterCallbacks();
-        }
-
-        protected override void RegisterCallbacks()
-        {
-            onLabelActivateCurrentLink = OnActivateCurrentLink;
-            onLabelActivateLink = OnActivateLink;
-            onLabelCopyClipboard = OnCopyClipboard;
-            onLabelMoveCursor = OnMoveCursor;
-            onLabelPopulatePopup = OnPopulatePopup;
-
-            Gtk.GtkSharpSignalConnect(out handle.pointer, "activate-current-link", onLabelActivateCurrentLink.ToIntPtr(), out handle.pointer);
-            Gtk.GtkSharpSignalConnect(out handle.pointer, "activate-link", onLabelActivateLink.ToIntPtr(), out handle.pointer);
-            Gtk.GtkSharpSignalConnect(out handle.pointer, "copy-clipboard", onLabelCopyClipboard.ToIntPtr(), out handle.pointer);
-            Gtk.GtkSharpSignalConnect(out handle.pointer, "move-cursor", onLabelMoveCursor.ToIntPtr(), out handle.pointer);
-            Gtk.GtkSharpSignalConnect(out handle.pointer, "populate-popup", onLabelPopulatePopup.ToIntPtr(), out handle.pointer);
         }
 
         public string GetText()
@@ -96,29 +177,29 @@ namespace GtkSharp
 
         void OnActivateCurrentLink(IntPtr widget, IntPtr data)
         {
-            onActivateCurrentLink?.Invoke();
+            onActivateCurrentLinkCallback?.Invoke();
         }
 
         void OnActivateLink(IntPtr widget, IntPtr uri, IntPtr data)
         {
             string u = MarshalHelper.MarshalPtrToString(uri);
-            onActivateLink?.Invoke(u);
+            onActivateLinkCallback?.Invoke(u);
         }
 
         void OnCopyClipboard(IntPtr widget, IntPtr data)
         {
-            onCopyClipboard?.Invoke();
+            onCopyClipboardCallback?.Invoke();
         }
 
         void OnMoveCursor(IntPtr widget, GtkMovementStep step, int count, bool extendSelection, IntPtr data)
         {
-            onMoveCursor.Invoke(step, count);
+            onMoveCursorCallback.Invoke(step, count);
         }
 
         void OnPopulatePopup(IntPtr widget, IntPtr menu, IntPtr data)
         {
             Menu m = new Menu(menu);
-            onPopulatePopup?.Invoke(m);
+            onPopulatePopupCallback?.Invoke(m);
         }
     }
 }

@@ -7,6 +7,9 @@ namespace GtkSharp.Native.Widgets
     internal static class NativeTextBuffer
     {
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpTextBufferCreate(out GtkTextBufferPointer buffer, out GtkTextTagTablePointer table);
+
+        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpTextBufferSetText(out GtkTextBufferPointer buffer, string text, int length);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]

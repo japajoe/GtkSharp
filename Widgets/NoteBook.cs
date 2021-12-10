@@ -5,9 +5,9 @@ namespace GtkSharp
 {
     public class NoteBook : Widget
     {
-        public event NoteBookSelectedIndexChanged onSelectedIndexChanged;
+        private event NoteBookSelectedIndexChanged onSelectedIndexChangedCallback;
 
-        private GtkNoteBookSelectedIndexChangedCallback onSelectedIndexChangedNative;
+        private GtkNoteBookSelectedIndexChangedCallback onNoteBookSelectedIndexChanged;
         private int pageCount;
         private int selectedIndex;
 
@@ -31,16 +31,29 @@ namespace GtkSharp
             }
         }
 
+        public NoteBookSelectedIndexChanged onSelectedIndexChanged
+        {
+            get
+            {
+                return onSelectedIndexChangedCallback;
+            }
+            set
+            {
+                onSelectedIndexChangedCallback = value;
+                if(!handle.IsNullPointer)
+                {
+                    if(onNoteBookSelectedIndexChanged.IsNullPointer())
+                    {
+                        onNoteBookSelectedIndexChanged = OnSelectedIndexChanged;
+                        Gtk.GtkSharpSignalConnectAfter(out handle.pointer, "switch-page", onNoteBookSelectedIndexChanged.ToIntPtr(), out handle.pointer);
+                    }
+                }
+            }
+        }
+
         public NoteBook()
         {
             Gtk.GtkSharpNoteBookCreate(out handle);
-            RegisterCallbacks();
-        }
-
-        protected override void RegisterCallbacks()
-        {
-            onSelectedIndexChangedNative = OnSelectedIndexChanged;
-            Gtk.GtkSharpSignalConnectAfter(out handle.pointer, "switch-page", onSelectedIndexChangedNative.ToIntPtr(), out handle.pointer);
         }
 
         public void Append(Widget child, Widget label)
@@ -89,7 +102,7 @@ namespace GtkSharp
 
         private void OnSelectedIndexChanged(IntPtr notebook, IntPtr page, uint page_num, IntPtr data)
         {
-            onSelectedIndexChanged?.Invoke(page_num);
+            onSelectedIndexChangedCallback?.Invoke(page_num);
         }
     }
 }

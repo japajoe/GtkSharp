@@ -7,12 +7,12 @@ namespace GtkSharp
 {
     public class Button : Widget
     {
-        public event ButtonActivateEvent onActivate;
-        public event ButtonClickedEvent onClicked;
-        public event ButtonEnterEvent onEnter;
-        public event ButtonLeaveEvent onLeave;
-        public event ButtonPressedEvent onPressed;
-        public event ButtonReleasedEvent onReleased;
+        private event ButtonActivateEvent onActivateCallback;
+        private event ButtonClickedEvent onClickedCallback;
+        private event ButtonEnterEvent onEnterCallback;
+        private event ButtonLeaveEvent onLeaveCallback;
+        private event ButtonPressedEvent onPressedCallback;
+        private event ButtonReleasedEvent onReleasedCallback;
 
         private StringBuilder stringBuilder;
         private string text = string.Empty;
@@ -23,29 +23,131 @@ namespace GtkSharp
         private GtkButtonPressedCallback onButtonPressed;
         private GtkButtonReleasedCallback onButtonReleased;
 
+        public ButtonActivateEvent onActivate
+        {
+            get
+            {
+                return onActivateCallback;
+            }
+            set
+            {
+                onActivateCallback = value;
+                if(!handle.IsNullPointer)
+                {
+                    if(onButtonActivate.IsNullPointer())
+                    {
+                        onButtonActivate = OnActivate;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "activate", onButtonActivate.ToIntPtr(), out handle.pointer);
+                    }
+                }
+            }
+        }
+
+        public ButtonClickedEvent onClicked
+        {
+            get
+            {
+                return onClickedCallback;
+            }
+            set
+            {
+                onClickedCallback = value;
+                if(!handle.IsNullPointer)
+                {
+                    if(onButtonClicked.IsNullPointer())
+                    {
+                        onButtonClicked = OnClicked;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "clicked", onButtonClicked.ToIntPtr(), out handle.pointer);
+                    }
+                }
+            }
+        }
+
+        public ButtonEnterEvent onEnter
+        {
+            get
+            {
+                return onEnterCallback;
+            }
+            set
+            {
+                onEnterCallback = value;
+                if(!handle.IsNullPointer)
+                {
+                    if(onButtonEnter.IsNullPointer())
+                    {
+                        onButtonEnter = OnEnter;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "enter", onButtonEnter.ToIntPtr(), out handle.pointer);
+                    }
+                }
+            }
+        }
+
+        public ButtonLeaveEvent onLeave
+        {
+            get
+            {
+                return onLeaveCallback;
+            }
+            set
+            {
+                onLeaveCallback = value;
+                if(!handle.IsNullPointer)
+                {
+                    if(onButtonLeave.IsNullPointer())
+                    {
+                        onButtonLeave = OnLeave;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "leave", onButtonLeave.ToIntPtr(), out handle.pointer);
+                    }
+                }
+            }
+        }
+
+        public ButtonPressedEvent onPressed
+        {
+            get
+            {
+                return onPressedCallback;
+            }
+            set
+            {
+                onPressedCallback = value;
+                if(!handle.IsNullPointer)
+                {
+                    if(onButtonPressed.IsNullPointer())
+                    {
+                        onButtonPressed = OnPressed;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "pressed", onButtonPressed.ToIntPtr(), out handle.pointer);
+                    }
+                }
+            }
+        }
+
+        public ButtonReleasedEvent onReleased
+        {
+            get
+            {
+                return onReleasedCallback;
+            }
+            set
+            {
+                onReleasedCallback = value;
+                if(!handle.IsNullPointer)
+                {
+                    if(onButtonReleased.IsNullPointer())
+                    {
+                        onButtonReleased = OnReleased;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "released", onButtonReleased.ToIntPtr(), out handle.pointer);
+                    }
+                }
+            }
+        }
+
         public Button(string text)
         {
             this.text = text;
             stringBuilder = new StringBuilder(1024);
             NativeButton.GtkSharpButtonCreateWithLabel(out handle, text);
-            RegisterCallbacks();
-        }
-
-        protected override void RegisterCallbacks()
-        {
-            onButtonActivate = OnActivate;
-            onButtonClicked = OnClicked;
-            onButtonEnter = OnEnter;
-            onButtonLeave = OnLeave;
-            onButtonPressed = OnPressed;
-            onButtonReleased = OnReleased;
-            
-            Gtk.GtkSharpSignalConnect(out handle.pointer, "activate", onButtonActivate.ToIntPtr(), out handle.pointer);
-            Gtk.GtkSharpSignalConnect(out handle.pointer, "clicked", onButtonClicked.ToIntPtr(), out handle.pointer);
-            Gtk.GtkSharpSignalConnect(out handle.pointer, "enter", onButtonEnter.ToIntPtr(), out handle.pointer);
-            Gtk.GtkSharpSignalConnect(out handle.pointer, "leave", onButtonLeave.ToIntPtr(), out handle.pointer);
-            Gtk.GtkSharpSignalConnect(out handle.pointer, "pressed", onButtonPressed.ToIntPtr(), out handle.pointer);
-            Gtk.GtkSharpSignalConnect(out handle.pointer, "released", onButtonReleased.ToIntPtr(), out handle.pointer);
         }
 
         public string GetText()
@@ -93,32 +195,32 @@ namespace GtkSharp
 
         private void OnActivate(IntPtr widget, IntPtr data)
         {
-            onActivate?.Invoke();
+            onActivateCallback?.Invoke();
         }        
 
         private void OnClicked(IntPtr widget, IntPtr data)
         {
-            onClicked?.Invoke();
+            onClickedCallback?.Invoke();
         }
 
         private void OnEnter(IntPtr widget, IntPtr data)
         {
-            onEnter?.Invoke();
+            onEnterCallback?.Invoke();
         }
 
         private void OnLeave(IntPtr widget, IntPtr data)
         {
-            onLeave?.Invoke();
+            onLeaveCallback?.Invoke();
         }        
 
         private void OnPressed(IntPtr widget, IntPtr data)
         {
-            onPressed?.Invoke();
+            onPressedCallback?.Invoke();
         }
 
         private void OnReleased(IntPtr widget, IntPtr data)
         {
-            onReleased?.Invoke();
+            onReleasedCallback?.Invoke();
         }        
     }
 }
