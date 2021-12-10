@@ -86,7 +86,7 @@ namespace GtkSharp
                     if(onGLAreaRenderCallback.IsNullPointer())
                     {
                         onGLAreaRenderCallback = OnRender;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "realize", onGLAreaRealizeCallback.ToIntPtr(), out handle.pointer);
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "render", onGLAreaRenderCallback.ToIntPtr(), out handle.pointer);
                     }
                 }
             }
@@ -106,7 +106,7 @@ namespace GtkSharp
                     if(onGLAreaRealizeCallback.IsNullPointer())
                     {
                         onGLAreaRealizeCallback = OnRealize;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "unrealize", onGLAreaUnRealizeCallback.ToIntPtr(), out handle.pointer);
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "realize", onGLAreaRealizeCallback.ToIntPtr(), out handle.pointer);
                     }
                 }
             }
@@ -126,7 +126,7 @@ namespace GtkSharp
                     if(onGLAreaUnRealizeCallback.IsNullPointer())
                     {
                         onGLAreaUnRealizeCallback = OnUnRealize;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "render", onGLAreaRenderCallback.ToIntPtr(), out handle.pointer);
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "unrealize", onGLAreaUnRealizeCallback.ToIntPtr(), out handle.pointer);
                     }
                 }
             }
