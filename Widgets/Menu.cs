@@ -6,11 +6,51 @@ namespace GtkSharp
 {
     public class Menu : Widget
     {
-        public event MenuMoveScrollEvent onMoveScroll;
-        public event MenuPoppedUpEvent onPoppedUp;
+        private event MenuMoveScrollEvent onMoveScrollEvent;
+        private event MenuPoppedUpEvent onPoppedUpEvent;
 
-        private GtkMenuMoveScrollCallback onMenuMoveScroll;
-        private GtkMenuPoppedUpCallback onMenuPoppedUp;
+        private GtkMenuMoveScrollCallback onMenuMoveScrollCallback;
+        private GtkMenuPoppedUpCallback onMenuPoppedUpCallback;
+
+        public MenuMoveScrollEvent onMoveScroll
+        {
+            get
+            {
+                return onMoveScrollEvent;
+            }
+            set
+            {
+                onMoveScrollEvent = value;
+                if(!handle.IsNullPointer)
+                {
+                    if(onMenuMoveScrollCallback.IsNullPointer())
+                    {
+                        onMenuMoveScrollCallback = OnMoveScroll;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "move-scroll", onMenuMoveScrollCallback.ToIntPtr(), out handle.pointer);
+                    }
+                }
+            }
+        }
+
+        public MenuPoppedUpEvent onPoppedUp
+        {
+            get
+            {
+                return onPoppedUpEvent;
+            }
+            set
+            {
+                onPoppedUpEvent = value;
+                if(!handle.IsNullPointer)
+                {
+                    if(onMenuPoppedUpCallback.IsNullPointer())
+                    {
+                        onMenuPoppedUpCallback = OnPoppedUp;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "popped-up", onMenuPoppedUpCallback.ToIntPtr(), out handle.pointer);
+                    }
+                }
+            }
+        }        
 
         public Menu(IntPtr widgetPointer)
         {
@@ -20,16 +60,7 @@ namespace GtkSharp
         public Menu()
         {
             Gtk.GtkSharpMenuCreate(out handle);
-            RegisterCallbacks();
         }
-
-        protected override void RegisterCallbacks()
-        {
-            onMenuMoveScroll = OnMoveScroll;
-            onMenuPoppedUp = OnPoppedUp;
-            Gtk.GtkSharpSignalConnect(out handle.pointer, "move-scroll", onMenuMoveScroll.ToIntPtr(), out handle.pointer);
-            Gtk.GtkSharpSignalConnect(out handle.pointer, "popped-up", onMenuPoppedUp.ToIntPtr(), out handle.pointer);
-        }        
 
         public void ShellAppend(MenuItem menuItem)
         {
@@ -40,12 +71,12 @@ namespace GtkSharp
         {
             int val = Marshal.ReadInt32(scrollType);
             GtkScrollType st = (GtkScrollType)val;
-            onMoveScroll?.Invoke(st);
+            onMoveScrollEvent?.Invoke(st);
         }
 
         private void OnPoppedUp(IntPtr widget, IntPtr flippedRect, IntPtr finalRect, bool flippedX, bool flippedY, IntPtr data)
         {
-            onPoppedUp?.Invoke(flippedX, flippedY);
+            onPoppedUpEvent?.Invoke(flippedX, flippedY);
         }
     }
 }

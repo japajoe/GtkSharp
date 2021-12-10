@@ -5,10 +5,10 @@ namespace GtkSharp
 {
     public class ToggleButton : Widget
     {
-        private event ToggleButtonValueChangedEvent onChangedCallback;
+        private event ToggleButtonValueChangedEvent onChangedEnter;
 
         private bool buttonValue;
-        private GtkToggleButtonValueChangedCallback onToggleValueChanged;
+        private GtkToggleButtonValueChangedCallback onToggleValueChangedCallback;
 
         public bool Value
         {
@@ -26,17 +26,17 @@ namespace GtkSharp
         {
             get
             {
-                return onChangedCallback;
+                return onChangedEnter;
             }
             set
             {
-                onChangedCallback = value;
+                onChangedEnter = value;
                 if(!handle.IsNullPointer)
                 {
-                    if(onToggleValueChanged.IsNullPointer())
+                    if(onToggleValueChangedCallback.IsNullPointer())
                     {
-                        onToggleValueChanged = OnValueChanged;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "toggled", onToggleValueChanged.ToIntPtr(), out handle.pointer);
+                        onToggleValueChangedCallback = OnValueChanged;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "toggled", onToggleValueChangedCallback.ToIntPtr(), out handle.pointer);
                     }
                 }
             }
@@ -67,7 +67,7 @@ namespace GtkSharp
 
         private void OnValueChanged(IntPtr widget, IntPtr data)
         {
-            onChangedCallback?.Invoke();
+            onChangedEnter?.Invoke();
         }
     }
 }

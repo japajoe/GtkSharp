@@ -7,36 +7,37 @@ namespace GtkSharp
 {
     public class Entry : Widget
     {
-        private event EntryActivateEvent onActivateCallback;
-        private event EntryBackspaceEvent onBackspaceCallback;
-        private event EntryCopyClipboardEvent onCopyClipboardCallback;
-        private event EntryCutClipboardEvent onCutClipboardCallback;
-        private event EntryDeleteFromCursorEvent onDeleteFromCursorCallback;
-        private event EntryIconPressEvent onIconPressCallback;
-        private event EntryIconReleaseEvent onIconReleaseCallback;
-        private event EntryInsertAtCursorEvent onInsertAtCursorCallback;
-        private event EntryInsertEmojiEvent onInsertEmojiCallback;
-        private event EntryMoveCursorEvent onMoveCursorCallback;
-        private event EntryPasteClipboardEvent onPasteClipboardCallback;
-        private event EntryPopulatePopupEvent onPopulatePopupCallback;
-        private event EntryBufferDeletedEvent onDeletedCallback;
-        private event EntryBufferInsertedEvent onInsertedCallback;
-        private event EntryChangedEvent onChangedCallback;
+        private event EntryActivateEvent onActivateEvent;
+        private event EntryBackspaceEvent onBackspaceEvent;
+        private event EntryCopyClipboardEvent onCopyClipboardEvent;
+        private event EntryCutClipboardEvent onCutClipboardEvent;
+        private event EntryDeleteFromCursorEvent onDeleteFromCursorEvent;
+        private event EntryIconPressEvent onIconPressEvent;
+        private event EntryIconReleaseEvent onIconReleaseEvent;
+        private event EntryInsertAtCursorEvent onInsertAtCursorEvent;
+        private event EntryInsertEmojiEvent onInsertEmojiEvent;
+        private event EntryMoveCursorEvent onMoveCursorEvent;
+        private event EntryPasteClipboardEvent onPasteClipboardEvent;
+        private event EntryPopulatePopupEvent onPopulatePopupEvent;
+        private event EntryBufferDeletedEvent onDeletedEvent;
+        private event EntryBufferInsertedEvent onInsertedEvent;
+        private event EntryChangedEvent onChangedEvent;
 
-        private GtkEntryActivateCallback onEntryActivate;
-        private GtkEntryBackspaceCallback onEntryBackspace;
-        private GtkEntryCopyClipboardCallback onEntryCopyClipboard;
-        private GtkEntryCutClipboardCallback onEntryCutClipboard;
-        private GtkEntryDeleteFromCursorCallback onEntryDeleteFromCursor;
-        private GtkEntryIconPressCallback onEntryIconPress;
-        private GtkEntryIconReleaseCallback onEntryIconRelease;
-        private GtkEntryInsertAtCursorCallback onEntryInsertAtCursor;
-        private GtkEntryInsertEmojiCallback onEntryInsertEmoji;
-        private GtkEntryMoveCursorCallback onEntryMoveCursor;
-        private GtkEntryPasteClipboardCallback onEntryPasteClipboard;
-        private GtkEntryPopulatePopupCallback onEntryPopulatePopup;
-        private GtkEntryBufferDeletedCallback onEntryBufferDeleted;
-        private GtkEntryBufferInsertedCallback onEntryBufferInserted;
+        private GtkEntryActivateCallback onEntryActivateCallback;
+        private GtkEntryBackspaceCallback onEntryBackspaceCallback;
+        private GtkEntryCopyClipboardCallback onEntryCopyClipboardCallback;
+        private GtkEntryCutClipboardCallback onEntryCutClipboardCallback;
+        private GtkEntryDeleteFromCursorCallback onEntryDeleteFromCursorCallback;
+        private GtkEntryIconPressCallback onEntryIconPressCallback;
+        private GtkEntryIconReleaseCallback onEntryIconReleaseCallback;
+        private GtkEntryInsertAtCursorCallback onEntryInsertAtCursorCallback;
+        private GtkEntryInsertEmojiCallback onEntryInsertEmojiCallback;
+        private GtkEntryMoveCursorCallback onEntryMoveCursorCallback;
+        private GtkEntryPasteClipboardCallback onEntryPasteClipboardCallback;
+        private GtkEntryPopulatePopupCallback onEntryPopulatePopupCallback;
+        private GtkEntryBufferDeletedCallback onEntryBufferDeletedCallback;
+        private GtkEntryBufferInsertedCallback onEntryBufferInsertedCallback;
+        
         private GtkEntryBufferPointer buffer;
         private StringBuilder stringBuilder;
         private string text = string.Empty;
@@ -57,17 +58,17 @@ namespace GtkSharp
         {
             get
             {
-                return onActivateCallback;
+                return onActivateEvent;
             }
             set
             {
-                onActivateCallback = value;
+                onActivateEvent = value;
                 if(!handle.IsNullPointer)
                 {
-                    if(onEntryActivate.IsNullPointer())
+                    if(onEntryActivateCallback.IsNullPointer())
                     {
-                        onEntryActivate = OnActivate;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "activate", onEntryActivate.ToIntPtr(), out handle.pointer);
+                        onEntryActivateCallback = OnActivate;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "activate", onEntryActivateCallback.ToIntPtr(), out handle.pointer);
                     }
                 }
             }
@@ -77,17 +78,17 @@ namespace GtkSharp
         {
             get
             {
-                return onBackspaceCallback;
+                return onBackspaceEvent;
             }
             set
             {
-                onBackspaceCallback = value;
+                onBackspaceEvent = value;
                 if(!handle.IsNullPointer)
                 {
-                    if(onEntryBackspace.IsNullPointer())
+                    if(onEntryBackspaceCallback.IsNullPointer())
                     {
-                        onEntryBackspace = OnBackspace;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "backspace", onEntryBackspace.ToIntPtr(), out handle.pointer);
+                        onEntryBackspaceCallback = OnBackspace;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "backspace", onEntryBackspaceCallback.ToIntPtr(), out handle.pointer);
                     }
                 }
             }
@@ -97,17 +98,17 @@ namespace GtkSharp
         {
             get
             {
-                return onCopyClipboardCallback;
+                return onCopyClipboardEvent;
             }
             set
             {
-                onCopyClipboardCallback = value;
+                onCopyClipboardEvent = value;
                 if(!handle.IsNullPointer)
                 {
-                    if(onEntryCopyClipboard.IsNullPointer())
+                    if(onEntryCopyClipboardCallback.IsNullPointer())
                     {
-                        onEntryCopyClipboard = OnCopyClipboard;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "copy-clipboard", onEntryCopyClipboard.ToIntPtr(), out handle.pointer);
+                        onEntryCopyClipboardCallback = OnCopyClipboard;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "copy-clipboard", onEntryCopyClipboardCallback.ToIntPtr(), out handle.pointer);
                     }
                 }
             }
@@ -117,17 +118,17 @@ namespace GtkSharp
         {
             get
             {
-                return onCutClipboardCallback;
+                return onCutClipboardEvent;
             }
             set
             {
-                onCutClipboardCallback = value;
+                onCutClipboardEvent = value;
                 if(!handle.IsNullPointer)
                 {
-                    if(onEntryCutClipboard.IsNullPointer())
+                    if(onEntryCutClipboardCallback.IsNullPointer())
                     {
-                        onEntryCutClipboard = OnCutClipboard;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "cut-clipboard", onEntryCutClipboard.ToIntPtr(), out handle.pointer);
+                        onEntryCutClipboardCallback = OnCutClipboard;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "cut-clipboard", onEntryCutClipboardCallback.ToIntPtr(), out handle.pointer);
                     }
                 }
             }
@@ -137,17 +138,17 @@ namespace GtkSharp
         {
             get
             {
-                return onDeleteFromCursorCallback;
+                return onDeleteFromCursorEvent;
             }
             set
             {
-                onDeleteFromCursorCallback = value;
+                onDeleteFromCursorEvent = value;
                 if(!handle.IsNullPointer)
                 {
-                    if(onEntryDeleteFromCursor.IsNullPointer())
+                    if(onEntryDeleteFromCursorCallback.IsNullPointer())
                     {
-                        onEntryDeleteFromCursor = OnDeleteFromCursor;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "delete-from-cursor", onEntryDeleteFromCursor.ToIntPtr(), out handle.pointer);
+                        onEntryDeleteFromCursorCallback = OnDeleteFromCursor;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "delete-from-cursor", onEntryDeleteFromCursorCallback.ToIntPtr(), out handle.pointer);
                     }
                 }
             }
@@ -157,17 +158,17 @@ namespace GtkSharp
         {
             get
             {
-                return onIconPressCallback;
+                return onIconPressEvent;
             }
             set
             {
-                onIconPressCallback = value;
+                onIconPressEvent = value;
                 if(!handle.IsNullPointer)
                 {
-                    if(onEntryIconPress.IsNullPointer())
+                    if(onEntryIconPressCallback.IsNullPointer())
                     {
-                        onEntryIconPress = OnIconPress;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "icon-press", onEntryIconPress.ToIntPtr(), out handle.pointer);
+                        onEntryIconPressCallback = OnIconPress;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "icon-press", onEntryIconPressCallback.ToIntPtr(), out handle.pointer);
                     }
                 }
             }
@@ -177,17 +178,17 @@ namespace GtkSharp
         {
             get
             {
-                return onIconReleaseCallback;
+                return onIconReleaseEvent;
             }
             set
             {
-                onIconReleaseCallback = value;
+                onIconReleaseEvent = value;
                 if(!handle.IsNullPointer)
                 {
-                    if(onEntryIconRelease.IsNullPointer())
+                    if(onEntryIconReleaseCallback.IsNullPointer())
                     {
-                        onEntryIconRelease = OnIconRelease;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "icon-release", onEntryIconRelease.ToIntPtr(), out handle.pointer);
+                        onEntryIconReleaseCallback = OnIconRelease;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "icon-release", onEntryIconReleaseCallback.ToIntPtr(), out handle.pointer);
                     }
                 }
             }
@@ -197,17 +198,17 @@ namespace GtkSharp
         {
             get
             {
-                return onInsertAtCursorCallback;
+                return onInsertAtCursorEvent;
             }
             set
             {
-                onInsertAtCursorCallback = value;
+                onInsertAtCursorEvent = value;
                 if(!handle.IsNullPointer)
                 {
-                    if(onEntryInsertAtCursor.IsNullPointer())
+                    if(onEntryInsertAtCursorCallback.IsNullPointer())
                     {
-                        onEntryInsertAtCursor = OnInsertAtCursor;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "insert-at-cursor", onEntryInsertAtCursor.ToIntPtr(), out handle.pointer);            
+                        onEntryInsertAtCursorCallback = OnInsertAtCursor;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "insert-at-cursor", onEntryInsertAtCursorCallback.ToIntPtr(), out handle.pointer);            
                     }
                 }
             }
@@ -217,17 +218,17 @@ namespace GtkSharp
         {
             get
             {
-                return onInsertEmojiCallback;
+                return onInsertEmojiEvent;
             }
             set
             {
-                onInsertEmojiCallback = value;
+                onInsertEmojiEvent = value;
                 if(!handle.IsNullPointer)
                 {
-                    if(onEntryInsertEmoji.IsNullPointer())
+                    if(onEntryInsertEmojiCallback.IsNullPointer())
                     {
-                        onEntryInsertEmoji = OnInsertEmoji;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "insert-emoji", onEntryInsertEmoji.ToIntPtr(), out handle.pointer);            
+                        onEntryInsertEmojiCallback = OnInsertEmoji;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "insert-emoji", onEntryInsertEmojiCallback.ToIntPtr(), out handle.pointer);            
                     }
                 }
             }
@@ -237,17 +238,17 @@ namespace GtkSharp
         {
             get
             {
-                return onMoveCursorCallback;
+                return onMoveCursorEvent;
             }
             set
             {
-                onMoveCursorCallback = value;
+                onMoveCursorEvent = value;
                 if(!handle.IsNullPointer)
                 {
-                    if(onEntryMoveCursor.IsNullPointer())
+                    if(onEntryMoveCursorCallback.IsNullPointer())
                     {
-                        onEntryMoveCursor = OnMoveCursor;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "move-cursor", onEntryMoveCursor.ToIntPtr(), out handle.pointer);
+                        onEntryMoveCursorCallback = OnMoveCursor;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "move-cursor", onEntryMoveCursorCallback.ToIntPtr(), out handle.pointer);
                     }
                 }
             }
@@ -257,17 +258,17 @@ namespace GtkSharp
         {
             get
             {
-                return onPasteClipboardCallback;
+                return onPasteClipboardEvent;
             }
             set
             {
-                onPasteClipboardCallback = value;
+                onPasteClipboardEvent = value;
                 if(!handle.IsNullPointer)
                 {
-                    if(onEntryPasteClipboard.IsNullPointer())
+                    if(onEntryPasteClipboardCallback.IsNullPointer())
                     {
-                        onEntryPasteClipboard = OnPasteClipboard;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "paste-clipboard", onEntryPasteClipboard.ToIntPtr(), out handle.pointer);
+                        onEntryPasteClipboardCallback = OnPasteClipboard;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "paste-clipboard", onEntryPasteClipboardCallback.ToIntPtr(), out handle.pointer);
                     }
                 }
             }
@@ -277,17 +278,17 @@ namespace GtkSharp
         {
             get
             {
-                return onPopulatePopupCallback;
+                return onPopulatePopupEvent;
             }
             set
             {
-                onPopulatePopupCallback = value;
+                onPopulatePopupEvent = value;
                 if(!handle.IsNullPointer)
                 {
-                    if(onEntryPopulatePopup.IsNullPointer())
+                    if(onEntryPopulatePopupCallback.IsNullPointer())
                     {
-                        onEntryPopulatePopup = OnPopulatePopup;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "populate-popup", onEntryPopulatePopup.ToIntPtr(), out handle.pointer);            
+                        onEntryPopulatePopupCallback = OnPopulatePopup;
+                        Gtk.GtkSharpSignalConnect(out handle.pointer, "populate-popup", onEntryPopulatePopupCallback.ToIntPtr(), out handle.pointer);            
                     }
                 }
             }
@@ -297,17 +298,17 @@ namespace GtkSharp
         {
             get
             {
-                return onDeletedCallback;
+                return onDeletedEvent;
             }
             set
             {
-                onDeletedCallback = value;
+                onDeletedEvent = value;
                 if(!buffer.IsNullPointer)
                 {
-                    if(onEntryBufferDeleted.IsNullPointer())
+                    if(onEntryBufferDeletedCallback.IsNullPointer())
                     {
-                        onEntryBufferDeleted = OnDeleted;
-                        Gtk.GtkSharpSignalConnect(out buffer.pointer, "deleted-text", onEntryBufferDeleted.ToIntPtr(), out buffer.pointer);
+                        onEntryBufferDeletedCallback = OnDeleted;
+                        Gtk.GtkSharpSignalConnect(out buffer.pointer, "deleted-text", onEntryBufferDeletedCallback.ToIntPtr(), out buffer.pointer);
                     }
                 }
             }
@@ -317,17 +318,17 @@ namespace GtkSharp
         {
             get
             {
-                return onInsertedCallback;
+                return onInsertedEvent;
             }
             set
             {
-                onInsertedCallback = value;
+                onInsertedEvent = value;
                 if(!buffer.IsNullPointer)
                 {
-                    if(onEntryBufferInserted.IsNullPointer())
+                    if(onEntryBufferInsertedCallback.IsNullPointer())
                     {
-                        onEntryBufferInserted = OnInserted;
-                        Gtk.GtkSharpSignalConnect(out buffer.pointer, "inserted-text", onEntryBufferInserted.ToIntPtr(), out buffer.pointer);
+                        onEntryBufferInsertedCallback = OnInserted;
+                        Gtk.GtkSharpSignalConnect(out buffer.pointer, "inserted-text", onEntryBufferInsertedCallback.ToIntPtr(), out buffer.pointer);
                     }
                 }
             }
@@ -337,11 +338,11 @@ namespace GtkSharp
         {
             get
             {
-                return onChangedCallback;
+                return onChangedEvent;
             }
             set
             {
-                onChangedCallback = value;
+                onChangedEvent = value;
             }
         }
 

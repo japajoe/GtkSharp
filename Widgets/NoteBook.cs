@@ -5,9 +5,9 @@ namespace GtkSharp
 {
     public class NoteBook : Widget
     {
-        private event NoteBookSelectedIndexChanged onSelectedIndexChangedCallback;
+        private event NoteBookSelectedIndexChanged onSelectedIndexChangedEvent;
 
-        private GtkNoteBookSelectedIndexChangedCallback onNoteBookSelectedIndexChanged;
+        private GtkNoteBookSelectedIndexChangedCallback onNoteBookSelectedIndexChangedCallback;
         private int pageCount;
         private int selectedIndex;
 
@@ -35,17 +35,17 @@ namespace GtkSharp
         {
             get
             {
-                return onSelectedIndexChangedCallback;
+                return onSelectedIndexChangedEvent;
             }
             set
             {
-                onSelectedIndexChangedCallback = value;
+                onSelectedIndexChangedEvent = value;
                 if(!handle.IsNullPointer)
                 {
-                    if(onNoteBookSelectedIndexChanged.IsNullPointer())
+                    if(onNoteBookSelectedIndexChangedCallback.IsNullPointer())
                     {
-                        onNoteBookSelectedIndexChanged = OnSelectedIndexChanged;
-                        Gtk.GtkSharpSignalConnectAfter(out handle.pointer, "switch-page", onNoteBookSelectedIndexChanged.ToIntPtr(), out handle.pointer);
+                        onNoteBookSelectedIndexChangedCallback = OnSelectedIndexChanged;
+                        Gtk.GtkSharpSignalConnectAfter(out handle.pointer, "switch-page", onNoteBookSelectedIndexChangedCallback.ToIntPtr(), out handle.pointer);
                     }
                 }
             }
@@ -102,7 +102,7 @@ namespace GtkSharp
 
         private void OnSelectedIndexChanged(IntPtr notebook, IntPtr page, uint page_num, IntPtr data)
         {
-            onSelectedIndexChangedCallback?.Invoke(page_num);
+            onSelectedIndexChangedEvent?.Invoke(page_num);
         }
     }
 }

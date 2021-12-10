@@ -13,33 +13,33 @@ namespace GtkSharp
         private StringBuilder stringBuilder;
         private string text;
 
-        private event SourceBufferApplyTagEvent onApplyTagCallback;
-        private event SourceBufferBeginUserActionEvent onBeginUserActionCallback;
-        private event SourceBufferChangedEvent onChangedCallback;
-        private event SourceBufferDeleteRangeEvent onDeleteRangeCallback;
-        private event SourceBufferEndUserActionEvent onEndUserActionCallback;
-        private event SourceBufferInsertChildAnchorEvent onInsertChildAnchorCallback;
-        private event SourceBufferInsertPixbufEvent onInsertPixbufCallback;
-        private event SourceBufferInsertTextEvent onInsertTextCallback;
-        private event SourceBufferMarkDeletedEvent onMarkDeletedCallback;
-        private event SourceBufferMarkSetEvent onMarkSetCallback;
-        private event SourceBufferModifiedChangedEvent onModifiedChangedCallback;
-        private event SourceBufferPasteDoneEvent onPasteDoneCallback;
-        private event SourceBufferRemoveTagEvent onRemoveTagCallback;
+        private event SourceBufferApplyTagEvent onApplyTagEvent;
+        private event SourceBufferBeginUserActionEvent onBeginUserActionEvent;
+        private event SourceBufferChangedEvent onChangedEvent;
+        private event SourceBufferDeleteRangeEvent onDeleteRangeEvent;
+        private event SourceBufferEndUserActionEvent onEndUserActionEvent;
+        private event SourceBufferInsertChildAnchorEvent onInsertChildAnchorEvent;
+        private event SourceBufferInsertPixbufEvent onInsertPixbufEvent;
+        private event SourceBufferInsertTextEvent onInsertTextEvent;
+        private event SourceBufferMarkDeletedEvent onMarkDeletedEvent;
+        private event SourceBufferMarkSetEvent onMarkSetEvent;
+        private event SourceBufferModifiedChangedEvent onModifiedChangedEvent;
+        private event SourceBufferPasteDoneEvent onPasteDoneEvent;
+        private event SourceBufferRemoveTagEvent onRemoveTagEvent;
 
-        private GtkSourceBufferApplyTagCallback onTextBufferApplyTag;
-        private GtkSourceBufferBeginUserActionCallback onTextBufferBeginUserAction;
-        private GtkSourceBufferChangedCallback onTextBufferChanged;
-        private GtkSourceBufferDeleteRangeCallback onTextBufferDeleteRange;
-        private GtkSourceBufferEndUserActionCallback onTextBufferEndUserAction;
-        private GtkSourceBufferInsertChildAnchorCallback onTextBufferInsertChildAnchor;
-        private GtkSourceBufferInsertPixbufCallback onTextBufferInsertPixbuf;
-        private GtkSourceBufferInsertTextCallback onTextBufferInsertText;
-        private GtkSourceBufferMarkDeletedCallback onTextBufferMarkDeleted;
-        private GtkSourceBufferMarkSetCallback onTextBufferMarkSet;
-        private GtkSourceBufferModifiedChangedCallback onTextBufferModifiedChanged;
-        private GtkSourceBufferPasteDoneCallback onTextBufferPasteDone;
-        private GtkSourceBufferRemoveTagCallback onTextBufferRemoveTag;
+        private GtkSourceBufferApplyTagCallback onTextBufferApplyTagCallback;
+        private GtkSourceBufferBeginUserActionCallback onTextBufferBeginUserActionCallback;
+        private GtkSourceBufferChangedCallback onTextBufferChangedCallback;
+        private GtkSourceBufferDeleteRangeCallback onTextBufferDeleteRangeCallback;
+        private GtkSourceBufferEndUserActionCallback onTextBufferEndUserActionCallback;
+        private GtkSourceBufferInsertChildAnchorCallback onTextBufferInsertChildAnchorCallback;
+        private GtkSourceBufferInsertPixbufCallback onTextBufferInsertPixbufCallback;
+        private GtkSourceBufferInsertTextCallback onTextBufferInsertTextCallback;
+        private GtkSourceBufferMarkDeletedCallback onTextBufferMarkDeletedCallback;
+        private GtkSourceBufferMarkSetCallback onTextBufferMarkSetCallback;
+        private GtkSourceBufferModifiedChangedCallback onTextBufferModifiedChangedCallback;
+        private GtkSourceBufferPasteDoneCallback onTextBufferPasteDoneCallback;
+        private GtkSourceBufferRemoveTagCallback onTextBufferRemoveTagCallback;
 
         public string Text
         {
@@ -81,17 +81,17 @@ namespace GtkSharp
         {
             get
             {
-                return onApplyTagCallback;
+                return onApplyTagEvent;
             }
             set
             {
-                onApplyTagCallback = value;
+                onApplyTagEvent = value;
                 if(!buffer.IsNullPointer)
                 {
-                    if(onTextBufferApplyTag.IsNullPointer())
+                    if(onTextBufferApplyTagCallback.IsNullPointer())
                     {
-                        onTextBufferApplyTag = OnApplyTag;
-                        Gtk.GtkSharpSignalConnect(out buffer.pointer, "apply-tag", onTextBufferApplyTag.ToIntPtr(), out buffer.pointer);
+                        onTextBufferApplyTagCallback = OnApplyTag;
+                        Gtk.GtkSharpSignalConnect(out buffer.pointer, "apply-tag", onTextBufferApplyTagCallback.ToIntPtr(), out buffer.pointer);
                     }
                 }
             }
@@ -100,17 +100,17 @@ namespace GtkSharp
         {
             get
             {
-                return onBeginUserActionCallback;
+                return onBeginUserActionEvent;
             }
             set
             {
-                onBeginUserActionCallback = value;
+                onBeginUserActionEvent = value;
                 if(!buffer.IsNullPointer)
                 {
-                    if(onTextBufferBeginUserAction.IsNullPointer())
+                    if(onTextBufferBeginUserActionCallback.IsNullPointer())
                     {
-                        onTextBufferBeginUserAction = OnBeginUserAction;
-                        Gtk.GtkSharpSignalConnect(out buffer.pointer, "begin-user-action", onTextBufferBeginUserAction.ToIntPtr(), out buffer.pointer);
+                        onTextBufferBeginUserActionCallback = OnBeginUserAction;
+                        Gtk.GtkSharpSignalConnect(out buffer.pointer, "begin-user-action", onTextBufferBeginUserActionCallback.ToIntPtr(), out buffer.pointer);
                     }
                 }
             }
@@ -119,17 +119,17 @@ namespace GtkSharp
         {
             get
             {
-                return onChangedCallback;
+                return onChangedEvent;
             }
             set
             {
-                onChangedCallback = value;
+                onChangedEvent = value;
                 if(!buffer.IsNullPointer)
                 {
-                    if(onTextBufferChanged.IsNullPointer())
+                    if(onTextBufferChangedCallback.IsNullPointer())
                     {
-                        onTextBufferChanged = OnChanged;
-                        Gtk.GtkSharpSignalConnect(out buffer.pointer, "changed", onTextBufferChanged.ToIntPtr(), out buffer.pointer);
+                        onTextBufferChangedCallback = OnChanged;
+                        Gtk.GtkSharpSignalConnect(out buffer.pointer, "changed", onTextBufferChangedCallback.ToIntPtr(), out buffer.pointer);
                     }
                 }
             }
@@ -138,17 +138,17 @@ namespace GtkSharp
         {
             get
             {
-                return onDeleteRangeCallback;
+                return onDeleteRangeEvent;
             }
             set
             {
-                onDeleteRangeCallback = value;
+                onDeleteRangeEvent = value;
                 if(!buffer.IsNullPointer)
                 {
-                    if(onTextBufferDeleteRange.IsNullPointer())
+                    if(onTextBufferDeleteRangeCallback.IsNullPointer())
                     {
-                        onTextBufferDeleteRange = OnDeleteRange;
-                        Gtk.GtkSharpSignalConnect(out buffer.pointer, "delete-range", onTextBufferDeleteRange.ToIntPtr(), out buffer.pointer);
+                        onTextBufferDeleteRangeCallback = OnDeleteRange;
+                        Gtk.GtkSharpSignalConnect(out buffer.pointer, "delete-range", onTextBufferDeleteRangeCallback.ToIntPtr(), out buffer.pointer);
                     }
                 }
             }
@@ -157,17 +157,17 @@ namespace GtkSharp
         {
             get
             {
-                return onEndUserActionCallback;
+                return onEndUserActionEvent;
             }
             set
             {
-                onEndUserActionCallback = value;
+                onEndUserActionEvent = value;
                 if(!buffer.IsNullPointer)
                 {
-                    if(onTextBufferEndUserAction.IsNullPointer())
+                    if(onTextBufferEndUserActionCallback.IsNullPointer())
                     {
-                        onTextBufferEndUserAction = OnEndUserAction;
-                        Gtk.GtkSharpSignalConnect(out buffer.pointer, "end-user-action", onTextBufferEndUserAction.ToIntPtr(), out buffer.pointer);
+                        onTextBufferEndUserActionCallback = OnEndUserAction;
+                        Gtk.GtkSharpSignalConnect(out buffer.pointer, "end-user-action", onTextBufferEndUserActionCallback.ToIntPtr(), out buffer.pointer);
                     }
                 }
             }
@@ -176,17 +176,17 @@ namespace GtkSharp
         {
             get
             {
-                return onInsertChildAnchorCallback;
+                return onInsertChildAnchorEvent;
             }
             set
             {
-                onInsertChildAnchorCallback = value;
+                onInsertChildAnchorEvent = value;
                 if(!buffer.IsNullPointer)
                 {
-                    if(onTextBufferInsertChildAnchor.IsNullPointer())
+                    if(onTextBufferInsertChildAnchorCallback.IsNullPointer())
                     {
-                        onTextBufferInsertChildAnchor = OnInsertChildAnchor;
-                        Gtk.GtkSharpSignalConnect(out buffer.pointer, "insert-child-anchor", onTextBufferInsertChildAnchor.ToIntPtr(), out buffer.pointer);
+                        onTextBufferInsertChildAnchorCallback = OnInsertChildAnchor;
+                        Gtk.GtkSharpSignalConnect(out buffer.pointer, "insert-child-anchor", onTextBufferInsertChildAnchorCallback.ToIntPtr(), out buffer.pointer);
                     }
                 }
             }
@@ -195,17 +195,17 @@ namespace GtkSharp
         {
             get
             {
-                return onInsertPixbufCallback;
+                return onInsertPixbufEvent;
             }
             set
             {
-                onInsertPixbufCallback = value;
+                onInsertPixbufEvent = value;
                 if(!buffer.IsNullPointer)
                 {
-                    if(onTextBufferInsertPixbuf.IsNullPointer())
+                    if(onTextBufferInsertPixbufCallback.IsNullPointer())
                     {
-                        onTextBufferInsertPixbuf = OnInsertPixbuf;
-                        Gtk.GtkSharpSignalConnect(out buffer.pointer, "insert-pixbuf", onTextBufferInsertPixbuf.ToIntPtr(), out buffer.pointer);
+                        onTextBufferInsertPixbufCallback = OnInsertPixbuf;
+                        Gtk.GtkSharpSignalConnect(out buffer.pointer, "insert-pixbuf", onTextBufferInsertPixbufCallback.ToIntPtr(), out buffer.pointer);
                     }
                 }
             }
@@ -214,17 +214,17 @@ namespace GtkSharp
         {
             get
             {
-                return onInsertTextCallback;
+                return onInsertTextEvent;
             }
             set
             {
-                onInsertTextCallback = value;
+                onInsertTextEvent = value;
                 if(!buffer.IsNullPointer)
                 {
-                    if(onTextBufferInsertText.IsNullPointer())
+                    if(onTextBufferInsertTextCallback.IsNullPointer())
                     {
-                        onTextBufferInsertText = OnInsertText;
-                        Gtk.GtkSharpSignalConnect(out buffer.pointer, "insert-text", onTextBufferInsertText.ToIntPtr(), out buffer.pointer);
+                        onTextBufferInsertTextCallback = OnInsertText;
+                        Gtk.GtkSharpSignalConnect(out buffer.pointer, "insert-text", onTextBufferInsertTextCallback.ToIntPtr(), out buffer.pointer);
                     }
                 }
             }
@@ -233,17 +233,17 @@ namespace GtkSharp
         {
             get
             {
-                return onMarkDeletedCallback;
+                return onMarkDeletedEvent;
             }
             set
             {
-                onMarkDeletedCallback = value;
+                onMarkDeletedEvent = value;
                 if(!buffer.IsNullPointer)
                 {
-                    if(onTextBufferMarkDeleted.IsNullPointer())
+                    if(onTextBufferMarkDeletedCallback.IsNullPointer())
                     {
-                        onTextBufferMarkDeleted = OnMarkDeleted;
-                        Gtk.GtkSharpSignalConnect(out buffer.pointer, "mark-deleted", onTextBufferMarkDeleted.ToIntPtr(), out buffer.pointer);
+                        onTextBufferMarkDeletedCallback = OnMarkDeleted;
+                        Gtk.GtkSharpSignalConnect(out buffer.pointer, "mark-deleted", onTextBufferMarkDeletedCallback.ToIntPtr(), out buffer.pointer);
                     }
                 }
             }
@@ -252,17 +252,17 @@ namespace GtkSharp
         {
             get
             {
-                return onMarkSetCallback;
+                return onMarkSetEvent;
             }
             set
             {
-                onMarkSetCallback = value;
+                onMarkSetEvent = value;
                 if(!buffer.IsNullPointer)
                 {
-                    if(onTextBufferMarkSet.IsNullPointer())
+                    if(onTextBufferMarkSetCallback.IsNullPointer())
                     {
-                        onTextBufferMarkSet = OnMarkSet;
-                        Gtk.GtkSharpSignalConnect(out buffer.pointer, "mark-set", onTextBufferMarkSet.ToIntPtr(), out buffer.pointer);
+                        onTextBufferMarkSetCallback = OnMarkSet;
+                        Gtk.GtkSharpSignalConnect(out buffer.pointer, "mark-set", onTextBufferMarkSetCallback.ToIntPtr(), out buffer.pointer);
                     }
                 }
             }
@@ -271,17 +271,17 @@ namespace GtkSharp
         {
             get
             {
-                return onModifiedChangedCallback;
+                return onModifiedChangedEvent;
             }
             set
             {
-                onModifiedChangedCallback = value;
+                onModifiedChangedEvent = value;
                 if(!buffer.IsNullPointer)
                 {
-                    if(onTextBufferModifiedChanged.IsNullPointer())
+                    if(onTextBufferModifiedChangedCallback.IsNullPointer())
                     {
-                        onTextBufferModifiedChanged = OnModifiedChanged;
-                        Gtk.GtkSharpSignalConnect(out buffer.pointer, "modified-changed", onTextBufferModifiedChanged.ToIntPtr(), out buffer.pointer);
+                        onTextBufferModifiedChangedCallback = OnModifiedChanged;
+                        Gtk.GtkSharpSignalConnect(out buffer.pointer, "modified-changed", onTextBufferModifiedChangedCallback.ToIntPtr(), out buffer.pointer);
                     }
                 }
             }
@@ -290,17 +290,17 @@ namespace GtkSharp
         {
             get
             {
-                return onPasteDoneCallback;
+                return onPasteDoneEvent;
             }
             set
             {
-                onPasteDoneCallback = value;
+                onPasteDoneEvent = value;
                 if(!buffer.IsNullPointer)
                 {
-                    if(onTextBufferPasteDone.IsNullPointer())
+                    if(onTextBufferPasteDoneCallback.IsNullPointer())
                     {
-                        onTextBufferPasteDone = OnPasteDone;
-                        Gtk.GtkSharpSignalConnect(out buffer.pointer, "paste-done", onTextBufferPasteDone.ToIntPtr(), out buffer.pointer);
+                        onTextBufferPasteDoneCallback = OnPasteDone;
+                        Gtk.GtkSharpSignalConnect(out buffer.pointer, "paste-done", onTextBufferPasteDoneCallback.ToIntPtr(), out buffer.pointer);
                     }
                 }
             }
@@ -309,17 +309,17 @@ namespace GtkSharp
         {
             get
             {
-                return onRemoveTagCallback;
+                return onRemoveTagEvent;
             }
             set
             {
-                onRemoveTagCallback = value;
+                onRemoveTagEvent = value;
                 if(!buffer.IsNullPointer)
                 {
-                    if(onTextBufferRemoveTag.IsNullPointer())
+                    if(onTextBufferRemoveTagCallback.IsNullPointer())
                     {
-                        onTextBufferRemoveTag = OnRemoveTag;
-                        Gtk.GtkSharpSignalConnect(out buffer.pointer, "remove-tag", onTextBufferRemoveTag.ToIntPtr(), out buffer.pointer);
+                        onTextBufferRemoveTagCallback = OnRemoveTag;
+                        Gtk.GtkSharpSignalConnect(out buffer.pointer, "remove-tag", onTextBufferRemoveTagCallback.ToIntPtr(), out buffer.pointer);
                     }
                 }
             }
@@ -335,13 +335,6 @@ namespace GtkSharp
             NativeSourceView.GtkSharpSourceBufferCreateWithLanguage(out buffer, out sourceLanguage);
             NativeSourceView.GtkSharpSourceViewCreateWithBuffer(out handle, out buffer);
             NativeSourceView.GtkSharpSourceViewSetTabWidth(out handle, 4);
-
-            RegisterCallbacks();
-        }
-
-        protected override void RegisterCallbacks()
-        {
-
         }
 
         public void SetText(string text)

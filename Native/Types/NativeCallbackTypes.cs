@@ -31,6 +31,12 @@ namespace GtkSharp.Native
     internal delegate void GtkEntryPasteClipboardCallback(IntPtr widget, IntPtr data);
     internal delegate void GtkEntryPopulatePopupCallback(IntPtr widget, IntPtr data);
 
+    internal delegate GtkFileChooserConfirmation GtkFileChooserConfirmOverwriteCallback(IntPtr widget, IntPtr data);
+    internal delegate void GtkFileChooserCurrentFolderChangedCallback(IntPtr widget, IntPtr data);
+    internal delegate void GtkFileChooserFileActivatedCallback(IntPtr widget, IntPtr data);
+    internal delegate void GtkFileChooserSelectionChangedCallback(IntPtr widget, IntPtr data);
+    internal delegate void GtkFileChooserUpdatePreviewCallback(IntPtr widget, IntPtr data);
+
     internal delegate void GtkLabelActivateCurrentLinkCallback(IntPtr widget, IntPtr data);
     internal delegate void GtkLabelActivateLinkCallback(IntPtr widget, IntPtr uri, IntPtr data);
     internal delegate void GtkLabelCopyClipboardCallback(IntPtr widget, IntPtr data);

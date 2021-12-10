@@ -38,6 +38,11 @@ namespace GtkSharp
     public delegate void EntryBufferDeletedEvent(uint position, uint n_chars);
     public delegate void EntryBufferInsertedEvent(uint position, string chars, uint n_chars);
 
+    public delegate GtkFileChooserConfirmation FileChooserConfirmOverwriteEvent();
+    public delegate void FileChooserCurrentFolderChangedEvent();
+    public delegate void FileChooserFileActivatedEvent();
+    public delegate void FileChooserSelectionChangedEvent();
+    public delegate void FileChooserUpdatePreviewEvent();
 
     public delegate void TextViewChangedEvent();
     public delegate void SourceViewChangedEvent();    
