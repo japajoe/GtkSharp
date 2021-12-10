@@ -7,6 +7,12 @@ namespace GtkSharp.Native.Widgets
     internal static class NativeWidget
     {
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpWidgetDumpTypes();
+
+        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void GtkSharpWidgetGetTypeOfInstance(GtkWidgetPointer widget, out ulong type);
+                
+        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void GtkSharpWidgetGetType(out ulong type);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]

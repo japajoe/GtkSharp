@@ -251,6 +251,18 @@ namespace GtkSharp
             }
         }
 
+        public static Widget CreateFromHandle(IntPtr handle)
+        {
+            Widget widget = new Widget();
+            widget.handle.pointer = handle;
+            return widget;
+        }
+
+        public static void DumpWidgetTypes()
+        {
+            NativeWidget.GtkSharpWidgetDumpTypes();
+        }
+
         public bool GetAppPaintable()
         {
             if(handle.IsNullPointer)

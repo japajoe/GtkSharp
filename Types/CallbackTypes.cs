@@ -44,6 +44,17 @@ namespace GtkSharp
     public delegate void FileChooserSelectionChangedEvent();
     public delegate void FileChooserUpdatePreviewEvent();
 
+    public delegate bool NoteBookChangeCurrentPageEvent(int obj);
+    public delegate GtkNoteBookPointer NoteBookCreateWindowEvent(GtkWidgetPointer page, int x, int y);
+    public delegate bool NoteBookFocusTabEvent(GtkNotebookTab tab);
+    public delegate void NoteBookMoveFocusOutEvent(GtkDirectionType directionType);
+    public delegate void NoteBookPageAddedEvent(GtkWidgetPointer child, uint pageNum);
+    public delegate void NoteBookPageRemovedEvent(GtkWidgetPointer child, uint pageNum);
+    public delegate void NoteBookPageReorderedEvent(GtkWidgetPointer child, uint pageNum);
+    public delegate bool NoteBookReorderTabEvent(GtkDirectionType directionType, bool p0);
+    public delegate bool NoteBookSelectPageEvent(bool obj);
+    public delegate void NoteBookSwitchPageEvent(GtkWidgetPointer page, uint pageNum);
+
     public delegate void TextViewChangedEvent();
     public delegate void SourceViewChangedEvent();    
     public delegate void SpinButtonValueChangedEvent();

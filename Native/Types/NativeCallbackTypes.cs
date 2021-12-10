@@ -66,6 +66,17 @@ namespace GtkSharp.Native
 
     internal delegate void GtkMenuItemActivateCallback(IntPtr widget, IntPtr data);
 
+    internal delegate bool GtkNoteBookChangeCurrentPageCallback(IntPtr widget, int obj, IntPtr data);
+    internal delegate GtkNoteBookPointer GtkNoteBookCreateWindowCallback(IntPtr widget, GtkWidgetPointer page, int x, int y, IntPtr data);
+    internal delegate bool GtkNoteBookFocusTabCallback(IntPtr widget, GtkNotebookTab tab, IntPtr data);
+    internal delegate void GtkNoteBookMoveFocusOutCallback(IntPtr widget, GtkDirectionType directionType, IntPtr data);
+    internal delegate void GtkNoteBookPageAddedCallback(IntPtr widget, GtkWidgetPointer child, uint pageNum, IntPtr data);
+    internal delegate void GtkNoteBookPageRemovedCallback(IntPtr widget, GtkWidgetPointer child, uint pageNum, IntPtr data);
+    internal delegate void GtkNoteBookPageReorderedCallback(IntPtr widget, GtkWidgetPointer child, uint pageNum, IntPtr data);
+    internal delegate bool GtkNoteBookReorderTabCallback(IntPtr widget, GtkDirectionType directionType, bool p0, IntPtr data);
+    internal delegate bool GtkNoteBookSelectPageCallback(IntPtr widget, bool obj, IntPtr data);
+    internal delegate void GtkNoteBookSwitchPageCallback(IntPtr widget, GtkWidgetPointer page, uint pageNum, IntPtr data);
+
     internal delegate void GtkSourceBufferApplyTagCallback(GtkSourceBufferPointer buffer, GtkTextTagPointer tag, GtkTextIterPointer start, GtkTextIterPointer end, IntPtr data);
     internal delegate void GtkSourceBufferBeginUserActionCallback(GtkSourceBufferPointer buffer, IntPtr data);
     internal delegate void GtkSourceBufferChangedCallback(GtkSourceBufferPointer buffer, IntPtr data);
