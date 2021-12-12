@@ -31,6 +31,8 @@ namespace GtkSharp.Native.Callbacks
     internal delegate void GtkLabelMoveCursorCallback(IntPtr widget, GtkMovementStep step, int count, bool extendSelection, IntPtr data);
     internal delegate void GtkLabelPopulatePopupCallback(IntPtr widget, IntPtr menu, IntPtr data);
 
+    internal delegate void GtkLevelBarOffsetChangedCallback(IntPtr widget, IntPtr name, IntPtr data);
+
     internal delegate void GtkMenuItemActivateCallback(IntPtr widget, IntPtr data);
 
     internal delegate void GtkMenuMoveScrollCallback(IntPtr widget, IntPtr scrollType, IntPtr data);
@@ -46,6 +48,8 @@ namespace GtkSharp.Native.Callbacks
     internal delegate bool GtkNoteBookReorderTabCallback(IntPtr widget, GtkDirectionType directionType, bool p0, IntPtr data);
     internal delegate bool GtkNoteBookSelectPageCallback(IntPtr widget, bool obj, IntPtr data);
     internal delegate void GtkNoteBookSwitchPageCallback(IntPtr widget, GtkWidgetPointer page, uint pageNum, IntPtr data);
+
+    internal delegate void GtkSpinButtonValueChangedCallback(IntPtr widget, IntPtr data);
 
     internal delegate void GtkTextBufferApplyTagCallback(GtkTextBufferPointer buffer, GtkTextTagPointer tag, GtkTextIterPointer start, GtkTextIterPointer end, IntPtr data);
     internal delegate void GtkTextBufferBeginUserActionCallback(GtkTextBufferPointer buffer, IntPtr data);
@@ -73,6 +77,8 @@ namespace GtkSharp.Native.Callbacks
     internal delegate void GtkTextViewPasteClipboardCallback(IntPtr widget, IntPtr data);
     internal delegate void GtkTextViewPopulatePopupCallback(IntPtr widget, IntPtr popup, IntPtr data);
     internal delegate void GtkTextViewPreeditChangedCallback(IntPtr widget, IntPtr str, IntPtr data);
+
+    internal delegate void GtkToggleButtonToggledCallback(IntPtr widget, IntPtr data);
 
     internal delegate void GtkWidgetDestroyCallback(IntPtr widget, IntPtr userData);
     internal delegate bool GtkWidgetDestroyedCallback(IntPtr widget, GdkEventPointer evnt, IntPtr userData);

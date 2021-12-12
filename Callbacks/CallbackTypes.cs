@@ -33,6 +33,8 @@ namespace GtkSharp.Callbacks
     public delegate void LabelCopyClipboardEvent();
     public delegate void LabelMoveCursorEvent(GtkMovementStep step, int count);
 
+    public delegate void LevelBarOffsetChangedEvent(string name);
+
     public delegate bool NoteBookChangeCurrentPageEvent(int obj);
     public delegate NoteBook NoteBookCreateWindowEvent(Widget page, int x, int y);
     public delegate bool NoteBookFocusTabEvent(GtkNotebookTab tab);
@@ -43,6 +45,8 @@ namespace GtkSharp.Callbacks
     public delegate bool NoteBookReorderTabEvent(GtkDirectionType directionType, bool p0);
     public delegate bool NoteBookSelectPageEvent(bool obj);
     public delegate void NoteBookSwitchPageEvent(Widget page, uint pageNum);
+
+    public delegate void SpinButtonValueChangedEvent();
 
     public delegate void TextBufferApplyTagEvent(GtkTextTagPointer tag, GtkTextIterPointer start, GtkTextIterPointer end);
     public delegate void TextBufferBeginUserActionEvent();
@@ -70,6 +74,8 @@ namespace GtkSharp.Callbacks
     public delegate void TextViewPasteClipboardEvent();
     public delegate void TextViewPopulatePopupEvent();
     public delegate void TextViewPreeditChangedEvent(string str);
+
+    public delegate void ToggleButtonToggledEvent();
     
     public delegate void WidgetDestroyEvent();
     public delegate bool WidgetDestroyedEvent();
