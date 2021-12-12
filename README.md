@@ -2,10 +2,12 @@
 An object oriented GTK 3 wrapper for dotnetcore.
 
 # Dependencies
-See https://github.com/japajoe/gtk
+- libgtk-3-dev
+- libglib2.0-dev
+- libgtksourceview-3.0-dev
 
 # Disclaimer
-Please take note that this is a work in progress. I'll try to make it as complete as possible overtime, but for now it's just a proof of concept. If you are in serious need of a matured C# version of GTK then I recommend having a look at https://github.com/GtkSharp/GtkSharp
+Please take note that this is a work in progress. I'll try to make it as complete as possible overtime, but for now it's just a proof of concept.
 
 # Example
 
@@ -50,12 +52,12 @@ namespace GtkSharpApplication
 
         public override void Initialize()
         {
-            box = new Box(GtkOrientation.Vertical, 0, false);
+            box = new Box(GtkOrientation.Vertical, 0);
             menuBar = new MenuBar();
-            fixedPanel = new Fixed(100, 50);
+            fixedPanel = new Fixed();
             paned = new Paned(GtkOrientation.Vertical);
-            scrolledSource = new ScrolledWindow(GtkOrientation.Vertical, GtkPolicyType.Automatic, GtkPolicyType.Automatic);
-            scrolledLog = new ScrolledWindow(GtkOrientation.Vertical, GtkPolicyType.Automatic, GtkPolicyType.Automatic);
+            scrolledSource = new ScrolledWindow(GtkPolicyType.Automatic, GtkPolicyType.Automatic);
+            scrolledLog = new ScrolledWindow(GtkPolicyType.Automatic, GtkPolicyType.Automatic);
             buttonExecute = new Button("Execute");
             sourceView = new SourceView("c-sharp");
             textViewLog = new TextView();
