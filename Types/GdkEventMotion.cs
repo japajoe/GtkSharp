@@ -1,5 +1,5 @@
 using System;
-using GtkSharp.Native;
+using GtkSharp.Native.Types;
 using System.Runtime.InteropServices;
 
 namespace GtkSharp

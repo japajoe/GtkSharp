@@ -1,5 +1,7 @@
 using System;
-using GtkSharp.Native;
+using GtkSharp.Callbacks;
+using GtkSharp.Native.Callbacks;
+using GtkSharp.Native.Types;
 using GtkSharp.Native.Widgets;
 
 namespace GtkSharp
@@ -46,7 +48,7 @@ namespace GtkSharp
                     if(onGLAreaCreateContextCallback.IsNullPointer())
                     {
                         onGLAreaCreateContextCallback = OnCreateContext;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "create-context", onGLAreaCreateContextCallback.ToIntPtr(), out handle.pointer);
+                        GLib.g_signal_connect(handle.pointer, "create-context", onGLAreaCreateContextCallback.ToIntPtr(), handle.pointer);
                     }
                 }
             }
@@ -66,7 +68,7 @@ namespace GtkSharp
                     if(onGLAreaResizeCallback.IsNullPointer())
                     {
                         onGLAreaResizeCallback = OnResize;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "resize", onGLAreaResizeCallback.ToIntPtr(), out handle.pointer);
+                        GLib.g_signal_connect(handle.pointer, "resize", onGLAreaResizeCallback.ToIntPtr(), handle.pointer);
                     }
                 }
             }
@@ -86,7 +88,7 @@ namespace GtkSharp
                     if(onGLAreaRenderCallback.IsNullPointer())
                     {
                         onGLAreaRenderCallback = OnRender;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "render", onGLAreaRenderCallback.ToIntPtr(), out handle.pointer);
+                        GLib.g_signal_connect(handle.pointer, "render", onGLAreaRenderCallback.ToIntPtr(), handle.pointer);
                     }
                 }
             }
@@ -106,7 +108,7 @@ namespace GtkSharp
                     if(onGLAreaRealizeCallback.IsNullPointer())
                     {
                         onGLAreaRealizeCallback = OnRealize;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "realize", onGLAreaRealizeCallback.ToIntPtr(), out handle.pointer);
+                        GLib.g_signal_connect(handle.pointer, "realize", onGLAreaRealizeCallback.ToIntPtr(), handle.pointer);
                     }
                 }
             }
@@ -126,7 +128,7 @@ namespace GtkSharp
                     if(onGLAreaUnRealizeCallback.IsNullPointer())
                     {
                         onGLAreaUnRealizeCallback = OnUnRealize;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "unrealize", onGLAreaUnRealizeCallback.ToIntPtr(), out handle.pointer);
+                        GLib.g_signal_connect(handle.pointer, "unrealize", onGLAreaUnRealizeCallback.ToIntPtr(), handle.pointer);
                     }
                 }
             }
@@ -134,7 +136,7 @@ namespace GtkSharp
 
         public GLArea()
         {
-            NativeGLArea.GtkSharpGLAreaCreate(out handle);
+            handle = NativeGLArea.gtk_gl_area_new();
         }
 
         public void QueueRender()
@@ -142,7 +144,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            NativeGLArea.GtkSharpGLAreaQueueRender(out handle);
+            NativeGLArea.gtk_gl_area_queue_render(handle);
         }
 
         public void MakeCurrent()
@@ -150,7 +152,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            NativeGLArea.GtkSharpGLAreaMakeCurrent(out handle);
+            NativeGLArea.gtk_gl_area_make_current(handle);
         }
 
         public bool GetContext()
@@ -158,7 +160,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return false;
 
-            NativeGLArea.GtkSharpGLAreaGetContext(out handle, out context);
+            context = NativeGLArea.gtk_gl_area_get_context(handle);
             return true;
         }
 
@@ -168,7 +170,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
             
-            NativeGLArea.GtkSharpGLAreaSetRequiredVersion(out handle, major, minor);
+            NativeGLArea.gtk_gl_area_set_required_version(handle, major, minor);
         }
 
         
@@ -181,7 +183,7 @@ namespace GtkSharp
                 return false;
             }
 
-            NativeGLArea.GtkSharpGLAreaGetRequiredVersion(out handle, out major, out minor);
+            NativeGLArea.gtk_gl_area_get_required_version(handle, out major, out minor);
             return true;
         }
         
@@ -191,7 +193,7 @@ namespace GtkSharp
                 return false;
 
             bool hasAlpha;
-            NativeGLArea.GtkSharpGLAreaGetHasAlpha(out handle, out hasAlpha);
+            hasAlpha = NativeGLArea.gtk_gl_area_get_has_alpha(handle);
             return hasAlpha;
         }
         
@@ -200,7 +202,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            NativeGLArea.GtkSharpGLAreaSetHasAlpha(out handle, hasAlpha);
+            NativeGLArea.gtk_gl_area_set_has_alpha(handle, hasAlpha);
         }
         
         public bool GetHasDepthBuffer()
@@ -208,8 +210,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return false;
 
-            bool hasDepthBuffer;
-            NativeGLArea.GtkSharpGLAreaGetHasDepthBuffer(out handle, out hasDepthBuffer);
+            bool hasDepthBuffer = NativeGLArea.gtk_gl_area_get_has_depth_buffer(handle);
             return hasDepthBuffer;                
         }
         
@@ -218,7 +219,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            NativeGLArea.GtkSharpGLAreaSetHasDepthBuffer(out handle, hasDepthBuffer);
+            NativeGLArea.gtk_gl_area_set_has_depth_buffer(handle, hasDepthBuffer);
         }
         
         public bool GetHasStencilBuffer()
@@ -227,7 +228,7 @@ namespace GtkSharp
                 return false;
 
             bool hasStencilBuffer;
-            NativeGLArea.GtkSharpGLAreaGetHasStencilBuffer(out handle, out hasStencilBuffer);
+            hasStencilBuffer = NativeGLArea.gtk_gl_area_get_has_stencil_buffer(handle);
             return hasStencilBuffer;
         }
         
@@ -236,7 +237,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            NativeGLArea.GtkSharpGLAreaSetHasStencilBuffer(out handle, hasStencilBuffer);
+            NativeGLArea.gtk_gl_area_set_has_stencil_buffer(handle, hasStencilBuffer);
         }
 
         public bool GetAutoRender()
@@ -244,8 +245,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return false;
 
-            bool auto;
-            NativeGLArea.GtkSharpGLAreaGetAutoRender(out handle, out auto);
+            bool auto = NativeGLArea.gtk_gl_area_get_auto_render(handle);
             return auto;
         }
 
@@ -254,12 +254,12 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
 
-            NativeGLArea.GtkSharpGLAreaSetAutoRender(out handle, auto);
+            NativeGLArea.gtk_gl_area_set_auto_render(handle, auto);
         }
 
         GdkGLContextPointer OnCreateContext(IntPtr area, IntPtr data)
         {
-            NativeGLArea.GtkSharpGLAreaGetContext(out handle, out context);
+            context = NativeGLArea.gtk_gl_area_get_context(handle);
             onCreateContextEvent?.Invoke();
             return context;
         }

@@ -1,6 +1,8 @@
 using System;
 using System.Runtime.InteropServices;
-using GtkSharp.Native;
+using GtkSharp.Callbacks;
+using GtkSharp.Native.Callbacks;
+using GtkSharp.Native.Widgets;
 
 namespace GtkSharp
 {
@@ -26,7 +28,7 @@ namespace GtkSharp
                     if(onMenuMoveScrollCallback.IsNullPointer())
                     {
                         onMenuMoveScrollCallback = OnMoveScroll;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "move-scroll", onMenuMoveScrollCallback.ToIntPtr(), out handle.pointer);
+                        GLib.g_signal_connect(handle.pointer, "move-scroll", onMenuMoveScrollCallback.ToIntPtr(), handle.pointer);
                     }
                 }
             }
@@ -46,7 +48,7 @@ namespace GtkSharp
                     if(onMenuPoppedUpCallback.IsNullPointer())
                     {
                         onMenuPoppedUpCallback = OnPoppedUp;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "popped-up", onMenuPoppedUpCallback.ToIntPtr(), out handle.pointer);
+                        GLib.g_signal_connect(handle.pointer, "popped-up", onMenuPoppedUpCallback.ToIntPtr(), handle.pointer);
                     }
                 }
             }
@@ -59,12 +61,17 @@ namespace GtkSharp
         
         public Menu()
         {
-            Gtk.GtkSharpMenuCreate(out handle);
+            handle = NativeMenu.gtk_menu_new();
         }
 
         public void ShellAppend(MenuItem menuItem)
         {
-            Gtk.GtkSharpMenuShellAppend(out handle.pointer, out menuItem.handle.pointer);
+            NativeMenuShell.gtk_menu_shell_append(handle, menuItem.handle);
+        }
+
+        public void ShellPrepend(MenuItem menuItem)
+        {
+            NativeMenuShell.gtk_menu_shell_prepend(handle, menuItem.handle);
         }
 
         private void OnMoveScroll(IntPtr widget, IntPtr scrollType, IntPtr data)

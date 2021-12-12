@@ -1,4 +1,6 @@
-using GtkSharp.Native;
+using System;
+using GtkSharp.Native.Utilities;
+using GtkSharp.Native.Widgets;
 
 namespace GtkSharp
 {
@@ -13,34 +15,22 @@ namespace GtkSharp
         {
             GtkResponseType response = GtkResponseType.None;
 
-            Gtk.GtkSharpFileChooserDialogCreate(out handle,
-                                                out parent.handle,
-                                                title,
-                                                GtkFileChooserAction.Open,
-                                                "_Cancel",
-                                                GtkResponseType.Cancel,
-                                                "_Open",
-                                                GtkResponseType.Accept);
+            handle = NativeFileChooserDialog.gtk_file_chooser_dialog_new(title,
+                                                                parent.handle,
+                                                                GtkFileChooserAction.Open,
+                                                                "_Cancel",
+                                                                GtkResponseType.Cancel,
+                                                                "_Open",
+                                                                GtkResponseType.Accept,
+                                                                IntPtr.Zero);
 
-            Gtk.GtkSharpDialogRun(out handle, out response);
+            response = (GtkResponseType)NativeDialog.gtk_dialog_run(handle);
 
             if(response == GtkResponseType.Accept)
             {
-                int length = 0;
-                Gtk.GtkSharpFileChooserGetFileNameLength(out handle, out length);
-
-                if(length > 0)
-                {
-                    if(length > stringBuilder.Capacity)
-                    {
-                        stringBuilder.Capacity = length;
-                        stringBuilder.EnsureCapacity(length);
-                    }
-                    
-                    stringBuilder.Clear();
-                    Gtk.GtkSharpFileChooserGetFileName(out handle, stringBuilder);
-                    fileName = stringBuilder.ToString().Substring(0, length);
-                }
+                IntPtr ptr = NativeFileChooser.gtk_file_chooser_get_filename(handle);
+                fileName = MarshalHelper.MarshalPtrToString(ptr);
+                GLib.g_free(ptr);
             }
             
             this.Destroy();            

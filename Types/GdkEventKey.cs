@@ -1,6 +1,6 @@
 using System;
 using System.Runtime.InteropServices;
-using GtkSharp.Native;
+using GtkSharp.Native.Types;
 
 namespace GtkSharp
 {

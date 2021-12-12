@@ -1,10 +1,12 @@
 using System;
-using GtkSharp.Native;
+using GtkSharp.Callbacks;
+using GtkSharp.Native.Callbacks;
+using GtkSharp.Native.Types;
 using GtkSharp.Native.Widgets;
 
 namespace GtkSharp
 {
-    public class NoteBook : Widget
+    public class NoteBook : Container
     {
         private event NoteBookChangeCurrentPageEvent onChangeCurrentPageEvent;
         private event NoteBookCreateWindowEvent onCreateWindowEvent;
@@ -28,29 +30,6 @@ namespace GtkSharp
         private GtkNoteBookSelectPageCallback onNoteBookSelectPageCallback;
         private GtkNoteBookSwitchPageCallback onNoteBookSwitchPageCallback;
 
-        private int pageCount;
-        private int selectedIndex;
-
-        public int PageCount
-        {
-            get
-            {
-                return GetPageCount();
-            }
-        }
-
-        public int SelectedIndex
-        {
-            get
-            {
-                return GetSelectedIndex();
-            }
-            set
-            {
-                SetSelectedIndex(value);
-            }
-        }
-
         public NoteBookChangeCurrentPageEvent onChangeCurrentPage
         {
             get
@@ -65,7 +44,7 @@ namespace GtkSharp
                     if(onNoteBookChangeCurrentPageCallback.IsNullPointer())
                     {
                         onNoteBookChangeCurrentPageCallback = OnChangeCurrentPage;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "change-current-page", onNoteBookChangeCurrentPageCallback.ToIntPtr(), out handle.pointer);
+                        GLib.g_signal_connect(handle.pointer, "change-current-page", onNoteBookChangeCurrentPageCallback.ToIntPtr(), handle.pointer);
                     }
                 }
             }
@@ -85,7 +64,7 @@ namespace GtkSharp
                     if(onNoteBookCreateWindowCallback.IsNullPointer())
                     {
                         onNoteBookCreateWindowCallback = OnCreateWindow;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "create-window", onNoteBookCreateWindowCallback.ToIntPtr(), out handle.pointer);
+                        GLib.g_signal_connect(handle.pointer, "create-window", onNoteBookCreateWindowCallback.ToIntPtr(), handle.pointer);
                     }
                 }
             }
@@ -105,7 +84,7 @@ namespace GtkSharp
                     if(onNoteBookFocusTabCallback.IsNullPointer())
                     {
                         onNoteBookFocusTabCallback = OnFocusTab;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "focus-tab", onNoteBookFocusTabCallback.ToIntPtr(), out handle.pointer);
+                        GLib.g_signal_connect(handle.pointer, "focus-tab", onNoteBookFocusTabCallback.ToIntPtr(), handle.pointer);
                     }
                 }
             }
@@ -125,7 +104,7 @@ namespace GtkSharp
                     if(onNoteBookMoveFocusOutCallback.IsNullPointer())
                     {
                         onNoteBookMoveFocusOutCallback = OnMoveFocusOut;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "move-focus-out", onNoteBookMoveFocusOutCallback.ToIntPtr(), out handle.pointer);
+                        GLib.g_signal_connect(handle.pointer, "move-focus-out", onNoteBookMoveFocusOutCallback.ToIntPtr(), handle.pointer);
                     }
                 }
             }
@@ -145,7 +124,7 @@ namespace GtkSharp
                     if(onNoteBookPageAddedCallback.IsNullPointer())
                     {
                         onNoteBookPageAddedCallback = OnPageAdded;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "page-added", onNoteBookPageAddedCallback.ToIntPtr(), out handle.pointer);
+                        GLib.g_signal_connect(handle.pointer, "page-added", onNoteBookPageAddedCallback.ToIntPtr(), handle.pointer);
                     }
                 }
             }
@@ -165,7 +144,7 @@ namespace GtkSharp
                     if(onNoteBookPageRemovedCallback.IsNullPointer())
                     {
                         onNoteBookPageRemovedCallback = OnPageRemoved;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "page-removed", onNoteBookPageRemovedCallback.ToIntPtr(), out handle.pointer);
+                        GLib.g_signal_connect(handle.pointer, "page-removed", onNoteBookPageRemovedCallback.ToIntPtr(), handle.pointer);
                     }
                 }
             }
@@ -185,7 +164,7 @@ namespace GtkSharp
                     if(onNoteBookPageReorderedCallback.IsNullPointer())
                     {
                         onNoteBookPageReorderedCallback = OnPageReordered;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "page-reordered", onNoteBookPageReorderedCallback.ToIntPtr(), out handle.pointer);
+                        GLib.g_signal_connect(handle.pointer, "page-reordered", onNoteBookPageReorderedCallback.ToIntPtr(), handle.pointer);
                     }
                 }
             }
@@ -205,7 +184,7 @@ namespace GtkSharp
                     if(onNoteBookReorderTabCallback.IsNullPointer())
                     {
                         onNoteBookReorderTabCallback = OnReorderTab;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "reorder-tab", onNoteBookReorderTabCallback.ToIntPtr(), out handle.pointer);
+                        GLib.g_signal_connect(handle.pointer, "reorder-tab", onNoteBookReorderTabCallback.ToIntPtr(), handle.pointer);
                     }
                 }
             }
@@ -225,7 +204,7 @@ namespace GtkSharp
                     if(onNoteBookSelectPageCallback.IsNullPointer())
                     {
                         onNoteBookSelectPageCallback = OnSelectPage;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "select-page", onNoteBookSelectPageCallback.ToIntPtr(), out handle.pointer);
+                        GLib.g_signal_connect(handle.pointer, "select-page", onNoteBookSelectPageCallback.ToIntPtr(), handle.pointer);
                     }
                 }
             }
@@ -245,60 +224,71 @@ namespace GtkSharp
                     if(onNoteBookSwitchPageCallback.IsNullPointer())
                     {
                         onNoteBookSwitchPageCallback = OnSwitchPage;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "switch-page", onNoteBookSwitchPageCallback.ToIntPtr(), out handle.pointer);
+                        GLib.g_signal_connect(handle.pointer, "switch-page", onNoteBookSwitchPageCallback.ToIntPtr(), handle.pointer);
                     }
                 }
             }
         }
-
+                
         public NoteBook()
         {
-            NativeNoteBook.GtkSharpNotebookCreate(out handle);
+            handle = NativeNoteBook.gtk_notebook_new();
         }
 
-        public void Append(Widget child, Widget label)
+        public int AppendPage(Widget widget, Widget label)
         {
             if(handle.IsNullPointer)
-                return;
-
-            int index;
-            NativeNoteBook.GtkSharpNotebookAppendPage(out handle, out child.handle, out label.handle, out index);
+                return -1;
+            
+            return NativeNoteBook.gtk_notebook_append_page(handle, widget.handle, label.handle);
         }
 
-        public void Remove(int index)
+        public int AppendPageMenu(Widget widget, Widget tabLabel, Widget menuLabel)
         {
             if(handle.IsNullPointer)
-                return;
+                return -1;
+            
+            return NativeNoteBook.gtk_notebook_append_page_menu(handle, widget.handle, tabLabel.handle, menuLabel.handle);
+        }        
 
-            NativeNoteBook.GtkSharpNotebookRemovePage(out handle, index);
-        }
-
-        public int GetPageCount()
-        {
-            if(handle.IsNullPointer)
-                return 0;
-
-            NativeNoteBook.GtkSharpNotebookGetNPages(out handle, out pageCount);
-
-            return pageCount;
-        }
-
-        public int GetSelectedIndex()
+        public int PrependPage(Widget widget, Widget label)       
         {
             if(handle.IsNullPointer)
                 return -1;
 
-            NativeNoteBook.GtkSharpNotebookGetCurrentPage(out handle, out selectedIndex);
-            return selectedIndex;
+            return NativeNoteBook.gtk_notebook_prepend_page(handle, widget.handle, label.handle);
         }
 
-        public void SetSelectedIndex(int index)
+        public int PrependPageMenu(Widget widget, Widget tabLabel, Widget menuLabel)
+        {
+            if(handle.IsNullPointer)
+                return -1;
+            
+            return NativeNoteBook.gtk_notebook_prepend_page_menu(handle, widget.handle, tabLabel.handle, menuLabel.handle);
+        }
+
+        public int InsertPage(Widget widget, Widget label, int index)
+        {
+            if(handle.IsNullPointer)
+                return -1;
+            
+            return NativeNoteBook.gtk_notebook_insert_page(handle, widget.handle, label.handle, index);
+        }
+
+        public int InsertPageMenu(Widget widget, Widget tabLabel, Widget menuLabel, int index)
+        {
+            if(handle.IsNullPointer)
+                return -1;
+            
+            return NativeNoteBook.gtk_notebook_insert_page_menu(handle, widget.handle, tabLabel.handle, menuLabel.handle, index);
+        }
+
+        public void RemovePage(int index)
         {
             if(handle.IsNullPointer)
                 return;
 
-            NativeNoteBook.GtkSharpNotebookSetCurrentPage(out handle, index);
-            selectedIndex = index;
+            NativeNoteBook.gtk_notebook_remove_page(handle, index);
         }
 
         bool OnChangeCurrentPage(IntPtr widget, int obj, IntPtr data)
@@ -312,11 +302,16 @@ namespace GtkSharp
 
         GtkNoteBookPointer OnCreateWindow(IntPtr widget, GtkWidgetPointer page, int x, int y, IntPtr data)
         {
+            GtkNoteBookPointer p = new GtkNoteBookPointer();
+
             if(onCreateWindow != null)
             {
-                return onCreateWindow(page, x, y);
+                Widget w = new Widget(widget);
+                NoteBook b = onCreateWindow(w, x, y);
+                p.pointer = b.handle.pointer;
+                return p;
             }
-            GtkNoteBookPointer p = new GtkNoteBookPointer();
+            
             p.pointer = IntPtr.Zero;
             return p;
         }
@@ -337,17 +332,29 @@ namespace GtkSharp
 
         void OnPageAdded(IntPtr widget, GtkWidgetPointer child, uint pageNum, IntPtr data)
         {
-            onPageAdded?.Invoke(child, pageNum);
+            if(onPageAdded != null)
+            {
+                Widget c = new Widget(widget);            
+                onPageAdded(c, pageNum);
+            }
         }
 
         void OnPageRemoved(IntPtr widget, GtkWidgetPointer child, uint pageNum, IntPtr data)
         {
-            onPageRemoved?.Invoke(child, pageNum);
+            if(onPageRemoved != null)
+            {
+                Widget c = new Widget(widget);
+                onPageRemoved(c, pageNum);
+            }
         }
 
         void OnPageReordered(IntPtr widget, GtkWidgetPointer child, uint pageNum, IntPtr data)
         {
-            onPageReordered?.Invoke(child, pageNum);
+            if(onPageReordered != null)
+            {
+                Widget c = new Widget(widget);
+                onPageReordered(c, pageNum);
+            }
         }
 
         bool OnReorderTab(IntPtr widget, GtkDirectionType directionType, bool p0, IntPtr data)
@@ -370,7 +377,11 @@ namespace GtkSharp
 
         void OnSwitchPage(IntPtr widget, GtkWidgetPointer page, uint pageNum, IntPtr data)
         {
-            onSwitchPage?.Invoke(page, pageNum);
-        }
+            if(onSwitchPage != null)
+            {
+                Widget p = new Widget(page.pointer);
+                onSwitchPage(p, pageNum);
+            }
+        }        
     }
 }

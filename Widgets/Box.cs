@@ -2,59 +2,35 @@ using GtkSharp.Native.Widgets;
 
 namespace GtkSharp
 {
-    public class Box : Widget
+    public class Box : Container
     {
         public Box()
         {
-            NativeBox.GtkSharpBoxCreate(out handle, GtkOrientation.Vertical, 0);
-            SetHomogeneous(false);
+            handle = NativeBox.gtk_box_new(GtkOrientation.Vertical, 0);
         }
 
-        public bool Homogeneous
+        public Box(GtkOrientation orientation, int spacing)
         {
-            get
-            {
-                return GetHomogeneous();
-            }
-            set
-            {
-                SetHomogeneous(value);
-            }
+            handle = NativeBox.gtk_box_new(orientation, spacing);
         }
 
-        public Box(GtkOrientation orientation, int spacing, bool homogeneous)
+        public void Add(Widget widget, bool expand, bool fill, uint padding)
         {
-            NativeBox.GtkSharpBoxCreate(out handle, orientation, spacing);
-            SetHomogeneous(homogeneous);
+            PackStart(widget, expand, fill, padding);
         }
 
-        public bool GetHomogeneous()
-        {
-            if(handle.IsNullPointer)
-                return false;
-
-            bool homogeneous;
-            NativeBox.GtkSharpBoxGetHomogeneous(out handle, out homogeneous);
-            return homogeneous;
-        }
-
-        public void SetHomogeneous(bool homogeneous)
+        public void PackStart(Widget widget, bool expand, bool fill, uint padding)
         {
             if(handle.IsNullPointer)
                 return;
-
-            NativeBox.GtkSharpBoxSetHomogeneous(out handle, homogeneous);
+            NativeBox.gtk_box_pack_start(handle, widget.handle, expand, fill, padding);
         }
 
-        public void Add(Widget child, bool expand, bool fill, uint padding)
+        public void PackEnd(Widget widget, bool expand, bool fill, uint padding)
         {
             if(handle.IsNullPointer)
                 return;
-
-            if(child.handle.IsNullPointer)
-                return;
-
-            NativeBox.GtkSharpBoxPackStart(out handle, out child.handle, expand, fill, padding);            
-        }
+            NativeBox.gtk_box_pack_end(handle, widget.handle, expand, fill, padding);
+        }        
     }
 }

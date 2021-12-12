@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using GtkSharp.Native;
+using GtkSharp.Native.Widgets;
 
 namespace GtkSharp
 {
@@ -23,7 +23,7 @@ namespace GtkSharp
 
         public MenuBar()
         {
-            Gtk.GtkSharpMenuBarCreate(out handle);
+            handle = NativeMenuBar.gtk_menu_bar_new();
         }
 
         public void AddMenu(string name, List<MenuItem> items)
@@ -50,7 +50,7 @@ namespace GtkSharp
             if(handle.IsNullPointer)
                 return;
                 
-            Gtk.GtkSharpMenuShellAppend(out handle.pointer, out menuItem.handle.pointer);
+            NativeMenuShell.gtk_menu_shell_append(handle, menuItem.handle);
         }
     } 
 }

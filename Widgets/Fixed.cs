@@ -1,23 +1,32 @@
-using GtkSharp.Native;
+using GtkSharp.Native.Widgets;
 
 namespace GtkSharp
 {
-    public class Fixed : Widget
+    public class Fixed : Container
     {
-        public Fixed(int width, int height)
+        public Fixed()
         {
-            Gtk.GtkSharpFixedCreate(out handle, width, height);
+            handle = NativeFixed.gtk_fixed_new();
         }
 
-        public void Add(Widget child, int x, int y)
+        public void Add(Widget widget, int x, int y)
+        {
+            Put(widget, x, y);
+        }
+
+        public void Put(Widget widget, int x, int y)
         {
             if(handle.IsNullPointer)
                 return;
+            
+            NativeFixed.gtk_fixed_put(handle, widget.handle, x, y);
+        }
 
-            if(child.handle.IsNullPointer)
-                return;
-
-            Gtk.GtkSharpFixedAdd(out handle, out child.handle.pointer, x, y);
+        public void Move(Widget widget, int x, int y)
+        {
+            if(handle.IsNullPointer)
+                return;            
+            NativeFixed.gtk_fixed_move(handle, widget.handle, x, y);
         }
     }
 }

@@ -1,53 +1,53 @@
 using System.Runtime.InteropServices;
+using GtkSharp.Native.Types;
 
 namespace GtkSharp.Native.Widgets
 {
     internal static class NativeBox
-    {
+    {        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpBoxGetType(out ulong type);
-
+        internal static extern ulong gtk_box_get_type();
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpBoxCreate(out GtkWidgetPointer box, GtkOrientation orientation, int spacing);
-
+        internal static extern GtkWidgetPointer gtk_box_new(GtkOrientation orientation, int spacing); 
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpBoxPackStart(out GtkWidgetPointer box, out GtkWidgetPointer child, bool expand, bool fill, uint padding);
-
+        internal static extern void gtk_box_pack_start(GtkWidgetPointer box, GtkWidgetPointer child, bool expand, bool fill, uint padding);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpBoxPackEnd(out GtkWidgetPointer box, out GtkWidgetPointer child, bool expand, bool fill, uint padding);
-
+        internal static extern void gtk_box_pack_end(GtkWidgetPointer box, GtkWidgetPointer child, bool expand, bool fill, uint padding); 
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpBoxSetHomogeneous(out GtkWidgetPointer box, bool homogeneous);
-
+        internal static extern void gtk_box_set_homogeneous(GtkWidgetPointer box, bool homogeneous);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpBoxGetHomogeneous(out GtkWidgetPointer box, out bool homogeneous);
-
+        internal static extern bool gtk_box_get_homogeneous(GtkWidgetPointer box);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpBoxSetSpacing(out GtkWidgetPointer box, int spacing);
-
+        internal static extern void gtk_box_set_spacing(GtkWidgetPointer box, int spacing);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpBoxGetSpacing(out GtkWidgetPointer box, out int spacing);
-
+        internal static extern int gtk_box_get_spacing(GtkWidgetPointer box);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpBoxSetBaselinePosition(out GtkWidgetPointer box, GtkBaselinePosition position);
-
+        internal static extern void gtk_box_set_baseline_position(GtkWidgetPointer box, GtkBaselinePosition position);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpBoxGetBaselinePosition(out GtkWidgetPointer box, out GtkBaselinePosition baselinePosition);
-
+        internal static extern GtkBaselinePosition gtk_box_get_baseline_position(GtkWidgetPointer box); 
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpBoxReorderChild(out GtkWidgetPointer box, out GtkWidgetPointer child, int position);
-
+        internal static extern void gtk_box_reorder_child(GtkWidgetPointer box, GtkWidgetPointer child, int position); 
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpBoxQueryChildPacking(out GtkWidgetPointer box, out GtkWidgetPointer child, out bool expand, out bool fill, out uint padding, out GtkPackType packType);
-
+        internal static extern void gtk_box_query_child_packing(GtkWidgetPointer box, GtkWidgetPointer child, out bool expand, out bool fill, out uint padding, out GtkPackType pack_type);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpBoxSetChildPacking(out GtkWidgetPointer box, out GtkWidgetPointer child, bool expand, bool fill, uint padding, GtkPackType packType);
-
+        internal static extern void gtk_box_set_child_packing(GtkWidgetPointer box, GtkWidgetPointer child, bool expand, bool fill, uint padding, GtkPackType pack_type); 
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpBoxSetCenterWidget(out GtkWidgetPointer box, out GtkWidgetPointer widget);
-
+        internal static extern void gtk_box_set_center_widget(GtkWidgetPointer box, GtkWidgetPointer widget);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpBoxGetCenterWidget(out GtkWidgetPointer box, out GtkWidgetPointer widget);
-
+        internal static extern GtkWidgetPointer gtk_box_get_center_widget(GtkWidgetPointer box);
     }
 }

@@ -1,16 +1,18 @@
-using GtkSharp.Native;
+using System;
+using GtkSharp.Native.Types;
+using GtkSharp.Native.Widgets;
+using GtkSharp.Callbacks;
 
 namespace GtkSharp
 {
     public class ApplicationBase
-    {        
+    {
         public Window window;
-        
         public event ApplicationQuitEvent onQuit;
 
         private string title;
         private int width;
-        private int height;
+        private int height;        
 
         public ApplicationBase()
         {
@@ -28,7 +30,7 @@ namespace GtkSharp
 
         public void Run(string[] args)
         {
-            Gtk.GtkSharpInit(args.Length, args);
+            Gtk.gtk_init(args.Length, args);
             window = new Window(GtkWindowType.TopLevel);
 
             Initialize();
@@ -36,17 +38,13 @@ namespace GtkSharp
             window.onDestroyed += OnClosed;
 
             window.SetTitle(title);
-            window.SetSize(width, height);
-            window.Show();
-            Gtk.GtkSharpMain();
+            window.SetSizeRequest(width, height);
+            window.ShowAll();
+
+            Gtk.gtk_main();
         }
 
         public virtual void Initialize()
-        {
-
-        }
-
-        public void GetVersion()
         {
 
         }
@@ -59,8 +57,8 @@ namespace GtkSharp
         private bool OnClosed()
         {
             onQuit?.Invoke();
-            Gtk.GtkSharpMainQuit();
+            Gtk.gtk_main_quit();
             return true;
-        }
+        }        
     }
 }

@@ -1,155 +1,146 @@
-using System.Text;
 using System.Runtime.InteropServices;
+using GtkSharp.Native.Types;
 
 namespace GtkSharp.Native.Widgets
 {
     internal static class NativeNoteBook
-    {
+    {        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookGetType(out ulong type);
+        internal static extern ulong gtk_notebook_get_type();
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookCreate(out GtkWidgetPointer widget);
+        internal static extern GtkWidgetPointer gtk_notebook_new();
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookAppendPage(out GtkWidgetPointer notebook, out GtkWidgetPointer child, out GtkWidgetPointer tabLabel, out int pageIndex);
+        internal static extern int gtk_notebook_append_page(GtkWidgetPointer notebook, GtkWidgetPointer child, GtkWidgetPointer tab_label);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookAppendPageMenu(out GtkWidgetPointer notebook, out GtkWidgetPointer child, out GtkWidgetPointer tabLabel, out GtkWidgetPointer menuLabel, out int pageIndex);
+        internal static extern int gtk_notebook_append_page_menu(GtkWidgetPointer notebook, GtkWidgetPointer child, GtkWidgetPointer tab_label, GtkWidgetPointer menu_label);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookPrependPage(out GtkWidgetPointer notebook, out GtkWidgetPointer child, out GtkWidgetPointer tabLabel, out int pageIndex);
+        internal static extern int gtk_notebook_prepend_page(GtkWidgetPointer notebook, GtkWidgetPointer child, GtkWidgetPointer tab_label);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookPrependPageMenu(out GtkWidgetPointer notebook, out GtkWidgetPointer child, out GtkWidgetPointer tabLabel, out GtkWidgetPointer menuLabel, out int pageIndex);
+        internal static extern int gtk_notebook_prepend_page_menu(GtkWidgetPointer notebook, GtkWidgetPointer child, GtkWidgetPointer tab_label, GtkWidgetPointer menu_label);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookInsertPage(out GtkWidgetPointer notebook, out GtkWidgetPointer child, out GtkWidgetPointer tabLabel, int position, out int pageIndex);
+        internal static extern int gtk_notebook_insert_page(GtkWidgetPointer notebook, GtkWidgetPointer child, GtkWidgetPointer tab_label, int position);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookInsertPageMenu(out GtkWidgetPointer notebook, out GtkWidgetPointer child, out GtkWidgetPointer tabLabel, out GtkWidgetPointer menuLabel, int position, out int pageIndex);
+        internal static extern int gtk_notebook_insert_page_menu(GtkWidgetPointer notebook, GtkWidgetPointer child, GtkWidgetPointer tab_label, GtkWidgetPointer menu_label, int position);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookRemovePage(out GtkWidgetPointer notebook, int pageIndex);
+        internal static extern void gtk_notebook_remove_page(GtkWidgetPointer notebook, int page_num); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookSetGroupName(out GtkWidgetPointer notebook, string groupName);
+        internal static extern void gtk_notebook_set_group_name(GtkWidgetPointer notebook, string group_name);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookGetGroupName(out GtkWidgetPointer notebook, StringBuilder groupName);
+        internal static extern string gtk_notebook_get_group_name(GtkWidgetPointer notebook); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookGetGroupNameLength(out GtkWidgetPointer notebook, out int length);
+        internal static extern int gtk_notebook_get_current_page(GtkWidgetPointer notebook);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookGetCurrentPage(out GtkWidgetPointer notebook, out int pageIndex);
+        internal static extern GtkWidgetPointer gtk_notebook_get_nth_page(GtkWidgetPointer notebook, int page_num);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookGetNthPage(out GtkWidgetPointer notebook, out GtkWidgetPointer widget, int pageIndex);
+        internal static extern int gtk_notebook_get_n_pages(GtkWidgetPointer notebook);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookGetNPages(out GtkWidgetPointer notebook, out int numPages);
+        internal static extern int gtk_notebook_page_num(GtkWidgetPointer notebook, GtkWidgetPointer child);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookPageNum(out GtkWidgetPointer notebook, out GtkWidgetPointer child, out int pageIndex);
+        internal static extern void gtk_notebook_set_current_page(GtkWidgetPointer notebook, int page_num);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookSetCurrentPage(out GtkWidgetPointer notebook, int pageIndex);
+        internal static extern void gtk_notebook_next_page(GtkWidgetPointer notebook);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookNextPage(out GtkWidgetPointer notebook);
+        internal static extern void gtk_notebook_prev_page(GtkWidgetPointer notebook); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookPrevPage(out GtkWidgetPointer notebook);
+        internal static extern void gtk_notebook_set_show_border(GtkWidgetPointer notebook, bool show_border);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookSetShowBorder(out GtkWidgetPointer notebook, bool showBorder);
+        internal static extern bool gtk_notebook_get_show_border(GtkWidgetPointer notebook);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookGetShowBorder(out GtkWidgetPointer notebook, out bool showBorder);
+        internal static extern void gtk_notebook_set_show_tabs(GtkWidgetPointer notebook, bool show_tabs);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookSetShowTabs(out GtkWidgetPointer notebook, bool showTabs);
+        internal static extern bool gtk_notebook_get_show_tabs(GtkWidgetPointer notebook);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookGetShowTabs(out GtkWidgetPointer notebook, out bool showTabs);
+        internal static extern void gtk_notebook_set_tab_pos(GtkWidgetPointer notebook, GtkPositionType pos);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookSetTabPos(out GtkWidgetPointer notebook, GtkPositionType pos);
+        internal static extern GtkPositionType gtk_notebook_get_tab_pos(GtkWidgetPointer notebook);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookGetTabPos(out GtkWidgetPointer notebook, out GtkPositionType positionType);
+        internal static extern void gtk_notebook_set_scrollable(GtkWidgetPointer notebook, bool scrollable);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookSetScrollable(out GtkWidgetPointer notebook, bool scrollable);
+        internal static extern bool gtk_notebook_get_scrollable(GtkWidgetPointer notebook);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookGetScrollable(out GtkWidgetPointer notebook, out bool scrollable);
+        internal static extern ushort gtk_notebook_get_tab_hborder(GtkWidgetPointer notebook);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookGetTabHborder(out GtkWidgetPointer notebook, out ushort horizontalWidth);
+        internal static extern ushort gtk_notebook_get_tab_vborder(GtkWidgetPointer notebook); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookGetTabVborder(out GtkWidgetPointer notebook, out ushort verticalWidth);
+        internal static extern void gtk_notebook_popup_enable(GtkWidgetPointer notebook);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookPopupEnable(out GtkWidgetPointer notebook);
+        internal static extern void gtk_notebook_popup_disable(GtkWidgetPointer notebook); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookPopupDisable(out GtkWidgetPointer notebook);
+        internal static extern GtkWidgetPointer gtk_notebook_get_tab_label(GtkWidgetPointer notebook, GtkWidgetPointer child);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookGetTabLabel(out GtkWidgetPointer notebook, out GtkWidgetPointer child, out GtkWidgetPointer tabLabel);
+        internal static extern void gtk_notebook_set_tab_label(GtkWidgetPointer notebook, GtkWidgetPointer child, GtkWidgetPointer tab_label);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookSetTabLabel(out GtkWidgetPointer notebook, out GtkWidgetPointer child, out GtkWidgetPointer tabLabel);
+        internal static extern void gtk_notebook_set_tab_label_text(GtkWidgetPointer notebook, GtkWidgetPointer child, string tab_text);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookSetTabLabelText(out GtkWidgetPointer notebook, out GtkWidgetPointer child, string text);
+        internal static extern string gtk_notebook_get_tab_label_text(GtkWidgetPointer notebook, GtkWidgetPointer child);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookGetTabLabelText(out GtkWidgetPointer notebook, out GtkWidgetPointer child, StringBuilder text);
+        internal static extern GtkWidgetPointer gtk_notebook_get_menu_label(GtkWidgetPointer notebook, GtkWidgetPointer child);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookGetTabLabelTextLength(out GtkWidgetPointer notebook, out GtkWidgetPointer child, out int length);
+        internal static extern void gtk_notebook_set_menu_label(GtkWidgetPointer notebook, GtkWidgetPointer child, GtkWidgetPointer menu_label);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookGetMenuLabel(out GtkWidgetPointer notebook, out GtkWidgetPointer child, out GtkWidgetPointer label);
+        internal static extern void gtk_notebook_set_menu_label_text(GtkWidgetPointer notebook, GtkWidgetPointer child, string menu_text);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookSetMenuLabel(out GtkWidgetPointer notebook, out GtkWidgetPointer child, out GtkWidgetPointer menuLabel);
+        internal static extern string gtk_notebook_get_menu_label_text(GtkWidgetPointer notebook, GtkWidgetPointer child);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookSetMenuLabelText(out GtkWidgetPointer notebook, out GtkWidgetPointer child, string menuText);
+        internal static extern void gtk_notebook_reorder_child(GtkWidgetPointer notebook, GtkWidgetPointer child, int position);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookGetMenuLabelText(out GtkWidgetPointer notebook, out GtkWidgetPointer child, StringBuilder text);
+        internal static extern bool gtk_notebook_get_tab_reorderable(GtkWidgetPointer notebook, GtkWidgetPointer child);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookGetMenuLabelTextLength(out GtkWidgetPointer notebook, out GtkWidgetPointer child, out int length);
+        internal static extern void gtk_notebook_set_tab_reorderable(GtkWidgetPointer notebook, GtkWidgetPointer child, bool reorderable);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookReorderChild(out GtkWidgetPointer notebook, out GtkWidgetPointer child, int position);
+        internal static extern bool gtk_notebook_get_tab_detachable(GtkWidgetPointer notebook, GtkWidgetPointer child);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookGetTabReorderable(out GtkWidgetPointer notebook, out GtkWidgetPointer child, out bool reorderable);
+        internal static extern void gtk_notebook_set_tab_detachable(GtkWidgetPointer notebook, GtkWidgetPointer child, bool detachable);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookSetTabReorderable(out GtkWidgetPointer notebook, out GtkWidgetPointer child, bool reorderable);
+        internal static extern void gtk_notebook_detach_tab(GtkWidgetPointer notebook, GtkWidgetPointer child); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookGetTabDetachable(out GtkWidgetPointer notebook, out GtkWidgetPointer child, out bool detachable);
+        internal static extern GtkWidgetPointer gtk_notebook_get_action_widget(GtkWidgetPointer notebook, GtkPackType pack_type);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookSetTabDetachable(out GtkWidgetPointer notebook, out GtkWidgetPointer child, bool detachable);
-        
-        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookDetachTab(out GtkWidgetPointer notebook, out GtkWidgetPointer child);
-        
-        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookGetActionWidget(out GtkWidgetPointer notebook, GtkPackType packType, out GtkWidgetPointer widget);
-        
-        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpNotebookSetActionWidget(out GtkWidgetPointer notebook, out GtkWidgetPointer widget, GtkPackType packType);
+        internal static extern void gtk_notebook_set_action_widget(GtkWidgetPointer notebook, GtkWidgetPointer widget, GtkPackType pack_type); 
     }
 }

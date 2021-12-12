@@ -1,48 +1,44 @@
-using System;
-using System.Text;
 using System.Runtime.InteropServices;
+using GtkSharp.Native.Types;
 
 namespace GtkSharp.Native.Widgets
 {
     internal static class NativeEntryBuffer
-    {
+    {        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpEntryBufferGetType(out ulong type);
+        internal static extern ulong gtk_entry_buffer_get_type();
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpEntryBufferNew(out GtkEntryBufferPointer buffer, string initialChars, int numInitialChars);
+        internal static extern GtkWidgetPointer gtk_entry_buffer_new(string initial_chars, int n_initial_chars); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpEntryBufferGetBytes(out GtkEntryBufferPointer buffer, out ulong size);
+        internal static extern ulong gtk_entry_buffer_get_bytes(GtkWidgetPointer buffer); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpEntryBufferGetLength(out GtkEntryBufferPointer buffer, out uint length);
+        internal static extern uint gtk_entry_buffer_get_length(GtkWidgetPointer buffer); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpEntryBufferGetText(out GtkEntryBufferPointer buffer, StringBuilder text);
+        internal static extern string gtk_entry_buffer_get_text(GtkWidgetPointer buffer); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpEntryBufferGetTextLength(out GtkEntryBufferPointer buffer, out int length);
+        internal static extern void gtk_entry_buffer_set_text(GtkWidgetPointer buffer, string chars, int n_chars); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpEntryBufferSetText(out GtkEntryBufferPointer buffer, string chars, int numChars);
+        internal static extern void gtk_entry_buffer_set_max_length(GtkWidgetPointer buffer, int max_length); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpEntryBufferSetMaxLength(out GtkEntryBufferPointer buffer, int maxLength);
+        internal static extern int gtk_entry_buffer_get_max_length(GtkWidgetPointer buffer); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpEntryBufferGetMaxLength(out GtkEntryBufferPointer buffer, out int maxLength);
+        internal static extern uint gtk_entry_buffer_insert_text(GtkWidgetPointer buffer, uint position, string chars, int n_chars); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpEntryBufferInsertText(out GtkEntryBufferPointer buffer, uint position, string chars, int numChars, out uint newPosition);
+        internal static extern uint gtk_entry_buffer_delete_text(GtkWidgetPointer buffer, uint position, int n_chars); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpEntryBufferDeleteText(out GtkEntryBufferPointer buffer, uint position, int numChars, out uint newPosition);
+        internal static extern void gtk_entry_buffer_emit_inserted_text(GtkWidgetPointer buffer, uint position, string chars, uint n_chars); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpEntryBufferEmitInsertedText(out GtkEntryBufferPointer buffer, uint position, string chars, uint numChars);
-        
-        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpEntryBufferEmitDeletedText(out GtkEntryBufferPointer buffer, uint position, uint numChars);        
+        internal static extern void gtk_entry_buffer_emit_deleted_text(GtkWidgetPointer buffer, uint position, uint n_chars);
     }
 }

@@ -1,6 +1,8 @@
 using System;
 using System.Text;
-using GtkSharp.Native;
+using GtkSharp.Callbacks;
+using GtkSharp.Native.Callbacks;
+using GtkSharp.Native.Widgets;
 
 namespace GtkSharp
 {
@@ -48,7 +50,7 @@ namespace GtkSharp
                     if(onFileChooserConfirmOverwriteCallback.IsNullPointer())
                     {
                         onFileChooserConfirmOverwriteCallback = OnConfirmOverwrite;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "confirm-overwrite", onFileChooserConfirmOverwriteCallback.ToIntPtr(), out handle.pointer);
+                        GLib.g_signal_connect(handle.pointer, "confirm-overwrite", onFileChooserConfirmOverwriteCallback.ToIntPtr(), handle.pointer);
                     }
                 }
             }
@@ -68,7 +70,7 @@ namespace GtkSharp
                     if(onFileChooserCurrentFolderChangedCallback.IsNullPointer())
                     {
                         onFileChooserCurrentFolderChangedCallback = OnCurrentFolderChanged;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "current-folder-changed", onFileChooserCurrentFolderChangedCallback.ToIntPtr(), out handle.pointer);
+                        GLib.g_signal_connect(handle.pointer, "current-folder-changed", onFileChooserCurrentFolderChangedCallback.ToIntPtr(), handle.pointer);
                     }
                 }
             }
@@ -88,7 +90,7 @@ namespace GtkSharp
                     if(onFileChooserFileActivatedCallback.IsNullPointer())
                     {
                         onFileChooserFileActivatedCallback = OnFileActivated;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "file-activated", onFileChooserFileActivatedCallback.ToIntPtr(), out handle.pointer);
+                        GLib.g_signal_connect(handle.pointer, "file-activated", onFileChooserFileActivatedCallback.ToIntPtr(), handle.pointer);
                     }
                 }
             }
@@ -108,7 +110,7 @@ namespace GtkSharp
                     if(onFileChooserSelectionChangedCallback.IsNullPointer())
                     {
                         onFileChooserSelectionChangedCallback = OnSelectionChanged;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "selection-changed", onFileChooserSelectionChangedCallback.ToIntPtr(), out handle.pointer);
+                        GLib.g_signal_connect(handle.pointer, "selection-changed", onFileChooserSelectionChangedCallback.ToIntPtr(), handle.pointer);
                     }
                 }
             }
@@ -128,7 +130,7 @@ namespace GtkSharp
                     if(onFileChooserUpdatePreviewCallback.IsNullPointer())
                     {
                         onFileChooserUpdatePreviewCallback = OnUpdatePreview;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "update-preview", onFileChooserUpdatePreviewCallback.ToIntPtr(), out handle.pointer);
+                        GLib.g_signal_connect(handle.pointer, "update-preview", onFileChooserUpdatePreviewCallback.ToIntPtr(), handle.pointer);
                     }
                 }
             }

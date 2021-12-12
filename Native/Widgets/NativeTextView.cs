@@ -1,227 +1,227 @@
-using System;
 using System.Runtime.InteropServices;
+using GtkSharp.Native.Types;
 
 namespace GtkSharp.Native.Widgets
 {
     internal static class NativeTextView
-    {
+    {        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewGetType(out ulong type);
+        internal static extern ulong gtk_text_view_get_type();
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewCreate(out GtkWidgetPointer textView);
-
+        internal static extern GtkWidgetPointer gtk_text_view_new();
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewCreateWithBuffer(out GtkWidgetPointer textView, out GtkTextBufferPointer buffer);
-
+        internal static extern GtkWidgetPointer gtk_text_view_new_with_buffer(GtkWidgetPointer buffer);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewSetBuffer(out GtkWidgetPointer textView, out GtkTextBufferPointer buffer);
-
+        internal static extern void gtk_text_view_set_buffer(GtkWidgetPointer text_view, GtkWidgetPointer buffer);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewGetBuffer(out GtkWidgetPointer textView, out GtkTextBufferPointer buffer);
-
+        internal static extern GtkTextBufferPointer gtk_text_view_get_buffer(GtkWidgetPointer text_view);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewScrollToIter(out GtkWidgetPointer textView, out GtkTextIterPointer iter, double withinMargin, bool useAlign, double xalign, double yalign);
-
+        internal static extern bool gtk_text_view_scroll_to_iter(GtkWidgetPointer text_view, GtkTextIterPointer iter, double within_margin, bool use_align, double xalign, double yalign);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewScrollToMark(out GtkWidgetPointer textView, out GtkTextMarkPointer mark, double withinMargin, bool useAlign, double xalign, double yalign);
-
+        internal static extern void gtk_text_view_scroll_to_mark(GtkWidgetPointer text_view, GtkTextMarkPointer mark, double within_margin, bool use_align, double xalign, double yalign);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewScrollMarkOnscreen(out GtkWidgetPointer textView, out GtkTextMarkPointer mark);
-
+        internal static extern void gtk_text_view_scroll_mark_onscreen(GtkWidgetPointer text_view, GtkTextMarkPointer mark);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewMoveMarkOnscreen(out GtkWidgetPointer textView, out GtkTextMarkPointer mark);
-
+        internal static extern bool gtk_text_view_move_mark_onscreen(GtkWidgetPointer text_view, GtkTextMarkPointer mark);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewPlaceCursorOnscreen(out GtkWidgetPointer textView);
-
+        internal static extern bool gtk_text_view_place_cursor_onscreen(GtkWidgetPointer text_view); 
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewGetVisibleRect(out GtkWidgetPointer textView, out GdkRectangle visibleRect);
-
+        internal static extern void gtk_text_view_get_visible_rect(GtkWidgetPointer text_view, out GdkRectangle visible_rect);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewSetCursorVisible(out GtkWidgetPointer textView, bool setting);
-
+        internal static extern void gtk_text_view_set_cursor_visible(GtkWidgetPointer text_view, bool setting);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewGetCursorVisible(out GtkWidgetPointer textView, out bool setting);
-
+        internal static extern bool gtk_text_view_get_cursor_visible(GtkWidgetPointer text_view); 
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewGetCursorLocations(out GtkWidgetPointer textView, out GtkTextIterPointer iter, out GdkRectangle strongRectangle, out GdkRectangle weakRectangle);
-
+        internal static extern void gtk_text_view_get_cursor_locations(GtkWidgetPointer text_view, GtkTextIterPointer iter, out GdkRectangle strong, out GdkRectangle weak);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewGetIterLocation(out GtkWidgetPointer textView, out GtkTextIterPointer iter, out GdkRectangle location);
-
+        internal static extern void gtk_text_view_get_iter_location(GtkWidgetPointer text_view, GtkTextIterPointer iter, out GdkRectangle location);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewGetIterAtLocation(out GtkWidgetPointer textView, out GtkTextIterPointer iter, int x, int y);
-
+        internal static extern void gtk_text_view_get_iter_at_location(GtkWidgetPointer text_view, GtkTextIterPointer iter, int x, int y);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewGetIterAtPosition(out GtkWidgetPointer textView, out GtkTextIterPointer iter, out int trailing, int x, int y);
-
+        internal static extern void gtk_text_view_get_iter_at_position(GtkWidgetPointer text_view, GtkTextIterPointer iter, out int trailing, int x, int y);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewGetLineYrange(out GtkWidgetPointer textView, out GtkTextIterPointer iter, out int y, out int height);
-
+        internal static extern void gtk_text_view_get_line_yrange(GtkWidgetPointer text_view, GtkTextIterPointer iter, out int y, out int height); 
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewGetLineAtY(out GtkWidgetPointer textView, out GtkTextIterPointer targetIter, int y, out int lineTop);
-
+        internal static extern void gtk_text_view_get_line_at_y(GtkWidgetPointer text_view, GtkTextIterPointer target_iter, int y, out int line_top); 
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewBufferToWindowCoords(out GtkWidgetPointer textView, GtkTextWindowType textWindowType, int bufferX, int bufferY, out int windowX, out int windowY);
-
+        internal static extern void gtk_text_view_buffer_to_window_coords(GtkWidgetPointer text_view, GtkTextWindowType win, int buffer_x, int buffer_y, out int window_x, out int window_y);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewWindowToBufferCoords(out GtkWidgetPointer textView, GtkTextWindowType textWindowType, int windowX, int windowY, out int bufferX, out int bufferY);
-
+        internal static extern void gtk_text_view_window_to_buffer_coords(GtkWidgetPointer text_view, GtkTextWindowType win, int window_x, int window_y, out int buffer_x, out int buffer_y); 
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewGetHadjustment(out GtkWidgetPointer textView, GtkAdjustmentPointer adjustment);
-
+        internal static extern GtkAdjustmentPointer gtk_text_view_get_hadjustment(GtkWidgetPointer text_view);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewGetVadjustment(out GtkWidgetPointer textView, GtkAdjustmentPointer adjustment);
-
+        internal static extern GtkAdjustmentPointer gtk_text_view_get_vadjustment(GtkWidgetPointer text_view); 
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewGetWindow(out GtkWidgetPointer textView, GtkTextWindowType textWindowType, out GdkWindowPointer gdkWindow);
-
+        internal static extern GdkWindowPointer gtk_text_view_get_window(GtkWidgetPointer text_view, GtkTextWindowType win);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewGetWindowType(out GtkWidgetPointer textView, out GdkWindowPointer window, out GtkTextWindowType textWindowType);
-
+        internal static extern GtkTextWindowType gtk_text_view_get_window_type(GtkWidgetPointer text_view, GdkWindowPointer window); 
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewSetBorderWindowSize(out GtkWidgetPointer textView, GtkTextWindowType type, int size);
-
+        internal static extern void gtk_text_view_set_border_window_size(GtkWidgetPointer text_view, GtkTextWindowType type, int size);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewGetBorderWindowSize(out GtkWidgetPointer textView, GtkTextWindowType type, out int size);    
-
+        internal static extern int gtk_text_view_get_border_window_size(GtkWidgetPointer text_view, GtkTextWindowType type); 
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewForwardDisplayLine(out GtkWidgetPointer textView, out GtkTextIterPointer iter);
-
+        internal static extern bool gtk_text_view_forward_display_line(GtkWidgetPointer text_view, GtkTextIterPointer iter);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewBackwardDisplayLine(out GtkWidgetPointer textView, out GtkTextIterPointer iter);
-
+        internal static extern bool gtk_text_view_backward_display_line(GtkWidgetPointer text_view, GtkTextIterPointer iter);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewForwardDisplayLineEnd(out GtkWidgetPointer textView, out GtkTextIterPointer iter);
-
+        internal static extern bool gtk_text_view_forward_display_line_end(GtkWidgetPointer text_view, GtkTextIterPointer iter);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewBackwardDisplayLineStart(out GtkWidgetPointer textView, out GtkTextIterPointer iter);
-
+        internal static extern bool gtk_text_view_backward_display_line_start(GtkWidgetPointer text_view, GtkTextIterPointer iter);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewStartsDisplayLine(out GtkWidgetPointer textView, out GtkTextIterPointer iter);
-
+        internal static extern bool gtk_text_view_starts_display_line(GtkWidgetPointer text_view, GtkTextIterPointer iter);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewMoveVisually(out GtkWidgetPointer textView, out GtkTextIterPointer iter, int count);
-
+        internal static extern bool gtk_text_view_move_visually(GtkWidgetPointer text_view, GtkTextIterPointer iter, int count); 
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewImContextFilterKeypress(out GtkWidgetPointer textView, out GdkEventKeyPointer evnt);
-
+        internal static extern bool gtk_text_view_im_context_filter_keypress(GtkWidgetPointer text_view, GdkEventKeyPointer EVNT);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewResetImContext(out GtkWidgetPointer textView);
-
+        internal static extern void gtk_text_view_reset_im_context(GtkWidgetPointer text_view); 
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewAddChildAtAnchor(out GtkWidgetPointer textView, out GtkWidgetPointer child, out GtkTextChildAnchorPointer anchor);
-
+        internal static extern void gtk_text_view_add_child_at_anchor(GtkWidgetPointer text_view, GtkWidgetPointer child, GtkTextChildAnchorPointer anchor); 
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewAddChildInWindow(out GtkWidgetPointer textView, out GtkWidgetPointer child, GtkTextWindowType whichWindow, int xpos, int ypos);
-
+        internal static extern void gtk_text_view_add_child_in_window(GtkWidgetPointer text_view, GtkWidgetPointer child, GtkTextWindowType which_window, int xpos, int ypos); 
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewMoveChild(out GtkWidgetPointer textView, out GtkWidgetPointer child, int xpos, int ypos);
-
+        internal static extern void gtk_text_view_move_child(GtkWidgetPointer text_view, GtkWidgetPointer child, int xpos, int ypos); 
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewSetWrapMode(out GtkWidgetPointer textView, GtkWrapMode wrapMode);
-
+        internal static extern void gtk_text_view_set_wrap_mode(GtkWidgetPointer text_view, GtkWrapMode wrap_mode);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewGetWrapMode(out GtkWidgetPointer textView, out GtkWrapMode wrapMode);
-
+        internal static extern GtkWrapMode gtk_text_view_get_wrap_mode(GtkWidgetPointer text_view);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewSetEditable(out GtkWidgetPointer textView, bool setting);
-
+        internal static extern void gtk_text_view_set_editable(GtkWidgetPointer text_view, bool setting);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewGetEditable(out GtkWidgetPointer textView, out bool setting);
-
+        internal static extern bool gtk_text_view_get_editable(GtkWidgetPointer text_view);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewSetOverwrite(out GtkWidgetPointer textView, bool overwrite);
-
+        internal static extern void gtk_text_view_set_overwrite(GtkWidgetPointer text_view, bool overwrite);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewGetOverwrite(out GtkWidgetPointer textView, out bool overwrite);
-
+        internal static extern bool gtk_text_view_get_overwrite(GtkWidgetPointer text_view);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewSetAcceptsTab(out GtkWidgetPointer textView, bool acceptsTab);
-
+        internal static extern void gtk_text_view_set_accepts_tab(GtkWidgetPointer text_view, bool accepts_tab);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewGetAcceptsTab(out GtkWidgetPointer textView, out bool acceptsTab);
-
+        internal static extern bool gtk_text_view_get_accepts_tab(GtkWidgetPointer text_view);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewSetPixelsAboveLines(out GtkWidgetPointer textView, int pixelsAboveLines);
-
+        internal static extern void gtk_text_view_set_pixels_above_lines(GtkWidgetPointer text_view, int pixels_above_lines);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewGetPixelsAboveLines(out GtkWidgetPointer textView, out int pixelsAboveLines);
-
+        internal static extern int gtk_text_view_get_pixels_above_lines(GtkWidgetPointer text_view);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewSetPixelsBelowLines(out GtkWidgetPointer textView, int pixelsBelowLines);
-
+        internal static extern void gtk_text_view_set_pixels_below_lines(GtkWidgetPointer text_view, int pixels_below_lines);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewGetPixelsBelowLines(out GtkWidgetPointer textView, out int pixelsBelowLines);
-
+        internal static extern int gtk_text_view_get_pixels_below_lines(GtkWidgetPointer text_view);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewSetPixelsInsideWrap(out GtkWidgetPointer textView, int pixelsInsideWrap);
-
+        internal static extern void gtk_text_view_set_pixels_inside_wrap(GtkWidgetPointer text_view, int pixels_inside_wrap);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewGetPixelsInsideWrap(out GtkWidgetPointer textView, out int pixelsInsideWrap);
-
+        internal static extern int gtk_text_view_get_pixels_inside_wrap(GtkWidgetPointer text_view);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewSetJustification(out GtkWidgetPointer textView, GtkJustification justification);
-
+        internal static extern void gtk_text_view_set_justification(GtkWidgetPointer text_view, GtkJustification justification);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewGetJustification(out GtkWidgetPointer textView, out GtkJustification justification);
-
+        internal static extern GtkJustification gtk_text_view_get_justification(GtkWidgetPointer text_view);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewSetLeftMargin(out GtkWidgetPointer textView, int leftMargin);
-
+        internal static extern void gtk_text_view_set_left_margin(GtkWidgetPointer text_view, int left_margin);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewGetLeftMargin(out GtkWidgetPointer textView, out int leftMargin);
-
+        internal static extern int gtk_text_view_get_left_margin(GtkWidgetPointer text_view);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewSetRightMargin(out GtkWidgetPointer textView, int rightMargin);
-
+        internal static extern void gtk_text_view_set_right_margin(GtkWidgetPointer text_view, int right_margin);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewGetRightMargin(out GtkWidgetPointer textView, out int rightMargin);
-
+        internal static extern int gtk_text_view_get_right_margin(GtkWidgetPointer text_view);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewSetTopMargin(out GtkWidgetPointer textView, int topMargin);
-
+        internal static extern void gtk_text_view_set_top_margin(GtkWidgetPointer text_view, int top_margin);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewGetTopMargin(out GtkWidgetPointer textView, out int topMargin);
-
+        internal static extern int gtk_text_view_get_top_margin(GtkWidgetPointer text_view);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewSetBottomMargin(out GtkWidgetPointer textView, int bottomMargin);
-
+        internal static extern void gtk_text_view_set_bottom_margin(GtkWidgetPointer text_view, int bottom_margin);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewGetBottomMargin(out GtkWidgetPointer textView, out int bottomMargin);
-
+        internal static extern int gtk_text_view_get_bottom_margin(GtkWidgetPointer text_view);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewSetIndent(out GtkWidgetPointer textView, int indent);
-
+        internal static extern void gtk_text_view_set_indent(GtkWidgetPointer text_view, int indent);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewGetIndent(out GtkWidgetPointer textView, out int indent);
-
+        internal static extern int gtk_text_view_get_indent(GtkWidgetPointer text_view);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewSetTabs(out GtkWidgetPointer textView, out PangoTabArrayPointer pangoTabArray);
-
+        internal static extern void gtk_text_view_set_tabs(GtkWidgetPointer text_view, PangoTabArrayPointer tabs);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewGetTabs(out GtkWidgetPointer textView, out PangoTabArrayPointer pangoTabArray);
-
+        internal static extern PangoTabArrayPointer gtk_text_view_get_tabs(GtkWidgetPointer text_view); 
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewGetDefaultAttributes(out GtkWidgetPointer textView, out GtkTextAttributesPointer textAttributes);
-
+        internal static extern GtkTextAttributesPointer gtk_text_view_get_default_attributes(GtkWidgetPointer text_view); 
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewSetInputPurpose(out GtkWidgetPointer textView, GtkInputPurpose purpose);
-
+        internal static extern void gtk_text_view_set_input_purpose(GtkWidgetPointer text_view, GtkInputPurpose purpose);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewGetInputPurpose(out GtkWidgetPointer textView, out GtkInputPurpose purpose);
-
+        internal static extern GtkInputPurpose gtk_text_view_get_input_purpose(GtkWidgetPointer text_view); 
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewSetInputHints(out GtkWidgetPointer textView, GtkInputHints hints);
-
+        internal static extern void gtk_text_view_set_input_hints(GtkWidgetPointer text_view, GtkInputHints hints);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewGetInputHints(out GtkWidgetPointer textView, out GtkInputHints hints);
-
+        internal static extern GtkInputHints gtk_text_view_get_input_hints(GtkWidgetPointer text_view); 
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewSetMonospace(out GtkWidgetPointer textView, bool monospace);
-
+        internal static extern void gtk_text_view_set_monospace(GtkWidgetPointer text_view, bool monospace);
+        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void GtkSharpTextViewGetMonospace(out GtkWidgetPointer textView, out bool monospace);
+        internal static extern bool gtk_text_view_get_monospace(GtkWidgetPointer text_view);
     }
 }

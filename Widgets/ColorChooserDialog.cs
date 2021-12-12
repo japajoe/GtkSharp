@@ -1,4 +1,4 @@
-using GtkSharp.Native;
+using GtkSharp.Native.Widgets;
 
 namespace GtkSharp
 {
@@ -28,15 +28,13 @@ namespace GtkSharp
         {
             GtkResponseType response = GtkResponseType.None;
 
-            Gtk.GtkSharpColorChooserDialogCreate(out handle,
-                                                out parent.handle.pointer,
-                                                title);
+            handle = NativeColorChooserDialog.gtk_color_chooser_dialog_new(title, parent.handle);
 
-            Gtk.GtkSharpDialogRun(out handle, out response);
+            response = (GtkResponseType)NativeDialog.gtk_dialog_run(handle);            
 
             if(response == GtkResponseType.Ok)
             {
-                Gtk.GtkSharpColorChooserGetRGBA(out handle, out color);
+                NativeColorChooser.gtk_color_chooser_get_rgba(handle, out color);
             }
             
             this.Destroy();            

@@ -1,5 +1,7 @@
 using System;
-using GtkSharp.Native;
+using GtkSharp.Callbacks;
+using GtkSharp.Native.Callbacks;
+using GtkSharp.Native.Widgets;
 
 namespace GtkSharp
 {
@@ -22,7 +24,7 @@ namespace GtkSharp
                     if(onMenuItemActivateCallback.IsNullPointer())
                     {
                         onMenuItemActivateCallback = OnActivate;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "activate", onMenuItemActivateCallback.ToIntPtr(), out handle.pointer);
+                        GLib.g_signal_connect(handle.pointer, "activate", onMenuItemActivateCallback.ToIntPtr(), handle.pointer);
                     }
                 }
             }
@@ -30,12 +32,12 @@ namespace GtkSharp
 
         public MenuItem(string label)
         {
-            Gtk.GtkSharpMenuItemCreateWithlabel(out handle, label);
+            handle = NativeMenuItem.gtk_menu_item_new_with_label(label);
         }
 
         public void SetSubMenu(Menu menu)
         {
-            Gtk.GtkSharpMenuItemSetSubMenu(out handle.pointer, out menu.handle.pointer);
+            NativeMenuItem.gtk_menu_item_set_submenu(handle, menu.handle);
         }
 
         private void OnActivate(IntPtr widget, IntPtr data)

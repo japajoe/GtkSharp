@@ -1,7 +1,7 @@
 using System;
-using System.Text;
-using GtkSharp.Native;
 using GtkSharp.Native.Widgets;
+using GtkSharp.Callbacks;
+using GtkSharp.Native.Callbacks;
 
 namespace GtkSharp
 {
@@ -14,8 +14,6 @@ namespace GtkSharp
         private event ButtonPressedEvent onPressedEvent;
         private event ButtonReleasedEvent onReleasedEvent;
 
-        private StringBuilder stringBuilder;
-        private string text = string.Empty;
         private GtkButtonActivateCallback onButtonActivateCallback;
         private GtkButtonClickedCallback onButtonClickedCallback;
         private GtkButtonEnterCallback onButtonEnterCallback;
@@ -37,7 +35,7 @@ namespace GtkSharp
                     if(onButtonActivateCallback.IsNullPointer())
                     {
                         onButtonActivateCallback = OnActivate;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "activate", onButtonActivateCallback.ToIntPtr(), out handle.pointer);
+                        GLib.g_signal_connect(handle.pointer, "activate", onButtonActivateCallback.ToIntPtr(), handle.pointer);
                     }
                 }
             }
@@ -57,7 +55,7 @@ namespace GtkSharp
                     if(onButtonClickedCallback.IsNullPointer())
                     {
                         onButtonClickedCallback = OnClicked;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "clicked", onButtonClickedCallback.ToIntPtr(), out handle.pointer);
+                        GLib.g_signal_connect(handle.pointer, "clicked", onButtonClickedCallback.ToIntPtr(), handle.pointer);
                     }
                 }
             }
@@ -77,7 +75,7 @@ namespace GtkSharp
                     if(onButtonEnterCallback.IsNullPointer())
                     {
                         onButtonEnterCallback = OnEnter;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "enter", onButtonEnterCallback.ToIntPtr(), out handle.pointer);
+                        GLib.g_signal_connect(handle.pointer, "enter", onButtonEnterCallback.ToIntPtr(), handle.pointer);
                     }
                 }
             }
@@ -97,7 +95,7 @@ namespace GtkSharp
                     if(onButtonLeaveCallback.IsNullPointer())
                     {
                         onButtonLeaveCallback = OnLeave;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "leave", onButtonLeaveCallback.ToIntPtr(), out handle.pointer);
+                        GLib.g_signal_connect(handle.pointer, "leave", onButtonLeaveCallback.ToIntPtr(), handle.pointer);
                     }
                 }
             }
@@ -117,7 +115,7 @@ namespace GtkSharp
                     if(onButtonPressedCallback.IsNullPointer())
                     {
                         onButtonPressedCallback = OnPressed;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "pressed", onButtonPressedCallback.ToIntPtr(), out handle.pointer);
+                        GLib.g_signal_connect(handle.pointer, "pressed", onButtonPressedCallback.ToIntPtr(), handle.pointer);
                     }
                 }
             }
@@ -137,60 +135,28 @@ namespace GtkSharp
                     if(onButtonReleasedCallback.IsNullPointer())
                     {
                         onButtonReleasedCallback = OnReleased;
-                        Gtk.GtkSharpSignalConnect(out handle.pointer, "released", onButtonReleasedCallback.ToIntPtr(), out handle.pointer);
+                        GLib.g_signal_connect(handle.pointer, "released", onButtonReleasedCallback.ToIntPtr(), handle.pointer);
                     }
                 }
             }
         }
+        
+        public Button()
+        {
+            handle = NativeButton.gtk_button_new();
+        }
 
         public Button(string text)
         {
-            this.text = text;
-            stringBuilder = new StringBuilder(1024);
-            NativeButton.GtkSharpButtonCreateWithLabel(out handle, text);
-        }
+            handle = NativeButton.gtk_button_new();
+            SetLabel(text);
+        }   
 
-        public string GetText()
-        {
-            if(handle.IsNullPointer)
-                return this.text;
-
-            stringBuilder.Clear();
-
-            int length = 0;
-            NativeButton.GtkSharpButtonGetLabelLength(out handle, out length);
-
-            if(length > stringBuilder.Capacity)
-            {
-                stringBuilder.Capacity = (int)length;
-                stringBuilder.EnsureCapacity((int)length);
-            }
-
-            NativeButton.GtkSharpButtonGetLabel(out handle, stringBuilder);
-
-            this.text = stringBuilder.ToString().Substring(0, (int)length);
-            
-            return this.text;
-        }
-
-        public void SetText(string text)
+        public void SetLabel(string text)
         {
             if(handle.IsNullPointer)
                 return;
-
-            this.text = text;
-            NativeButton.GtkSharpButtonSetLabel(out handle, text);
-        }
-
-        public void SetImage(Image image)
-        {
-            if(handle.IsNullPointer)
-                return;
-
-            if(image.handle.IsNullPointer)
-                return;                
-
-            NativeButton.GtkSharpButtonSetImage(out handle, out image.handle);
+            NativeButton.gtk_button_set_label(handle, text);
         }
 
         private void OnActivate(IntPtr widget, IntPtr data)
@@ -221,6 +187,6 @@ namespace GtkSharp
         private void OnReleased(IntPtr widget, IntPtr data)
         {
             onReleasedEvent?.Invoke();
-        }        
+        } 
     }
 }
