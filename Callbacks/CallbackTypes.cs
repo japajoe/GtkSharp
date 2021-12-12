@@ -1,3 +1,4 @@
+using GtkSharp.Drawing;
 using GtkSharp.Native.Types;
 
 namespace GtkSharp.Callbacks
@@ -85,4 +86,5 @@ namespace GtkSharp.Callbacks
     public delegate bool WidgetButtonPressEvent(GdkEventButton eventButton);
     public delegate bool WidgetButtonReleaseEvent(GdkEventButton eventButton);
     public delegate bool WidgetMotionNotifyEvent(GdkEventMotion eventMotion);
+    public delegate bool WidgetDrawEvent(Cairo cr);
 }

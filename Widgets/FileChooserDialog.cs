@@ -1,8 +1,8 @@
 using System;
 using System.Text;
+using GtkSharp.Native;
 using GtkSharp.Callbacks;
 using GtkSharp.Native.Callbacks;
-using GtkSharp.Native.Widgets;
 
 namespace GtkSharp
 {

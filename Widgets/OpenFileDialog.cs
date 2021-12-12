@@ -1,4 +1,5 @@
 using System;
+using GtkSharp.Native;
 using GtkSharp.Native.Utilities;
 using GtkSharp.Native.Widgets;
 

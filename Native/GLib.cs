@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace GtkSharp.Native.Widgets
+namespace GtkSharp.Native
 {
     internal static class GLib
     {        

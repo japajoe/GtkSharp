@@ -1,5 +1,6 @@
 using System;
 using GtkSharp.Callbacks;
+using GtkSharp.Native;
 using GtkSharp.Native.Callbacks;
 using GtkSharp.Native.Types;
 using GtkSharp.Native.Widgets;

@@ -1,6 +1,4 @@
-using System;
-using GtkSharp.Native.Types;
-using GtkSharp.Native.Widgets;
+using GtkSharp.Native;
 using GtkSharp.Callbacks;
 
 namespace GtkSharp
@@ -30,7 +28,7 @@ namespace GtkSharp
 
         public void Run(string[] args)
         {
-            Gtk.gtk_init(args.Length, args);
+            GtkLib.gtk_init(args.Length, args);
             window = new Window(GtkWindowType.TopLevel);
 
             Initialize();
@@ -41,7 +39,7 @@ namespace GtkSharp
             window.SetSizeRequest(width, height);
             window.ShowAll();
 
-            Gtk.gtk_main();
+            GtkLib.gtk_main();
         }
 
         public virtual void Initialize()
@@ -57,7 +55,7 @@ namespace GtkSharp
         private bool OnClosed()
         {
             onQuit?.Invoke();
-            Gtk.gtk_main_quit();
+            GtkLib.gtk_main_quit();
             return true;
         }        
     }

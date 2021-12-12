@@ -1,15 +1,18 @@
 using System;
 using GtkSharp.Callbacks;
+using GtkSharp.Native;
 using GtkSharp.Native.Types;
 using GtkSharp.Native.Widgets;
 using GtkSharp.Native.Callbacks;
 using System.Runtime.InteropServices;
+using GtkSharp.Drawing;
 
 namespace GtkSharp
 {
     public class Widget
     {
         internal GtkWidgetPointer handle;
+        private Cairo cairo;
 
         private WidgetDestroyEvent onDestroyEvent;
         private WidgetDestroyedEvent onDestroyedEvent;
@@ -19,6 +22,7 @@ namespace GtkSharp
         private WidgetButtonPressEvent onButtonPressEvent;
         private WidgetButtonReleaseEvent onButtonReleaseEvent;
         private WidgetMotionNotifyEvent onMotionNotifyEvent;
+        private WidgetDrawEvent onDrawEvent;
 
         private GtkWidgetDestroyCallback onWidgetDestroyCallback;
         private GtkWidgetDestroyedCallback onWidgetDestroyedCallback;
@@ -28,6 +32,7 @@ namespace GtkSharp
         private GtkWidgetButtonPressCallback onWidgetButtonPressCallback;
         private GtkWidgetButtonReleaseCallback onWidgetButtonReleaseCallback;
         private GtkWidgetMotionNotifyCallback onWidgetMotionNotifyCallback;
+        private GtkWidgetDrawCallback onWidgetDrawCallback;
 
         public WidgetDestroyEvent onDestroy
         {
@@ -197,6 +202,28 @@ namespace GtkSharp
             }
         }
 
+        public WidgetDrawEvent onDraw
+        {
+            get
+            {
+                return onDrawEvent;
+            }
+            set
+            {
+                onDrawEvent = value;
+
+                if(!handle.IsNullPointer)
+                {
+                    if(onWidgetDrawCallback.IsNullPointer())
+                    {
+                        cairo = new Cairo();
+                        onWidgetDrawCallback = OnDraw;
+                        GLib.g_signal_connect(handle.pointer, "draw", onWidgetDrawCallback.ToIntPtr(), handle.pointer);
+                    }
+                }
+            }
+        }
+
         public Widget()
         {
             
@@ -329,6 +356,17 @@ namespace GtkSharp
                 GtkAllocation a = Marshal.PtrToStructure<GtkAllocation>(allocation.pointer);
                 onSizeAllocate(a);
             }
-        }        
+        }
+
+        private bool OnDraw(IntPtr widget, IntPtr cr, IntPtr data)
+        {
+            cairo.cr.pointer = cr;
+            
+            if(onDraw != null)
+            {
+                return onDraw(cairo);
+            }
+            return false;
+        }    
     }
 }

@@ -1,8 +1,8 @@
 using System.Runtime.InteropServices;
 
-namespace GtkSharp.Native.Widgets
+namespace GtkSharp.Native
 {
-    internal static class Gtk
+    internal static class GtkLib
     {        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void gtk_init(int argc, string[] argv);

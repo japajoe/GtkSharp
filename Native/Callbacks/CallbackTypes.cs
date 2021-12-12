@@ -87,5 +87,6 @@ namespace GtkSharp.Native.Callbacks
     internal delegate bool GtkWidgetKeyReleaseCallback(IntPtr widget, GdkEventKeyPointer eventKey, IntPtr userData);
     internal delegate bool GtkWidgetButtonPressCallback(IntPtr widget, GdkEventButtonPointer eventButton, IntPtr userData);
     internal delegate bool GtkWidgetButtonReleaseCallback(IntPtr widget, GdkEventButtonPointer eventButton, IntPtr userData);
-    internal delegate bool GtkWidgetMotionNotifyCallback(IntPtr widget, GdkEventMotionPointer eventMotion, IntPtr userData);    
+    internal delegate bool GtkWidgetMotionNotifyCallback(IntPtr widget, GdkEventMotionPointer eventMotion, IntPtr userData);
+    internal delegate bool GtkWidgetDrawCallback(IntPtr widget, IntPtr cr, IntPtr data);
 }
