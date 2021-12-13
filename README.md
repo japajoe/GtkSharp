@@ -15,6 +15,7 @@ Please take note that this is a work in progress. I'll try to make it as complet
 
 ```csharp
 using System;
+using System.Collections.Generic;
 using GtkSharp;
 
 namespace GtkSharpApplication
@@ -79,18 +80,24 @@ namespace GtkSharpApplication
 
             textViewLog.ReadOnly = true;
 
-            MenuCreationInfo infoFile = new MenuCreationInfo("File");
-            infoFile.AddItem("Open", OnMenuItemOpenClicked);
-            infoFile.AddItem("Save", OnMenuItemSaveClicked);
-            infoFile.AddItem("Exit", OnMenuItemExitClicked);
+            List<MenuItem> menuFile = new List<MenuItem>();
+            MenuItem menuItemFileOpen = new MenuItem("Open");
+            MenuItem menuItemFileSave = new MenuItem("Save");
+            MenuItem menuItemFileExit = new MenuItem("Exit");
+            menuItemFileOpen.Activate += OnMenuItemOpenClicked;
+            menuItemFileSave.Activate += OnMenuItemSaveClicked;
+            menuItemFileExit.Activate += OnMenuItemExitClicked;
+            menuFile.Add(menuItemFileOpen);
+            menuFile.Add(menuItemFileSave);
+            menuFile.Add(menuItemFileExit);
 
-            MenuCreationInfo infoEdit = new MenuCreationInfo("Edit");
-            infoEdit.AddItem("Clear Log", OnMenuItemClearLogClicked);
+            List<MenuItem> menuEdit = new List<MenuItem>();
+            MenuItem menuItemEditClearLog = new MenuItem("Clear Log");
+            menuItemEditClearLog.Activate += OnMenuItemClearLogClicked;
+            menuEdit.Add(menuItemEditClearLog);
 
-            menuBar.AddMenu(infoFile);
-            menuBar.AddMenu(infoEdit);
-
-            window.ShowAll();
+            menuBar.AddMenu("File", menuFile);
+            menuBar.AddMenu("Edit", menuEdit);
         }
 
         private void Execute()
