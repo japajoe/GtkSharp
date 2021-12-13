@@ -5,13 +5,11 @@ namespace GtkSharp.Native
 {
     internal static class GLib
     {        
-        const string NATIVELIBNAME = "glib-2.0";
+        const string NATIVELIB_GLIB = "glib-2.0";
+        const string NATIVELIB_GOBJECT = "gobject-2.0";
 
-        [DllImport("gobject-2.0", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NATIVELIB_GOBJECT, CallingConvention = CallingConvention.Cdecl)]
         internal static extern ulong g_signal_connect_data(IntPtr widget, string eventName, IntPtr callback, IntPtr data, IntPtr destroyData, GConnectFlags connectFlags);
-
-        [DllImport("gobject-2.0", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void g_free(IntPtr memory);
         
         internal static ulong g_signal_connect(IntPtr widget, string eventName, IntPtr callback, IntPtr userdata)
         {
@@ -27,5 +25,20 @@ namespace GtkSharp.Native
         {
             return g_signal_connect_data(widget, eventName, callback, userdata, IntPtr.Zero, GConnectFlags.Swapped);
         }
+
+        [DllImport(NATIVELIB_GOBJECT, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void g_free(IntPtr memory);
+        
+        [DllImport(NATIVELIB_GOBJECT, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern uint g_timeout_add(uint interval, IntPtr sourceFunc, IntPtr data);
+        
+        [DllImport(NATIVELIB_GOBJECT, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern uint g_timeout_add_full(int priority, uint interval, IntPtr sourceFunc, IntPtr data, IntPtr destroyNotifyFunc);
+        
+        [DllImport(NATIVELIB_GOBJECT, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern uint g_timeout_add_seconds(uint interval, IntPtr sourceFunc, IntPtr data);
+        
+        [DllImport(NATIVELIB_GOBJECT, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern uint g_timeout_add_seconds_full(int priority, uint interval, IntPtr sourceFunc, IntPtr data, IntPtr destroyNotifyFunc);        
     }
 }

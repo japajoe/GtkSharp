@@ -3,6 +3,9 @@ using GtkSharp.Native.Types;
 
 namespace GtkSharp.Callbacks
 {
+    public delegate bool GSourceFuncEvent();
+    public delegate void GDestroyNotifyEvent();
+
     public delegate void ApplicationQuitEvent();
 
     public delegate void ButtonActivateEvent();

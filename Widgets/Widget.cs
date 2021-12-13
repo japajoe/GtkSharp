@@ -278,6 +278,22 @@ namespace GtkSharp
             NativeWidget.gtk_widget_add_events(handle, e);
         }
 
+        public void QueueDraw()
+        {
+            if(handle.IsNullPointer)
+                return;
+            
+            NativeWidget.gtk_widget_queue_draw(handle);
+        }
+
+        public void QueueDrawArea(int x, int y, int width, int height)
+        {
+            if(handle.IsNullPointer)
+                return;
+
+            NativeWidget.gtk_widget_queue_draw_area(handle, x, y, width, height);
+        }
+
         public void Destroy()
         {
             if(!handle.IsNullPointer)

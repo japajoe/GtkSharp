@@ -3,8 +3,9 @@ using GtkSharp.Native.Types;
 
 namespace GtkSharp.Native.Callbacks
 {
-    internal delegate bool GtkTickCallback(GtkWidgetPointer widget, GdkFrameClockPointer frame_clock, IntPtr user_data);
-    internal delegate void GDestroyNotify(IntPtr data);
+    internal delegate bool GSourceFuncCallback(IntPtr data);
+    internal delegate void GDestroyNotifyCallback(IntPtr data);
+    internal delegate bool GtkTickCallback(GtkWidgetPointer widget, GdkFrameClockPointer frame_clock, IntPtr data);
 
     internal delegate void GtkButtonActivateCallback(IntPtr widget, IntPtr data);
     internal delegate void GtkButtonClickedCallback(IntPtr widget, IntPtr data);
@@ -80,13 +81,13 @@ namespace GtkSharp.Native.Callbacks
 
     internal delegate void GtkToggleButtonToggledCallback(IntPtr widget, IntPtr data);
 
-    internal delegate void GtkWidgetDestroyCallback(IntPtr widget, IntPtr userData);
-    internal delegate bool GtkWidgetDestroyedCallback(IntPtr widget, GdkEventPointer evnt, IntPtr userData);
+    internal delegate void GtkWidgetDestroyCallback(IntPtr widget, IntPtr data);
+    internal delegate bool GtkWidgetDestroyedCallback(IntPtr widget, GdkEventPointer evnt, IntPtr data);
     internal delegate void GtkWidgetSizeAllocateCallback(IntPtr widget, GtkAllocationPointer allocation);
-    internal delegate bool GtkWidgetKeyPressCallback(IntPtr widget, GdkEventKeyPointer eventKey, IntPtr userData);
-    internal delegate bool GtkWidgetKeyReleaseCallback(IntPtr widget, GdkEventKeyPointer eventKey, IntPtr userData);
-    internal delegate bool GtkWidgetButtonPressCallback(IntPtr widget, GdkEventButtonPointer eventButton, IntPtr userData);
-    internal delegate bool GtkWidgetButtonReleaseCallback(IntPtr widget, GdkEventButtonPointer eventButton, IntPtr userData);
-    internal delegate bool GtkWidgetMotionNotifyCallback(IntPtr widget, GdkEventMotionPointer eventMotion, IntPtr userData);
+    internal delegate bool GtkWidgetKeyPressCallback(IntPtr widget, GdkEventKeyPointer eventKey, IntPtr data);
+    internal delegate bool GtkWidgetKeyReleaseCallback(IntPtr widget, GdkEventKeyPointer eventKey, IntPtr data);
+    internal delegate bool GtkWidgetButtonPressCallback(IntPtr widget, GdkEventButtonPointer eventButton, IntPtr data);
+    internal delegate bool GtkWidgetButtonReleaseCallback(IntPtr widget, GdkEventButtonPointer eventButton, IntPtr data);
+    internal delegate bool GtkWidgetMotionNotifyCallback(IntPtr widget, GdkEventMotionPointer eventMotion, IntPtr data);
     internal delegate bool GtkWidgetDrawCallback(IntPtr widget, IntPtr cr, IntPtr data);
 }
