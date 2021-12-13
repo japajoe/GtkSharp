@@ -1,7 +1,6 @@
 using System;
 using System.Runtime.InteropServices;
 using GtkSharp.Callbacks;
-using GtkSharp.Native;
 using GtkSharp.Native.Callbacks;
 using GtkSharp.Native.Types;
 using GtkSharp.Native.Utilities;
@@ -14,31 +13,18 @@ namespace GtkSharp
         private TextBuffer buffer;
         private string text;
 
-        private event TextViewBackspaceEvent onBackspaceEvent;
-        private event TextViewCopyClipboardEvent onCopyClipboardEvent;
-        private event TextViewCutClipboardEvent onCutClipboardEvent;
-        private event TextViewDeleteFromCursorEvent onDeleteFromCursorEvent;
-        private event TextViewExtendSelectionEvent onExtendSelectionEvent;
-        private event TextViewInsertAtCursorEvent onInsertAtCursorEvent;
-        private event TextViewInsertEmojiEvent onInsertEmojiEvent;
-        private event TextViewMoveCursorEvent onMoveCursorEvent;
-        private event TextViewMoveViewportEvent onMoveViewportEvent;
-        private event TextViewPasteClipboardEvent onPasteClipboardEvent;
-        private event TextViewPopulatePopupEvent onPopulatePopupEvent;
-        private event TextViewPreeditChangedEvent onPreeditChangedEvent;
-
-        private GtkTextViewBackspaceCallback onTextViewBackspaceCallback;
-        private GtkTextViewCopyClipboardCallback onTextViewCopyClipboardCallback;
-        private GtkTextViewCutClipboardCallback onTextViewCutClipboardCallback;
-        private GtkTextViewDeleteFromCursorCallback onTextViewDeleteFromCursorCallback;
-        private GtkTextViewExtendSelectionCallback onTextViewExtendSelectionCallback;
-        private GtkTextViewInsertAtCursorCallback onTextViewInsertAtCursorCallback;
-        private GtkTextViewInsertEmojiCallback onTextViewInsertEmojiCallback;
-        private GtkTextViewMoveCursorCallback onTextViewMoveCursorCallback;
-        private GtkTextViewMoveViewportCallback onTextViewMoveViewportCallback;
-        private GtkTextViewPasteClipboardCallback onTextViewPasteClipboardCallback;
-        private GtkTextViewPopulatePopupCallback onTextViewPopulatePopupCallback;
-        private GtkTextViewPreeditChangedCallback onTextViewPreeditChangedCallback;
+        private GEventHandler<TextViewBackspaceCallback,TextViewBackspaceEvent> backspaceHandler = new GEventHandler<TextViewBackspaceCallback, TextViewBackspaceEvent>();
+        private GEventHandler<TextViewCopyClipboardCallback,TextViewCopyClipboardEvent> copyClipboardHandler = new GEventHandler<TextViewCopyClipboardCallback, TextViewCopyClipboardEvent>();
+        private GEventHandler<TextViewCutClipboardCallback,TextViewCutClipboardEvent> cutClipboardHandler = new GEventHandler<TextViewCutClipboardCallback, TextViewCutClipboardEvent>();
+        private GEventHandler<TextViewDeleteFromCursorCallback,TextViewDeleteFromCursorEvent> deleteFromCursorHandler = new GEventHandler<TextViewDeleteFromCursorCallback, TextViewDeleteFromCursorEvent>();
+        private GEventHandler<TextViewExtendSelectionCallback,TextViewExtendSelectionEvent> extendSelectionHandler = new GEventHandler<TextViewExtendSelectionCallback, TextViewExtendSelectionEvent>();
+        private GEventHandler<TextViewInsertAtCursorCallback,TextViewInsertAtCursorEvent> insertAtCursorHandler = new GEventHandler<TextViewInsertAtCursorCallback, TextViewInsertAtCursorEvent>();
+        private GEventHandler<TextViewInsertEmojiCallback,TextViewInsertEmojiEvent> insertEmojiHandler = new GEventHandler<TextViewInsertEmojiCallback, TextViewInsertEmojiEvent>();
+        private GEventHandler<TextViewMoveCursorCallback,TextViewMoveCursorEvent> moveCursorHandler = new GEventHandler<TextViewMoveCursorCallback, TextViewMoveCursorEvent>();
+        private GEventHandler<TextViewMoveViewportCallback,TextViewMoveViewportEvent> moveViewportHandler = new GEventHandler<TextViewMoveViewportCallback, TextViewMoveViewportEvent>();
+        private GEventHandler<TextViewPasteClipboardCallback,TextViewPasteClipboardEvent> pasteClipboardHandler = new GEventHandler<TextViewPasteClipboardCallback, TextViewPasteClipboardEvent>();
+        private GEventHandler<TextViewPopulatePopupCallback,TextViewPopulatePopupEvent> populatePopupHandler = new GEventHandler<TextViewPopulatePopupCallback, TextViewPopulatePopupEvent>();
+        private GEventHandler<TextViewPreEditChangedCallback,TextViewPreEditChangedEvent> preEditChangedHandler = new GEventHandler<TextViewPreEditChangedCallback, TextViewPreEditChangedEvent>();
 
         public string Text
         {
@@ -66,243 +52,159 @@ namespace GtkSharp
             }
         }
 
-        public TextViewBackspaceEvent onBackspace
+        public TextViewBackspaceEvent Backspace
         {
             get
             {
-                return onBackspaceEvent;
+                return backspaceHandler.Event;
             }
             set
             {
-                onBackspace = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onTextViewBackspaceCallback.IsNullPointer())
-                    {
-                        onTextViewBackspaceCallback = OnBackspace;
-                        GLib.g_signal_connect(handle.pointer, "backspace", onTextViewBackspaceCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                backspaceHandler.Event = value;
+                backspaceHandler.SignalConnect(handle.pointer, "backspace", OnBackspace, handle.pointer);
             }
         }
 
-        public TextViewCopyClipboardEvent onCopyClipboard
+        public TextViewCopyClipboardEvent CopyClipboard
         {
             get
             {
-                return onCopyClipboardEvent;
+                return copyClipboardHandler.Event;
             }
             set
             {
-                onCopyClipboard = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onTextViewCopyClipboardCallback.IsNullPointer())
-                    {
-                        onTextViewCopyClipboardCallback = OnCopyClipboard;
-                        GLib.g_signal_connect(handle.pointer, "copy-clipboard", onTextViewCopyClipboardCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                copyClipboardHandler.Event = value;
+                copyClipboardHandler.SignalConnect(handle.pointer, "copy-clipboard", OnCopyClipboard, handle.pointer);
             }
         }
 
-        public TextViewCutClipboardEvent onCutClipboard
+        public TextViewCutClipboardEvent CutClipboard
         {
             get
             {
-                return onCutClipboardEvent;
+                return cutClipboardHandler.Event;
             }
             set
             {
-                onCutClipboard = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onTextViewCutClipboardCallback.IsNullPointer())
-                    {
-                        onTextViewCutClipboardCallback = OnCutClipboard;
-                        GLib.g_signal_connect(handle.pointer, "cut-clipboard", onTextViewCutClipboardCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                cutClipboardHandler.Event = value;
+                cutClipboardHandler.SignalConnect(handle.pointer, "cut-clipboard", OnCutClipboard, handle.pointer);
             }
         }
 
-        public TextViewDeleteFromCursorEvent onDeleteFromCursor
+        public TextViewDeleteFromCursorEvent DeleteFromCursor
         {
             get
             {
-                return onDeleteFromCursorEvent;
+                return deleteFromCursorHandler.Event;
             }
             set
             {
-                onDeleteFromCursor = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onTextViewDeleteFromCursorCallback.IsNullPointer())
-                    {
-                        onTextViewDeleteFromCursorCallback = OnDeleteFromCursor;
-                        GLib.g_signal_connect(handle.pointer, "delete-from-cursor", onTextViewDeleteFromCursorCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                deleteFromCursorHandler.Event = value;
+                deleteFromCursorHandler.SignalConnect(handle.pointer, "delete-from-cursor", OnDeleteFromCursor, handle.pointer);
             }
         }
 
-        public TextViewExtendSelectionEvent onExtendSelection
+        public TextViewExtendSelectionEvent ExtendSelection
         {
             get
             {
-                return onExtendSelectionEvent;
+                return extendSelectionHandler.Event;
             }
             set
             {
-                onExtendSelection = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onTextViewExtendSelectionCallback.IsNullPointer())
-                    {
-                        onTextViewExtendSelectionCallback = OnExtendSelection;
-                        GLib.g_signal_connect(handle.pointer, "extend-selection", onTextViewExtendSelectionCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                extendSelectionHandler.Event = value;
+                extendSelectionHandler.SignalConnect(handle.pointer, "extend-selection", OnExtendSelection, handle.pointer);
             }
         }
 
-        public TextViewInsertAtCursorEvent onInsertAtCursor
+        public TextViewInsertAtCursorEvent InsertAtCursor
         {
             get
             {
-                return onInsertAtCursorEvent;
+                return insertAtCursorHandler.Event;
             }
             set
             {
-                onInsertAtCursor = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onTextViewInsertAtCursorCallback.IsNullPointer())
-                    {
-                        onTextViewInsertAtCursorCallback = OnInsertAtCursor;
-                        GLib.g_signal_connect(handle.pointer, "insert-at-cursor", onTextViewInsertAtCursorCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                insertAtCursorHandler.Event = value;
+                insertAtCursorHandler.SignalConnect(handle.pointer, "insert-at-cursor", OnInsertAtCursor, handle.pointer);
             }
         }
 
-        public TextViewInsertEmojiEvent onInsertEmoji
+        public TextViewInsertEmojiEvent InsertEmoji
         {
             get
             {
-                return onInsertEmojiEvent;
+                return insertEmojiHandler.Event;
             }
             set
             {
-                onInsertEmoji = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onTextViewInsertEmojiCallback.IsNullPointer())
-                    {
-                        onTextViewInsertEmojiCallback = OnInsertEmoji;
-                        GLib.g_signal_connect(handle.pointer, "insert-emoji", onTextViewInsertEmojiCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                insertEmojiHandler.Event = value;
+                insertEmojiHandler.SignalConnect(handle.pointer, "insert-emoji", OnInsertEmoji, handle.pointer);
             }
         }
 
-        public TextViewMoveCursorEvent onMoveCursor
+        public TextViewMoveCursorEvent MoveCursor
         {
             get
             {
-                return onMoveCursorEvent;
+                return moveCursorHandler.Event;
             }
             set
             {
-                onMoveCursor = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onTextViewMoveCursorCallback.IsNullPointer())
-                    {
-                        onTextViewMoveCursorCallback = OnMoveCursor;
-                        GLib.g_signal_connect(handle.pointer, "move-cursor", onTextViewMoveCursorCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                moveCursorHandler.Event = value;
+                moveCursorHandler.SignalConnect(handle.pointer, "move-cursor", OnMoveCursor, handle.pointer);
             }
         }
 
-        public TextViewMoveViewportEvent onMoveViewport
+        public TextViewMoveViewportEvent MoveViewport
         {
             get
             {
-                return onMoveViewportEvent;
+                return moveViewportHandler.Event;
             }
             set
             {
-                onMoveViewport = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onTextViewMoveViewportCallback.IsNullPointer())
-                    {
-                        onTextViewMoveViewportCallback = OnMoveViewport;
-                        GLib.g_signal_connect(handle.pointer, "move-viewport", onTextViewMoveViewportCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                moveViewportHandler.Event = value;
+                moveViewportHandler.SignalConnect(handle.pointer, "move-viewport", OnMoveViewport, handle.pointer);
             }
         }
 
-        public TextViewPasteClipboardEvent onPasteClipboard
+        public TextViewPasteClipboardEvent PasteClipboard
         {
             get
             {
-                return onPasteClipboardEvent;
+                return pasteClipboardHandler.Event;
             }
             set
             {
-                onPasteClipboard = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onTextViewPasteClipboardCallback.IsNullPointer())
-                    {
-                        onTextViewPasteClipboardCallback = OnPasteClipboard;
-                        GLib.g_signal_connect(handle.pointer, "paste-clipboard", onTextViewPasteClipboardCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                pasteClipboardHandler.Event = value;
+                pasteClipboardHandler.SignalConnect(handle.pointer, "paste-clipboard", OnPasteClipboard, handle.pointer);
             }
         }
 
-        public TextViewPopulatePopupEvent onPopulatePopup
+        public TextViewPopulatePopupEvent PopulatePopup
         {
             get
             {
-                return onPopulatePopupEvent;
+                return populatePopupHandler.Event;
             }
             set
             {
-                onPopulatePopup = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onTextViewPopulatePopupCallback.IsNullPointer())
-                    {
-                        onTextViewPopulatePopupCallback = OnPopulatePopup;
-                        GLib.g_signal_connect(handle.pointer, "populate-popup", onTextViewPopulatePopupCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                populatePopupHandler.Event = value;
+                populatePopupHandler.SignalConnect(handle.pointer, "populate-popup", OnPopulatePopup, handle.pointer);
             }
         }
 
-        public TextViewPreeditChangedEvent onPreeditChanged
+        public TextViewPreEditChangedEvent PreEditChanged
         {
             get
             {
-                return onPreeditChangedEvent;
+                return preEditChangedHandler.Event;
             }
             set
             {
-                onPreeditChanged = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onTextViewPreeditChangedCallback.IsNullPointer())
-                    {
-                        onTextViewPreeditChangedCallback = OnPreeditChanged;
-                        GLib.g_signal_connect(handle.pointer, "preedit-changed", onTextViewPreeditChangedCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                preEditChangedHandler.Event = value;
+                preEditChangedHandler.SignalConnect(handle.pointer, "preedit-changed", OnPreEditChanged, handle.pointer);
             }
         }
         
@@ -348,77 +250,77 @@ namespace GtkSharp
 
         void OnBackspace(IntPtr widget, IntPtr data)
         {
-            onBackspace?.Invoke();
+            Backspace?.Invoke();
         }
 
         void OnCopyClipboard(IntPtr widget, IntPtr data)
         {
-            onCopyClipboard?.Invoke();
+            CopyClipboard?.Invoke();
         }
 
         void OnCutClipboard(IntPtr widget, IntPtr data)
         {
-            onCutClipboard?.Invoke();
+            CutClipboard?.Invoke();
         }
 
         void OnDeleteFromCursor(IntPtr widget, GtkDeleteType type, int count, IntPtr data)
         {
-            onDeleteFromCursor?.Invoke(type, count);
+            DeleteFromCursor?.Invoke(type, count);
         }
 
         bool OnExtendSelection(IntPtr widget, GtkTextExtendSelection granularity, GtkTextIterPointer location, GtkTextIterPointer start, GtkTextIterPointer end, IntPtr data)
         {
-            if(onExtendSelection != null)
+            if(ExtendSelection != null)
             {
-                return onExtendSelection(granularity, location, start, end);
+                return ExtendSelection(granularity, location, start, end);
             }
             return false;
         }
 
         void OnInsertAtCursor(IntPtr widget, IntPtr str, IntPtr data)
         {
-            if(onInsertAtCursor != null)
+            if(InsertAtCursor != null)
             {
                 string text = MarshalHelper.MarshalPtrToString(str);
-                onInsertAtCursor(text);
+                InsertAtCursor(text);
             }            
         }
 
         void OnInsertEmoji(IntPtr widget, IntPtr data)
         {
-            onInsertEmoji?.Invoke();
+            InsertEmoji?.Invoke();
         }
 
         void OnMoveCursor(IntPtr widget, GtkMovementStep step, int count, bool extendSelection, IntPtr data)
         {
-            onMoveCursor?.Invoke(step, count, extendSelection);
+            MoveCursor?.Invoke(step, count, extendSelection);
         }
 
         void OnMoveViewport(IntPtr widget, IntPtr scrollStep, int count, IntPtr data)
         {
-            if(onMoveViewport != null)
+            if(MoveViewport != null)
             {
                 int s = Marshal.ReadInt32(scrollStep);
-                onMoveViewport((GtkScrollStep)s, count);
+                MoveViewport((GtkScrollStep)s, count);
             }            
         }
 
         void OnPasteClipboard(IntPtr widget, IntPtr data)
         {
-            onPasteClipboard?.Invoke();
+            PasteClipboard?.Invoke();
         }
 
         void OnPopulatePopup(IntPtr widget, IntPtr popup, IntPtr data)
         {
-            onPopulatePopup?.Invoke();
+            PopulatePopup?.Invoke();
         }
 
-        void OnPreeditChanged(IntPtr widget, IntPtr str, IntPtr data)
+        void OnPreEditChanged(IntPtr widget, IntPtr str, IntPtr data)
         {
-            if(onPreeditChanged != null)
+            if(PreEditChanged != null)
             {
                 string text = MarshalHelper.MarshalPtrToString(str);
-                onPreeditChanged(text);
+                PreEditChanged(text);
             }
         }
     }

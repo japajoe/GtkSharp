@@ -13,33 +13,19 @@ namespace GtkSharp
         protected TextTagTable tagTable;
         private string text;
 
-        private event TextBufferApplyTagEvent onApplyTagEvent;
-        private event TextBufferBeginUserActionEvent onBeginUserActionEvent;
-        private event TextBufferChangedEvent onChangedEvent;
-        private event TextBufferDeleteRangeEvent onDeleteRangeEvent;
-        private event TextBufferEndUserActionEvent onEndUserActionEvent;
-        private event TextBufferInsertChildAnchorEvent onInsertChildAnchorEvent;
-        private event TextBufferInsertPixbufEvent onInsertPixbufEvent;
-        private event TextBufferInsertTextEvent onInsertTextEvent;
-        private event TextBufferMarkDeletedEvent onMarkDeletedEvent;
-        private event TextBufferMarkSetEvent onMarkSetEvent;
-        private event TextBufferModifiedChangedEvent onModifiedChangedEvent;
-        private event TextBufferPasteDoneEvent onPasteDoneEvent;
-        private event TextBufferRemoveTagEvent onRemoveTagEvent;
-
-        private GtkTextBufferApplyTagCallback onTextBufferApplyTagCallback;
-        private GtkTextBufferBeginUserActionCallback onTextBufferBeginUserActionCallback;
-        private GtkTextBufferChangedCallback onTextBufferChangedCallback;
-        private GtkTextBufferDeleteRangeCallback onTextBufferDeleteRangeCallback;
-        private GtkTextBufferEndUserActionCallback onTextBufferEndUserActionCallback;
-        private GtkTextBufferInsertChildAnchorCallback onTextBufferInsertChildAnchorCallback;
-        private GtkTextBufferInsertPixbufCallback onTextBufferInsertPixbufCallback;
-        private GtkTextBufferInsertTextCallback onTextBufferInsertTextCallback;
-        private GtkTextBufferMarkDeletedCallback onTextBufferMarkDeletedCallback;
-        private GtkTextBufferMarkSetCallback onTextBufferMarkSetCallback;
-        private GtkTextBufferModifiedChangedCallback onTextBufferModifiedChangedCallback;
-        private GtkTextBufferPasteDoneCallback onTextBufferPasteDoneCallback;
-        private GtkTextBufferRemoveTagCallback onTextBufferRemoveTagCallback;
+        private GEventHandler<TextBufferApplyTagCallback,TextBufferApplyTagEvent> applyTagHandler = new GEventHandler<TextBufferApplyTagCallback, TextBufferApplyTagEvent>();
+        private GEventHandler<TextBufferBeginUserActionCallback,TextBufferBeginUserActionEvent> beginUserActionHandler = new GEventHandler<TextBufferBeginUserActionCallback, TextBufferBeginUserActionEvent>();
+        private GEventHandler<TextBufferChangedCallback,TextBufferChangedEvent> changedHandler = new GEventHandler<TextBufferChangedCallback, TextBufferChangedEvent>();
+        private GEventHandler<TextBufferDeleteRangeCallback,TextBufferDeleteRangeEvent> deleteRangeHandler = new GEventHandler<TextBufferDeleteRangeCallback, TextBufferDeleteRangeEvent>();
+        private GEventHandler<TextBufferEndUserActionCallback,TextBufferEndUserActionEvent> endUserActionHandler = new GEventHandler<TextBufferEndUserActionCallback, TextBufferEndUserActionEvent>();
+        private GEventHandler<TextBufferInsertChildAnchorCallback,TextBufferInsertChildAnchorEvent> insertChildAnchorHandler = new GEventHandler<TextBufferInsertChildAnchorCallback, TextBufferInsertChildAnchorEvent>();
+        private GEventHandler<TextBufferInsertPixbufCallback,TextBufferInsertPixbufEvent> insertPixbufHandler = new GEventHandler<TextBufferInsertPixbufCallback, TextBufferInsertPixbufEvent>();
+        private GEventHandler<TextBufferInsertTextCallback,TextBufferInsertTextEvent> insertTextHandler = new GEventHandler<TextBufferInsertTextCallback, TextBufferInsertTextEvent>();
+        private GEventHandler<TextBufferMarkDeletedCallback,TextBufferMarkDeletedEvent> markDeletedHandler = new GEventHandler<TextBufferMarkDeletedCallback, TextBufferMarkDeletedEvent>();
+        private GEventHandler<TextBufferMarkSetCallback,TextBufferMarkSetEvent> markSetHandler = new GEventHandler<TextBufferMarkSetCallback, TextBufferMarkSetEvent>();
+        private GEventHandler<TextBufferModifiedChangedCallback,TextBufferModifiedChangedEvent> modifiedChangedHandler = new GEventHandler<TextBufferModifiedChangedCallback, TextBufferModifiedChangedEvent>();
+        private GEventHandler<TextBufferPasteDoneCallback,TextBufferPasteDoneEvent> pasteDoneHandler = new GEventHandler<TextBufferPasteDoneCallback, TextBufferPasteDoneEvent>();
+        private GEventHandler<TextBufferRemoveTagCallback,TextBufferRemoveTagEvent> removeTagHandler = new GEventHandler<TextBufferRemoveTagCallback, TextBufferRemoveTagEvent>();
 
         public string Text
         {
@@ -54,263 +40,172 @@ namespace GtkSharp
             }
         }
 
-        public TextBufferApplyTagEvent onApplyTag
+        public TextBufferApplyTagEvent ApplyTag
         {
             get
             {
-                return onApplyTagEvent;
+                return applyTagHandler.Event;
             }
             set
             {
-                onApplyTagEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onTextBufferApplyTagCallback.IsNullPointer())
-                    {
-                        onTextBufferApplyTagCallback = OnApplyTag;
-                        GLib.g_signal_connect(handle.pointer, "apply-tag", onTextBufferApplyTagCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                applyTagHandler.Event = value;
+                applyTagHandler.SignalConnect(handle.pointer, "apply-tag", OnApplyTag, handle.pointer);
             }
         }
 
-        public TextBufferBeginUserActionEvent onBeginUserAction
+        public TextBufferBeginUserActionEvent BeginUserAction
         {
             get
             {
-                return onBeginUserActionEvent;
+                return beginUserActionHandler.Event;
             }
             set
             {
-                onBeginUserActionEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onTextBufferBeginUserActionCallback.IsNullPointer())
-                    {
-                        onTextBufferBeginUserActionCallback = OnBeginUserAction;
-                        GLib.g_signal_connect(handle.pointer, "begin-user-action", onTextBufferBeginUserActionCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                beginUserActionHandler.Event = value;
+                beginUserActionHandler.SignalConnect(handle.pointer, "begin-user-action", OnBeginUserAction, handle.pointer);
             }
         }
 
-        public TextBufferChangedEvent onChanged
+        public TextBufferChangedEvent Changed
         {
             get
             {
-                return onChangedEvent;
+                return changedHandler.Event;
             }
             set
             {
-                onChangedEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onTextBufferChangedCallback.IsNullPointer())
-                    {
-                        onTextBufferChangedCallback = OnChanged;
-                        GLib.g_signal_connect(handle.pointer, "changed", onTextBufferChangedCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                changedHandler.Event = value;
+                changedHandler.SignalConnect(handle.pointer, "changed", OnChanged, handle.pointer);
             }
         }
 
-        public TextBufferDeleteRangeEvent onDeleteRange
+        public TextBufferDeleteRangeEvent DeleteRange
         {
             get
             {
-                return onDeleteRangeEvent;
+                return deleteRangeHandler.Event;
             }
             set
             {
-                onDeleteRangeEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onTextBufferDeleteRangeCallback.IsNullPointer())
-                    {
-                        onTextBufferDeleteRangeCallback = OnDeleteRange;
-                        GLib.g_signal_connect(handle.pointer, "delete-range", onTextBufferDeleteRangeCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                deleteRangeHandler.Event = value;
+                deleteRangeHandler.SignalConnect(handle.pointer, "delete-range", OnDeleteRange, handle.pointer);
             }
         }
 
-        public TextBufferEndUserActionEvent onEndUserAction
+        public TextBufferEndUserActionEvent EndUserAction
         {
             get
             {
-                return onEndUserActionEvent;
+                return endUserActionHandler.Event;
             }
             set
             {
-                onEndUserActionEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onTextBufferEndUserActionCallback.IsNullPointer())
-                    {
-                        onTextBufferEndUserActionCallback = OnEndUserAction;
-                        GLib.g_signal_connect(handle.pointer, "end-user-action", onTextBufferEndUserActionCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                endUserActionHandler.Event = value;
+                endUserActionHandler.SignalConnect(handle.pointer, "end-user-action", OnEndUserAction, handle.pointer);
             }
         }
 
-        public TextBufferInsertChildAnchorEvent onInsertChildAnchor
+        public TextBufferInsertChildAnchorEvent InsertChildAnchor
         {
             get
             {
-                return onInsertChildAnchorEvent;
+                return insertChildAnchorHandler.Event;
             }
             set
             {
-                onInsertChildAnchorEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onTextBufferInsertChildAnchorCallback.IsNullPointer())
-                    {
-                        onTextBufferInsertChildAnchorCallback = OnInsertChildAnchor;
-                        GLib.g_signal_connect(handle.pointer, "insert-child-anchor", onTextBufferInsertChildAnchorCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                insertChildAnchorHandler.Event = value;
+                insertChildAnchorHandler.SignalConnect(handle.pointer, "insert-child-anchor", OnInsertChildAnchor, handle.pointer);
             }
         }
 
-        public TextBufferInsertPixbufEvent onInsertPixbuf
+        public TextBufferInsertPixbufEvent InsertPixbuf
         {
             get
             {
-                return onInsertPixbufEvent;
+                return insertPixbufHandler.Event;
             }
             set
             {
-                onInsertPixbufEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onTextBufferInsertPixbufCallback.IsNullPointer())
-                    {
-                        onTextBufferInsertPixbufCallback = OnInsertPixbuf;
-                        GLib.g_signal_connect(handle.pointer, "insert-pixbuf", onTextBufferInsertPixbufCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                insertPixbufHandler.Event = value;
+                insertPixbufHandler.SignalConnect(handle.pointer, "insert-pixbuf", OnInsertPixbuf, handle.pointer);
             }
         }
 
-        public TextBufferInsertTextEvent onInsertText
+        public TextBufferInsertTextEvent InsertText
         {
             get
             {
-                return onInsertTextEvent;
+                return insertTextHandler.Event;
             }
             set
             {
-                onInsertTextEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onTextBufferInsertTextCallback.IsNullPointer())
-                    {
-                        onTextBufferInsertTextCallback = OnInsertText;
-                        GLib.g_signal_connect(handle.pointer, "insert-text", onTextBufferInsertTextCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                insertTextHandler.Event = value;
+                insertTextHandler.SignalConnect(handle.pointer, "insert-text", OnInsertText, handle.pointer);
             }
         }
 
-        public TextBufferMarkDeletedEvent onMarkDeleted
+        public TextBufferMarkDeletedEvent MarkDeleted
         {
             get
             {
-                return onMarkDeletedEvent;
+                return markDeletedHandler.Event;
             }
             set
             {
-                onMarkDeletedEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onTextBufferMarkDeletedCallback.IsNullPointer())
-                    {
-                        onTextBufferMarkDeletedCallback = OnMarkDeleted;
-                        GLib.g_signal_connect(handle.pointer, "mark-deleted", onTextBufferMarkDeletedCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                markDeletedHandler.Event = value;
+                markDeletedHandler.SignalConnect(handle.pointer, "mark-deleted", OnMarkDeleted, handle.pointer);
             }
         }
 
-        public TextBufferMarkSetEvent onMarkSet
+        public TextBufferMarkSetEvent MarkSet
         {
             get
             {
-                return onMarkSetEvent;
+                return markSetHandler.Event;
             }
             set
             {
-                onMarkSetEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onTextBufferMarkSetCallback.IsNullPointer())
-                    {
-                        onTextBufferMarkSetCallback = OnMarkSet;
-                        GLib.g_signal_connect(handle.pointer, "mark-set", onTextBufferMarkSetCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                markSetHandler.Event = value;
+                markSetHandler.SignalConnect(handle.pointer, "mark-set", OnMarkSet, handle.pointer);
             }
         }
 
-        public TextBufferModifiedChangedEvent onModifiedChanged
+        public TextBufferModifiedChangedEvent ModifiedChanged
         {
             get
             {
-                return onModifiedChangedEvent;
+                return modifiedChangedHandler.Event;
             }
             set
             {
-                onModifiedChangedEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onTextBufferModifiedChangedCallback.IsNullPointer())
-                    {
-                        onTextBufferModifiedChangedCallback = OnModifiedChanged;
-                        GLib.g_signal_connect(handle.pointer, "modified-changed", onTextBufferModifiedChangedCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                modifiedChangedHandler.Event = value;
+                modifiedChangedHandler.SignalConnect(handle.pointer, "modified-changed", OnModifiedChanged, handle.pointer);
             }
         }
 
-        public TextBufferPasteDoneEvent onPasteDone
+        public TextBufferPasteDoneEvent PasteDone
         {
             get
             {
-                return onPasteDoneEvent;
+                return pasteDoneHandler.Event;
             }
             set
             {
-                onPasteDoneEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onTextBufferPasteDoneCallback.IsNullPointer())
-                    {
-                        onTextBufferPasteDoneCallback = OnPasteDone;
-                        GLib.g_signal_connect(handle.pointer, "paste-done", onTextBufferPasteDoneCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                pasteDoneHandler.Event = value;
+                pasteDoneHandler.SignalConnect(handle.pointer, "paste-done", OnPasteDone, handle.pointer);
             }
         }
 
-        public TextBufferRemoveTagEvent onRemoveTag
+        public TextBufferRemoveTagEvent RemoveTag
         {
             get
             {
-                return onRemoveTagEvent;
+                return removeTagHandler.Event;
             }
             set
             {
-                onRemoveTagEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onTextBufferRemoveTagCallback.IsNullPointer())
-                    {
-                        onTextBufferRemoveTagCallback = OnRemoveTag;
-                        GLib.g_signal_connect(handle.pointer, "remove-tag", onTextBufferRemoveTagCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                removeTagHandler.Event = value;
+                removeTagHandler.SignalConnect(handle.pointer, "remove-tag", OnRemoveTag, handle.pointer);
             }
         }
 
@@ -354,71 +249,71 @@ namespace GtkSharp
 
         void OnApplyTag(GtkTextBufferPointer buffer, GtkTextTagPointer tag, GtkTextIterPointer start, GtkTextIterPointer end, IntPtr data)
         {
-            onApplyTag?.Invoke(tag, start, end);
+            ApplyTag?.Invoke(tag, start, end);
         }
 
         void OnBeginUserAction(GtkTextBufferPointer buffer, IntPtr data)
         {
-            onBeginUserAction?.Invoke();
+            BeginUserAction?.Invoke();
         }
 
         void OnChanged(GtkTextBufferPointer buffer, IntPtr data)
         {
-            onChanged?.Invoke();
+            Changed?.Invoke();
         }
 
         void OnDeleteRange(GtkTextBufferPointer buffer, GtkTextIterPointer start, GtkTextIterPointer end, IntPtr data)
         {
-            onDeleteRange?.Invoke(start, end);
+            DeleteRange?.Invoke(start, end);
         }
 
         void OnEndUserAction(GtkTextBufferPointer buffer, IntPtr data)
         {
-            onEndUserAction?.Invoke();
+            EndUserAction?.Invoke();
         }
 
         void OnInsertChildAnchor(GtkTextBufferPointer buffer, GtkTextIterPointer location, GtkTextChildAnchorPointer anchor, IntPtr data)
         {
-            onInsertChildAnchor?.Invoke(location, anchor);
+            InsertChildAnchor?.Invoke(location, anchor);
         }
 
         void OnInsertPixbuf(GtkTextBufferPointer buffer, GtkTextIterPointer location, GdkPixbufPointer pixbuf, IntPtr data)
         {
-            onInsertPixbuf?.Invoke(location, pixbuf);
+            InsertPixbuf?.Invoke(location, pixbuf);
         }
 
         void OnInsertText(GtkTextBufferPointer buffer, GtkTextIterPointer location, IntPtr text, int length, IntPtr data)
         {
-            if(onInsertText != null)
+            if(InsertText != null)
             {
                 string t = MarshalHelper.MarshalPtrToString(text);
-                onInsertText?.Invoke(location, t, length);
+                InsertText?.Invoke(location, t, length);
             }
         }
 
         void OnMarkDeleted(GtkTextBufferPointer buffer, GtkTextMarkPointer mark, IntPtr data)
         {
-            onMarkDeleted?.Invoke(mark);
+            MarkDeleted?.Invoke(mark);
         }
 
         void OnMarkSet(GtkTextBufferPointer buffer, GtkTextIterPointer location, GtkTextMarkPointer mark, IntPtr data)
         {
-            onMarkSet?.Invoke(location, mark);
+            MarkSet?.Invoke(location, mark);
         }
 
         void OnModifiedChanged(GtkTextBufferPointer buffer, IntPtr data)
         {
-            onModifiedChanged?.Invoke();
+            ModifiedChanged?.Invoke();
         }
 
         void OnPasteDone(GtkTextBufferPointer buffer, GtkClipboardPointer clipboard, IntPtr data)
         {
-            onPasteDone?.Invoke(clipboard);
+            PasteDone?.Invoke(clipboard);
         }
 
         void OnRemoveTag(GtkTextBufferPointer buffer, GtkTextTagPointer tag, GtkTextIterPointer start, GtkTextIterPointer end, IntPtr data)
         {
-            onRemoveTag?.Invoke(tag, start, end);
+            RemoveTag?.Invoke(tag, start, end);
         }        
     }
 }

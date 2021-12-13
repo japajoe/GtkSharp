@@ -11,8 +11,8 @@ namespace GtkSharp
     {
         private Adjustment adjustment;
         private double buttonValue;
-        private event SpinButtonValueChangedEvent onChangedEvent;
-        private GtkSpinButtonValueChangedCallback onSpinButtonValueChangedCallback;
+
+        private GEventHandler<SpinButtonValueChangedCallback,SpinButtonValueChangedEvent> changedHandler = new GEventHandler<SpinButtonValueChangedCallback, SpinButtonValueChangedEvent>();
 
         public double Value
         {
@@ -27,23 +27,16 @@ namespace GtkSharp
             }
         }
 
-        public SpinButtonValueChangedEvent onChanged
+        public SpinButtonValueChangedEvent Changed
         {
             get
             {
-                return onChangedEvent;
+                return changedHandler.Event;
             }
             set
             {
-                onChangedEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onSpinButtonValueChangedCallback.IsNullPointer())
-                    {
-                        onSpinButtonValueChangedCallback = OnValueChanged;
-                        GLib.g_signal_connect(handle.pointer, "value-changed", onSpinButtonValueChangedCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                changedHandler.Event = value;
+                changedHandler.SignalConnect(handle.pointer, "value-changed", OnValueChanged, handle.pointer);
             }
         }
 
@@ -81,7 +74,7 @@ namespace GtkSharp
 
         private void OnValueChanged(IntPtr widget, IntPtr data)
         {
-            onChangedEvent?.Invoke();
+            Changed?.Invoke();
         }
     }
 }

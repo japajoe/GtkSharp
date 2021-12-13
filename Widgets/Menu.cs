@@ -1,7 +1,6 @@
 using System;
 using System.Runtime.InteropServices;
 using GtkSharp.Callbacks;
-using GtkSharp.Native;
 using GtkSharp.Native.Callbacks;
 using GtkSharp.Native.Widgets;
 
@@ -9,49 +8,32 @@ namespace GtkSharp
 {
     public class Menu : Widget
     {
-        private event MenuMoveScrollEvent onMoveScrollEvent;
-        private event MenuPoppedUpEvent onPoppedUpEvent;
+        private GEventHandler<MenuMoveScrollCallback,MenuMoveScrollEvent> moveScrollHandler = new GEventHandler<MenuMoveScrollCallback, MenuMoveScrollEvent>();
+        private GEventHandler<MenuPoppedUpCallback,MenuPoppedUpEvent> poppedUpHandler = new GEventHandler<MenuPoppedUpCallback, MenuPoppedUpEvent>();
 
-        private GtkMenuMoveScrollCallback onMenuMoveScrollCallback;
-        private GtkMenuPoppedUpCallback onMenuPoppedUpCallback;
-
-        public MenuMoveScrollEvent onMoveScroll
+        public MenuMoveScrollEvent MoveScroll
         {
             get
             {
-                return onMoveScrollEvent;
+                return moveScrollHandler.Event;
             }
             set
             {
-                onMoveScrollEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onMenuMoveScrollCallback.IsNullPointer())
-                    {
-                        onMenuMoveScrollCallback = OnMoveScroll;
-                        GLib.g_signal_connect(handle.pointer, "move-scroll", onMenuMoveScrollCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                moveScrollHandler.Event = value;
+                moveScrollHandler.SignalConnect(handle.pointer, "move-scroll", OnMoveScroll, handle.pointer);
             }
         }
 
-        public MenuPoppedUpEvent onPoppedUp
+        public MenuPoppedUpEvent PoppedUp
         {
             get
             {
-                return onPoppedUpEvent;
+                return poppedUpHandler.Event;
             }
             set
             {
-                onPoppedUpEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onMenuPoppedUpCallback.IsNullPointer())
-                    {
-                        onMenuPoppedUpCallback = OnPoppedUp;
-                        GLib.g_signal_connect(handle.pointer, "popped-up", onMenuPoppedUpCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                poppedUpHandler.Event = value;
+                poppedUpHandler.SignalConnect(handle.pointer, "popped-up", OnPoppedUp, handle.pointer);
             }
         }        
 
@@ -79,12 +61,12 @@ namespace GtkSharp
         {
             int val = Marshal.ReadInt32(scrollType);
             GtkScrollType st = (GtkScrollType)val;
-            onMoveScrollEvent?.Invoke(st);
+            MoveScroll?.Invoke(st);
         }
 
         private void OnPoppedUp(IntPtr widget, IntPtr flippedRect, IntPtr finalRect, bool flippedX, bool flippedY, IntPtr data)
         {
-            onPoppedUpEvent?.Invoke(flippedX, flippedY);
+            PoppedUp?.Invoke(flippedX, flippedY);
         }
     }
 }

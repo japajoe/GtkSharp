@@ -1,6 +1,5 @@
 using System;
 using GtkSharp.Callbacks;
-using GtkSharp.Native;
 using GtkSharp.Native.Callbacks;
 using GtkSharp.Native.Types;
 using GtkSharp.Native.Widgets;
@@ -9,225 +8,144 @@ namespace GtkSharp
 {
     public class NoteBook : Container
     {
-        private event NoteBookChangeCurrentPageEvent onChangeCurrentPageEvent;
-        private event NoteBookCreateWindowEvent onCreateWindowEvent;
-        private event NoteBookFocusTabEvent onFocusTabEvent;
-        private event NoteBookMoveFocusOutEvent onMoveFocusOutEvent;
-        private event NoteBookPageAddedEvent onPageAddedEvent;
-        private event NoteBookPageRemovedEvent onPageRemovedEvent;
-        private event NoteBookPageReorderedEvent onPageReorderedEvent;
-        private event NoteBookReorderTabEvent onReorderTabEvent;
-        private event NoteBookSelectPageEvent onSelectPageEvent;
-        private event NoteBookSwitchPageEvent onSwitchPageEvent;
+        private GEventHandler<NoteBookChangeCurrentPageCallback,NoteBookChangeCurrentPageEvent> changeCurrentPageHandler = new GEventHandler<NoteBookChangeCurrentPageCallback, NoteBookChangeCurrentPageEvent>();
+        private GEventHandler<NoteBookCreateWindowCallback,NoteBookCreateWindowEvent> createWindowHandler = new GEventHandler<NoteBookCreateWindowCallback, NoteBookCreateWindowEvent>();
+        private GEventHandler<NoteBookFocusTabCallback,NoteBookFocusTabEvent> focusTabHandler = new GEventHandler<NoteBookFocusTabCallback, NoteBookFocusTabEvent>();
+        private GEventHandler<NoteBookMoveFocusOutCallback,NoteBookMoveFocusOutEvent> moveFocusOutHandler = new GEventHandler<NoteBookMoveFocusOutCallback, NoteBookMoveFocusOutEvent>();
+        private GEventHandler<NoteBookPageAddedCallback,NoteBookPageAddedEvent> pageAddedHandler = new GEventHandler<NoteBookPageAddedCallback, NoteBookPageAddedEvent>();
+        private GEventHandler<NoteBookPageRemovedCallback,NoteBookPageRemovedEvent> pageRemovedHandler = new GEventHandler<NoteBookPageRemovedCallback, NoteBookPageRemovedEvent>();
+        private GEventHandler<NoteBookPageReorderedCallback,NoteBookPageReorderedEvent> pageReorderedHandler = new GEventHandler<NoteBookPageReorderedCallback, NoteBookPageReorderedEvent>();
+        private GEventHandler<NoteBookReorderTabCallback,NoteBookReorderTabEvent> reorderTabHandler = new GEventHandler<NoteBookReorderTabCallback, NoteBookReorderTabEvent>();
+        private GEventHandler<NoteBookSelectPageCallback,NoteBookSelectPageEvent> selectPageHandler = new GEventHandler<NoteBookSelectPageCallback, NoteBookSelectPageEvent>();
+        private GEventHandler<NoteBookSwitchPageCallback,NoteBookSwitchPageEvent> switchPageHandler = new GEventHandler<NoteBookSwitchPageCallback, NoteBookSwitchPageEvent>();
 
-        private GtkNoteBookChangeCurrentPageCallback onNoteBookChangeCurrentPageCallback;
-        private GtkNoteBookCreateWindowCallback onNoteBookCreateWindowCallback;
-        private GtkNoteBookFocusTabCallback onNoteBookFocusTabCallback;
-        private GtkNoteBookMoveFocusOutCallback onNoteBookMoveFocusOutCallback;
-        private GtkNoteBookPageAddedCallback onNoteBookPageAddedCallback;
-        private GtkNoteBookPageRemovedCallback onNoteBookPageRemovedCallback;
-        private GtkNoteBookPageReorderedCallback onNoteBookPageReorderedCallback;
-        private GtkNoteBookReorderTabCallback onNoteBookReorderTabCallback;
-        private GtkNoteBookSelectPageCallback onNoteBookSelectPageCallback;
-        private GtkNoteBookSwitchPageCallback onNoteBookSwitchPageCallback;
-
-        public NoteBookChangeCurrentPageEvent onChangeCurrentPage
+        public NoteBookChangeCurrentPageEvent ChangeCurrentPage
         {
             get
             {
-                return onChangeCurrentPageEvent;
+                return changeCurrentPageHandler.Event;
             }
             set
             {
-                onChangeCurrentPageEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onNoteBookChangeCurrentPageCallback.IsNullPointer())
-                    {
-                        onNoteBookChangeCurrentPageCallback = OnChangeCurrentPage;
-                        GLib.g_signal_connect(handle.pointer, "change-current-page", onNoteBookChangeCurrentPageCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                changeCurrentPageHandler.Event = value;
+                changeCurrentPageHandler.SignalConnect(handle.pointer, "change-current-page", OnChangeCurrentPage, handle.pointer);
             }
         }
 
-        public NoteBookCreateWindowEvent onCreateWindow
+        public NoteBookCreateWindowEvent CreateWindow
         {
             get
             {
-                return onCreateWindowEvent;
+                return createWindowHandler.Event;
             }
             set
             {
-                onCreateWindowEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onNoteBookCreateWindowCallback.IsNullPointer())
-                    {
-                        onNoteBookCreateWindowCallback = OnCreateWindow;
-                        GLib.g_signal_connect(handle.pointer, "create-window", onNoteBookCreateWindowCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                createWindowHandler.Event = value;
+                createWindowHandler.SignalConnect(handle.pointer, "create-window", OnCreateWindow, handle.pointer);
             }
         }
 
-        public NoteBookFocusTabEvent onFocusTab
+        public NoteBookFocusTabEvent FocusTab
         {
             get
             {
-                return onFocusTabEvent;
+                return focusTabHandler.Event;
             }
             set
             {
-                onFocusTabEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onNoteBookFocusTabCallback.IsNullPointer())
-                    {
-                        onNoteBookFocusTabCallback = OnFocusTab;
-                        GLib.g_signal_connect(handle.pointer, "focus-tab", onNoteBookFocusTabCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                focusTabHandler.Event = value;
+                focusTabHandler.SignalConnect(handle.pointer, "focus-tab", OnFocusTab, handle.pointer);
             }
         }
 
-        public NoteBookMoveFocusOutEvent onMoveFocusOut
+        public NoteBookMoveFocusOutEvent MoveFocusOut
         {
             get
             {
-                return onMoveFocusOutEvent;
+                return moveFocusOutHandler.Event;
             }
             set
             {
-                onMoveFocusOutEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onNoteBookMoveFocusOutCallback.IsNullPointer())
-                    {
-                        onNoteBookMoveFocusOutCallback = OnMoveFocusOut;
-                        GLib.g_signal_connect(handle.pointer, "move-focus-out", onNoteBookMoveFocusOutCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                moveFocusOutHandler.Event = value;
+                moveFocusOutHandler.SignalConnect(handle.pointer, "move-focus-out", OnMoveFocusOut, handle.pointer);
             }
         }
 
-        public NoteBookPageAddedEvent onPageAdded
+        public NoteBookPageAddedEvent PageAdded
         {
             get
             {
-                return onPageAddedEvent;
+                return pageAddedHandler.Event;
             }
             set
             {
-                onPageAddedEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onNoteBookPageAddedCallback.IsNullPointer())
-                    {
-                        onNoteBookPageAddedCallback = OnPageAdded;
-                        GLib.g_signal_connect(handle.pointer, "page-added", onNoteBookPageAddedCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                pageAddedHandler.Event = value;
+                pageAddedHandler.SignalConnect(handle.pointer, "page-added", OnPageAdded, handle.pointer);
             }
         }
 
-        public NoteBookPageRemovedEvent onPageRemoved
+        public NoteBookPageRemovedEvent PageRemoved
         {
             get
             {
-                return onPageRemovedEvent;
+                return pageRemovedHandler.Event;
             }
             set
             {
-                onPageRemovedEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onNoteBookPageRemovedCallback.IsNullPointer())
-                    {
-                        onNoteBookPageRemovedCallback = OnPageRemoved;
-                        GLib.g_signal_connect(handle.pointer, "page-removed", onNoteBookPageRemovedCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                pageRemovedHandler.Event = value;
+                pageRemovedHandler.SignalConnect(handle.pointer, "page-removed", OnPageRemoved, handle.pointer);
             }
         }
 
-        public NoteBookPageReorderedEvent onPageReordered
+        public NoteBookPageReorderedEvent PageReordered
         {
             get
             {
-                return onPageReorderedEvent;
+                return pageReorderedHandler.Event;
             }
             set
             {
-                onPageReorderedEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onNoteBookPageReorderedCallback.IsNullPointer())
-                    {
-                        onNoteBookPageReorderedCallback = OnPageReordered;
-                        GLib.g_signal_connect(handle.pointer, "page-reordered", onNoteBookPageReorderedCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                pageReorderedHandler.Event = value;
+                pageReorderedHandler.SignalConnect(handle.pointer, "page-reordered", OnPageReordered, handle.pointer);
             }
         }
 
-        public NoteBookReorderTabEvent onReorderTab
+        public NoteBookReorderTabEvent ReorderTab
         {
             get
             {
-                return onReorderTabEvent;
+                return reorderTabHandler.Event;
             }
             set
             {
-                onReorderTabEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onNoteBookReorderTabCallback.IsNullPointer())
-                    {
-                        onNoteBookReorderTabCallback = OnReorderTab;
-                        GLib.g_signal_connect(handle.pointer, "reorder-tab", onNoteBookReorderTabCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                reorderTabHandler.Event = value;
+                reorderTabHandler.SignalConnect(handle.pointer, "reorder-tab", OnReorderTab, handle.pointer);
             }
         }
 
-        public NoteBookSelectPageEvent onSelectPage
+        public NoteBookSelectPageEvent SelectPage
         {
             get
             {
-                return onSelectPageEvent;
+                return selectPageHandler.Event;
             }
             set
             {
-                onSelectPageEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onNoteBookSelectPageCallback.IsNullPointer())
-                    {
-                        onNoteBookSelectPageCallback = OnSelectPage;
-                        GLib.g_signal_connect(handle.pointer, "select-page", onNoteBookSelectPageCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                selectPageHandler.Event = value;
+                selectPageHandler.SignalConnect(handle.pointer, "select-page", OnSelectPage, handle.pointer);
             }
         }
 
-        public NoteBookSwitchPageEvent onSwitchPage
+        public NoteBookSwitchPageEvent SwitchPage
         {
             get
             {
-                return onSwitchPageEvent;
+                return switchPageHandler.Event;
             }
             set
             {
-                onSwitchPageEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onNoteBookSwitchPageCallback.IsNullPointer())
-                    {
-                        onNoteBookSwitchPageCallback = OnSwitchPage;
-                        GLib.g_signal_connect(handle.pointer, "switch-page", onNoteBookSwitchPageCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                switchPageHandler.Event = value;
+                switchPageHandler.SignalConnect(handle.pointer, "switch-page", OnSwitchPage, handle.pointer);
             }
         }
                 
@@ -294,9 +212,9 @@ namespace GtkSharp
 
         bool OnChangeCurrentPage(IntPtr widget, int obj, IntPtr data)
         {
-            if(onChangeCurrentPage != null)
+            if(ChangeCurrentPage != null)
             {
-                return onChangeCurrentPage(obj);
+                return ChangeCurrentPage(obj);
             }
             return false;
         }
@@ -305,10 +223,10 @@ namespace GtkSharp
         {
             GtkNoteBookPointer p = new GtkNoteBookPointer();
 
-            if(onCreateWindow != null)
+            if(CreateWindow != null)
             {
                 Widget w = new Widget(widget);
-                NoteBook b = onCreateWindow(w, x, y);
+                NoteBook b = CreateWindow(w, x, y);
                 p.pointer = b.handle.pointer;
                 return p;
             }
@@ -319,69 +237,69 @@ namespace GtkSharp
 
         bool OnFocusTab(IntPtr widget, GtkNotebookTab tab, IntPtr data)
         {
-            if(onFocusTab != null)
+            if(FocusTab != null)
             {
-                return onFocusTab(tab);
+                return FocusTab(tab);
             }
             return false;
         }
 
         void OnMoveFocusOut(IntPtr widget, GtkDirectionType directionType, IntPtr data)
         {
-            onMoveFocusOut?.Invoke(directionType);
+            MoveFocusOut?.Invoke(directionType);
         }
 
         void OnPageAdded(IntPtr widget, GtkWidgetPointer child, uint pageNum, IntPtr data)
         {
-            if(onPageAdded != null)
+            if(PageAdded != null)
             {
                 Widget c = new Widget(widget);            
-                onPageAdded(c, pageNum);
+                PageAdded(c, pageNum);
             }
         }
 
         void OnPageRemoved(IntPtr widget, GtkWidgetPointer child, uint pageNum, IntPtr data)
         {
-            if(onPageRemoved != null)
+            if(PageRemoved != null)
             {
                 Widget c = new Widget(widget);
-                onPageRemoved(c, pageNum);
+                PageRemoved(c, pageNum);
             }
         }
 
         void OnPageReordered(IntPtr widget, GtkWidgetPointer child, uint pageNum, IntPtr data)
         {
-            if(onPageReordered != null)
+            if(PageReordered != null)
             {
                 Widget c = new Widget(widget);
-                onPageReordered(c, pageNum);
+                PageReordered(c, pageNum);
             }
         }
 
         bool OnReorderTab(IntPtr widget, GtkDirectionType directionType, bool p0, IntPtr data)
         {
-            if(onReorderTab != null)
+            if(ReorderTab != null)
             {
-                return onReorderTab(directionType, p0);
+                return ReorderTab(directionType, p0);
             }
             return false;
         }
 
         bool OnSelectPage(IntPtr widget, bool obj, IntPtr data)
         {
-            if(onSelectPage != null)
+            if(SelectPage != null)
             {
-                return onSelectPage(obj);
+                return SelectPage(obj);
             }
             return false;
         }
 
         void OnSwitchPage(IntPtr widget, GtkWidgetPointer page, uint pageNum, IntPtr data)
         {
-            if(onSwitchPage != null)
+            if(SwitchPage != null)
             {
                 Widget p = new Widget(page.pointer);
-                onSwitchPage(p, pageNum);
+                SwitchPage(p, pageNum);
             }
         }        
     }

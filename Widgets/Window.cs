@@ -7,7 +7,7 @@ namespace GtkSharp
         public Window(GtkWindowType type)
         {
             handle = NativeWindow.gtk_window_new(type);
-            onDestroy += OnClosing;
+            DestroyEvent += OnClosing;
         }
 
         public void SetTitle(string title)
@@ -32,7 +32,7 @@ namespace GtkSharp
 
         private void OnClosing()
         {
-            onDestroyed?.Invoke();
+            Destroyed?.Invoke();
         }                
     }
 }

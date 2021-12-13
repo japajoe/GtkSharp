@@ -1,6 +1,5 @@
 using System;
 using System.Text;
-using GtkSharp.Native;
 using GtkSharp.Callbacks;
 using GtkSharp.Native.Callbacks;
 
@@ -8,17 +7,11 @@ namespace GtkSharp
 {
     public abstract class FileChooserDialog : Widget
     {
-        private event FileChooserConfirmOverwriteEvent onConfirmOverwriteEvent;
-        private event FileChooserCurrentFolderChangedEvent onCurrentFolderChangedEvent;
-        private event FileChooserFileActivatedEvent onFileActivatedEvent;
-        private event FileChooserSelectionChangedEvent onSelectionChangedEvent;
-        private event FileChooserUpdatePreviewEvent onUpdatePreviewEvent;
-
-        private GtkFileChooserConfirmOverwriteCallback onFileChooserConfirmOverwriteCallback;
-        private GtkFileChooserCurrentFolderChangedCallback onFileChooserCurrentFolderChangedCallback;
-        private GtkFileChooserFileActivatedCallback onFileChooserFileActivatedCallback;
-        private GtkFileChooserSelectionChangedCallback onFileChooserSelectionChangedCallback;
-        private GtkFileChooserUpdatePreviewCallback onFileChooserUpdatePreviewCallback;
+        private GEventHandler<FileChooserConfirmOverwriteCallback,FileChooserConfirmOverwriteEvent> confirmOverwriteHandler = new GEventHandler<FileChooserConfirmOverwriteCallback, FileChooserConfirmOverwriteEvent>();
+        private GEventHandler<FileChooserCurrentFolderChangedCallback,FileChooserCurrentFolderChangedEvent> currentFolderChangedHandler = new GEventHandler<FileChooserCurrentFolderChangedCallback, FileChooserCurrentFolderChangedEvent>();
+        private GEventHandler<FileChooserFileActivatedCallback,FileChooserFileActivatedEvent> fileActivatedHandler = new GEventHandler<FileChooserFileActivatedCallback, FileChooserFileActivatedEvent>();
+        private GEventHandler<FileChooserSelectionChangedCallback,FileChooserSelectionChangedEvent> selectionChangedHandler = new GEventHandler<FileChooserSelectionChangedCallback, FileChooserSelectionChangedEvent>();
+        private GEventHandler<FileChooserUpdatePreviewCallback,FileChooserUpdatePreviewEvent> updatePreviewHandler = new GEventHandler<FileChooserUpdatePreviewCallback, FileChooserUpdatePreviewEvent>();
 
         protected Window parent;
         protected StringBuilder stringBuilder;
@@ -36,103 +29,68 @@ namespace GtkSharp
             set { title = value; }
         }
 
-        public FileChooserConfirmOverwriteEvent onConfirmOverwrite
+        public FileChooserConfirmOverwriteEvent ConfirmOverwrite
         {
             get
             {
-                return onConfirmOverwriteEvent;
+                return confirmOverwriteHandler.Event;
             }
             set
             {
-                onConfirmOverwriteEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onFileChooserConfirmOverwriteCallback.IsNullPointer())
-                    {
-                        onFileChooserConfirmOverwriteCallback = OnConfirmOverwrite;
-                        GLib.g_signal_connect(handle.pointer, "confirm-overwrite", onFileChooserConfirmOverwriteCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                confirmOverwriteHandler.Event = value;
+                confirmOverwriteHandler.SignalConnect(handle.pointer, "confirm-overwrite", OnConfirmOverwrite, handle.pointer);
             }
         }
 
-        public FileChooserCurrentFolderChangedEvent onCurrentFolderChanged
+        public FileChooserCurrentFolderChangedEvent CurrentFolderChanged
         {
             get
             {
-                return onCurrentFolderChangedEvent;
+                return currentFolderChangedHandler.Event;
             }
             set
             {
-                onCurrentFolderChangedEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onFileChooserCurrentFolderChangedCallback.IsNullPointer())
-                    {
-                        onFileChooserCurrentFolderChangedCallback = OnCurrentFolderChanged;
-                        GLib.g_signal_connect(handle.pointer, "current-folder-changed", onFileChooserCurrentFolderChangedCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                currentFolderChangedHandler.Event = value;
+                currentFolderChangedHandler.SignalConnect(handle.pointer, "current-folder-changed", OnCurrentFolderChanged, handle.pointer);
             }
         }
 
-        public FileChooserFileActivatedEvent onFileActivated
+        public FileChooserFileActivatedEvent FileActivated
         {
             get
             {
-                return onFileActivatedEvent;
+                return fileActivatedHandler.Event;
             }
             set
             {
-                onFileActivatedEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onFileChooserFileActivatedCallback.IsNullPointer())
-                    {
-                        onFileChooserFileActivatedCallback = OnFileActivated;
-                        GLib.g_signal_connect(handle.pointer, "file-activated", onFileChooserFileActivatedCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                fileActivatedHandler.Event = value;
+                fileActivatedHandler.SignalConnect(handle.pointer, "file-activated", OnFileActivated, handle.pointer);
             }
         }
 
-        public FileChooserSelectionChangedEvent onSelectionChanged
+        public FileChooserSelectionChangedEvent SelectionChanged
         {
             get
             {
-                return onSelectionChangedEvent;
+                return selectionChangedHandler.Event;
             }
             set
             {
-                onSelectionChangedEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onFileChooserSelectionChangedCallback.IsNullPointer())
-                    {
-                        onFileChooserSelectionChangedCallback = OnSelectionChanged;
-                        GLib.g_signal_connect(handle.pointer, "selection-changed", onFileChooserSelectionChangedCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                selectionChangedHandler.Event = value;
+                selectionChangedHandler.SignalConnect(handle.pointer, "selection-changed", OnSelectionChanged, handle.pointer);
             }
         }
 
-        public FileChooserUpdatePreviewEvent onUpdatePreview
+        public FileChooserUpdatePreviewEvent UpdatePreview
         {
             get
             {
-                return onUpdatePreviewEvent;
+                return updatePreviewHandler.Event;
             }
             set
             {
-                onUpdatePreviewEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onFileChooserUpdatePreviewCallback.IsNullPointer())
-                    {
-                        onFileChooserUpdatePreviewCallback = OnUpdatePreview;
-                        GLib.g_signal_connect(handle.pointer, "update-preview", onFileChooserUpdatePreviewCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                updatePreviewHandler.Event = value;
+                updatePreviewHandler.SignalConnect(handle.pointer, "update-preview", OnUpdatePreview, handle.pointer);
             }
         }
 
@@ -150,31 +108,31 @@ namespace GtkSharp
 
         GtkFileChooserConfirmation OnConfirmOverwrite(IntPtr widget, IntPtr data)
         {
-            if(onConfirmOverwrite != null)
+            if(ConfirmOverwrite != null)
             {
-                return onConfirmOverwrite();
+                return ConfirmOverwrite();
             }
             return GtkFileChooserConfirmation.Confirm;
         }
 
         void OnCurrentFolderChanged(IntPtr widget, IntPtr data)
         {
-            onCurrentFolderChanged?.Invoke();
+            CurrentFolderChanged?.Invoke();
         }
 
         void OnFileActivated(IntPtr widget, IntPtr data)
         {
-            onFileActivated?.Invoke();
+            FileActivated?.Invoke();
         }
 
         void OnSelectionChanged(IntPtr widget, IntPtr data)
         {
-            onSelectionChanged?.Invoke();
+            SelectionChanged?.Invoke();
         }
 
         void OnUpdatePreview(IntPtr widget, IntPtr data)
         {
-            onUpdatePreview?.Invoke();
+            UpdatePreview?.Invoke();
         }        
     }
 }

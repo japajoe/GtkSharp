@@ -33,7 +33,7 @@ namespace GtkSharp
 
             Initialize();
 
-            window.onDestroyed += OnClosed;
+            window.Destroyed += OnClosed;
 
             window.SetTitle(title);
             window.SetSizeRequest(width, height);

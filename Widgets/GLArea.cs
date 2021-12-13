@@ -1,6 +1,5 @@
 using System;
 using GtkSharp.Callbacks;
-using GtkSharp.Native;
 using GtkSharp.Native.Callbacks;
 using GtkSharp.Native.Types;
 using GtkSharp.Native.Widgets;
@@ -9,17 +8,11 @@ namespace GtkSharp
 {
     public class GLArea : Widget
     {
-        private event GLAreaCreateContextEvent onCreateContextEvent;
-        private event GLAreaResizeEvent onResizeEvent;
-        private event GLAreaRenderEvent onRenderEvent;
-        private event GLAreaRealizeEvent onRealizeEvent;
-        private event GLAreaUnRealizeEvent onUnRealizeEvent;
-
-        private GtkGLAreaCreateContextCallback onGLAreaCreateContextCallback;
-        private GtkGLAreaResizeCallback onGLAreaResizeCallback;
-        private GtkGLAreaRealizeCallback onGLAreaRealizeCallback;
-        private GtkGLAreaUnRealizeCallback onGLAreaUnRealizeCallback;
-        private GtkGLAreaRenderCallback onGLAreaRenderCallback;
+        private GEventHandler<GLAreaCreateContextCallback,GLAreaCreateContextEvent> createContextHandler = new GEventHandler<GLAreaCreateContextCallback, GLAreaCreateContextEvent>();
+        private GEventHandler<GLAreaResizeCallback,GLAreaResizeEvent> resizeHandler = new GEventHandler<GLAreaResizeCallback, GLAreaResizeEvent>();
+        private GEventHandler<GLAreaRenderCallback,GLAreaRenderEvent> renderHandler = new GEventHandler<GLAreaRenderCallback, GLAreaRenderEvent>();
+        private GEventHandler<GLAreaRealizeCallback,GLAreaRealizeEvent> realizeHandler = new GEventHandler<GLAreaRealizeCallback, GLAreaRealizeEvent>();
+        private GEventHandler<GLAreaUnrealizeCallback,GLAreaUnrealizeEvent> unrealizeHandler = new GEventHandler<GLAreaUnrealizeCallback, GLAreaUnrealizeEvent>();
         
         private GdkGLContextPointer context;
 
@@ -35,103 +28,68 @@ namespace GtkSharp
             }
         }
 
-        public GLAreaCreateContextEvent onCreateContext
+        public GLAreaCreateContextEvent CreateContext
         {
             get
             {
-                return onCreateContextEvent;
+                return createContextHandler.Event;
             }
             set
             {
-                onCreateContextEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onGLAreaCreateContextCallback.IsNullPointer())
-                    {
-                        onGLAreaCreateContextCallback = OnCreateContext;
-                        GLib.g_signal_connect(handle.pointer, "create-context", onGLAreaCreateContextCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                createContextHandler.Event = value;
+                createContextHandler.SignalConnect(handle.pointer, "create-context", OnCreateContext, handle.pointer);
             }
         }
 
-        public GLAreaResizeEvent onResize
+        public GLAreaResizeEvent Resize
         {
             get
             {
-                return onResizeEvent;
+                return resizeHandler.Event;
             }
             set
             {
-                onResizeEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onGLAreaResizeCallback.IsNullPointer())
-                    {
-                        onGLAreaResizeCallback = OnResize;
-                        GLib.g_signal_connect(handle.pointer, "resize", onGLAreaResizeCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                resizeHandler.Event = value;
+                resizeHandler.SignalConnect(handle.pointer, "resize", OnResize, handle.pointer);
             }
         }
 
-        public GLAreaRenderEvent onRender
+        public GLAreaRenderEvent Render
         {
             get
             {
-                return onRenderEvent;
+                return renderHandler.Event;
             }
             set
             {
-                onRenderEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onGLAreaRenderCallback.IsNullPointer())
-                    {
-                        onGLAreaRenderCallback = OnRender;
-                        GLib.g_signal_connect(handle.pointer, "render", onGLAreaRenderCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                renderHandler.Event = value;
+                renderHandler.SignalConnect(handle.pointer, "render", OnRender, handle.pointer);
             }
         }
 
-        public GLAreaRealizeEvent onRealize
+        public GLAreaRealizeEvent Realize
         {
             get
             {
-                return onRealizeEvent;
+                return realizeHandler.Event;
             }
             set
             {
-                onRealizeEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onGLAreaRealizeCallback.IsNullPointer())
-                    {
-                        onGLAreaRealizeCallback = OnRealize;
-                        GLib.g_signal_connect(handle.pointer, "realize", onGLAreaRealizeCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                realizeHandler.Event = value;
+                realizeHandler.SignalConnect(handle.pointer, "realize", OnRealize, handle.pointer);
             }
         }
 
-        public GLAreaUnRealizeEvent onUnRealize
+        public GLAreaUnrealizeEvent Unrealize
         {
             get
             {
-                return onUnRealizeEvent;
+                return unrealizeHandler.Event;
             }
             set
             {
-                onUnRealizeEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onGLAreaUnRealizeCallback.IsNullPointer())
-                    {
-                        onGLAreaUnRealizeCallback = OnUnRealize;
-                        GLib.g_signal_connect(handle.pointer, "unrealize", onGLAreaUnRealizeCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                unrealizeHandler.Event = value;
+                unrealizeHandler.SignalConnect(handle.pointer, "unrealize", OnUnRealize, handle.pointer);
             }
         }
 
@@ -261,28 +219,28 @@ namespace GtkSharp
         GdkGLContextPointer OnCreateContext(IntPtr area, IntPtr data)
         {
             context = NativeGLArea.gtk_gl_area_get_context(handle);
-            onCreateContextEvent?.Invoke();
+            CreateContext?.Invoke();
             return context;
         }
 
         void OnResize(IntPtr area, int width, int height, IntPtr data)
         {
-            onResizeEvent?.Invoke(width, height);
+            Resize?.Invoke(width, height);
         }        
 
         private void OnRealize(IntPtr area)
         {
-            onRealizeEvent?.Invoke();
+            Realize?.Invoke();
         }
 
         private void OnUnRealize(IntPtr area)
         {
-            onUnRealizeEvent?.Invoke();
+            Unrealize?.Invoke();
         }
 
         private bool OnRender(IntPtr area, IntPtr context)
         {
-            onRenderEvent?.Invoke();
+            Render?.Invoke();
             return true;
         }
     }

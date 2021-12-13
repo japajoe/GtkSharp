@@ -1,6 +1,5 @@
 using System;
 using GtkSharp.Callbacks;
-using GtkSharp.Native;
 using GtkSharp.Native.Callbacks;
 using GtkSharp.Native.Utilities;
 using GtkSharp.Native.Widgets;
@@ -9,9 +8,7 @@ namespace GtkSharp
 {
     public class LevelBar : Widget
     {
-        private event LevelBarOffsetChangedEvent onOffsetChangedEvent;
-
-        private GtkLevelBarOffsetChangedCallback onLevelBarOffsetChangedCallback;
+        private GEventHandler<LevelBarOffsetChangedCallback,LevelBarOffsetChangedEvent> offsetChangedHandler = new GEventHandler<LevelBarOffsetChangedCallback, LevelBarOffsetChangedEvent>();
 
         public double MinValue
         {
@@ -59,23 +56,16 @@ namespace GtkSharp
             }
         }
 
-        public LevelBarOffsetChangedEvent onOffsetChanged
+        public LevelBarOffsetChangedEvent OffsetChanged
         {
             get
             {
-                return onOffsetChangedEvent;
+                return offsetChangedHandler.Event;
             }
             set
             {
-                onOffsetChangedEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onLevelBarOffsetChangedCallback.IsNullPointer())
-                    {
-                        onLevelBarOffsetChangedCallback = OnOffsetChanged;
-                        GLib.g_signal_connect(handle.pointer, "offset-changed", onLevelBarOffsetChangedCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                offsetChangedHandler.Event = value;
+                offsetChangedHandler.SignalConnect(handle.pointer, "offset-changed", OnOffsetChanged, handle.pointer);
             }
         }
 
@@ -164,7 +154,7 @@ namespace GtkSharp
         private void OnOffsetChanged(IntPtr widget, IntPtr name, IntPtr data)
         {
             string n = MarshalHelper.MarshalPtrToString(name);
-            onOffsetChangedEvent?.Invoke(n);
+            OffsetChanged?.Invoke(n);
         }
     }
 }

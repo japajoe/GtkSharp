@@ -1,6 +1,5 @@
 using System;
 using GtkSharp.Callbacks;
-using GtkSharp.Native;
 using GtkSharp.Native.Callbacks;
 using GtkSharp.Native.Widgets;
 
@@ -8,8 +7,7 @@ namespace GtkSharp
 {
     public abstract class ToggleButtonBase : Widget
     {
-        private event ToggleButtonToggledEvent onToggled;
-        private GtkToggleButtonToggledCallback onToggleButtonToggledCallback;
+        private GEventHandler<ToggleButtonToggledCallback,ToggleButtonToggledEvent> toggledHandler = new GEventHandler<ToggleButtonToggledCallback, ToggleButtonToggledEvent>();
 
         public bool Value
         {
@@ -23,23 +21,16 @@ namespace GtkSharp
             }
         }
 
-        public ToggleButtonToggledEvent onChanged
+        public ToggleButtonToggledEvent Toggled
         {
             get
             {
-                return onToggled;
+                return toggledHandler.Event;
             }
             set
             {
-                onToggled = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onToggleButtonToggledCallback.IsNullPointer())
-                    {
-                        onToggleButtonToggledCallback = OnToggled;
-                        GLib.g_signal_connect(handle.pointer, "toggled", onToggleButtonToggledCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                toggledHandler.Event = value;
+                toggledHandler.SignalConnect(handle.pointer, "toggled", OnToggled, handle.pointer);
             }
         }
 
@@ -61,7 +52,7 @@ namespace GtkSharp
 
         private void OnToggled(IntPtr widget, IntPtr data)
         {
-            onToggled?.Invoke();
+            Toggled?.Invoke();
         }
     }
 }

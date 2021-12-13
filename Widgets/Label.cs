@@ -1,6 +1,5 @@
 using System;
 using GtkSharp.Callbacks;
-using GtkSharp.Native;
 using GtkSharp.Native.Callbacks;
 using GtkSharp.Native.Utilities;
 using GtkSharp.Native.Widgets;
@@ -11,15 +10,10 @@ namespace GtkSharp
     {
         private string text;
 
-        private event LabelActivateCurrentLinkEvent onActivateCurrentLinkEvent;
-        private event LabelActivateLinkEvent onActivateLinkEvent;
-        private event LabelCopyClipboardEvent onCopyClipboardEvent;
-        private event LabelMoveCursorEvent onMoveCursorEvent;
-
-        private GtkLabelActivateCurrentLinkCallback onLabelActivateCurrentLinkCallback;
-        private GtkLabelActivateLinkCallback onLabelActivateLinkCallback;
-        private GtkLabelCopyClipboardCallback onLabelCopyClipboardCallback;
-        private GtkLabelMoveCursorCallback onLabelMoveCursorCallback;
+        private GEventHandler<LabelActivateCurrentLinkCallback,LabelActivateCurrentLinkEvent> activateCurrentLinkHandler = new GEventHandler<LabelActivateCurrentLinkCallback, LabelActivateCurrentLinkEvent>();
+        private GEventHandler<LabelActivateLinkCallback,LabelActivateLinkEvent> activateLinkHandler = new GEventHandler<LabelActivateLinkCallback, LabelActivateLinkEvent>();
+        private GEventHandler<LabelCopyClipboardCallback,LabelCopyClipboardEvent> copyClipboardHandler = new GEventHandler<LabelCopyClipboardCallback, LabelCopyClipboardEvent>();
+        private GEventHandler<LabelMoveCursorCallback,LabelMoveCursorEvent> moveCursorHandler = new GEventHandler<LabelMoveCursorCallback, LabelMoveCursorEvent>();
 
         public string Text
         {
@@ -34,83 +28,55 @@ namespace GtkSharp
             }
         }
 
-        public LabelActivateCurrentLinkEvent onActivateCurrentLink
+        public LabelActivateCurrentLinkEvent ActivateCurrentLink
         {
             get
             {
-                return onActivateCurrentLinkEvent;
+                return activateCurrentLinkHandler.Event;
             }
             set
             {
-                onActivateCurrentLinkEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onLabelActivateCurrentLinkCallback.IsNullPointer())
-                    {
-                        onLabelActivateCurrentLinkCallback = OnActivateCurrentLink;
-                        GLib.g_signal_connect(handle.pointer, "activate-current-link", onLabelActivateCurrentLinkCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                activateCurrentLinkHandler.Event = value;
+                activateCurrentLinkHandler.SignalConnect(handle.pointer, "activate-current-link", OnActivateCurrentLink, handle.pointer);
             }
         }
 
-        public LabelActivateLinkEvent onActivateLink
+        public LabelActivateLinkEvent ActivateLink
         {
             get
             {
-                return onActivateLinkEvent;
+                return activateLinkHandler.Event;
             }
             set
             {
-                onActivateLinkEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onLabelActivateLinkCallback.IsNullPointer())
-                    {
-                        onLabelActivateLinkCallback = OnActivateLink;
-                        GLib.g_signal_connect(handle.pointer, "activate-link", onLabelActivateLinkCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                activateLinkHandler.Event = value;
+                activateLinkHandler.SignalConnect(handle.pointer, "activate-link", OnActivateLink, handle.pointer);
             }
         }
 
-        public LabelCopyClipboardEvent onCopyClipboard
+        public LabelCopyClipboardEvent CopyClipboard
         {
             get
             {
-                return onCopyClipboardEvent;
+                return copyClipboardHandler.Event;
             }
             set
             {
-                onCopyClipboardEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onLabelCopyClipboardCallback.IsNullPointer())
-                    {
-                        onLabelCopyClipboardCallback = OnCopyClipboard;
-                        GLib.g_signal_connect(handle.pointer, "copy-clipboard", onLabelCopyClipboardCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                copyClipboardHandler.Event = value;
+                copyClipboardHandler.SignalConnect(handle.pointer, "copy-clipboard", OnCopyClipboard, handle.pointer);
             }
         }
 
-        public LabelMoveCursorEvent onMoveCursor
+        public LabelMoveCursorEvent MoveCursor
         {
             get
             {
-                return onMoveCursorEvent;
+                return moveCursorHandler.Event;
             }
             set
             {
-                onMoveCursorEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onLabelMoveCursorCallback.IsNullPointer())
-                    {
-                        onLabelMoveCursorCallback = OnMoveCursor;
-                        GLib.g_signal_connect(handle.pointer, "move-cursor", onLabelMoveCursorCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                moveCursorHandler.Event = value;
+                moveCursorHandler.SignalConnect(handle.pointer, "move-cursor", OnMoveCursor, handle.pointer);
             }
         }
 
@@ -138,23 +104,23 @@ namespace GtkSharp
 
         void OnActivateCurrentLink(IntPtr widget, IntPtr data)
         {
-            onActivateCurrentLinkEvent?.Invoke();
+            ActivateCurrentLink?.Invoke();
         }
 
         void OnActivateLink(IntPtr widget, IntPtr uri, IntPtr data)
         {
             string u = MarshalHelper.MarshalPtrToString(uri);
-            onActivateLinkEvent?.Invoke(u);
+            ActivateLink?.Invoke(u);
         }
 
         void OnCopyClipboard(IntPtr widget, IntPtr data)
         {
-            onCopyClipboardEvent?.Invoke();
+            CopyClipboard?.Invoke();
         }
 
         void OnMoveCursor(IntPtr widget, GtkMovementStep step, int count, bool extendSelection, IntPtr data)
         {
-            onMoveCursorEvent.Invoke(step, count);
+            MoveCursor.Invoke(step, count);
         }
     }
 }

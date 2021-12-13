@@ -1,5 +1,4 @@
 using System;
-using GtkSharp.Native;
 using GtkSharp.Native.Widgets;
 using GtkSharp.Callbacks;
 using GtkSharp.Native.Callbacks;
@@ -8,137 +7,88 @@ namespace GtkSharp
 {
     public abstract class ButtonBase : Bin
     {
-        private event ButtonActivateEvent onActivateEvent;
-        private event ButtonClickedEvent onClickedEvent;
-        private event ButtonEnterEvent onEnterEvent;
-        private event ButtonLeaveEvent onLeaveCallEvent;
-        private event ButtonPressedEvent onPressedEvent;
-        private event ButtonReleasedEvent onReleasedEvent;
+        private GEventHandler<ButtonActivateCallback, ButtonActivateEvent> activateHandler = new GEventHandler<ButtonActivateCallback, ButtonActivateEvent>();
+        private GEventHandler<ButtonClickedCallback, ButtonClickedEvent> clickedHandler = new GEventHandler<ButtonClickedCallback, ButtonClickedEvent>();
+        private GEventHandler<ButtonEnterCallback, ButtonEnterEvent> enterHandler = new GEventHandler<ButtonEnterCallback, ButtonEnterEvent>();
+        private GEventHandler<ButtonLeaveCallback, ButtonLeaveEvent> leaveHandler = new GEventHandler<ButtonLeaveCallback, ButtonLeaveEvent>();
+        private GEventHandler<ButtonPressedCallback, ButtonPressedEvent> pressedHandler = new GEventHandler<ButtonPressedCallback, ButtonPressedEvent>();
+        private GEventHandler<ButtonReleasedCallback, ButtonReleasedEvent> releasedHandler = new GEventHandler<ButtonReleasedCallback, ButtonReleasedEvent>();
 
-        private GtkButtonActivateCallback onButtonActivateCallback;
-        private GtkButtonClickedCallback onButtonClickedCallback;
-        private GtkButtonEnterCallback onButtonEnterCallback;
-        private GtkButtonLeaveCallback onButtonLeaveCallback;
-        private GtkButtonPressedCallback onButtonPressedCallback;
-        private GtkButtonReleasedCallback onButtonReleasedCallback;
-
-        public ButtonActivateEvent onActivate
+        public ButtonActivateEvent Activate
         {
             get
             {
-                return onActivateEvent;
+                return activateHandler.Event;
             }
             set
             {
-                onActivateEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onButtonActivateCallback.IsNullPointer())
-                    {
-                        onButtonActivateCallback = OnActivate;
-                        GLib.g_signal_connect(handle.pointer, "activate", onButtonActivateCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                activateHandler.Event = value;
+                activateHandler.SignalConnect(handle.pointer, "activate", OnActivate, handle.pointer);
             }
         }
 
-        public ButtonClickedEvent onClicked
+        public ButtonClickedEvent Clicked
         {
             get
             {
-                return onClickedEvent;
+                return clickedHandler.Event;
             }
             set
             {
-                onClickedEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onButtonClickedCallback.IsNullPointer())
-                    {
-                        onButtonClickedCallback = OnClicked;
-                        GLib.g_signal_connect(handle.pointer, "clicked", onButtonClickedCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                clickedHandler.Event = value;
+                clickedHandler.SignalConnect(handle.pointer, "clicked", OnClicked, handle.pointer);
             }
         }
 
-        public ButtonEnterEvent onEnter
+        public ButtonEnterEvent Enter
         {
             get
             {
-                return onEnterEvent;
+                return enterHandler.Event;
             }
             set
             {
-                onEnterEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onButtonEnterCallback.IsNullPointer())
-                    {
-                        onButtonEnterCallback = OnEnter;
-                        GLib.g_signal_connect(handle.pointer, "enter", onButtonEnterCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                enterHandler.Event = value;
+                enterHandler.SignalConnect(handle.pointer, "enter", OnEnter, handle.pointer);
             }
         }
 
-        public ButtonLeaveEvent onLeave
+        public ButtonLeaveEvent Leave
         {
             get
             {
-                return onLeaveCallEvent;
+                return leaveHandler.Event;
             }
             set
             {
-                onLeaveCallEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onButtonLeaveCallback.IsNullPointer())
-                    {
-                        onButtonLeaveCallback = OnLeave;
-                        GLib.g_signal_connect(handle.pointer, "leave", onButtonLeaveCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                leaveHandler.Event = value;
+                leaveHandler.SignalConnect(handle.pointer, "leave", OnLeave, handle.pointer);
             }
         }
 
-        public ButtonPressedEvent onPressed
+        public ButtonPressedEvent Pressed
         {
             get
             {
-                return onPressedEvent;
+                return pressedHandler.Event;
             }
             set
             {
-                onPressedEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onButtonPressedCallback.IsNullPointer())
-                    {
-                        onButtonPressedCallback = OnPressed;
-                        GLib.g_signal_connect(handle.pointer, "pressed", onButtonPressedCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                pressedHandler.Event = value;
+                pressedHandler.SignalConnect(handle.pointer, "pressed", OnPressed, handle.pointer);
             }
         }
 
-        public ButtonReleasedEvent onReleased
+        public ButtonReleasedEvent Released
         {
             get
             {
-                return onReleasedEvent;
+                return releasedHandler.Event;
             }
             set
             {
-                onReleasedEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onButtonReleasedCallback.IsNullPointer())
-                    {
-                        onButtonReleasedCallback = OnReleased;
-                        GLib.g_signal_connect(handle.pointer, "released", onButtonReleasedCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                releasedHandler.Event = value;
+                releasedHandler.SignalConnect(handle.pointer, "released", OnReleased, handle.pointer);
             }
         }  
 
@@ -151,32 +101,32 @@ namespace GtkSharp
 
         private void OnActivate(IntPtr widget, IntPtr data)
         {
-            onActivateEvent?.Invoke();
+            Activate?.Invoke();
         }        
 
         private void OnClicked(IntPtr widget, IntPtr data)
         {
-            onClickedEvent?.Invoke();
+            Clicked?.Invoke();
         }
 
         private void OnEnter(IntPtr widget, IntPtr data)
         {
-            onEnterEvent?.Invoke();
+            Enter?.Invoke();
         }
 
         private void OnLeave(IntPtr widget, IntPtr data)
         {
-            onLeaveCallEvent?.Invoke();
+            Leave?.Invoke();
         }        
 
         private void OnPressed(IntPtr widget, IntPtr data)
         {
-            onPressedEvent?.Invoke();
+            Pressed?.Invoke();
         }
 
         private void OnReleased(IntPtr widget, IntPtr data)
         {
-            onReleasedEvent?.Invoke();
+            Released?.Invoke();
         } 
     }
 }

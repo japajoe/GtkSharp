@@ -1,6 +1,5 @@
 using System;
 using GtkSharp.Callbacks;
-using GtkSharp.Native;
 using GtkSharp.Native.Callbacks;
 using GtkSharp.Native.Widgets;
 
@@ -8,26 +7,18 @@ namespace GtkSharp
 {
     public class MenuItem : Widget
     {
-        private event MenuItemActivateEvent onActivateEvent;
-        private GtkMenuItemActivateCallback onMenuItemActivateCallback;
+        private GEventHandler<MenuItemActivateCallback,MenuItemActivateEvent> activateHandler = new GEventHandler<MenuItemActivateCallback, MenuItemActivateEvent>();
 
-        public MenuItemActivateEvent onActivate
+        public MenuItemActivateEvent Activate
         {
             get
             {
-                return onActivateEvent;
+                return activateHandler.Event;
             }
             set
             {
-                onActivateEvent = value;
-                if(!handle.IsNullPointer)
-                {
-                    if(onMenuItemActivateCallback.IsNullPointer())
-                    {
-                        onMenuItemActivateCallback = OnActivate;
-                        GLib.g_signal_connect(handle.pointer, "activate", onMenuItemActivateCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                activateHandler.Event = value;
+                activateHandler.SignalConnect(handle.pointer, "activate", OnActivate, handle.pointer);
             }
         }
 
@@ -43,7 +34,7 @@ namespace GtkSharp
 
         private void OnActivate(IntPtr widget, IntPtr data)
         {
-            onActivate?.Invoke();
+            Activate?.Invoke();
         }        
     }
 }

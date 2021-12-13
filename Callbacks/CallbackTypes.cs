@@ -15,6 +15,11 @@ namespace GtkSharp.Callbacks
     public delegate void ButtonPressedEvent();
     public delegate void ButtonReleasedEvent();
 
+    public delegate void ContainerAddEvent(Widget child);
+    public delegate void ContainerCheckResizeEvent(Widget child);
+    public delegate void ContainerRemoveEvent(Widget child);
+    public delegate void ContainerSetFocusChildEvent(Widget child);
+
     public delegate GtkFileChooserConfirmation FileChooserConfirmOverwriteEvent();
     public delegate void FileChooserCurrentFolderChangedEvent();
     public delegate void FileChooserFileActivatedEvent();
@@ -25,7 +30,7 @@ namespace GtkSharp.Callbacks
     public delegate void GLAreaResizeEvent(int width, int height);
     public delegate void GLAreaRenderEvent();
     public delegate void GLAreaRealizeEvent();
-    public delegate void GLAreaUnRealizeEvent();
+    public delegate void GLAreaUnrealizeEvent();
 
     public delegate void MenuItemActivateEvent();
 
@@ -77,7 +82,7 @@ namespace GtkSharp.Callbacks
     public delegate void TextViewMoveViewportEvent(GtkScrollStep step, int count);
     public delegate void TextViewPasteClipboardEvent();
     public delegate void TextViewPopulatePopupEvent();
-    public delegate void TextViewPreeditChangedEvent(string str);
+    public delegate void TextViewPreEditChangedEvent(string str);
 
     public delegate void ToggleButtonToggledEvent();
     

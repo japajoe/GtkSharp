@@ -9,7 +9,7 @@ namespace GtkSharp
     {
         private bool confirmOverwrite = true;       
 
-        public bool ConfirmOverwrite
+        public bool ConfirmToOverwrite
         {
             get { return confirmOverwrite; }
             set { confirmOverwrite = value; }

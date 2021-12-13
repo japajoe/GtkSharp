@@ -1,6 +1,5 @@
 using System;
 using GtkSharp.Callbacks;
-using GtkSharp.Native;
 using GtkSharp.Native.Types;
 using GtkSharp.Native.Widgets;
 using GtkSharp.Native.Callbacks;
@@ -12,215 +11,132 @@ namespace GtkSharp
     public class Widget : GObject
     {
         internal GtkWidgetPointer handle;
-        private Cairo cairo;
+        private Cairo cairo = new Cairo();
 
-        private WidgetDestroyEvent onDestroyEvent;
-        private WidgetDestroyedEvent onDestroyedEvent;
-        private WidgetSizeAllocateEvent onSizeAllocateEvent;
-        private WidgetKeyPressEvent onKeyPressEvent;
-        private WidgetKeyReleaseEvent onKeyReleaseEvent;
-        private WidgetButtonPressEvent onButtonPressEvent;
-        private WidgetButtonReleaseEvent onButtonReleaseEvent;
-        private WidgetMotionNotifyEvent onMotionNotifyEvent;
-        private WidgetDrawEvent onDrawEvent;
+        private GEventHandler<WidgetDestroyCallback,WidgetDestroyEvent> destroyHandler = new GEventHandler<WidgetDestroyCallback, WidgetDestroyEvent>();
+        private GEventHandler<WidgetDestroyedCallback,WidgetDestroyedEvent> destroyedHandler = new GEventHandler<WidgetDestroyedCallback, WidgetDestroyedEvent>();
+        private GEventHandler<WidgetSizeAllocateCallback,WidgetSizeAllocateEvent> sizeAllocateHandler = new GEventHandler<WidgetSizeAllocateCallback, WidgetSizeAllocateEvent>();
+        private GEventHandler<WidgetKeyPressCallback,WidgetKeyPressEvent> keyPressHandler = new GEventHandler<WidgetKeyPressCallback, WidgetKeyPressEvent>();
+        private GEventHandler<WidgetKeyReleaseCallback,WidgetKeyReleaseEvent> keyReleaseHandler = new GEventHandler<WidgetKeyReleaseCallback, WidgetKeyReleaseEvent>();
+        private GEventHandler<WidgetButtonPressCallback,WidgetButtonPressEvent> buttonPressHandler = new GEventHandler<WidgetButtonPressCallback, WidgetButtonPressEvent>();
+        private GEventHandler<WidgetButtonReleaseCallback,WidgetButtonReleaseEvent> buttonReleaseHandler = new GEventHandler<WidgetButtonReleaseCallback, WidgetButtonReleaseEvent>();
+        private GEventHandler<WidgetMotionNotifyCallback,WidgetMotionNotifyEvent> motionNotifyHandler = new GEventHandler<WidgetMotionNotifyCallback, WidgetMotionNotifyEvent>();
+        private GEventHandler<WidgetDrawCallback,WidgetDrawEvent> drawHandler = new GEventHandler<WidgetDrawCallback, WidgetDrawEvent>();
 
-        private GtkWidgetDestroyCallback onWidgetDestroyCallback;
-        private GtkWidgetDestroyedCallback onWidgetDestroyedCallback;
-        private GtkWidgetSizeAllocateCallback onWidgetSizeAllocateCallback;
-        private GtkWidgetKeyPressCallback onWidgetKeyPressCallback;
-        private GtkWidgetKeyReleaseCallback onWidgetKeyReleaseCallback;
-        private GtkWidgetButtonPressCallback onWidgetButtonPressCallback;
-        private GtkWidgetButtonReleaseCallback onWidgetButtonReleaseCallback;
-        private GtkWidgetMotionNotifyCallback onWidgetMotionNotifyCallback;
-        private GtkWidgetDrawCallback onWidgetDrawCallback;
-
-        public WidgetDestroyEvent onDestroy
+        public WidgetDestroyEvent DestroyEvent
         {
             get
             {
-                return onDestroyEvent;
+                return destroyHandler.Event;
             }
             set
             {
-                onDestroyEvent = value;                
-
-                if(!handle.IsNullPointer)
-                {
-                    if(onWidgetDestroyCallback.IsNullPointer())
-                    {
-                        onWidgetDestroyCallback = OnDestroy;
-                        GLib.g_signal_connect(handle.pointer, "destroy", onWidgetDestroyCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                destroyHandler.Event = value;                
+                destroyHandler.SignalConnect(handle.pointer, "destroy", OnDestroy, handle.pointer);
             }
         }
 
-        public WidgetDestroyedEvent onDestroyed
+        public WidgetDestroyedEvent Destroyed
         {
             get
             {
-                return onDestroyedEvent;
+                return destroyedHandler.Event;
             }
             set
             {
-                onDestroyedEvent = value;
-
-                if(!handle.IsNullPointer)
-                {
-                    if(onWidgetDestroyedCallback.IsNullPointer())
-                    {
-                        onWidgetDestroyedCallback = OnDestroyed;
-                        GLib.g_signal_connect(handle.pointer, "destroy-event", onWidgetDestroyedCallback.ToIntPtr(), handle.pointer);
-                    }
-                }                
+                destroyedHandler.Event = value;
+                destroyedHandler.SignalConnect(handle.pointer, "destroy-event", OnDestroyed, handle.pointer);             
             }
         }
 
-        public WidgetSizeAllocateEvent onSizeAllocate
+        public WidgetSizeAllocateEvent SizeAllocate
         {
             get
             {
-                return onSizeAllocateEvent;
+                return sizeAllocateHandler.Event;
             }
             set
             {
-                onSizeAllocateEvent = value;
-
-                if(!handle.IsNullPointer)
-                {
-                    if(onWidgetSizeAllocateCallback.IsNullPointer())
-                    {                        
-                        onWidgetSizeAllocateCallback = OnSizeAllocate;
-                        GLib.g_signal_connect(handle.pointer, "size-allocate", onWidgetSizeAllocateCallback.ToIntPtr(), handle.pointer);
-                    }
-                } 
+                sizeAllocateHandler.Event = value;
+                sizeAllocateHandler.SignalConnect(handle.pointer, "size-allocate", OnSizeAllocate, handle.pointer);
             }
         }        
 
-        public WidgetKeyPressEvent onKeyPress
+        public WidgetKeyPressEvent KeyPress
         {
             get
             {
-                return onKeyPressEvent;
+                return keyPressHandler.Event;
             }
             set
             {
-                onKeyPressEvent = value;
-
-                if(!handle.IsNullPointer)
-                {
-                    if(onWidgetKeyPressCallback.IsNullPointer())
-                    {                        
-                        onWidgetKeyPressCallback = OnKeyPress;
-                        GLib.g_signal_connect(handle.pointer, "key-press-event", onWidgetKeyPressCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                keyPressHandler.Event = value;
+                keyPressHandler.SignalConnect(handle.pointer, "key-press-event", OnKeyPress, handle.pointer);
             }
         }
 
-        public WidgetKeyReleaseEvent onKeyRelease
+        public WidgetKeyReleaseEvent KeyRelease
         {
             get
             {
-                return onKeyReleaseEvent;
+                return keyReleaseHandler.Event;
             }
             set
             {
-                onKeyReleaseEvent = value;
-
-                if(!handle.IsNullPointer)
-                {
-                    if(onWidgetKeyReleaseCallback.IsNullPointer())
-                    {                        
-                        onWidgetKeyReleaseCallback = OnKeyRelease;
-                        GLib.g_signal_connect(handle.pointer, "key-release-event", onWidgetKeyReleaseCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                keyReleaseHandler.Event = value;
+                keyReleaseHandler.SignalConnect(handle.pointer, "key-release-event", OnKeyRelease, handle.pointer);
             }
         }    
 
-        public WidgetButtonPressEvent onButtonPress
+        public WidgetButtonPressEvent ButtonPress
         {
             get
             {
-                return onButtonPressEvent;
+                return buttonPressHandler.Event;
             }
             set
             {
-                onButtonPressEvent = value;
-
-                if(!handle.IsNullPointer)
-                {
-                    if(onWidgetButtonPressCallback.IsNullPointer())
-                    {                        
-                        onWidgetButtonPressCallback = OnButtonPress;
-                        GLib.g_signal_connect(handle.pointer, "button-press-event", onWidgetButtonPressCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                buttonPressHandler.Event = value;
+                buttonPressHandler.SignalConnect(handle.pointer, "button-press-event", OnButtonPress, handle.pointer);
             }
         }
 
-        public WidgetButtonReleaseEvent onButtonRelease
+        public WidgetButtonReleaseEvent ButtonRelease
         {
             get
             {
-                return onButtonReleaseEvent;
+                return buttonReleaseHandler.Event;
             }
             set
             {
-                onButtonReleaseEvent = value;
-
-                if(!handle.IsNullPointer)
-                {
-                    if(onWidgetButtonReleaseCallback.IsNullPointer())
-                    {                        
-                        onWidgetButtonReleaseCallback = OnButtonRelease;
-                        GLib.g_signal_connect(handle.pointer, "button-release-event", onWidgetButtonReleaseCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                buttonReleaseHandler.Event = value;
+                buttonReleaseHandler.SignalConnect(handle.pointer, "button-release-event", OnButtonRelease, handle.pointer);
             }
         }
 
-        public WidgetMotionNotifyEvent onMotionNotify
+        public WidgetMotionNotifyEvent MotionNotify
         {
             get
             {
-                return onMotionNotifyEvent;
+                return motionNotifyHandler.Event;
             }
             set
             {
-                onMotionNotifyEvent = value;
-
-                if(!handle.IsNullPointer)
-                {
-                    if(onWidgetMotionNotifyCallback.IsNullPointer())
-                    {                        
-                        onWidgetMotionNotifyCallback = OnMotionNotify;
-                        GLib.g_signal_connect(handle.pointer, "motion-notify-event", onWidgetMotionNotifyCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                motionNotifyHandler.Event = value;
+                motionNotifyHandler.SignalConnect(handle.pointer, "motion-notify-event", OnMotionNotify, handle.pointer);
             }
         }
 
-        public WidgetDrawEvent onDraw
+        public WidgetDrawEvent Draw
         {
             get
             {
-                return onDrawEvent;
+                return drawHandler.Event;
             }
             set
             {
-                onDrawEvent = value;
-
-                if(!handle.IsNullPointer)
-                {
-                    if(onWidgetDrawCallback.IsNullPointer())
-                    {
-                        cairo = new Cairo();
-                        onWidgetDrawCallback = OnDraw;
-                        GLib.g_signal_connect(handle.pointer, "draw", onWidgetDrawCallback.ToIntPtr(), handle.pointer);
-                    }
-                }
+                drawHandler.Event = value;
+                drawHandler.SignalConnect(handle.pointer, "draw", OnDraw, handle.pointer);
             }
         }
 
@@ -305,72 +221,72 @@ namespace GtkSharp
 
         bool OnKeyPress(IntPtr widget, GdkEventKeyPointer eventKey, IntPtr userData)
         {
-            if(onKeyPress != null)
+            if(KeyPress != null)
             {
                 GdkEventKey key = Marshal.PtrToStructure<GdkEventKey>(eventKey.pointer);
-                return onKeyPress(key);
+                return KeyPress(key);
             }
             return true;
         }
 
         bool OnKeyRelease(IntPtr widget, GdkEventKeyPointer eventKey, IntPtr userData)
         {
-            if(onKeyRelease != null)
+            if(KeyRelease != null)
             {
                 GdkEventKey key = Marshal.PtrToStructure<GdkEventKey>(eventKey.pointer);
-                return onKeyRelease(key);
+                return KeyRelease(key);
             }
             return true;
         }
 
         bool OnButtonPress(IntPtr widget, GdkEventButtonPointer eventButton, IntPtr userData)
         {
-            if(onButtonPress != null)
+            if(ButtonPress != null)
             {
                 GdkEventButton button = Marshal.PtrToStructure<GdkEventButton>(eventButton.pointer);
-                return onButtonPress(button);
+                return ButtonPress(button);
             }
             return true;
         }
 
         bool OnButtonRelease(IntPtr widget, GdkEventButtonPointer eventButton, IntPtr userData)
         {
-            if(onButtonRelease != null)
+            if(ButtonRelease != null)
             {
                 GdkEventButton button = Marshal.PtrToStructure<GdkEventButton>(eventButton.pointer);
-                return onButtonRelease(button);
+                return ButtonRelease(button);
             }
             return true;
         }
 
         bool OnMotionNotify(IntPtr widget, GdkEventMotionPointer eventMotion, IntPtr userData)
         {
-            if(onMotionNotify != null)
+            if(MotionNotify != null)
             {
                 GdkEventMotion motion = Marshal.PtrToStructure<GdkEventMotion>(eventMotion.pointer);
-                return onMotionNotify(motion);
+                return MotionNotify(motion);
             }
             return true;
         }
 
         void OnDestroy(IntPtr widget, IntPtr userData)
         {
-            onDestroy?.Invoke();
+            DestroyEvent?.Invoke();
         }
 
         bool OnDestroyed(IntPtr widget, GdkEventPointer evnt, IntPtr userData)
         {
-            if(onDestroyed != null)
-                return onDestroyed();
+            if(Destroyed != null)
+                return Destroyed();
             return false;
         }
 
         void OnSizeAllocate(IntPtr widget, GtkAllocationPointer allocation)
         {
-            if(onSizeAllocate != null)
+            if(SizeAllocate != null)
             {
                 GtkAllocation a = Marshal.PtrToStructure<GtkAllocation>(allocation.pointer);
-                onSizeAllocate(a);
+                SizeAllocate(a);
             }
         }
 
@@ -378,9 +294,9 @@ namespace GtkSharp
         {
             cairo.cr.pointer = cr;
             
-            if(onDraw != null)
+            if(Draw != null)
             {
-                return onDraw(cairo);
+                return Draw(cairo);
             }
             return false;
         }    
