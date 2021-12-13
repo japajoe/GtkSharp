@@ -2,7 +2,7 @@ using GtkSharp.Native.Widgets;
 
 namespace GtkSharp
 {
-    public class Window : Container
+    public class Window : Bin
     {
         public Window(GtkWindowType type)
         {

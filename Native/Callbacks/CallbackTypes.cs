@@ -6,6 +6,7 @@ namespace GtkSharp.Native.Callbacks
     internal delegate bool GSourceFuncCallback(IntPtr data);
     internal delegate void GDestroyNotifyCallback(IntPtr data);
     internal delegate bool GtkTickCallback(GtkWidgetPointer widget, GdkFrameClockPointer frame_clock, IntPtr data);
+    internal delegate bool GtkTreeModelForeachFunc(GtkTreeModelPointer model, GtkTreePathPointer path, ref GtkTreeIter iter, IntPtr data);
 
     internal delegate void GtkButtonActivateCallback(IntPtr widget, IntPtr data);
     internal delegate void GtkButtonClickedCallback(IntPtr widget, IntPtr data);

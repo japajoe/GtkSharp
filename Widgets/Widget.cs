@@ -9,7 +9,7 @@ using GtkSharp.Drawing;
 
 namespace GtkSharp
 {
-    public class Widget
+    public class Widget : GObject
     {
         internal GtkWidgetPointer handle;
         private Cairo cairo;

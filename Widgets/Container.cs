@@ -2,7 +2,7 @@ using GtkSharp.Native.Widgets;
 
 namespace GtkSharp
 {
-    public class Container : Widget
+    public abstract class Container : Widget
     {
         public void Add(Widget widget)
         {

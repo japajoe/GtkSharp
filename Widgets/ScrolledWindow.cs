@@ -5,7 +5,7 @@ using GtkSharp.Native.Widgets;
 
 namespace GtkSharp
 {
-    public class ScrolledWindow : Container
+    public class ScrolledWindow : Bin
     {
         private GtkAdjustmentPointer hAdjustment;
         private GtkAdjustmentPointer vAdjustment;
