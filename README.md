@@ -17,7 +17,8 @@ Please take note that this is a work in progress. I'll try to make it as complet
 using System;
 using System.IO;
 using System.Collections.Generic;
-using GtkSharp;
+using GtkSharp.Gtk.Types;
+using GtkSharp.Gtk.Widgets;
 
 namespace GtkSharpApplication
 {
