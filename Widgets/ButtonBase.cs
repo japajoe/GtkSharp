@@ -2,6 +2,7 @@ using System;
 using GtkSharp.Native.Widgets;
 using GtkSharp.Callbacks;
 using GtkSharp.Native.Callbacks;
+using GtkSharp.Native.Types;
 
 namespace GtkSharp
 {
@@ -13,6 +14,30 @@ namespace GtkSharp
         private GEventHandler<ButtonLeaveCallback, ButtonLeaveEvent> leaveHandler = new GEventHandler<ButtonLeaveCallback, ButtonLeaveEvent>();
         private GEventHandler<ButtonPressedCallback, ButtonPressedEvent> pressedHandler = new GEventHandler<ButtonPressedCallback, ButtonPressedEvent>();
         private GEventHandler<ButtonReleasedCallback, ButtonReleasedEvent> releasedHandler = new GEventHandler<ButtonReleasedCallback, ButtonReleasedEvent>();
+
+        public string Text
+        {
+            get
+            {
+                return GetLabel();
+            }
+            set
+            {
+                SetLabel(value);
+            }
+        }
+
+        public Image Image
+        {
+            get
+            {
+                return GetImage();
+            }
+            set
+            {
+                SetImage(value);
+            }
+        }
 
         public ButtonActivateEvent Activate
         {
@@ -90,7 +115,38 @@ namespace GtkSharp
                 releasedHandler.Event = value;
                 releasedHandler.SignalConnect(handle.pointer, "released", OnReleased, handle.pointer);
             }
-        }  
+        }
+
+        public Image GetImage()
+        {
+            if(handle.IsNullPointer)
+                return null;
+
+            GtkWidgetPointer w = NativeButton.gtk_button_get_image(handle);
+
+            if(w.IsNullPointer)
+                return null;
+
+            return new Image(w);
+        }
+
+        public void SetImage(Image image)
+        {
+            if(handle.IsNullPointer)
+                return;
+            if(image.handle.IsNullPointer)
+                return;
+
+            NativeButton.gtk_button_set_image(handle, image.handle);
+        }
+
+        public string GetLabel()
+        {
+            if(handle.IsNullPointer)
+                return string.Empty;
+
+            return NativeButton.gtk_button_get_label(handle);
+        }
 
         public void SetLabel(string text)
         {

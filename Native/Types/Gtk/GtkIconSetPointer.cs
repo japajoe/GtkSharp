@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace GtkSharp.Native.Types
 {
     [StructLayout(LayoutKind.Sequential)]
-    public struct GtkFileFilterPointer
+    public struct GtkIconSetPointer
     {
         public IntPtr pointer;
 

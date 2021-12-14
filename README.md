@@ -60,12 +60,13 @@ namespace GtkSharpApplication
             paned = new Paned(GtkOrientation.Vertical);
             scrolledSource = new ScrolledWindow(GtkPolicyType.Automatic, GtkPolicyType.Automatic);
             scrolledLog = new ScrolledWindow(GtkPolicyType.Automatic, GtkPolicyType.Automatic);
-            buttonExecute = new Button("Execute");
+            buttonExecute = new Button();
             sourceView = new SourceView("c-sharp");
             textViewLog = new TextView();
 
             box.SetMargins(5, 5, 5, 5);
             sourceView.LineNumbers = true;
+            buttonExecute.Text = "Execute";
             buttonExecute.Clicked += Execute;
 
             window.Add(box);
