@@ -1,6 +1,6 @@
 namespace GtkSharp.Gdk.Types
 {
-    public enum GdkInterpolationType : int
+    public enum GdkInterpType : int
     {
         Nearest,
         Tiles,

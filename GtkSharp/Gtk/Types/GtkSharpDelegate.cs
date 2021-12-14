@@ -1,9 +1,9 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace GtkSharp.Gtk.Types
+namespace GtkSharp.Utilities
 {
-    public static class GtkSharpDelegate
+    public static class DelegateHelper
     {
         public static T Create<T>(object target, string functionName) where T : Delegate
         {

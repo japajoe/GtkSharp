@@ -2,7 +2,7 @@ using System;
 using GtkSharp.Glib.Native.Types;
 using GtkSharp.GLib.Native;
 using GtkSharp.GLib.Types;
-using GtkSharp.Gtk.Types;
+using GtkSharp.Utilities;
 
 namespace GtkSharp.GLib
 {

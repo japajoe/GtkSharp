@@ -35,7 +35,8 @@ namespace GtkSharp.Gtk.Widgets
 
         public Image(GdkPixbuf pixbuf)
         {
-            handle = NativeImage.gtk_image_new_from_pixbuf(pixbuf.handle);
+            if(!pixbuf.handle.IsNullPointer)
+                handle = NativeImage.gtk_image_new_from_pixbuf(pixbuf.handle);
         }
 
         public Image(GIcon icon, GtkIconSize size)
