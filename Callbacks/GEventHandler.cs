@@ -46,5 +46,17 @@ namespace GtkSharp
                 }
             }
         }
+
+        public void SignalConnectAfter(IntPtr objectHandle, string signalName, T callback, IntPtr data)
+        {
+            if(objectHandle != IntPtr.Zero)
+            {
+                if(callbackHandler.IsNullPointer())
+                {
+                    callbackHandler = callback;
+                    GLib.g_signal_connect_after(objectHandle, signalName, callbackHandler.ToIntPtr(), data);
+                }
+            }
+        }        
     }
 }

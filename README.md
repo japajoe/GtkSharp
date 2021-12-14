@@ -15,6 +15,7 @@ Please take note that this is a work in progress. I'll try to make it as complet
 
 ```csharp
 using System;
+using System.IO;
 using System.Collections.Generic;
 using GtkSharp;
 
@@ -102,7 +103,7 @@ namespace GtkSharpApplication
 
         private void Execute()
         {
-            textviewLog.Text = sourceView.Text;
+            textViewLog.Text = sourceView.Text;
         }
 
         private void OnMenuItemOpenClicked()
