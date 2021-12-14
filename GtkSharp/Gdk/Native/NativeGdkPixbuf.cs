@@ -8,7 +8,7 @@ namespace GtkSharp.Gdk.Native
 {
     internal static class NativeGdkPixbuf
     {
-        const string NATIVELIB_GDKPIXBUF = "gdk-pixbuf-2.0";
+        const string NATIVELIB_GDKPIXBUF = "gdk_pixbuf-2.0";
 
         [DllImport(NATIVELIB_GDKPIXBUF, CallingConvention = CallingConvention.Cdecl)]
         internal static extern GdkPixbufPointer gdk_pixbuf_scale_simple(GdkPixbufPointer src, int dest_width, int dest_height, GdkInterpType interp_type);

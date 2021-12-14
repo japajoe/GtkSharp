@@ -62,6 +62,16 @@ namespace GtkSharp.Gdk.Types
                 format = GdkImageFormat.FromPixbuf(handle);
         }
 
+        public void Scale(float scaleX, float scaleY)
+        {
+            if(handle.IsNullPointer)
+                return;
+
+            int width = (int)(format.width * scaleX);
+            int height = (int)(format.height * scaleY);
+            handle = NativeGdkPixbuf.gdk_pixbuf_scale_simple(handle, width, height, GdkInterpType.Bilinear);            
+        }
+
         private void OnDestroyNotify(IntPtr pixels, IntPtr data)
         {
             DestroyNotify?.Invoke();

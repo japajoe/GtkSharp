@@ -39,6 +39,18 @@ namespace GtkSharp.Gtk.Widgets
             }
         }
 
+        public bool AlwaysShowImage
+        {
+            get
+            {
+                return GetAlwaysShowImage();
+            }
+            set
+            {
+                SetAlwaysShowImage(value);
+            }
+        }
+
         public ButtonActivateEvent Activate
         {
             get
@@ -115,6 +127,22 @@ namespace GtkSharp.Gtk.Widgets
                 releasedHandler.Event = value;
                 releasedHandler.SignalConnect(handle.pointer, "released", OnReleased, handle.pointer);
             }
+        }
+
+        public bool GetAlwaysShowImage()
+        {
+            if(handle.IsNullPointer)
+                return false;
+            
+            return NativeButton.gtk_button_get_always_show_image(handle);
+        }
+
+        public void SetAlwaysShowImage(bool show)
+        {
+            if(handle.IsNullPointer)
+                return;
+
+            NativeButton.gtk_button_set_always_show_image(handle, show);
         }
 
         public Image GetImage()
