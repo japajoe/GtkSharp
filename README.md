@@ -3,8 +3,12 @@ An object oriented GTK 3 wrapper for dotnetcore.
 
 # Dependencies
 - libgtk-3-dev
-- libglib2.0-dev
 - libgtksourceview-3.0-dev
+- libglib2.0-dev
+- libgdk-pixbuf2.0-dev
+- libcairo2-dev
+- libpango1.0-dev
+- libatk1.0-dev
 
 # Disclaimer
 Please take note that this is a work in progress. I'll try to make it as complete as possible overtime, but for now it's just a proof of concept.
