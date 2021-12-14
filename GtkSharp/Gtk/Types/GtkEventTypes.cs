@@ -1,4 +1,4 @@
-using GtkSharp.Drawing;
+using GtkSharp.Cairo.Types;
 using GtkSharp.Gdk.Native.Types;
 using GtkSharp.Gdk.Types;
 using GtkSharp.Gtk.Native.Types;
@@ -94,5 +94,5 @@ namespace GtkSharp.Gtk.Types
     public delegate bool WidgetButtonPressEvent(GdkEventButton eventButton);
     public delegate bool WidgetButtonReleaseEvent(GdkEventButton eventButton);
     public delegate bool WidgetMotionNotifyEvent(GdkEventMotion eventMotion);
-    public delegate bool WidgetDrawEvent(Cairo_t cr);
+    public delegate bool WidgetDrawEvent(CairoInstance cr);
 }

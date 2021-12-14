@@ -1,4 +1,4 @@
-namespace GtkSharp.Drawing
+namespace GtkSharp.Cairo.Types
 {
     public enum CairoFontSlant : int
     {

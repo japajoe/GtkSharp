@@ -1,13 +1,13 @@
 using GtkSharp.Cairo.Native;
 using GtkSharp.Cairo.Native.Types;
 
-namespace GtkSharp.Drawing
+namespace GtkSharp.Cairo.Types
 {
-    public class Cairo_t
+    public class CairoInstance
     {
         internal CairoPointer cr;
 
-        public Cairo_t()
+        public CairoInstance()
         {
             
         }

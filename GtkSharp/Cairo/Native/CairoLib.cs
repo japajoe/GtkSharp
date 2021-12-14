@@ -1,6 +1,6 @@
 using System.Runtime.InteropServices;
-using GtkSharp.Drawing;
 using GtkSharp.Cairo.Native.Types;
+using GtkSharp.Cairo.Types;
 
 namespace GtkSharp.Cairo.Native
 {

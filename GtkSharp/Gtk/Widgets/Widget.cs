@@ -2,18 +2,18 @@ using System;
 using GtkSharp.Gtk.Types;
 using GtkSharp.Gtk.Native.Widgets;
 using System.Runtime.InteropServices;
-using GtkSharp.Drawing;
 using GtkSharp.Gdk.Native.Types;
 using GtkSharp.Gdk.Types;
 using GtkSharp.GLib.Types;
 using GtkSharp.Gtk.Native.Types;
+using GtkSharp.Cairo.Types;
 
 namespace GtkSharp.Gtk.Widgets
 {
     public class Widget : GObject
     {
         internal GtkWidgetPointer handle;
-        private Cairo_t cairo = new Cairo_t();
+        private CairoInstance cairo = new CairoInstance();
 
         private GEventHandler<WidgetDestroyCallback,WidgetDestroyEvent> destroyHandler = new GEventHandler<WidgetDestroyCallback, WidgetDestroyEvent>();
         private GEventHandler<WidgetDestroyedCallback,WidgetDestroyedEvent> destroyedHandler = new GEventHandler<WidgetDestroyedCallback, WidgetDestroyedEvent>();

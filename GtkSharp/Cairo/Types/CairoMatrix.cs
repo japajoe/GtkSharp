@@ -1,6 +1,6 @@
 using System.Runtime.InteropServices;
 
-namespace GtkSharp.Drawing
+namespace GtkSharp.Cairo.Types
 {
     [StructLayout(LayoutKind.Sequential)]
     public struct CairoMatrix
