@@ -19,6 +19,9 @@ namespace GtkSharp.Gtk.Native.Types
     internal delegate void ContainerRemoveCallback(IntPtr widget, IntPtr child, IntPtr data);
     internal delegate void ContainerSetFocusChildCallback(IntPtr widget, IntPtr child, IntPtr data);
 
+    internal delegate void DialogCloseCallback(IntPtr widget, IntPtr data);
+    internal delegate void DialogResponseCallback(IntPtr widget, int responseId, IntPtr data);
+
     internal delegate GtkFileChooserConfirmation FileChooserConfirmOverwriteCallback(IntPtr widget, IntPtr data);
     internal delegate void FileChooserCurrentFolderChangedCallback(IntPtr widget, IntPtr data);
     internal delegate void FileChooserFileActivatedCallback(IntPtr widget, IntPtr data);

@@ -3,11 +3,138 @@ using System.Runtime.InteropServices;
 using GtkSharp.Glib.Native.Types;
 using GtkSharp.Gtk.Native.Types;
 using GtkSharp.Gtk.Types;
+using GtkSharp.Utilities;
 
 namespace GtkSharp.Gtk.Native.Widgets
 {
     internal static class NativeTreeModel
     {        
+        
+        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern GtkTreePathPointer gtk_tree_path_new();
+        
+        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern GtkTreePathPointer gtk_tree_path_new_from_string(string path);
+        
+        //[DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        //internal static extern GtkTreePathPointer gtk_tree_path_new_from_indices(int first_index, ...);
+        
+        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern unsafe GtkTreePathPointer gtk_tree_path_new_from_indicesv(int* indices, long length);
+
+        internal static unsafe GtkTreePathPointer gtk_tree_path_new_from_indicesv(int[] indices)
+        {
+            GtkTreePathPointer path;
+            fixed(int* ptr = &indices[0])
+            {
+                long length = (long)indices.Length;
+                path = gtk_tree_path_new_from_indicesv(ptr, length);
+            }
+            return path;
+        }
+        
+        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr gtk_tree_path_to_string(GtkTreePathPointer path);
+
+        internal static void gtk_tree_path_to_string(GtkTreePathPointer path, out string str)
+        {
+            IntPtr ptr = gtk_tree_path_to_string(path);
+            str = MarshalHelper.MarshalPtrToString(ptr);
+            GLib.Native.GLibLib.g_free(ptr);
+        }
+        
+        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern GtkTreePathPointer gtk_tree_path_new_first();
+        
+        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void gtk_tree_path_append_index(GtkTreePathPointer path, int index_);
+        
+        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void gtk_tree_path_prepend_index(GtkTreePathPointer path, int index_);
+        
+        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int gtk_tree_path_get_depth(GtkTreePathPointer path);
+        
+
+
+        //Returns the current indices of path.
+        //This is an array of integers, each representing a node in a tree. This value should not be freed.
+        //The length of the array can be obtained with gtk_tree_path_get_depth().
+        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern unsafe int* gtk_tree_path_get_indices(GtkTreePathPointer path); 
+
+        internal static unsafe int[] gtk_tree_path_get_indices(GtkTreePathPointer path, out int length)
+        {
+            int* ptr = gtk_tree_path_get_indices(path);
+            length = gtk_tree_path_get_depth(path);
+            if(length > 0)
+            {
+                int[] indices = new int[length];
+                
+                for(int i = 0; i < indices.Length; i++)
+                {
+                    indices[i] = ptr[i];
+                }
+
+                return indices;
+            }
+
+            return null;
+        }
+        
+        //Returns the current indices of path.
+        //This is an array of integers, each representing a node in a tree. It also returns the number of elements in the array. The array should not be freed.
+        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern unsafe int* gtk_tree_path_get_indices_with_depth(GtkTreePathPointer path, out int depth); 
+
+        internal static unsafe int[] gtk_tree_path_get_indices_with_depth(GtkTreePathPointer path)
+        {
+            int depth;
+            int* ptr = gtk_tree_path_get_indices_with_depth(path, out depth);
+            if(depth > 0)
+            {
+                int[] indices = new int[depth];
+
+                for(int i = 0; i < indices.Length; i++)
+                {
+                    indices[i] = ptr[i];
+                }
+                return indices;
+            }
+
+            return null;
+        }
+        
+        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void gtk_tree_path_free(GtkTreePathPointer path);
+        
+        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern GtkTreePathPointer gtk_tree_path_copy(GtkTreePathPointer path);
+        
+        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern ulong gtk_tree_path_get_type();
+        
+        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int gtk_tree_path_compare(GtkTreePathPointer a, GtkTreePathPointer b);
+        
+        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void gtk_tree_path_next(GtkTreePathPointer path);
+        
+        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern bool gtk_tree_path_prev(GtkTreePathPointer path);
+        
+        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern bool gtk_tree_path_up(GtkTreePathPointer path);
+        
+        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void gtk_tree_path_down(GtkTreePathPointer path); 
+        
+        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern bool gtk_tree_path_is_ancestor(GtkTreePathPointer path, GtkTreePathPointer descendant);
+        
+        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern bool gtk_tree_path_is_descendant(GtkTreePathPointer path, GtkTreePathPointer ancestor);
+
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern ulong gtk_tree_row_reference_get_type();
         

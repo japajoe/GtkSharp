@@ -11,11 +11,6 @@ namespace GtkSharp.Gtk.Widgets
         public OpenFileDialog(Window parent) : base(parent)
         {
             this.title = "Open File";
-        }
-
-        public override GtkResponseType ShowDialog()
-        {
-            GtkResponseType response = GtkResponseType.None;
 
             handle = NativeFileChooserDialog.gtk_file_chooser_dialog_new(title,
                                                                 parent.handle,
@@ -24,10 +19,16 @@ namespace GtkSharp.Gtk.Widgets
                                                                 GtkResponseType.Cancel,
                                                                 "_Open",
                                                                 GtkResponseType.Accept,
-                                                                IntPtr.Zero);
+                                                                IntPtr.Zero);            
+        }
 
-            response = (GtkResponseType)NativeDialog.gtk_dialog_run(handle);
+        public override GtkResponseType ShowDialog()
+        {
+            if(handle.IsNullPointer)
+                return GtkResponseType.None;
 
+            GtkResponseType response = (GtkResponseType)NativeDialog.gtk_dialog_run(handle);
+            
             if(response == GtkResponseType.Accept)
             {
                 IntPtr ptr = NativeFileChooser.gtk_file_chooser_get_filename(handle);
@@ -35,7 +36,7 @@ namespace GtkSharp.Gtk.Widgets
                 GLibLib.g_free(ptr);
             }
             
-            this.Destroy();            
+            this.Destroy();
 
             return response;
         }

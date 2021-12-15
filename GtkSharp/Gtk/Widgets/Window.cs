@@ -5,6 +5,12 @@ namespace GtkSharp.Gtk.Widgets
 {
     public class Window : Bin
     {
+        public Window()
+        {
+            handle = NativeWindow.gtk_window_new(GtkWindowType.TopLevel);
+            DestroyEvent += OnClosing;
+        }
+
         public Window(GtkWindowType type)
         {
             handle = NativeWindow.gtk_window_new(type);

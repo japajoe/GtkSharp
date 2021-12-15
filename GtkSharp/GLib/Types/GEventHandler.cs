@@ -5,12 +5,12 @@ using GtkSharp.Utilities;
 
 namespace GtkSharp.GLib.Types
 {
-    public class GEventHandler<T,U> where T : Delegate where U : Delegate
+    public class GEventHandler<C,E> where C : Delegate where E : Delegate
     {
-        private T callbackHandler;        
-        private U eventHandler;
+        private C callbackHandler;        
+        private E eventHandler;
 
-        public T Callback
+        public C Callback
         {
             get
             {
@@ -22,7 +22,7 @@ namespace GtkSharp.GLib.Types
             }
         }        
         
-        public U Event
+        public E Event
         {
             get
             {
@@ -34,7 +34,7 @@ namespace GtkSharp.GLib.Types
             }
         }
 
-        public void SignalConnect(IntPtr objectHandle, string signalName, T callback, IntPtr data)
+        public void SignalConnect(IntPtr objectHandle, string signalName, C callback, IntPtr data)
         {
             if(objectHandle != IntPtr.Zero)
             {
@@ -46,7 +46,7 @@ namespace GtkSharp.GLib.Types
             }
         }
 
-        public void SignalConnectAfter(IntPtr objectHandle, string signalName, T callback, IntPtr data)
+        public void SignalConnectAfter(IntPtr objectHandle, string signalName, C callback, IntPtr data)
         {
             if(objectHandle != IntPtr.Zero)
             {
@@ -56,6 +56,18 @@ namespace GtkSharp.GLib.Types
                     GLibLib.g_signal_connect_after(objectHandle, signalName, callbackHandler.ToIntPtr(), data);
                 }
             }
-        }        
+        }
+
+        public void SignalConnectSwapped(IntPtr objectHandle, string signalName, C callback, IntPtr data)
+        {
+            if(objectHandle != IntPtr.Zero)
+            {
+                if(callbackHandler.IsNullPointer())
+                {
+                    callbackHandler = callback;
+                    GLibLib.g_signal_connect_swapped(objectHandle, signalName, callbackHandler.ToIntPtr(), data);
+                }
+            }
+        }
     }
 }

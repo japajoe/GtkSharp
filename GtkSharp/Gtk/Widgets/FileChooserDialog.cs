@@ -6,7 +6,7 @@ using GtkSharp.Gtk.Types;
 
 namespace GtkSharp.Gtk.Widgets
 {
-    public abstract class FileChooserDialog : Widget
+    public abstract class FileChooserDialog : Dialog
     {
         private GEventHandler<FileChooserConfirmOverwriteCallback,FileChooserConfirmOverwriteEvent> confirmOverwriteHandler = new GEventHandler<FileChooserConfirmOverwriteCallback, FileChooserConfirmOverwriteEvent>();
         private GEventHandler<FileChooserCurrentFolderChangedCallback,FileChooserCurrentFolderChangedEvent> currentFolderChangedHandler = new GEventHandler<FileChooserCurrentFolderChangedCallback, FileChooserCurrentFolderChangedEvent>();
@@ -15,7 +15,6 @@ namespace GtkSharp.Gtk.Widgets
         private GEventHandler<FileChooserUpdatePreviewCallback,FileChooserUpdatePreviewEvent> updatePreviewHandler = new GEventHandler<FileChooserUpdatePreviewCallback, FileChooserUpdatePreviewEvent>();
 
         protected Window parent;
-        protected StringBuilder stringBuilder;
         protected string fileName;
         protected string title;
 
@@ -95,11 +94,9 @@ namespace GtkSharp.Gtk.Widgets
             }
         }
 
-
         public FileChooserDialog(Window parent)
         {
             this.parent = parent;
-            this.stringBuilder = new StringBuilder(1024);
         }
 
         public virtual GtkResponseType ShowDialog()

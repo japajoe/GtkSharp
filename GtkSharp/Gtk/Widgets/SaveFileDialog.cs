@@ -8,22 +8,21 @@ namespace GtkSharp.Gtk.Widgets
 {
     public class SaveFileDialog : FileChooserDialog
     {
-        private bool confirmOverwrite = true;       
-
         public bool ConfirmToOverwrite
         {
-            get { return confirmOverwrite; }
-            set { confirmOverwrite = value; }
+            get 
+            { 
+                return GetDoOverwriteConfirmation();
+            }
+            set 
+            { 
+                SetDoOverwriteConfirmation(value);
+            }
         }
 
         public SaveFileDialog(Window parent) : base(parent)
         {
             this.title = "Save File";
-        }
-
-        public override GtkResponseType ShowDialog()
-        {
-            GtkResponseType response = GtkResponseType.None;
 
             handle = NativeFileChooserDialog.gtk_file_chooser_dialog_new(title,
                                                                 parent.handle,
@@ -34,10 +33,31 @@ namespace GtkSharp.Gtk.Widgets
                                                                 GtkResponseType.Accept,
                                                                 IntPtr.Zero);
 
-            NativeFileChooser.gtk_file_chooser_set_do_overwrite_confirmation(handle, confirmOverwrite);
+            NativeFileChooser.gtk_file_chooser_set_do_overwrite_confirmation(handle, true);
+        }
 
+        public bool GetDoOverwriteConfirmation()
+        {
+            if(handle.IsNullPointer)
+                return false;
             
-            response = (GtkResponseType)NativeDialog.gtk_dialog_run(handle);
+            return NativeFileChooser.gtk_file_chooser_get_do_overwrite_confirmation(handle);
+        }
+
+        public void SetDoOverwriteConfirmation(bool confirm)
+        {
+            if(handle.IsNullPointer)
+                return;
+
+            NativeFileChooser.gtk_file_chooser_set_do_overwrite_confirmation(handle, confirm);
+        }
+
+        public override GtkResponseType ShowDialog()
+        {
+            if(handle.IsNullPointer)
+                return GtkResponseType.None;
+            
+            GtkResponseType response = (GtkResponseType)NativeDialog.gtk_dialog_run(handle);
 
             if(response == GtkResponseType.Accept)
             {

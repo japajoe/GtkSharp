@@ -20,6 +20,9 @@ namespace GtkSharp.Gtk.Types
     public delegate void ContainerRemoveEvent(Widget child);
     public delegate void ContainerSetFocusChildEvent(Widget child);
 
+    public delegate void DialogCloseEvent();
+    public delegate void DialogResponseEvent(int responseId);
+
     public delegate GtkFileChooserConfirmation FileChooserConfirmOverwriteEvent();
     public delegate void FileChooserCurrentFolderChangedEvent();
     public delegate void FileChooserFileActivatedEvent();
