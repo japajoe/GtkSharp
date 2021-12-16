@@ -24,6 +24,8 @@ namespace GtkSharp.Gtk.Widgets
         private GEventHandler<WidgetButtonReleaseCallback,WidgetButtonReleaseEvent> buttonReleaseHandler = new GEventHandler<WidgetButtonReleaseCallback, WidgetButtonReleaseEvent>();
         private GEventHandler<WidgetMotionNotifyCallback,WidgetMotionNotifyEvent> motionNotifyHandler = new GEventHandler<WidgetMotionNotifyCallback, WidgetMotionNotifyEvent>();
         private GEventHandler<WidgetDrawCallback,WidgetDrawEvent> drawHandler = new GEventHandler<WidgetDrawCallback, WidgetDrawEvent>();
+        private GEventHandler<WidgetRealizeCallback,WidgetRealizeEvent> realizeHandler = new GEventHandler<WidgetRealizeCallback, WidgetRealizeEvent>();
+        private GEventHandler<WidgetUnrealizeCallback,WidgetUnrealizeEvent> unrealizeHandler = new GEventHandler<WidgetUnrealizeCallback, WidgetUnrealizeEvent>();
 
         public WidgetDestroyEvent DestroyEvent
         {
@@ -139,6 +141,32 @@ namespace GtkSharp.Gtk.Widgets
             {
                 drawHandler.Event = value;
                 drawHandler.SignalConnect(handle.pointer, "draw", OnDraw, handle.pointer);
+            }
+        }
+
+        public WidgetRealizeEvent Realize
+        {
+            get
+            {
+                return realizeHandler.Event;
+            }
+            set
+            {
+                realizeHandler.Event = value;
+                realizeHandler.SignalConnect(handle.pointer, "realize", OnRealize, handle.pointer);
+            }
+        }
+
+        public WidgetUnrealizeEvent Unrealize
+        {
+            get
+            {
+                return unrealizeHandler.Event;
+            }
+            set
+            {
+                unrealizeHandler.Event = value;
+                unrealizeHandler.SignalConnect(handle.pointer, "unrealize", OnUnrealize, handle.pointer);
             }
         }
 
@@ -301,6 +329,16 @@ namespace GtkSharp.Gtk.Widgets
                 return Draw(cairo);
             }
             return false;
-        }    
+        }
+
+        private void OnRealize(IntPtr widget, IntPtr data)
+        {
+            Realize?.Invoke();
+        }
+
+        private void OnUnrealize(IntPtr widget, IntPtr data)
+        {
+            Unrealize?.Invoke();
+        }        
     }
 }

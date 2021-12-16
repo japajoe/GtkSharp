@@ -16,7 +16,7 @@ namespace GtkSharp.Gtk.Types
     public delegate void ButtonReleasedEvent();
 
     public delegate void ContainerAddEvent(Widget child);
-    public delegate void ContainerCheckResizeEvent(Widget child);
+    public delegate void ContainerCheckResizeEvent();
     public delegate void ContainerRemoveEvent(Widget child);
     public delegate void ContainerSetFocusChildEvent(Widget child);
 
@@ -32,8 +32,6 @@ namespace GtkSharp.Gtk.Types
     public delegate void GLAreaCreateContextEvent();
     public delegate void GLAreaResizeEvent(int width, int height);
     public delegate void GLAreaRenderEvent();
-    public delegate void GLAreaRealizeEvent();
-    public delegate void GLAreaUnrealizeEvent();
 
     public delegate void MenuItemActivateEvent();
 
@@ -98,4 +96,6 @@ namespace GtkSharp.Gtk.Types
     public delegate bool WidgetButtonReleaseEvent(GdkEventButton eventButton);
     public delegate bool WidgetMotionNotifyEvent(GdkEventMotion eventMotion);
     public delegate bool WidgetDrawEvent(CairoInstance cr);
+    public delegate void WidgetRealizeEvent();
+    public delegate void WidgetUnrealizeEvent();
 }

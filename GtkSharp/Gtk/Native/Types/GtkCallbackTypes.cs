@@ -30,8 +30,6 @@ namespace GtkSharp.Gtk.Native.Types
 
     internal delegate GdkGLContextPointer GLAreaCreateContextCallback(IntPtr widget, IntPtr data);
     internal delegate void GLAreaResizeCallback(IntPtr widget, int width, int height, IntPtr data);
-    internal delegate void GLAreaRealizeCallback(IntPtr widget);
-    internal delegate void GLAreaUnrealizeCallback(IntPtr widget);
     internal delegate bool GLAreaRenderCallback(IntPtr widget, IntPtr context);
 
     internal delegate void LabelActivateCurrentLinkCallback(IntPtr widget, IntPtr data);
@@ -98,4 +96,6 @@ namespace GtkSharp.Gtk.Native.Types
     internal delegate bool WidgetButtonReleaseCallback(IntPtr widget, GdkEventButtonPointer eventButton, IntPtr data);
     internal delegate bool WidgetMotionNotifyCallback(IntPtr widget, GdkEventMotionPointer eventMotion, IntPtr data);
     internal delegate bool WidgetDrawCallback(IntPtr widget, IntPtr cr, IntPtr data);
+    internal delegate void WidgetRealizeCallback(IntPtr widget, IntPtr data);
+    internal delegate void WidgetUnrealizeCallback(IntPtr widget, IntPtr data);
 }

@@ -12,8 +12,6 @@ namespace GtkSharp.Gtk.Widgets
         private GEventHandler<GLAreaCreateContextCallback,GLAreaCreateContextEvent> createContextHandler = new GEventHandler<GLAreaCreateContextCallback, GLAreaCreateContextEvent>();
         private GEventHandler<GLAreaResizeCallback,GLAreaResizeEvent> resizeHandler = new GEventHandler<GLAreaResizeCallback, GLAreaResizeEvent>();
         private GEventHandler<GLAreaRenderCallback,GLAreaRenderEvent> renderHandler = new GEventHandler<GLAreaRenderCallback, GLAreaRenderEvent>();
-        private GEventHandler<GLAreaRealizeCallback,GLAreaRealizeEvent> realizeHandler = new GEventHandler<GLAreaRealizeCallback, GLAreaRealizeEvent>();
-        private GEventHandler<GLAreaUnrealizeCallback,GLAreaUnrealizeEvent> unrealizeHandler = new GEventHandler<GLAreaUnrealizeCallback, GLAreaUnrealizeEvent>();
         
         private GdkGLContextPointer context;
 
@@ -65,32 +63,6 @@ namespace GtkSharp.Gtk.Widgets
             {
                 renderHandler.Event = value;
                 renderHandler.SignalConnect(handle.pointer, "render", OnRender, handle.pointer);
-            }
-        }
-
-        public GLAreaRealizeEvent Realize
-        {
-            get
-            {
-                return realizeHandler.Event;
-            }
-            set
-            {
-                realizeHandler.Event = value;
-                realizeHandler.SignalConnect(handle.pointer, "realize", OnRealize, handle.pointer);
-            }
-        }
-
-        public GLAreaUnrealizeEvent Unrealize
-        {
-            get
-            {
-                return unrealizeHandler.Event;
-            }
-            set
-            {
-                unrealizeHandler.Event = value;
-                unrealizeHandler.SignalConnect(handle.pointer, "unrealize", OnUnRealize, handle.pointer);
             }
         }
 
@@ -227,16 +199,6 @@ namespace GtkSharp.Gtk.Widgets
         void OnResize(IntPtr area, int width, int height, IntPtr data)
         {
             Resize?.Invoke(width, height);
-        }        
-
-        private void OnRealize(IntPtr area)
-        {
-            Realize?.Invoke();
-        }
-
-        private void OnUnRealize(IntPtr area)
-        {
-            Unrealize?.Invoke();
         }
 
         private bool OnRender(IntPtr area, IntPtr context)
