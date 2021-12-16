@@ -32,6 +32,17 @@ namespace GtkSharp.Gtk.Widgets
             NativeWindow.gtk_window_set_position(handle, position);
         }
 
+        public void SetTitleBar(Widget widget)
+        {
+            if(handle.IsNullPointer)
+                return;
+            
+            if(widget.handle.IsNullPointer)
+                return;
+                
+            NativeWindow.gtk_window_set_titlebar(handle, widget.handle);
+        }
+
         public void Close()
         {
             Destroy();

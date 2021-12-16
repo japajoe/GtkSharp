@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace GtkSharp.Gtk.Native.Types
 {
     [StructLayout(LayoutKind.Sequential)]
-    public struct GtkSourceCompletionPointer
+    public struct GtkSourceCompletionContextPointer
     {
         public IntPtr pointer;
 

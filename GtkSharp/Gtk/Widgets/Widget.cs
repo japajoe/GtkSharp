@@ -1,11 +1,11 @@
 using System;
-using GtkSharp.Gtk.Types;
-using GtkSharp.Gtk.Native.Widgets;
 using System.Runtime.InteropServices;
-using GtkSharp.Gdk.Native.Types;
-using GtkSharp.Gdk.Types;
-using GtkSharp.GLib.Types;
+using GtkSharp.Gtk.Types;
 using GtkSharp.Gtk.Native.Types;
+using GtkSharp.Gtk.Native.Widgets;
+using GtkSharp.Gdk.Types;
+using GtkSharp.Gdk.Native.Types;
+using GtkSharp.GLib.Types;
 using GtkSharp.Cairo.Types;
 
 namespace GtkSharp.Gtk.Widgets

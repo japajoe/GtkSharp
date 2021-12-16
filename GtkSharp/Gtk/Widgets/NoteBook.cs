@@ -19,6 +19,18 @@ namespace GtkSharp.Gtk.Widgets
         private GEventHandler<NoteBookSelectPageCallback,NoteBookSelectPageEvent> selectPageHandler = new GEventHandler<NoteBookSelectPageCallback, NoteBookSelectPageEvent>();
         private GEventHandler<NoteBookSwitchPageCallback,NoteBookSwitchPageEvent> switchPageHandler = new GEventHandler<NoteBookSwitchPageCallback, NoteBookSwitchPageEvent>();
 
+        public int CurrentPage
+        {
+            get
+            {
+                return GetCurrentpage();
+            }
+            set
+            {
+                SetCurrentPage(value);
+            }
+        }
+
         public NoteBookChangeCurrentPageEvent ChangeCurrentPage
         {
             get
@@ -208,6 +220,21 @@ namespace GtkSharp.Gtk.Widgets
                 return;
 
             NativeNoteBook.gtk_notebook_remove_page(handle, index);
+        }
+
+        public int GetCurrentpage()
+        {
+            if(handle.IsNullPointer)
+                return -1;
+
+            return NativeNoteBook.gtk_notebook_get_current_page(handle);
+        }
+
+        public void SetCurrentPage(int index)
+        {
+            if(handle.IsNullPointer)
+                return;            
+            NativeNoteBook.gtk_notebook_set_current_page(handle, index);
         }
 
         bool OnChangeCurrentPage(IntPtr widget, int obj, IntPtr data)

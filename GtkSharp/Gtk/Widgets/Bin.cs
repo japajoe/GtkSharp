@@ -1,4 +1,3 @@
-using GtkSharp.Gtk.Types;
 using GtkSharp.Gtk.Native.Widgets;
 using GtkSharp.Gtk.Native.Types;
 

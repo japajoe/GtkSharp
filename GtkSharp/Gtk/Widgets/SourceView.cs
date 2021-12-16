@@ -23,7 +23,7 @@ namespace GtkSharp.Gtk.Widgets
             buffer = new SourceBuffer(language);
             handle = NativeSourceView.gtk_source_view_new_with_buffer(buffer.handle);
             NativeSourceView.gtk_source_view_set_tab_width(handle, 4);
-            NativeSourceView.gtk_source_view_set_show_line_numbers(handle, true);
+            NativeSourceView.gtk_source_view_set_show_line_numbers(handle, true);        
         }
 
         public string Text
