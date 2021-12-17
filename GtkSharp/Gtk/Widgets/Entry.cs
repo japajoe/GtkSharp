@@ -1,12 +1,17 @@
+using System;
+using GtkSharp.GLib.Types;
 using GtkSharp.Gtk.Native.Types;
 using GtkSharp.Gtk.Native.Widgets;
+using GtkSharp.Gtk.Types;
 
 namespace GtkSharp.Gtk.Widgets
 {
-    public class Entry : Widget
+    public class Entry : Editable
     {
         private EntryBuffer buffer;
         private string text;
+
+        private GEventHandler<EntryActivateCallback,EntryActivateEvent> activateHandler = new GEventHandler<EntryActivateCallback, EntryActivateEvent>();
 
         public string Text
         {
@@ -20,6 +25,27 @@ namespace GtkSharp.Gtk.Widgets
                 SetText(text);
             }
         }
+
+        public EntryBuffer Buffer
+        {
+            get
+            {
+                return buffer;
+            }
+        }
+
+        public EntryActivateEvent Activate
+        {
+            get
+            {
+                return activateHandler.Event;
+            }
+            set
+            {
+                activateHandler.Event = value;
+                activateHandler.SignalConnect(handle.pointer, "activate", OnActivate, handle.pointer);
+            }
+        }        
         
         public Entry()
         {            
@@ -54,6 +80,11 @@ namespace GtkSharp.Gtk.Widgets
                 return;
 
             NativeEntry.gtk_entry_set_text(buffer.handle, text);
+        }
+
+        void OnActivate(IntPtr widget, IntPtr data)
+        {
+            Activate?.Invoke();
         }
     }
 }

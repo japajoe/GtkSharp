@@ -117,6 +117,22 @@ namespace GtkSharp.Cairo.Types
             CairoLib.cairo_translate(cr, tx, ty);
         }
 
+        public void NewPath()
+        {
+            if(cr.IsNullPointer)
+                return;
+
+            CairoLib.cairo_new_path(cr);
+        }
+
+        public void NewSubPath()
+        {
+            if(cr.IsNullPointer)
+                return;
+
+            CairoLib.cairo_new_sub_path(cr);
+        }
+
         public void ClosePath()
         {
             if(cr.IsNullPointer)

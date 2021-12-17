@@ -22,6 +22,12 @@ namespace GtkSharp.Gtk.Native.Types
     internal delegate void DialogCloseCallback(IntPtr widget, IntPtr data);
     internal delegate void DialogResponseCallback(IntPtr widget, int responseId, IntPtr data);
 
+    internal delegate void EditableChangedCallback(IntPtr widget, IntPtr data);
+
+    internal delegate void EntryActivateCallback(IntPtr widget, IntPtr data);
+    internal delegate void EntryBufferDeletedTextCallback(IntPtr widget, uint position, uint n_chars, IntPtr data);
+    internal delegate void EntryBufferInsertedTextCallback(IntPtr widget, uint position, IntPtr chars, uint n_chars, IntPtr data);
+
     internal delegate GtkFileChooserConfirmation FileChooserConfirmOverwriteCallback(IntPtr widget, IntPtr data);
     internal delegate void FileChooserCurrentFolderChangedCallback(IntPtr widget, IntPtr data);
     internal delegate void FileChooserFileActivatedCallback(IntPtr widget, IntPtr data);

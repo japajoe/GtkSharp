@@ -23,6 +23,12 @@ namespace GtkSharp.Gtk.Types
     public delegate void DialogCloseEvent();
     public delegate void DialogResponseEvent(int responseId);
 
+    public delegate void EditableChangedEvent();
+
+    public delegate void EntryActivateEvent();
+    public delegate void EntryBufferDeletedTextEvent(uint position, uint n_chars);
+    public delegate void EntryBufferInsertedTextEvent(uint position, string chars, uint n_chars);
+
     public delegate GtkFileChooserConfirmation FileChooserConfirmOverwriteEvent();
     public delegate void FileChooserCurrentFolderChangedEvent();
     public delegate void FileChooserFileActivatedEvent();
