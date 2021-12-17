@@ -27,6 +27,30 @@ namespace GtkSharp.Gtk.Widgets
         private GEventHandler<WidgetRealizeCallback,WidgetRealizeEvent> realizeHandler = new GEventHandler<WidgetRealizeCallback, WidgetRealizeEvent>();
         private GEventHandler<WidgetUnrealizeCallback,WidgetUnrealizeEvent> unrealizeHandler = new GEventHandler<WidgetUnrealizeCallback, WidgetUnrealizeEvent>();
 
+        public GtkAlign VerticalAlignment
+        {
+            get
+            {
+                return GetVerticalAlignment();
+            }
+            set
+            {
+                SetVerticalAlignment(value);
+            }
+        }
+
+        public GtkAlign HorizontalAlignment
+        {
+            get
+            {
+                return GetHorizontalAlignment();
+            }
+            set
+            {
+                SetHorizontalAlignment(value);
+            }
+        }        
+
         public WidgetDestroyEvent DestroyEvent
         {
             get
@@ -214,6 +238,39 @@ namespace GtkSharp.Gtk.Widgets
             NativeWidget.gtk_widget_set_margin_left(handle, bottom);
             NativeWidget.gtk_widget_set_margin_right(handle, bottom);
         }
+
+        public GtkAlign GetVerticalAlignment()
+        {
+            if(handle.IsNullPointer)
+                return GtkAlign.Start;
+            
+            return NativeWidget.gtk_widget_get_valign(handle);
+        }
+
+        public void SetVerticalAlignment(GtkAlign alignment)
+        {
+            if(handle.IsNullPointer)
+                return;
+
+            NativeWidget.gtk_widget_set_valign(handle, alignment);
+        }
+
+
+        public GtkAlign GetHorizontalAlignment()
+        {
+            if(handle.IsNullPointer)
+                return GtkAlign.Start;
+            
+            return NativeWidget.gtk_widget_get_halign(handle);
+        }
+
+        public void SetHorizontalAlignment(GtkAlign alignment)
+        {
+            if(handle.IsNullPointer)
+                return;
+
+            NativeWidget.gtk_widget_set_halign(handle, alignment);
+        }        
 
         public void AddEvents(GdkEventMask events)
         {
