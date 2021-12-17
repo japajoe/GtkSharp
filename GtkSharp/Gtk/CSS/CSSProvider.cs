@@ -9,7 +9,7 @@ namespace GtkSharp.Gtk.CSS
 {
     public class CSSProvider : GObject
     {
-        protected GObjectPointer handle;
+        internal GObjectPointer handle;
 
         public CSSProvider()
         {
