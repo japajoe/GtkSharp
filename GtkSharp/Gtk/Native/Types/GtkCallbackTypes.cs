@@ -23,6 +23,8 @@ namespace GtkSharp.Gtk.Native.Types
     internal delegate void DialogResponseCallback(IntPtr widget, int responseId, IntPtr data);
 
     internal delegate void EditableChangedCallback(IntPtr widget, IntPtr data);
+    internal delegate void EditableDeleteTextCallback(IntPtr widget, int startPos, int endPos, IntPtr data);
+    internal delegate void EditableInsertTextCallback(IntPtr widget, IntPtr newText, int textLength, ref int newPosition, IntPtr data);
 
     internal delegate void EntryActivateCallback(IntPtr widget, IntPtr data);
     internal delegate void EntryBufferDeletedTextCallback(IntPtr widget, uint position, uint n_chars, IntPtr data);

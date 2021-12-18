@@ -24,6 +24,8 @@ namespace GtkSharp.Gtk.Types
     public delegate void DialogResponseEvent(int responseId);
 
     public delegate void EditableChangedEvent();
+    public delegate void EditableDeleteTextEvent(int startPos, int endPos);
+    public delegate void EditableInsertTextEvent(string newText, int textLength, ref int newPosition);
 
     public delegate void EntryActivateEvent();
     public delegate void EntryBufferDeletedTextEvent(uint position, uint n_chars);

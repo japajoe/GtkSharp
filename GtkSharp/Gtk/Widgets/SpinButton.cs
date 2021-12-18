@@ -1,17 +1,12 @@
-using System;
-using GtkSharp.Gtk.Types;
 using GtkSharp.Gtk.Native.Widgets;
-using GtkSharp.GLib.Types;
 using GtkSharp.Gtk.Native.Types;
 
 namespace GtkSharp.Gtk.Widgets
 {
-    public class SpinButton : Widget
+    public class SpinButton : Editable
     {
         private Adjustment adjustment;
         private double buttonValue;
-
-        private GEventHandler<SpinButtonValueChangedCallback,SpinButtonValueChangedEvent> changedHandler = new GEventHandler<SpinButtonValueChangedCallback, SpinButtonValueChangedEvent>();
 
         public double Value
         {
@@ -23,19 +18,6 @@ namespace GtkSharp.Gtk.Widgets
             {
                 buttonValue = value;
                 SetValue(buttonValue);
-            }
-        }
-
-        public SpinButtonValueChangedEvent Changed
-        {
-            get
-            {
-                return changedHandler.Event;
-            }
-            set
-            {
-                changedHandler.Event = value;
-                changedHandler.SignalConnect(handle.pointer, "value-changed", OnValueChanged, handle.pointer);
             }
         }
 
@@ -69,11 +51,6 @@ namespace GtkSharp.Gtk.Widgets
                 return 0;
             
             return NativeSpinButton.gtk_spin_button_get_value(handle);
-        }
-
-        private void OnValueChanged(IntPtr widget, IntPtr data)
-        {
-            Changed?.Invoke();
         }
     }
 }
