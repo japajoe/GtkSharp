@@ -38,7 +38,7 @@ namespace GtkSharp.Gtk.Widgets
             }
         }
 
-        public bool show_arrow
+        public bool ShowArrow
         {
             get
             {

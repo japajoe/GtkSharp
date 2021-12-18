@@ -6,12 +6,13 @@ using GtkSharp.Gtk.Types;
 
 namespace GtkSharp.Gtk.Widgets
 {
-    public class Entry : Editable
+    public class Entry : Widget, IEditable
     {
         private EntryBuffer buffer;
         private string text;
 
         private GEventHandler<EntryActivateCallback,EntryActivateEvent> activateHandler = new GEventHandler<EntryActivateCallback, EntryActivateEvent>();
+        private GEventHandler<EditableChangedCallback,EditableChangedEvent> changedHandler = new GEventHandler<EditableChangedCallback, EditableChangedEvent>();
 
         public string Text
         {
@@ -45,8 +46,21 @@ namespace GtkSharp.Gtk.Widgets
                 activateHandler.Event = value;
                 activateHandler.SignalConnect(handle.pointer, "activate", OnActivate, handle.pointer);
             }
-        }        
-        
+        }
+
+        public EditableChangedEvent Changed
+        {
+            get
+            {
+                return changedHandler.Event;
+            }
+            set
+            {
+                changedHandler.Event = value;
+                changedHandler.SignalConnect(handle.pointer, "changed", OnChanged, handle.pointer);
+            }
+        }
+
         public Entry()
         {            
             handle = NativeEntry.gtk_entry_new();
@@ -81,6 +95,11 @@ namespace GtkSharp.Gtk.Widgets
         void OnActivate(IntPtr widget, IntPtr data)
         {
             Activate?.Invoke();
+        }
+
+        void OnChanged(IntPtr widget, IntPtr data)
+        {
+            Changed?.Invoke();
         }
     }
 }
