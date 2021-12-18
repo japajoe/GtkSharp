@@ -4,7 +4,7 @@ using GtkSharp.Gtk.Types;
 
 namespace GtkSharp.Gtk.Native.Widgets
 {
-    internal static class NativeToolbar
+    internal static class NativeToolBar
     {        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern ulong gtk_toolbar_get_type();

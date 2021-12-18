@@ -4,7 +4,7 @@ using GtkSharp.Gtk.Types;
 
 namespace GtkSharp.Gtk.Widgets
 {
-    public class Toolbar : Container
+    public class ToolBar : Container
     {
         public GtkToolbarStyle Style
         {
@@ -58,9 +58,9 @@ namespace GtkSharp.Gtk.Widgets
             }
         }
 
-        public Toolbar()
+        public ToolBar()
         {
-            handle = NativeToolbar.gtk_toolbar_new();
+            handle = NativeToolBar.gtk_toolbar_new();
         }
 
         public void Insert(ToolItem item, int position)
@@ -71,7 +71,7 @@ namespace GtkSharp.Gtk.Widgets
             if(item.handle.IsNullPointer)
                 return;
 
-            NativeToolbar.gtk_toolbar_insert(handle, item.handle, position);
+            NativeToolBar.gtk_toolbar_insert(handle, item.handle, position);
         }
 
         public GtkToolbarStyle GetStyle()
@@ -79,7 +79,7 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return GtkToolbarStyle.Icons;
 
-            return NativeToolbar.gtk_toolbar_get_style(handle);
+            return NativeToolBar.gtk_toolbar_get_style(handle);
         }
 
         public void SetStyle(GtkToolbarStyle style)
@@ -87,7 +87,7 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return;
 
-            NativeToolbar.gtk_toolbar_set_style(handle, style);
+            NativeToolBar.gtk_toolbar_set_style(handle, style);
         }
 
         public void UnsetStyle()
@@ -95,7 +95,7 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return;
 
-            NativeToolbar.gtk_toolbar_unset_style(handle);
+            NativeToolBar.gtk_toolbar_unset_style(handle);
         }
 
         public GtkIconSize GetIconSize()
@@ -103,7 +103,7 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return GtkIconSize.SmallToolbar;
 
-            return NativeToolbar.gtk_toolbar_get_icon_size(handle);
+            return NativeToolBar.gtk_toolbar_get_icon_size(handle);
         }
 
         public void SetIconSize(GtkIconSize size)
@@ -111,7 +111,7 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return;
 
-            NativeToolbar.gtk_toolbar_set_icon_size(handle, size);
+            NativeToolBar.gtk_toolbar_set_icon_size(handle, size);
         }
 
         public void UnsetIconSize()
@@ -119,7 +119,7 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return;
 
-            NativeToolbar.gtk_toolbar_unset_icon_size(handle);
+            NativeToolBar.gtk_toolbar_unset_icon_size(handle);
         }
 
         public GtkReliefStyle GetReliefStyle()
@@ -127,7 +127,7 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return GtkReliefStyle.Normal;
 
-            return NativeToolbar.gtk_toolbar_get_relief_style(handle);
+            return NativeToolBar.gtk_toolbar_get_relief_style(handle);
         }
 
         public bool GetShowArrow()
@@ -135,7 +135,7 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return false;
             
-            return NativeToolbar.gtk_toolbar_get_show_arrow(handle);
+            return NativeToolBar.gtk_toolbar_get_show_arrow(handle);
         }
 
         public void SetShowArrow(bool show)
@@ -143,7 +143,7 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return;
 
-            NativeToolbar.gtk_toolbar_set_show_arrow(handle, show);
+            NativeToolBar.gtk_toolbar_set_show_arrow(handle, show);
         }
 
         public int GetItemIndex(ToolItem item)
@@ -151,14 +151,14 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return -1;
             
-            return NativeToolbar.gtk_toolbar_get_item_index(handle, item.handle);
+            return NativeToolBar.gtk_toolbar_get_item_index(handle, item.handle);
         }
 
         public int GetItemCount()
         {
             if(handle.IsNullPointer)
                 return 0;
-            return NativeToolbar.gtk_toolbar_get_n_items(handle);
+            return NativeToolBar.gtk_toolbar_get_n_items(handle);
         }
 
         public ToolItem GetItemAtIndex(int index)
@@ -166,7 +166,7 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return null;
 
-            GtkWidgetPointer w = NativeToolbar.gtk_toolbar_get_nth_item(handle, index);
+            GtkWidgetPointer w = NativeToolBar.gtk_toolbar_get_nth_item(handle, index);
             
             if(w.IsNullPointer)
                 return null;
