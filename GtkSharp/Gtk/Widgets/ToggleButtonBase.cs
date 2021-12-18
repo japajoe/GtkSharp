@@ -35,7 +35,7 @@ namespace GtkSharp.Gtk.Widgets
             }
         }
 
-        public bool GetValue()
+        private bool GetValue()
         {
             if(handle.IsNullPointer)
                 return false;
@@ -43,7 +43,7 @@ namespace GtkSharp.Gtk.Widgets
             return NativeToggleButton.gtk_toggle_button_get_active(handle);
         }        
 
-        public void SetValue(bool value)
+        private void SetValue(bool value)
         {
             if(handle.IsNullPointer)
                 return;

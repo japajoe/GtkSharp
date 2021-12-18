@@ -239,7 +239,7 @@ namespace GtkSharp.Gtk.Widgets
             NativeWidget.gtk_widget_set_margin_right(handle, bottom);
         }
 
-        public GtkAlign GetVerticalAlignment()
+        private GtkAlign GetVerticalAlignment()
         {
             if(handle.IsNullPointer)
                 return GtkAlign.Start;
@@ -247,7 +247,7 @@ namespace GtkSharp.Gtk.Widgets
             return NativeWidget.gtk_widget_get_valign(handle);
         }
 
-        public void SetVerticalAlignment(GtkAlign alignment)
+        private void SetVerticalAlignment(GtkAlign alignment)
         {
             if(handle.IsNullPointer)
                 return;
@@ -256,7 +256,7 @@ namespace GtkSharp.Gtk.Widgets
         }
 
 
-        public GtkAlign GetHorizontalAlignment()
+        private GtkAlign GetHorizontalAlignment()
         {
             if(handle.IsNullPointer)
                 return GtkAlign.Start;
@@ -264,7 +264,7 @@ namespace GtkSharp.Gtk.Widgets
             return NativeWidget.gtk_widget_get_halign(handle);
         }
 
-        public void SetHorizontalAlignment(GtkAlign alignment)
+        private void SetHorizontalAlignment(GtkAlign alignment)
         {
             if(handle.IsNullPointer)
                 return;

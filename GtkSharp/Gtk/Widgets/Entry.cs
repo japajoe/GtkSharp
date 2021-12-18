@@ -13,7 +13,6 @@ namespace GtkSharp.Gtk.Widgets
 
         private GEventHandler<EntryActivateCallback,EntryActivateEvent> activateHandler = new GEventHandler<EntryActivateCallback, EntryActivateEvent>();
 
-
         public string Text
         {
             get
@@ -61,7 +60,7 @@ namespace GtkSharp.Gtk.Widgets
             handle = NativeEntry.gtk_entry_new_with_buffer(buffer.handle);
         }
 
-        public string GetText()
+        private string GetText()
         {
             if(handle.IsNullPointer)
                 return string.Empty;
@@ -71,7 +70,7 @@ namespace GtkSharp.Gtk.Widgets
             return text;
         }
 
-        public void SetText(string text)
+        private void SetText(string text)
         {
             if(handle.IsNullPointer)
                 return;

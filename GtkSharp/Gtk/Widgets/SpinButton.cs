@@ -36,7 +36,7 @@ namespace GtkSharp.Gtk.Widgets
             adjustment = new Adjustment(adj.pointer);
         }
 
-        public void SetValue(double value)
+        private void SetValue(double value)
         {
             if(handle.IsNullPointer)
                 return;
@@ -45,7 +45,7 @@ namespace GtkSharp.Gtk.Widgets
             this.buttonValue = value;
         }
 
-        public double GetValue()
+        private double GetValue()
         {
             if(handle.IsNullPointer)
                 return 0;

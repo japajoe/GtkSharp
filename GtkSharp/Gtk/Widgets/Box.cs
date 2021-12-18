@@ -27,7 +27,7 @@ namespace GtkSharp.Gtk.Widgets
             handle = NativeBox.gtk_box_new(orientation, spacing);
         }
 
-        public bool GetHomogeneous()
+        private bool GetHomogeneous()
         {
             if(handle.IsNullPointer)
                 return false;
@@ -35,14 +35,13 @@ namespace GtkSharp.Gtk.Widgets
             return NativeBox.gtk_box_get_homogeneous(handle);
         }
 
-        public void SetHomogeneous(bool homogeneous)
+        private void SetHomogeneous(bool homogeneous)
         {
             if(handle.IsNullPointer)
                 return;
             
             NativeBox.gtk_box_set_homogeneous(handle, homogeneous);
         }
-
 
         public void Add(Widget widget, bool expand, bool fill, uint padding)
         {

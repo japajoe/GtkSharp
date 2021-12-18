@@ -222,7 +222,7 @@ namespace GtkSharp.Gtk.Widgets
             NativeNoteBook.gtk_notebook_remove_page(handle, index);
         }
 
-        public int GetCurrentpage()
+        private int GetCurrentpage()
         {
             if(handle.IsNullPointer)
                 return -1;
@@ -230,7 +230,7 @@ namespace GtkSharp.Gtk.Widgets
             return NativeNoteBook.gtk_notebook_get_current_page(handle);
         }
 
-        public void SetCurrentPage(int index)
+        private void SetCurrentPage(int index)
         {
             if(handle.IsNullPointer)
                 return;            

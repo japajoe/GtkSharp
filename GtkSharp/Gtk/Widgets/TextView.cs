@@ -221,7 +221,7 @@ namespace GtkSharp.Gtk.Widgets
             handle = NativeTextView.gtk_text_view_new_with_buffer(buffer.handle);
         }
 
-        public bool GetReadOnly()
+        private bool GetReadOnly()
         {
             if(handle.IsNullPointer)
                 return false;
@@ -230,7 +230,7 @@ namespace GtkSharp.Gtk.Widgets
             return !NativeTextView.gtk_text_view_get_editable(handle);            
         }
 
-        public void SetReadOnly(bool readOnly)
+        private void SetReadOnly(bool readOnly)
         {
             if(handle.IsNullPointer)
                 return;

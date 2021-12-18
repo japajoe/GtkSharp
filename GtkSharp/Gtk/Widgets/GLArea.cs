@@ -27,6 +27,42 @@ namespace GtkSharp.Gtk.Widgets
             }
         }
 
+        public bool Hasalpha
+        {
+            get
+            {
+                return GetHasAlpha();
+            }
+            set
+            {
+                SetHasAlpha(value);
+            }
+        }
+
+        public bool HasDepthBuffer
+        {
+            get
+            {
+                return GetHasDepthBuffer();
+            }
+            set
+            {
+                SetHasDepthBuffer(value);
+            }
+        }
+
+        public bool HasStencilBuffer
+        {
+            get
+            {
+                return GetHasStencilBuffer();
+            }
+            set
+            {
+                SetHasStencilBuffer(value);
+            }
+        }
+
         public GLAreaCreateContextEvent CreateContext
         {
             get
@@ -104,7 +140,6 @@ namespace GtkSharp.Gtk.Widgets
             
             NativeGLArea.gtk_gl_area_set_required_version(handle, major, minor);
         }
-
         
         public bool GetRequiredVersion(out int major, out int minor)
         {
@@ -119,7 +154,7 @@ namespace GtkSharp.Gtk.Widgets
             return true;
         }
         
-        public bool GetHasAlpha()
+        private bool GetHasAlpha()
         {
             if(handle.IsNullPointer)
                 return false;
@@ -129,7 +164,7 @@ namespace GtkSharp.Gtk.Widgets
             return hasAlpha;
         }
         
-        public void SetHasAlpha(bool hasAlpha)
+        private void SetHasAlpha(bool hasAlpha)
         {
             if(handle.IsNullPointer)
                 return;
@@ -137,7 +172,7 @@ namespace GtkSharp.Gtk.Widgets
             NativeGLArea.gtk_gl_area_set_has_alpha(handle, hasAlpha);
         }
         
-        public bool GetHasDepthBuffer()
+        private bool GetHasDepthBuffer()
         {
             if(handle.IsNullPointer)
                 return false;
@@ -146,7 +181,7 @@ namespace GtkSharp.Gtk.Widgets
             return hasDepthBuffer;                
         }
         
-        public void SetHasDepthBuffer(bool hasDepthBuffer)
+        private void SetHasDepthBuffer(bool hasDepthBuffer)
         {
             if(handle.IsNullPointer)
                 return;
@@ -154,7 +189,7 @@ namespace GtkSharp.Gtk.Widgets
             NativeGLArea.gtk_gl_area_set_has_depth_buffer(handle, hasDepthBuffer);
         }
         
-        public bool GetHasStencilBuffer()
+        private bool GetHasStencilBuffer()
         {
             if(handle.IsNullPointer)
                 return false;
@@ -164,7 +199,7 @@ namespace GtkSharp.Gtk.Widgets
             return hasStencilBuffer;
         }
         
-        public void SetHasStencilBuffer(bool hasStencilBuffer)
+        private void SetHasStencilBuffer(bool hasStencilBuffer)
         {
             if(handle.IsNullPointer)
                 return;
@@ -172,7 +207,7 @@ namespace GtkSharp.Gtk.Widgets
             NativeGLArea.gtk_gl_area_set_has_stencil_buffer(handle, hasStencilBuffer);
         }
 
-        public bool GetAutoRender()
+        private bool GetAutoRender()
         {
             if(handle.IsNullPointer)
                 return false;
@@ -181,7 +216,7 @@ namespace GtkSharp.Gtk.Widgets
             return auto;
         }
 
-        public void SetAutoRender(bool auto)
+        private void SetAutoRender(bool auto)
         {
             if(handle.IsNullPointer)
                 return;
@@ -201,7 +236,7 @@ namespace GtkSharp.Gtk.Widgets
             Resize?.Invoke(width, height);
         }
 
-        private bool OnRender(IntPtr area, IntPtr context)
+        bool OnRender(IntPtr area, IntPtr context)
         {
             Render?.Invoke();
             return true;

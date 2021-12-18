@@ -6,7 +6,7 @@ using GtkSharp.Utilities;
 
 namespace GtkSharp.Gtk.Widgets
 {
-    public class Editable : Widget
+    public abstract class Editable : Widget
     {
         private GEventHandler<EditableChangedCallback,EditableChangedEvent> changedHandler = new GEventHandler<EditableChangedCallback, EditableChangedEvent>();
         private GEventHandler<EditableDeleteTextCallback,EditableDeleteTextEvent> deleteTextHandler = new GEventHandler<EditableDeleteTextCallback, EditableDeleteTextEvent>();

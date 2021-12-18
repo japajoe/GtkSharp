@@ -73,7 +73,7 @@ namespace GtkSharp.Gtk.Widgets
             text = string.Empty;
         }
 
-        public bool GetShowLineNumbers()
+        private bool GetShowLineNumbers()
         {
             if(handle.IsNullPointer)
                 return false;
@@ -81,7 +81,7 @@ namespace GtkSharp.Gtk.Widgets
             return NativeSourceView.gtk_source_view_get_show_line_numbers(handle);
         }
 
-       public void SetShowLineNumbers(bool visible)
+        private void SetShowLineNumbers(bool visible)
         {
             if(handle.IsNullPointer)
                 return;
@@ -89,7 +89,7 @@ namespace GtkSharp.Gtk.Widgets
             NativeSourceView.gtk_source_view_set_show_line_numbers(handle, visible);
         }
 
-        public void SetTabWidth(uint width)
+        private void SetTabWidth(uint width)
         {
             if(handle.IsNullPointer)
                 return;
@@ -100,7 +100,7 @@ namespace GtkSharp.Gtk.Widgets
             NativeSourceView.gtk_source_view_set_tab_width(handle, width);
         }
 
-        public uint GetTabWidth()
+        private uint GetTabWidth()
         {
             if(handle.IsNullPointer)
                 return 1;

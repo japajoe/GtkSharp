@@ -83,7 +83,7 @@ namespace GtkSharp.Gtk.Widgets
             handle = NativeColorButton.gtk_color_button_new_with_rgba(ref color);
         }
 
-        public GdkColor GetRGB()
+        private GdkColor GetRGB()
         {
             if(handle.IsNullPointer)
                 return new GdkColor();
@@ -93,7 +93,7 @@ namespace GtkSharp.Gtk.Widgets
             return color;
         }
 
-        public void SetRGB(GdkColor color)
+        private void SetRGB(GdkColor color)
         {
             if(handle.IsNullPointer)
                 return;
@@ -101,7 +101,7 @@ namespace GtkSharp.Gtk.Widgets
             NativeColorButton.gtk_color_button_set_color(handle, ref color);
         } 
 
-        public GdkRGBA GetRGBA()
+        private GdkRGBA GetRGBA()
         {
             if(handle.IsNullPointer)
                 return new GdkRGBA();
@@ -111,7 +111,7 @@ namespace GtkSharp.Gtk.Widgets
             return color;
         }
 
-        public void SetRGBA(GdkRGBA color)
+        private void SetRGBA(GdkRGBA color)
         {
             if(handle.IsNullPointer)
                 return;
@@ -119,7 +119,7 @@ namespace GtkSharp.Gtk.Widgets
             NativeColorButton.gtk_color_button_set_rgba(handle, ref color);            
         }
 
-        public bool GetUseAlpha()
+        private bool GetUseAlpha()
         {
             if(handle.IsNullPointer)
                 return false;
@@ -127,7 +127,7 @@ namespace GtkSharp.Gtk.Widgets
             return NativeColorButton.gtk_color_button_get_use_alpha(handle);
         }
 
-        public void SetUseAlpha(bool useAlpha)
+        private void SetUseAlpha(bool useAlpha)
         {
             if(handle.IsNullPointer)
                 return;
@@ -135,7 +135,7 @@ namespace GtkSharp.Gtk.Widgets
             NativeColorButton.gtk_color_button_set_use_alpha(handle, useAlpha);
         }
 
-        public ushort GetAlpha()
+        private ushort GetAlpha()
         {
             if(handle.IsNullPointer)
                 return 0;
@@ -143,7 +143,7 @@ namespace GtkSharp.Gtk.Widgets
             return NativeColorButton.gtk_color_button_get_alpha(handle);
         }
 
-        public void SetAlpha(ushort alpha)
+        private void SetAlpha(ushort alpha)
         {
             if(handle.IsNullPointer)
                 return;
@@ -151,7 +151,7 @@ namespace GtkSharp.Gtk.Widgets
             NativeColorButton.gtk_color_button_set_alpha(handle, alpha);
         }
 
-        public string GetTitle()
+        private string GetTitle()
         {
             if(handle.IsNullPointer)
                 return string.Empty;
@@ -160,7 +160,7 @@ namespace GtkSharp.Gtk.Widgets
             return title;
         }
 
-        public void SetTitle(string text)
+        private void SetTitle(string text)
         {
             if(handle.IsNullPointer)
                 return;

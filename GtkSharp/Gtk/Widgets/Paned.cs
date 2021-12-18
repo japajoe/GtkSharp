@@ -44,7 +44,7 @@ namespace GtkSharp.Gtk.Widgets
                 NativePaned.gtk_paned_pack2(handle, widget.handle, resize, shrink);
         }
 
-        public int GetHandlePosition()
+        private int GetHandlePosition()
         {
             if(handle.IsNullPointer)
                 return 0;
@@ -52,7 +52,7 @@ namespace GtkSharp.Gtk.Widgets
             return NativePaned.gtk_paned_get_position(handle);
         }
 
-        public void SetHandlePosition(int position)
+        private void SetHandlePosition(int position)
         {
             if(handle.IsNullPointer)
                 return;
@@ -60,7 +60,7 @@ namespace GtkSharp.Gtk.Widgets
             NativePaned.gtk_paned_set_position(handle, position);
         }
 
-        public bool GetWideHandle()
+        private bool GetWideHandle()
         {
             if(handle.IsNullPointer)
                 return false;
@@ -68,7 +68,7 @@ namespace GtkSharp.Gtk.Widgets
             return NativePaned.gtk_paned_get_wide_handle(handle);
         }
 
-        public void SetWideHandle(bool wide)
+        private void SetWideHandle(bool wide)
         {
             if(handle.IsNullPointer)
                 return;

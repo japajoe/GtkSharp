@@ -61,7 +61,7 @@ namespace GtkSharp.Gtk.Widgets
             GetPixbuf();
         }
 
-        public GdkPixbuf GetPixbuf()
+        private GdkPixbuf GetPixbuf()
         {
             if(handle.IsNullPointer)
                 return null;
@@ -74,7 +74,7 @@ namespace GtkSharp.Gtk.Widgets
             return pixbuf;
         }
 
-        public void SetPixbuf(GdkPixbuf pixbuf)
+        private void SetPixbuf(GdkPixbuf pixbuf)
         {
             this.pixbuf = pixbuf;
         }

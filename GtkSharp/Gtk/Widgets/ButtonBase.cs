@@ -129,7 +129,7 @@ namespace GtkSharp.Gtk.Widgets
             }
         }
 
-        public bool GetAlwaysShowImage()
+        private bool GetAlwaysShowImage()
         {
             if(handle.IsNullPointer)
                 return false;
@@ -137,7 +137,7 @@ namespace GtkSharp.Gtk.Widgets
             return NativeButton.gtk_button_get_always_show_image(handle);
         }
 
-        public void SetAlwaysShowImage(bool show)
+        private void SetAlwaysShowImage(bool show)
         {
             if(handle.IsNullPointer)
                 return;
@@ -145,7 +145,7 @@ namespace GtkSharp.Gtk.Widgets
             NativeButton.gtk_button_set_always_show_image(handle, show);
         }
 
-        public Image GetImage()
+        private Image GetImage()
         {
             if(handle.IsNullPointer)
                 return null;
@@ -158,7 +158,7 @@ namespace GtkSharp.Gtk.Widgets
             return new Image(w);
         }
 
-        public void SetImage(Image image)
+        private void SetImage(Image image)
         {
             if(handle.IsNullPointer)
                 return;
@@ -168,7 +168,7 @@ namespace GtkSharp.Gtk.Widgets
             NativeButton.gtk_button_set_image(handle, image.handle);
         }
 
-        public string GetLabel()
+        private string GetLabel()
         {
             if(handle.IsNullPointer)
                 return string.Empty;
@@ -176,7 +176,7 @@ namespace GtkSharp.Gtk.Widgets
             return NativeButton.gtk_button_get_label(handle);
         }
 
-        public void SetLabel(string text)
+        private void SetLabel(string text)
         {
             if(handle.IsNullPointer)
                 return;

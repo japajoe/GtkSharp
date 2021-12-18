@@ -88,7 +88,7 @@ namespace GtkSharp.Gtk.Widgets
             NativeLevelBar.gtk_level_bar_add_offset_value(handle, name, value);
         }
 
-        public double GetValue()
+        private double GetValue()
         {
             if(handle.IsNullPointer)
                 return 0;
@@ -96,7 +96,7 @@ namespace GtkSharp.Gtk.Widgets
             return NativeLevelBar.gtk_level_bar_get_value(handle);
         }
 
-        public void SetValue(double value)
+        private void SetValue(double value)
         {
             if(handle.IsNullPointer)
                 return;
@@ -104,7 +104,7 @@ namespace GtkSharp.Gtk.Widgets
             NativeLevelBar.gtk_level_bar_set_value(handle, value);
         }
 
-        public double GetMinValue()
+        private double GetMinValue()
         {
             if(handle.IsNullPointer)
                 return 0;
@@ -112,7 +112,7 @@ namespace GtkSharp.Gtk.Widgets
             return NativeLevelBar.gtk_level_bar_get_min_value(handle);
         }
 
-        public void SetMinValue(double value)
+        private void SetMinValue(double value)
         {
             if(handle.IsNullPointer)
                 return;
@@ -120,7 +120,7 @@ namespace GtkSharp.Gtk.Widgets
             NativeLevelBar.gtk_level_bar_set_min_value(handle, value);
         }
 
-        public double GetMaxValue()
+        private double GetMaxValue()
         {
             if(handle.IsNullPointer)
                 return 0;
@@ -128,7 +128,7 @@ namespace GtkSharp.Gtk.Widgets
             return NativeLevelBar.gtk_level_bar_get_max_value(handle);
         }
 
-        public void SetMaxValue(double value)
+        private void SetMaxValue(double value)
         {
             if(handle.IsNullPointer)
                 return;
@@ -136,7 +136,7 @@ namespace GtkSharp.Gtk.Widgets
             NativeLevelBar.gtk_level_bar_set_max_value(handle, value);
         }
 
-        public GtkLevelBarMode GetMode()
+        private GtkLevelBarMode GetMode()
         {
             if(handle.IsNullPointer)
                 return GtkLevelBarMode.Continuous;
@@ -144,7 +144,7 @@ namespace GtkSharp.Gtk.Widgets
             return NativeLevelBar.gtk_level_bar_get_mode(handle);
         }
 
-        public void SetMode(GtkLevelBarMode mode)
+        private void SetMode(GtkLevelBarMode mode)
         {
             if(handle.IsNullPointer)
                 return;

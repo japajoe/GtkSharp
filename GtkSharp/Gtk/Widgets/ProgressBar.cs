@@ -85,7 +85,7 @@ namespace GtkSharp.Gtk.Widgets
             handle = NativeProgressBar.gtk_progress_bar_new();
         }
 
-        public string GetText()
+        private string GetText()
         {
             if(handle.IsNullPointer)
                 return string.Empty;
@@ -94,7 +94,7 @@ namespace GtkSharp.Gtk.Widgets
             return text;            
         }
 
-        public void SetText(string text)
+        private void SetText(string text)
         {
             if(handle.IsNullPointer)
                 return;
@@ -103,7 +103,7 @@ namespace GtkSharp.Gtk.Widgets
             this.text = text;
         }
 
-        public bool GetShowText()
+        private bool GetShowText()
         {
             if(handle.IsNullPointer)
                 return false;
@@ -111,7 +111,7 @@ namespace GtkSharp.Gtk.Widgets
             return NativeProgressBar.gtk_progress_bar_get_show_text(handle);
         }
 
-        public void SetShowText(bool show)
+        private void SetShowText(bool show)
         {
             if(handle.IsNullPointer)
                 return;
@@ -119,7 +119,7 @@ namespace GtkSharp.Gtk.Widgets
             NativeProgressBar.gtk_progress_bar_set_show_text(handle, show);
         }        
 
-        public double GetFraction()
+        private double GetFraction()
         {
             if(handle.IsNullPointer)
                 return 0;
@@ -127,7 +127,7 @@ namespace GtkSharp.Gtk.Widgets
             return NativeProgressBar.gtk_progress_bar_get_fraction(handle);
         }
 
-        public void SetFraction(double value)
+        private void SetFraction(double value)
         {
             if(handle.IsNullPointer)
                 return;
@@ -135,7 +135,7 @@ namespace GtkSharp.Gtk.Widgets
             NativeProgressBar.gtk_progress_bar_set_fraction(handle, value);
         }
 
-        public double GetPulseStep()
+        private double GetPulseStep()
         {
             if(handle.IsNullPointer)
                 return 0;
@@ -143,7 +143,7 @@ namespace GtkSharp.Gtk.Widgets
             return NativeProgressBar.gtk_progress_bar_get_pulse_step(handle);
         }        
 
-        public void SetPulseStep(double value)
+        private void SetPulseStep(double value)
         {
             if(handle.IsNullPointer)
                 return;
@@ -151,7 +151,7 @@ namespace GtkSharp.Gtk.Widgets
             NativeProgressBar.gtk_progress_bar_set_pulse_step(handle, value);
         }
 
-        public bool GetInverted()
+        private bool GetInverted()
         {
             if(handle.IsNullPointer)
                 return false;
@@ -159,7 +159,7 @@ namespace GtkSharp.Gtk.Widgets
             return NativeProgressBar.gtk_progress_bar_get_inverted(handle);
         }        
 
-        public void SetInverted(bool inverted)
+        private void SetInverted(bool inverted)
         {
             if(handle.IsNullPointer)
                 return;
@@ -167,7 +167,7 @@ namespace GtkSharp.Gtk.Widgets
             NativeProgressBar.gtk_progress_bar_set_inverted(handle, inverted);
         }
 
-        public PangoEllipsizeMode GetEllipsize()
+        private PangoEllipsizeMode GetEllipsize()
         {
             if(handle.IsNullPointer)
                 return PangoEllipsizeMode.None;
@@ -175,7 +175,7 @@ namespace GtkSharp.Gtk.Widgets
             return NativeProgressBar.gtk_progress_bar_get_ellipsize(handle);
         }        
 
-        public void SetEllipsize(PangoEllipsizeMode mode)
+        private void SetEllipsize(PangoEllipsizeMode mode)
         {
             if(handle.IsNullPointer)
                 return;

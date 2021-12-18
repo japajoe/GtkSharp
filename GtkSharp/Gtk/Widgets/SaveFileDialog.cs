@@ -36,7 +36,7 @@ namespace GtkSharp.Gtk.Widgets
             NativeFileChooser.gtk_file_chooser_set_do_overwrite_confirmation(handle, true);
         }
 
-        public bool GetDoOverwriteConfirmation()
+        private bool GetDoOverwriteConfirmation()
         {
             if(handle.IsNullPointer)
                 return false;
@@ -44,7 +44,7 @@ namespace GtkSharp.Gtk.Widgets
             return NativeFileChooser.gtk_file_chooser_get_do_overwrite_confirmation(handle);
         }
 
-        public void SetDoOverwriteConfirmation(bool confirm)
+        private void SetDoOverwriteConfirmation(bool confirm)
         {
             if(handle.IsNullPointer)
                 return;

@@ -86,7 +86,7 @@ namespace GtkSharp.Gtk.Widgets
             handle = NativeLabel.gtk_label_new(text);            
         }
 
-        public string GetText()
+        private string GetText()
         {
             if(handle.IsNullPointer)
                 return string.Empty;
@@ -95,7 +95,7 @@ namespace GtkSharp.Gtk.Widgets
             return text;
         }
 
-        public void SetText(string text)
+        private void SetText(string text)
         {
             if(handle.IsNullPointer)
                 return;

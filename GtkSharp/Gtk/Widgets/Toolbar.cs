@@ -74,7 +74,7 @@ namespace GtkSharp.Gtk.Widgets
             NativeToolBar.gtk_toolbar_insert(handle, item.handle, position);
         }
 
-        public GtkToolbarStyle GetStyle()
+        private GtkToolbarStyle GetStyle()
         {
             if(handle.IsNullPointer)
                 return GtkToolbarStyle.Icons;
@@ -82,7 +82,7 @@ namespace GtkSharp.Gtk.Widgets
             return NativeToolBar.gtk_toolbar_get_style(handle);
         }
 
-        public void SetStyle(GtkToolbarStyle style)
+        private void SetStyle(GtkToolbarStyle style)
         {
             if(handle.IsNullPointer)
                 return;
@@ -98,7 +98,7 @@ namespace GtkSharp.Gtk.Widgets
             NativeToolBar.gtk_toolbar_unset_style(handle);
         }
 
-        public GtkIconSize GetIconSize()
+        private GtkIconSize GetIconSize()
         {
             if(handle.IsNullPointer)
                 return GtkIconSize.SmallToolbar;
@@ -106,7 +106,7 @@ namespace GtkSharp.Gtk.Widgets
             return NativeToolBar.gtk_toolbar_get_icon_size(handle);
         }
 
-        public void SetIconSize(GtkIconSize size)
+        private void SetIconSize(GtkIconSize size)
         {
             if(handle.IsNullPointer)
                 return;
@@ -122,7 +122,7 @@ namespace GtkSharp.Gtk.Widgets
             NativeToolBar.gtk_toolbar_unset_icon_size(handle);
         }
 
-        public GtkReliefStyle GetReliefStyle()
+        private GtkReliefStyle GetReliefStyle()
         {
             if(handle.IsNullPointer)
                 return GtkReliefStyle.Normal;
@@ -130,7 +130,7 @@ namespace GtkSharp.Gtk.Widgets
             return NativeToolBar.gtk_toolbar_get_relief_style(handle);
         }
 
-        public bool GetShowArrow()
+        private bool GetShowArrow()
         {
             if(handle.IsNullPointer)
                 return false;
@@ -138,7 +138,7 @@ namespace GtkSharp.Gtk.Widgets
             return NativeToolBar.gtk_toolbar_get_show_arrow(handle);
         }
 
-        public void SetShowArrow(bool show)
+        private void SetShowArrow(bool show)
         {
             if(handle.IsNullPointer)
                 return;
@@ -154,7 +154,7 @@ namespace GtkSharp.Gtk.Widgets
             return NativeToolBar.gtk_toolbar_get_item_index(handle, item.handle);
         }
 
-        public int GetItemCount()
+        private int GetItemCount()
         {
             if(handle.IsNullPointer)
                 return 0;

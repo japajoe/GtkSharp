@@ -67,7 +67,7 @@ namespace GtkSharp.Gtk.Widgets
             return NativeGrid.gtk_grid_get_row_homogeneous(handle);
         }
             
-        public void SetRowHomogeneous(bool homogeneous)
+        private void SetRowHomogeneous(bool homogeneous)
         {
             if(handle.IsNullPointer)
                 return;
@@ -75,7 +75,7 @@ namespace GtkSharp.Gtk.Widgets
             NativeGrid.gtk_grid_set_row_homogeneous(handle, homogeneous);
         }
             
-        public bool GetColumnHomogeneous()
+        private bool GetColumnHomogeneous()
         {
             if(handle.IsNullPointer)
                 return false;
@@ -83,7 +83,7 @@ namespace GtkSharp.Gtk.Widgets
             return NativeGrid.gtk_grid_get_column_homogeneous(handle);
         }
             
-        public void SetColumnHomogeneous(bool homogeneous)
+        private void SetColumnHomogeneous(bool homogeneous)
         {
             if(handle.IsNullPointer)
                 return;
@@ -91,7 +91,7 @@ namespace GtkSharp.Gtk.Widgets
             NativeGrid.gtk_grid_set_column_homogeneous(handle, homogeneous);
         } 
 
-        public uint GetRowSpacing()
+        private uint GetRowSpacing()
         {
             if(handle.IsNullPointer)
                 return 0;
@@ -99,7 +99,7 @@ namespace GtkSharp.Gtk.Widgets
             return NativeGrid.gtk_grid_get_row_spacing(handle);
         }
 
-        public void SetRowSpacing(uint spacing)
+        private void SetRowSpacing(uint spacing)
         {
             if(handle.IsNullPointer)
                 return;
@@ -107,7 +107,7 @@ namespace GtkSharp.Gtk.Widgets
             NativeGrid.gtk_grid_set_row_spacing(handle, spacing);
         }
 
-        public uint GetColumnSpacing()
+        private uint GetColumnSpacing()
         {
             if(handle.IsNullPointer)
                 return 0;
@@ -115,7 +115,7 @@ namespace GtkSharp.Gtk.Widgets
             return NativeGrid.gtk_grid_get_column_spacing(handle);
         }
 
-        public void SetColumnSpacing(uint spacing)
+        private void SetColumnSpacing(uint spacing)
         {
             if(handle.IsNullPointer)
                 return;
@@ -123,7 +123,7 @@ namespace GtkSharp.Gtk.Widgets
             NativeGrid.gtk_grid_set_column_spacing(handle, spacing);
         }
 
-        public GtkBaselinePosition GetRowBaselinePosition(int row)
+        private GtkBaselinePosition GetRowBaselinePosition(int row)
         {
             if(handle.IsNullPointer)
                 return GtkBaselinePosition.Top;
@@ -131,7 +131,7 @@ namespace GtkSharp.Gtk.Widgets
             return NativeGrid.gtk_grid_get_row_baseline_position(handle, row);
         }
         
-        public void SetRowBaselinePosition(int row, GtkBaselinePosition position)
+        private void SetRowBaselinePosition(int row, GtkBaselinePosition position)
         {
             if(handle.IsNullPointer)
                 return;
@@ -139,7 +139,7 @@ namespace GtkSharp.Gtk.Widgets
             NativeGrid.gtk_grid_set_row_baseline_position(handle, row, position);
         }
 
-        public int GetBaselineRow()
+        private int GetBaselineRow()
         {
             if(handle.IsNullPointer)
                 return 0;
@@ -147,7 +147,7 @@ namespace GtkSharp.Gtk.Widgets
             return NativeGrid.gtk_grid_get_baseline_row(handle);
         }
         
-        public void SetBaselineRow(int row)
+        private void SetBaselineRow(int row)
         {
             if(handle.IsNullPointer)
                 return;

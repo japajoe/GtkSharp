@@ -60,7 +60,7 @@ namespace GtkSharp.Gtk.Widgets
             this.handle = handle;
         }
 
-        public bool GetHomogeneous()
+        private bool GetHomogeneous()
         {
             if(handle.IsNullPointer)
                 return false;
@@ -68,7 +68,7 @@ namespace GtkSharp.Gtk.Widgets
             return NativeToolItem.gtk_tool_item_get_homogeneous(handle);
         }
 
-        public void SetHomogeneous(bool homogeneous)
+        private void SetHomogeneous(bool homogeneous)
         {
             if(handle.IsNullPointer)
                 return;
@@ -76,7 +76,7 @@ namespace GtkSharp.Gtk.Widgets
             NativeToolItem.gtk_tool_item_set_homogeneous(handle, homogeneous);
         }
 
-        public bool GetExpand()
+        private bool GetExpand()
         {
             if(handle.IsNullPointer)
                 return false;
@@ -84,7 +84,7 @@ namespace GtkSharp.Gtk.Widgets
             return NativeToolItem.gtk_tool_item_get_expand(handle);
         }
 
-        public void SetExpand(bool expand)
+        private void SetExpand(bool expand)
         {
             if(handle.IsNullPointer)
                 return;
@@ -92,7 +92,7 @@ namespace GtkSharp.Gtk.Widgets
             NativeToolItem.gtk_tool_item_set_expand(handle, expand);
         }
 
-        public void SetToolTipText(string text)
+        private void SetToolTipText(string text)
         {
             if(handle.IsNullPointer)
                 return;
