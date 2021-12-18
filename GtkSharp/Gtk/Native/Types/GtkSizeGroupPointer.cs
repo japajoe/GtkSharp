@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace GtkSharp.Gtk.Native.Types
 {
     [StructLayout(LayoutKind.Sequential)]
-    public struct GtkSettingsPointer
+    public struct GtkSizeGroupPointer
     {
         public IntPtr pointer;
 
