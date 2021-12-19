@@ -1,11 +1,15 @@
+using GtkSharp.Glib.Native.Types;
+using GtkSharp.GLib.Types;
 using GtkSharp.Gtk.Native.Types;
 using GtkSharp.Gtk.Native.Widgets;
 
-namespace GtkSharp.Gtk.Widgets
+namespace GtkSharp.Gtk.Types
 {
-    public class TextTagTable : Widget
+    public class GtkTextTagTable : GObject
     {
-        public TextTagTable()
+        internal GObjectPointer handle;
+        
+        public GtkTextTagTable()
         {
             handle = NativeTextTagTable.gtk_text_tag_table_new();
         }

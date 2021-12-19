@@ -10,7 +10,7 @@ namespace GtkSharp.Gtk.Widgets
 {
     public class TextView : Widget
     {
-        private TextBuffer buffer;
+        private GtkTextBuffer buffer;
         private string text;
 
         private GEventHandler<TextViewBackspaceCallback,TextViewBackspaceEvent> backspaceHandler = new GEventHandler<TextViewBackspaceCallback, TextViewBackspaceEvent>();
@@ -212,10 +212,10 @@ namespace GtkSharp.Gtk.Widgets
         {            
             handle = NativeTextView.gtk_text_view_new();
             GtkTextBufferPointer bufferPointer = NativeTextView.gtk_text_view_get_buffer(handle);
-            buffer = new TextBuffer(bufferPointer);
+            buffer = new GtkTextBuffer(bufferPointer);
         }
 
-        public TextView(TextBuffer buffer)
+        public TextView(GtkTextBuffer buffer)
         {
             this.buffer = buffer;
             handle = NativeTextView.gtk_text_view_new_with_buffer(buffer.handle);

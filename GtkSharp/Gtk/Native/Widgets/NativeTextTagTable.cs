@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.InteropServices;
+using GtkSharp.Glib.Native.Types;
 using GtkSharp.Gtk.Native.Types;
 
 namespace GtkSharp.Gtk.Native.Widgets
@@ -10,21 +11,21 @@ namespace GtkSharp.Gtk.Native.Widgets
         internal static extern ulong gtk_text_tag_table_get_type();
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_text_tag_table_new();
+        internal static extern GObjectPointer gtk_text_tag_table_new();
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_text_tag_table_add(GtkWidgetPointer table, GtkTextTagPointer tag);
+        internal static extern bool gtk_text_tag_table_add(GObjectPointer table, GObjectPointer tag);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_text_tag_table_remove(GtkWidgetPointer table, GtkTextTagPointer tag);
+        internal static extern void gtk_text_tag_table_remove(GObjectPointer table, GObjectPointer tag);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkTextTagPointer gtk_text_tag_table_lookup(GtkWidgetPointer table, string name);
+        internal static extern GObjectPointer gtk_text_tag_table_lookup(GObjectPointer table, string name);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_text_tag_table_foreach(GtkWidgetPointer table, IntPtr func, IntPtr data);
+        internal static extern void gtk_text_tag_table_foreach(GObjectPointer table, IntPtr func, IntPtr data);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern int gtk_text_tag_table_get_size(GtkWidgetPointer table);
+        internal static extern int gtk_text_tag_table_get_size(GObjectPointer table);
     }
 }

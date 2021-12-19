@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.InteropServices;
+using GtkSharp.Glib.Native.Types;
 using GtkSharp.Gtk.Native.Types;
 
 namespace GtkSharp.Gtk.Native.Widgets
@@ -12,24 +13,24 @@ namespace GtkSharp.Gtk.Native.Widgets
         internal static extern ulong gtk_source_language_manager_get_type();
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_source_language_manager_new();
+        internal static extern GObjectPointer gtk_source_language_manager_new();
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_source_language_manager_get_default();
+        internal static extern GObjectPointer gtk_source_language_manager_get_default();
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern IntPtr gtk_source_language_manager_get_search_path(GtkWidgetPointer lm);
+        internal static extern IntPtr gtk_source_language_manager_get_search_path(GObjectPointer lm);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_source_language_manager_set_search_path(GtkWidgetPointer lm, IntPtr dirs);
+        internal static extern void gtk_source_language_manager_set_search_path(GObjectPointer lm, IntPtr dirs);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern IntPtr gtk_source_language_manager_get_language_ids(GtkWidgetPointer lm);
+        internal static extern IntPtr gtk_source_language_manager_get_language_ids(GObjectPointer lm);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkSourceLanguagePointer gtk_source_language_manager_get_language(GtkWidgetPointer lm, string id);
+        internal static extern GtkSourceLanguagePointer gtk_source_language_manager_get_language(GObjectPointer lm, string id);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkSourceLanguagePointer gtk_source_language_manager_guess_language(GtkWidgetPointer lm, string filename, string content_type); 
+        internal static extern GtkSourceLanguagePointer gtk_source_language_manager_guess_language(GObjectPointer lm, string filename, string content_type); 
     }
 }

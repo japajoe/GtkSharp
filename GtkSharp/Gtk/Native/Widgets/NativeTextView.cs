@@ -1,6 +1,7 @@
 using System.Runtime.InteropServices;
 using GtkSharp.Gdk.Native.Types;
 using GtkSharp.Gdk.Types;
+using GtkSharp.Glib.Native.Types;
 using GtkSharp.Gtk.Native.Types;
 using GtkSharp.Gtk.Types;
 using GtkSharp.Pango.Native.Types;
@@ -16,10 +17,10 @@ namespace GtkSharp.Gtk.Native.Widgets
         internal static extern GtkWidgetPointer gtk_text_view_new();
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_text_view_new_with_buffer(GtkWidgetPointer buffer);
+        internal static extern GtkWidgetPointer gtk_text_view_new_with_buffer(GObjectPointer buffer);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_text_view_set_buffer(GtkWidgetPointer text_view, GtkWidgetPointer buffer);
+        internal static extern void gtk_text_view_set_buffer(GtkWidgetPointer text_view, GObjectPointer buffer);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern GtkTextBufferPointer gtk_text_view_get_buffer(GtkWidgetPointer text_view);

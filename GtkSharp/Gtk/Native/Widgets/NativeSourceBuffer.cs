@@ -14,111 +14,111 @@ namespace GtkSharp.Gtk.Native.Widgets
         internal static extern ulong gtk_source_buffer_get_type();
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_source_buffer_new(GtkTextTagTablePointer table);
+        internal static extern GObjectPointer gtk_source_buffer_new(GtkTextTagTablePointer table);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_source_buffer_new_with_language(GtkSourceLanguagePointer language);
+        internal static extern GObjectPointer gtk_source_buffer_new_with_language(GtkSourceLanguagePointer language);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_source_buffer_get_highlight_syntax(GtkWidgetPointer buffer);
+        internal static extern bool gtk_source_buffer_get_highlight_syntax(GObjectPointer buffer);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_source_buffer_set_highlight_syntax(GtkWidgetPointer buffer, bool highlight);
+        internal static extern void gtk_source_buffer_set_highlight_syntax(GObjectPointer buffer, bool highlight);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_source_buffer_get_highlight_matching_brackets(GtkWidgetPointer buffer);
+        internal static extern bool gtk_source_buffer_get_highlight_matching_brackets(GObjectPointer buffer);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_source_buffer_set_highlight_matching_brackets(GtkWidgetPointer buffer, bool highlight);
+        internal static extern void gtk_source_buffer_set_highlight_matching_brackets(GObjectPointer buffer, bool highlight);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern int gtk_source_buffer_get_max_undo_levels(GtkWidgetPointer buffer);
+        internal static extern int gtk_source_buffer_get_max_undo_levels(GObjectPointer buffer);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_source_buffer_set_max_undo_levels(GtkWidgetPointer buffer, int max_undo_levels);
+        internal static extern void gtk_source_buffer_set_max_undo_levels(GObjectPointer buffer, int max_undo_levels);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkSourceLanguagePointer gtk_source_buffer_get_language(GtkWidgetPointer buffer);
+        internal static extern GtkSourceLanguagePointer gtk_source_buffer_get_language(GObjectPointer buffer);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_source_buffer_set_language(GtkWidgetPointer buffer, GtkSourceLanguagePointer language);
+        internal static extern void gtk_source_buffer_set_language(GObjectPointer buffer, GtkSourceLanguagePointer language);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_source_buffer_can_undo(GtkWidgetPointer buffer);
+        internal static extern bool gtk_source_buffer_can_undo(GObjectPointer buffer);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_source_buffer_can_redo(GtkWidgetPointer buffer);
+        internal static extern bool gtk_source_buffer_can_redo(GObjectPointer buffer);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkSourceStyleSchemePointer gtk_source_buffer_get_style_scheme(GtkWidgetPointer buffer);
+        internal static extern GtkSourceStyleSchemePointer gtk_source_buffer_get_style_scheme(GObjectPointer buffer);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_source_buffer_set_style_scheme(GtkWidgetPointer buffer, GtkSourceStyleSchemePointer scheme);
+        internal static extern void gtk_source_buffer_set_style_scheme(GObjectPointer buffer, GtkSourceStyleSchemePointer scheme);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_source_buffer_ensure_highlight(GtkWidgetPointer buffer, ref GtkTextIter start, ref GtkTextIter end);
+        internal static extern void gtk_source_buffer_ensure_highlight(GObjectPointer buffer, ref GtkTextIter start, ref GtkTextIter end);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_source_buffer_undo(GtkWidgetPointer buffer);
+        internal static extern void gtk_source_buffer_undo(GObjectPointer buffer);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_source_buffer_redo(GtkWidgetPointer buffer);
+        internal static extern void gtk_source_buffer_redo(GObjectPointer buffer);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_source_buffer_begin_not_undoable_action(GtkWidgetPointer buffer);
+        internal static extern void gtk_source_buffer_begin_not_undoable_action(GObjectPointer buffer);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_source_buffer_end_not_undoable_action(GtkWidgetPointer buffer);
+        internal static extern void gtk_source_buffer_end_not_undoable_action(GObjectPointer buffer);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkSourceMarkPointer gtk_source_buffer_create_source_mark(GtkWidgetPointer buffer, string name, string category, ref GtkTextIter where);
+        internal static extern GtkSourceMarkPointer gtk_source_buffer_create_source_mark(GObjectPointer buffer, string name, string category, ref GtkTextIter where);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_source_buffer_forward_iter_to_source_mark(GtkWidgetPointer buffer, ref GtkTextIter iter, string category);
+        internal static extern bool gtk_source_buffer_forward_iter_to_source_mark(GObjectPointer buffer, ref GtkTextIter iter, string category);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_source_buffer_backward_iter_to_source_mark(GtkWidgetPointer buffer, ref GtkTextIter iter, string category);
+        internal static extern bool gtk_source_buffer_backward_iter_to_source_mark(GObjectPointer buffer, ref GtkTextIter iter, string category);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GSListPointer gtk_source_buffer_get_source_marks_at_iter(GtkWidgetPointer buffer, ref GtkTextIter iter, string category);
+        internal static extern GSListPointer gtk_source_buffer_get_source_marks_at_iter(GObjectPointer buffer, ref GtkTextIter iter, string category);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GSListPointer gtk_source_buffer_get_source_marks_at_line(GtkWidgetPointer buffer, int line, string category);
+        internal static extern GSListPointer gtk_source_buffer_get_source_marks_at_line(GObjectPointer buffer, int line, string category);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_source_buffer_remove_source_marks(GtkWidgetPointer buffer, ref GtkTextIter start, ref GtkTextIter end, string category);
+        internal static extern void gtk_source_buffer_remove_source_marks(GObjectPointer buffer, ref GtkTextIter start, ref GtkTextIter end, string category);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_source_buffer_iter_has_context_class(GtkWidgetPointer buffer, ref GtkTextIter iter, string context_class);
+        internal static extern bool gtk_source_buffer_iter_has_context_class(GObjectPointer buffer, ref GtkTextIter iter, string context_class);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern IntPtr gtk_source_buffer_get_context_classes_at_iter(GtkWidgetPointer buffer, ref GtkTextIter iter);
+        internal static extern IntPtr gtk_source_buffer_get_context_classes_at_iter(GObjectPointer buffer, ref GtkTextIter iter);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_source_buffer_iter_forward_to_context_class_toggle(GtkWidgetPointer buffer, ref GtkTextIter iter, string context_class);
+        internal static extern bool gtk_source_buffer_iter_forward_to_context_class_toggle(GObjectPointer buffer, ref GtkTextIter iter, string context_class);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_source_buffer_iter_backward_to_context_class_toggle (GtkWidgetPointer buffer, ref GtkTextIter iter, string context_class);
+        internal static extern bool gtk_source_buffer_iter_backward_to_context_class_toggle (GObjectPointer buffer, ref GtkTextIter iter, string context_class);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_source_buffer_change_case(GtkWidgetPointer buffer, GtkSourceChangeCaseType case_type, ref GtkTextIter start, ref GtkTextIter end);
+        internal static extern void gtk_source_buffer_change_case(GObjectPointer buffer, GtkSourceChangeCaseType case_type, ref GtkTextIter start, ref GtkTextIter end);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_source_buffer_join_lines(GtkWidgetPointer buffer, ref GtkTextIter start, ref GtkTextIter end);
+        internal static extern void gtk_source_buffer_join_lines(GObjectPointer buffer, ref GtkTextIter start, ref GtkTextIter end);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_source_buffer_sort_lines(GtkWidgetPointer buffer, ref GtkTextIter start, ref GtkTextIter end, GtkSourceSortFlags flags, int column);
+        internal static extern void gtk_source_buffer_sort_lines(GObjectPointer buffer, ref GtkTextIter start, ref GtkTextIter end, GtkSourceSortFlags flags, int column);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkSourceUndoManagerPointer gtk_source_buffer_get_undo_manager(GtkWidgetPointer buffer);
+        internal static extern GtkSourceUndoManagerPointer gtk_source_buffer_get_undo_manager(GObjectPointer buffer);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_source_buffer_set_undo_manager(GtkWidgetPointer buffer, GtkSourceUndoManagerPointer manager);
+        internal static extern void gtk_source_buffer_set_undo_manager(GObjectPointer buffer, GtkSourceUndoManagerPointer manager);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_source_buffer_set_implicit_trailing_newline(GtkWidgetPointer buffer, bool implicit_trailing_newline);
+        internal static extern void gtk_source_buffer_set_implicit_trailing_newline(GObjectPointer buffer, bool implicit_trailing_newline);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_source_buffer_get_implicit_trailing_newline(GtkWidgetPointer buffer);
+        internal static extern bool gtk_source_buffer_get_implicit_trailing_newline(GObjectPointer buffer);
     }
 }

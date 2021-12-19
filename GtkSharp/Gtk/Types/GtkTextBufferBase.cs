@@ -1,17 +1,18 @@
 using System;
-using GtkSharp.Gtk.Types;
 using GtkSharp.Utilities;
 using GtkSharp.Gtk.Native.Widgets;
 using GtkSharp.Gdk.Native.Types;
 using GtkSharp.GLib.Native;
 using GtkSharp.GLib.Types;
 using GtkSharp.Gtk.Native.Types;
+using GtkSharp.Glib.Native.Types;
 
-namespace GtkSharp.Gtk.Widgets
+namespace GtkSharp.Gtk.Types
 {
-    public class TextBufferBase : Widget
+    public class GtkTextBufferBase : GObject
     {
-        protected TextTagTable tagTable;
+        internal GObjectPointer handle;
+        protected GtkTextTagTable tagTable;
         private string text;
 
         private GEventHandler<TextBufferApplyTagCallback,TextBufferApplyTagEvent> applyTagHandler = new GEventHandler<TextBufferApplyTagCallback, TextBufferApplyTagEvent>();

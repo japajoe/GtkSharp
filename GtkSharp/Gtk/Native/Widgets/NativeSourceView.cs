@@ -1,4 +1,5 @@
 using System.Runtime.InteropServices;
+using GtkSharp.Glib.Native.Types;
 using GtkSharp.Gtk.Native.Types;
 using GtkSharp.Gtk.Types;
 
@@ -15,7 +16,7 @@ namespace GtkSharp.Gtk.Native.Widgets
         internal static extern GtkWidgetPointer gtk_source_view_new();
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_source_view_new_with_buffer(GtkWidgetPointer buffer);
+        internal static extern GtkWidgetPointer gtk_source_view_new_with_buffer(GObjectPointer buffer);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void gtk_source_view_set_show_line_numbers(GtkWidgetPointer view, bool show);

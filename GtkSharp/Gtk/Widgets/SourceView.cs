@@ -1,26 +1,27 @@
 using GtkSharp.Gtk.Native.Types;
 using GtkSharp.Gtk.Native.Widgets;
+using GtkSharp.Gtk.Types;
 
 namespace GtkSharp.Gtk.Widgets
 {
     public class SourceView : Widget
     {
-        private SourceLanguageManager languageManager;
+        private GtkSourceLanguageManager languageManager;
         private GtkSourceLanguagePointer language;
-        private SourceBuffer buffer;
+        private GtkSourceBuffer buffer;
         private string text;
 
         public SourceView()
         {
-            buffer = new SourceBuffer();
+            buffer = new GtkSourceBuffer();
             handle = NativeSourceView.gtk_source_view_new_with_buffer(buffer.handle);
         }
 
         public SourceView(string languageId)
         {
-            languageManager = new SourceLanguageManager();
+            languageManager = new GtkSourceLanguageManager();
             language = languageManager.GetLanguage(languageId);
-            buffer = new SourceBuffer(language);
+            buffer = new GtkSourceBuffer(language);
             handle = NativeSourceView.gtk_source_view_new_with_buffer(buffer.handle);
             NativeSourceView.gtk_source_view_set_tab_width(handle, 4);
             NativeSourceView.gtk_source_view_set_show_line_numbers(handle, true);        
