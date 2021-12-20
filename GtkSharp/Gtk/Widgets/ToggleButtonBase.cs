@@ -6,7 +6,7 @@ using GtkSharp.Gtk.Types;
 
 namespace GtkSharp.Gtk.Widgets
 {
-    public abstract class ToggleButtonBase : Widget
+    public abstract class ToggleButtonBase : ButtonBase
     {
         private GEventHandler<ToggleButtonToggledCallback,ToggleButtonToggledEvent> toggledHandler = new GEventHandler<ToggleButtonToggledCallback, ToggleButtonToggledEvent>();
 
