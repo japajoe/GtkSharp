@@ -82,6 +82,40 @@ namespace GtkSharp.Gdk.Types
             format = GdkImageFormat.FromPixbuf(handle);            
         }
 
+        public bool GetPixel(int x, int y, out GdkRGBA color)
+        {
+            color = new GdkRGBA();
+
+            if(handle.IsNullPointer)
+                return false;
+                            
+            if(format.colorspace != GdkColorspace.RGB)
+                return false;
+                
+            if(format.bitsPerSample != 8)
+                return false;
+
+            if(x < 0 && x >= format.width)
+                return false;
+            
+            if(y < 0 && y >= format.height)
+                return false;
+            
+            IntPtr pixelbuffer = NativeGdkPixbuf.gdk_pixbuf_get_pixels(handle);
+            pixelbuffer += y * format.rowstride + x * format.channels;
+
+            byte r = Marshal.ReadByte(pixelbuffer, 0);
+            byte g = Marshal.ReadByte(pixelbuffer, 1);
+            byte b = Marshal.ReadByte(pixelbuffer, 2);
+            byte a = 255;
+
+            if(format.channels == 4)
+                a = Marshal.ReadByte(pixelbuffer, 3);
+
+            color = new GdkRGBA(r, g, b, a);
+            return true;
+        }
+
         public void SetPixel(int x, int y, GdkRGBA color)
         {
             if(handle.IsNullPointer)
@@ -89,6 +123,7 @@ namespace GtkSharp.Gdk.Types
                             
             if(format.colorspace != GdkColorspace.RGB)
                 return;
+
             if(format.bitsPerSample != 8)
                 return;
 
