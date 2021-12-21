@@ -11,7 +11,7 @@ namespace GtkSharp.Gdk.Native
         const string NATIVELIB_GDKPIXBUF = "gdk_pixbuf-2.0";
 
         [DllImport(NATIVELIB_GDKPIXBUF, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GdkPixbufPointer gdk_pixbuf_scale_simple(GdkPixbufPointer src, int dest_width, int dest_height, GdkInterpType interp_type);
+        internal static extern GdkPixbufPointer gdk_pixbuf_new(GdkColorspace colorspace, bool has_alpha, int bits_per_sample, int width, int height);        
         
         [DllImport(NATIVELIB_GDKPIXBUF, CallingConvention = CallingConvention.Cdecl)]
         internal static extern GdkPixbufPointer gdk_pixbuf_new_from_file(string filename, out GErrorPointer error);
@@ -42,6 +42,9 @@ namespace GtkSharp.Gdk.Native
 
             return p;
         }
+
+        [DllImport(NATIVELIB_GDKPIXBUF, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern GdkPixbufPointer gdk_pixbuf_scale_simple(GdkPixbufPointer src, int dest_width, int dest_height, GdkInterpType interp_type);        
         
         [DllImport(NATIVELIB_GDKPIXBUF, CallingConvention = CallingConvention.Cdecl)]
         internal static extern GdkColorspace gdk_pixbuf_get_colorspace(GdkPixbufPointer pixbuf);
