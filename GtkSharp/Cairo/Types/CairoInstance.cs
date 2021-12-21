@@ -1,5 +1,7 @@
 using GtkSharp.Cairo.Native;
 using GtkSharp.Cairo.Native.Types;
+using GtkSharp.Gdk.Native;
+using GtkSharp.Gdk.Types;
 
 namespace GtkSharp.Cairo.Types
 {
@@ -54,6 +56,27 @@ namespace GtkSharp.Cairo.Types
             CairoLib.cairo_set_source_rgba(cr, r, g, b, a);
         }
 
+        public void SetSourceColor(GdkColor color)
+        {
+            if(cr.IsNullPointer)
+                return;            
+            NativeGdkCairo.gdk_cairo_set_source_color(cr, ref color);
+        }
+
+        public void SetSourceRGBA(GdkRGBA color)
+        {
+            if(cr.IsNullPointer)
+                return;
+            NativeGdkCairo.gdk_cairo_set_source_rgba(cr, ref color);
+        }
+
+        public void SetSourcePixbuf(GdkPixbuf pixbuf, double x, double y)
+        {
+            if(cr.IsNullPointer)
+                return;            
+            NativeGdkCairo.gdk_cairo_set_source_pixbuf(cr, pixbuf.handle, x, y);
+        }
+
         public void Arc(double xc, double yc, double radius, double angle1, double angle2)
         {
             if(cr.IsNullPointer)
@@ -66,6 +89,13 @@ namespace GtkSharp.Cairo.Types
             if(cr.IsNullPointer)
                 return;
             CairoLib.cairo_rectangle(cr, x, y, width, height);
+        }
+
+        public void Rectangle(GdkRectangle rectangle)
+        {
+            if(cr.IsNullPointer)
+                return;
+            NativeGdkCairo.gdk_cairo_rectangle(cr, ref rectangle);
         }
 
         public void LineTo(double x, double y)
@@ -187,6 +217,16 @@ namespace GtkSharp.Cairo.Types
             if(cr.IsNullPointer)
                 return;
             CairoLib.cairo_clip(cr);
+        }
+
+        public bool ClipRectangle(out GdkRectangle rectangle)
+        {
+            if(cr.IsNullPointer)
+            {
+                rectangle = new GdkRectangle();
+                return false;
+            }
+            return NativeGdkCairo.gdk_cairo_get_clip_rectangle(cr, out rectangle);
         }
     }
 }

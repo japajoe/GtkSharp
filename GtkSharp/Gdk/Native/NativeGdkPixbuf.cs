@@ -69,5 +69,8 @@ namespace GtkSharp.Gdk.Native
         
         [DllImport(NATIVELIB_GDKPIXBUF, CallingConvention = CallingConvention.Cdecl)]
         internal static extern ulong gdk_pixbuf_get_byte_length(GdkPixbufPointer pixbuf);
+
+        [DllImport(NATIVELIB_GDKPIXBUF, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern bool gdk_pixbuf_save(GdkPixbufPointer pixbuf, string filename, string type, IntPtr error, IntPtr data);
     }
 }

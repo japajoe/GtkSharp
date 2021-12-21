@@ -73,6 +73,14 @@ namespace GtkSharp.Gdk.Types
             format = GdkImageFormat.FromPixbuf(handle);
         }
 
+        public bool Save(string filename, string format)
+        {
+            if(handle.IsNullPointer)
+                return false;
+            
+            return NativeGdkPixbuf.gdk_pixbuf_save(handle, filename, format, IntPtr.Zero, IntPtr.Zero);
+        }
+
         private void OnDestroyNotify(IntPtr pixels, IntPtr data)
         {
             DestroyNotify?.Invoke();
