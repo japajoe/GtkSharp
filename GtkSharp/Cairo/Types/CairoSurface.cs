@@ -7,6 +7,26 @@ namespace GtkSharp.Cairo.Types
     {
         internal CairoSurfacePointer handle;
 
+        public CairoSurface(CairoSurface other, CairoContent content, int width, int height)
+        {
+            handle = NativeCairoSurface.cairo_surface_create_similar(other.handle, content, width, height);
+        }
+
+        public CairoSurface(CairoSurface other, CairoFormat format, int width, int height)
+        {
+            handle = NativeCairoSurface.cairo_surface_create_similar_image(other.handle, format, width, height);
+        }
+
+        public CairoSurface(CairoSurface target, double x, double y, double width, double height)
+        {
+            handle = NativeCairoSurface.cairo_surface_create_for_rectangle(target.handle, x, y, width, height);
+        }
+
+        public CairoSurface(string filepath)
+        {
+            handle = NativeCairoImageSurface.cairo_image_surface_create_from_png(filepath);
+        }
+
         public void GetDeviceOffset(out double x, out double y)
         {
             if(handle.IsNullPointer)

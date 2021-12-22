@@ -4,6 +4,22 @@ namespace GtkSharp.Cairo.Types
 {
     public class CairoImageSurface : CairoSurface
     {
+        public CairoImageSurface(CairoSurface other, CairoContent content, int width, int height) : base(other, content, width, height)
+        {
+        }
+
+        public CairoImageSurface(CairoSurface other, CairoFormat format, int width, int height) : base(other, format, width, height)
+        {
+        }
+
+        public CairoImageSurface(CairoSurface target, double x, double y, double width, double height) : base(target, x, y, width, height)
+        {
+        }
+
+        public CairoImageSurface(string filepath) : base(filepath)
+        {
+        }
+
         public int Width
         {
             get
@@ -26,11 +42,6 @@ namespace GtkSharp.Cairo.Types
             {
                 return GetStride();
             }
-        }
-
-        public CairoImageSurface(string filepath)
-        {
-            handle = NativeCairoImageSurface.cairo_image_surface_create_from_png(filepath);
         }
 
         private int GetWidth()
