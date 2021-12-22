@@ -46,6 +46,8 @@ namespace GtkSharp.Gtk.Widgets
                 angle += (Mathf.Deg2Rad * (360.0f / steps));
             if(eventButton.button == 3)
                 angle -= (Mathf.Deg2Rad * (360.0f / steps));
+
+            this.QueueDraw();
             return false;
         }
 
@@ -62,10 +64,10 @@ namespace GtkSharp.Gtk.Widgets
             cr.Translate(width / 2, height / 2);
             cr.Rotate(angle);
             cr.Translate(-width / 2, -height / 2);
-            cr.SetSourceSurface(surface, 0, 0);            
+            cr.SetSourceSurface(surface, 0, 0);
             cr.Paint();
             
-            this.QueueDraw();
+            
             return false;
         }
     }
