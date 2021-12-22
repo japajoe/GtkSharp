@@ -23,8 +23,8 @@ namespace GtkSharp.Gtk.Widgets
         private CairoImageSurface surface;
         private MouseButtonState mouseButtonState = MouseButtonState.Up;
         private Vector2 curPosition = Vector2.zero;
-        private Vector2 prevPosition = Vector2.zero;
-        private GdkScreen screen;
+        private float valueMin;
+        private float valueMax;
 
         public float Value
         {
@@ -38,11 +38,13 @@ namespace GtkSharp.Gtk.Widgets
             }
         }
 
-        public Knob(string filepath, int numSprites, GtkOrientation orientation)
+        public Knob(string filepath, int numSprites, GtkOrientation orientation, float valueMin, float valueMax)
         {
             numSprites++;
             this.numSprites = numSprites;
             this.orientation = orientation;
+            this.valueMin = valueMin;
+            this.valueMax = valueMax;
 
             handle = NativeEventBox.gtk_event_box_new();
             
@@ -60,8 +62,6 @@ namespace GtkSharp.Gtk.Widgets
             }
 
             dummy.Clear(new GdkRGBA(0.0, 0.0, 0.0, 0.0));
-
-            screen = new GdkScreen();
             
             this.Add(this.dummy);
             this.AddEvents(GdkEventMask.PointerMotion | GdkEventMask.ButtonPress | GdkEventMask.ButtonRelease);
@@ -77,7 +77,8 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return 0;
             
-            return (1.0f / (numSprites - 1)) * spriteIndex;
+            float val = (1.0f / (numSprites - 1)) * spriteIndex;
+            return valueMin + ((valueMax - valueMin) * val);
         }
 
         private void SetValue(float value)
@@ -85,8 +86,8 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return;
 
-            value = Mathf.Clamp(value, 0.0f, 1.0f);
-            float t = Mathf.InverseLerp(0.0f, 1.0f, value);
+            value = Mathf.Clamp(value, valueMin, valueMax);
+            float t = Mathf.InverseLerp(valueMin, valueMax, value);
             int v = (int)Mathf.Ceil(t * (numSprites - 1));
             spriteIndex = v;
             this.QueueDraw();
@@ -94,31 +95,14 @@ namespace GtkSharp.Gtk.Widgets
 
         bool MouseMove(GdkEventMotion eventMotion)
         {
-            prevPosition = curPosition;
-            curPosition = new Vector2((float)eventMotion.x, (float)eventMotion.y);
-            Vector2 deltaPosition = curPosition - prevPosition;
-
             if(mouseButtonState == MouseButtonState.Down)
             {
-                float direction = Mathf.Atan2(deltaPosition.x, deltaPosition.y);
-
-                if(direction > 0)
-                {
-                    if(spriteIndex < numSprites - 1)
-                    {
-                        spriteIndex++;
-                        this.QueueDraw();
-                    }
-                }
-
-                if(direction < 0)
-                {
-                    if(spriteIndex > 0)
-                    {
-                        spriteIndex--;
-                        this.QueueDraw();
-                    }
-                }                
+                curPosition = new Vector2((float)eventMotion.x, (float)eventMotion.y);
+                float angle = (Mathf.Atan2(curPosition.y, curPosition.x) * 180.0f / Mathf.PI);
+                angle = Mathf.Clamp(angle, -135.0f, 135f);
+                float t = Mathf.InverseLerp(-135.0f, 135f, angle);
+                spriteIndex = (int)Mathf.Floor(t * (numSprites - 1 ));
+                this.QueueDraw();
             }
             
             return false;
