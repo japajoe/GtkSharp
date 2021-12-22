@@ -28,6 +28,9 @@ namespace GtkSharp.Cairo.Native
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void cairo_set_source_rgba(CairoPointer cr, double red, double green, double blue, double alpha);
+
+        [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cairo_set_source_surface(CairoPointer cr, CairoSurfacePointer surface, double x, double y);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void cairo_set_line_join(CairoPointer cr, CairoLineJoin line_join);

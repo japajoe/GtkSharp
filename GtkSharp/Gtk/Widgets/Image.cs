@@ -62,7 +62,7 @@ namespace GtkSharp.Gtk.Widgets
             GetPixbuf();
         }
 
-        private GdkPixbuf GetPixbuf()
+        protected GdkPixbuf GetPixbuf()
         {
             if(handle.IsNullPointer)
                 return null;
@@ -75,7 +75,7 @@ namespace GtkSharp.Gtk.Widgets
             return pixbuf;
         }
 
-        private void SetPixbuf(GdkPixbuf pixbuf)
+        protected void SetPixbuf(GdkPixbuf pixbuf)
         {
             this.pixbuf = pixbuf;
         }
@@ -98,6 +98,20 @@ namespace GtkSharp.Gtk.Widgets
                 return false;
             
             return pixbuf.GetPixel(x, y, out color);
+        }
+
+        public void Clear(GdkRGBA color)
+        {
+            if(handle.IsNullPointer)
+                return;
+            
+            for(int y = 0; y < pixbuf.Format.height; y++)
+            {
+                for(int x = 0; x < pixbuf.Format.width; x++)
+                {
+                    pixbuf.SetPixel(x, y, color);
+                }
+            }
         }
 
         public void SetPixel(int x, int y, GdkRGBA color)

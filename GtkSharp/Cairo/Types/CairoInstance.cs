@@ -73,8 +73,15 @@ namespace GtkSharp.Cairo.Types
         public void SetSourcePixbuf(GdkPixbuf pixbuf, double x, double y)
         {
             if(cr.IsNullPointer)
-                return;            
+                return;
             NativeGdkCairo.gdk_cairo_set_source_pixbuf(cr, pixbuf.handle, x, y);
+        }
+
+        public void SetSourceSurface(CairoSurface surface, double x, double y)
+        {
+            if(cr.IsNullPointer)
+                return;
+            CairoLib.cairo_set_source_surface(cr, surface.handle, x, y);
         }
 
         public void Arc(double xc, double yc, double radius, double angle1, double angle2)
@@ -103,6 +110,13 @@ namespace GtkSharp.Cairo.Types
             if(cr.IsNullPointer)
                 return;
             CairoLib.cairo_line_to(cr, x, y);
+        }
+
+        public void MoveTo(float x, float y)
+        {
+            if(cr.IsNullPointer)
+                return;
+            CairoLib.cairo_move_to(cr, (double)x, (double)y);
         }
 
         public void MoveTo(double x, double y)
