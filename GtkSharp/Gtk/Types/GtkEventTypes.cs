@@ -103,6 +103,7 @@ namespace GtkSharp.Gtk.Types
     public delegate bool WidgetButtonPressEvent(GdkEventButton eventButton);
     public delegate bool WidgetButtonReleaseEvent(GdkEventButton eventButton);
     public delegate bool WidgetMotionNotifyEvent(GdkEventMotion eventMotion);
+    public delegate bool WidgetScrollEvent(GdkEventScroll eventScroll);
     public delegate bool WidgetDrawEvent(CairoInstance cr);
     public delegate void WidgetRealizeEvent();
     public delegate void WidgetUnrealizeEvent();

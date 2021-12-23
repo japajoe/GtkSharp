@@ -25,8 +25,10 @@ namespace GtkSharp.Gtk.Widgets
         private Vector2 mousePosition = Vector2.zero;
         private float valueMin;
         private float valueMax;
+        private float angleMin;
+        private float angleMax;
         private float initAngle = 0;
-        private float currentAngle = 0;        
+        private float currentAngle = 0;
         private Widget topLevelWidget;
 
         public float Value
@@ -41,13 +43,15 @@ namespace GtkSharp.Gtk.Widgets
             }
         }
 
-        public Knob(string filepath, int numSprites, GtkOrientation orientation, float valueMin, float valueMax, float value)
+        public Knob(string filepath, int numSprites, GtkOrientation orientation, float valueMin, float valueMax, float value, float angleMin = -135.0f, float angleMax = 135.0f)
         {
             numSprites++;
             this.numSprites = numSprites;
             this.orientation = orientation;
             this.valueMin = valueMin;
             this.valueMax = valueMax;
+            this.angleMin = angleMin;
+            this.angleMax = angleMax;
 
             handle = NativeEventBox.gtk_event_box_new();
             
@@ -67,11 +71,12 @@ namespace GtkSharp.Gtk.Widgets
             dummy.Clear(new GdkRGBA(0.0, 0.0, 0.0, 0.0));
             
             this.Add(this.dummy);
-            this.AddEvents(GdkEventMask.PointerMotion | GdkEventMask.ButtonPress | GdkEventMask.ButtonRelease);
+            this.AddEvents(GdkEventMask.PointerMotion | GdkEventMask.ButtonPress | GdkEventMask.ButtonRelease | GdkEventMask.Scroll);
 
             this.MotionNotify += MouseMove;
             this.ButtonPress += MouseDown;
             this.ButtonRelease += MouseUp;
+            this.Scroll += MouseScroll;
             this.Draw += OnDrawKnob;
             this.DestroyEvent += OnDestroyWidget;
 
@@ -137,8 +142,8 @@ namespace GtkSharp.Gtk.Widgets
                 Vector2 widgetPosition = GetWidgetPosition();
                 currentAngle = GetRotationAngle(mousePosition, widgetPosition);
                 float angle = currentAngle - initAngle;                        
-                angle = Mathf.Clamp(angle, -135.0f, 135.0f);
-                angle = Mathf.InverseLerp(-135.0f, 135.0f, angle);
+                angle = Mathf.Clamp(angle, angleMin, angleMax);
+                angle = Mathf.InverseLerp(angleMin, angleMax, angle);
                 spriteIndex = (int)Mathf.Floor(angle * (numSprites - 1 ));
                 SetToolTip(Value.ToString());
                 QueueDraw();
@@ -164,6 +169,30 @@ namespace GtkSharp.Gtk.Widgets
             {
                 mouseButtonState = MouseButtonState.Up;
             }
+            return false;
+        }
+
+        private bool MouseScroll(GdkEventScroll eventScroll)
+        {
+            if(eventScroll.direction == GdkScrollDirection.Up)
+            {
+                if(spriteIndex < numSprites - 1)
+                {
+                    spriteIndex++;
+                    SetToolTip(Value.ToString());
+                    QueueDraw();
+                }
+            }
+            if(eventScroll.direction == GdkScrollDirection.Down)
+            {
+                if(spriteIndex > 0)
+                {
+                    spriteIndex--;
+                    SetToolTip(Value.ToString());
+                    QueueDraw();
+                }
+            }
+            
             return false;
         }
 

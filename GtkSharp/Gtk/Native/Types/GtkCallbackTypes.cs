@@ -1,5 +1,6 @@
 using System;
 using GtkSharp.Gdk.Native.Types;
+using GtkSharp.Gdk.Types;
 using GtkSharp.Gtk.Types;
 
 namespace GtkSharp.Gtk.Native.Types
@@ -103,6 +104,7 @@ namespace GtkSharp.Gtk.Native.Types
     internal delegate bool WidgetButtonPressCallback(IntPtr widget, GdkEventButtonPointer eventButton, IntPtr data);
     internal delegate bool WidgetButtonReleaseCallback(IntPtr widget, GdkEventButtonPointer eventButton, IntPtr data);
     internal delegate bool WidgetMotionNotifyCallback(IntPtr widget, GdkEventMotionPointer eventMotion, IntPtr data);
+    internal delegate bool WidgetScrollCallback(IntPtr widget, GdkEventScrollPointer eventScroll, IntPtr user_data);
     internal delegate bool WidgetDrawCallback(IntPtr widget, IntPtr cr, IntPtr data);
     internal delegate void WidgetRealizeCallback(IntPtr widget, IntPtr data);
     internal delegate void WidgetUnrealizeCallback(IntPtr widget, IntPtr data);

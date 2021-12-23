@@ -23,6 +23,7 @@ namespace GtkSharp.Gtk.Widgets
         private GEventHandler<WidgetButtonPressCallback,WidgetButtonPressEvent> buttonPressHandler = new GEventHandler<WidgetButtonPressCallback, WidgetButtonPressEvent>();
         private GEventHandler<WidgetButtonReleaseCallback,WidgetButtonReleaseEvent> buttonReleaseHandler = new GEventHandler<WidgetButtonReleaseCallback, WidgetButtonReleaseEvent>();
         private GEventHandler<WidgetMotionNotifyCallback,WidgetMotionNotifyEvent> motionNotifyHandler = new GEventHandler<WidgetMotionNotifyCallback, WidgetMotionNotifyEvent>();
+        private GEventHandler<WidgetScrollCallback,WidgetScrollEvent> scrollHandler = new GEventHandler<WidgetScrollCallback, WidgetScrollEvent>();
         private GEventHandler<WidgetDrawCallback,WidgetDrawEvent> drawHandler = new GEventHandler<WidgetDrawCallback, WidgetDrawEvent>();
         private GEventHandler<WidgetRealizeCallback,WidgetRealizeEvent> realizeHandler = new GEventHandler<WidgetRealizeCallback, WidgetRealizeEvent>();
         private GEventHandler<WidgetUnrealizeCallback,WidgetUnrealizeEvent> unrealizeHandler = new GEventHandler<WidgetUnrealizeCallback, WidgetUnrealizeEvent>();
@@ -152,6 +153,19 @@ namespace GtkSharp.Gtk.Widgets
             {
                 motionNotifyHandler.Event = value;
                 motionNotifyHandler.SignalConnect(handle.pointer, "motion-notify-event", OnMotionNotify, handle.pointer);
+            }
+        }
+
+        public WidgetScrollEvent Scroll
+        {
+            get
+            {
+                return scrollHandler.Event;
+            }
+            set
+            {
+                scrollHandler.Event = value;
+                scrollHandler.SignalConnect(handle.pointer, "scroll-event", OnScroll, handle.pointer);
             }
         }
 
@@ -385,6 +399,16 @@ namespace GtkSharp.Gtk.Widgets
             {
                 GdkEventMotion motion = Marshal.PtrToStructure<GdkEventMotion>(eventMotion.pointer);
                 return MotionNotify(motion);
+            }
+            return true;
+        }
+
+        bool OnScroll(IntPtr widget, GdkEventScrollPointer eventScroll, IntPtr data)
+        {
+            if(Scroll != null)
+            {
+                GdkEventScroll scroll = Marshal.PtrToStructure<GdkEventScroll>(eventScroll.pointer);
+                return Scroll(scroll);
             }
             return true;
         }
