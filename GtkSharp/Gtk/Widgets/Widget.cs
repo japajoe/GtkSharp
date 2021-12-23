@@ -309,6 +309,13 @@ namespace GtkSharp.Gtk.Widgets
             return NativeWidget.gtk_widget_translate_coordinates(handle, relativeWidget.handle, srcX, srcY, out destX, out destY);
         }
 
+        public void SetToolTip(string text)
+        {
+            if(handle.IsNullPointer)
+                return;
+            NativeWidget.gtk_widget_set_tooltip_text(handle, text);
+        }
+
         public Widget GetTopLevel()
         {
             if(handle.IsNullPointer)

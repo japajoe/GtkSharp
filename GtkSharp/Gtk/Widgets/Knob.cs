@@ -1,7 +1,7 @@
+using GtkSharp.Gtk.Types;
 using GtkSharp.Gtk.Native.Widgets;
 using GtkSharp.Gdk.Types;
 using GtkSharp.Cairo.Types;
-using GtkSharp.Gtk.Types;
 using GtkSharp.Utilities;
 
 namespace GtkSharp.Gtk.Widgets
@@ -25,6 +25,8 @@ namespace GtkSharp.Gtk.Widgets
         private Vector2 mousePosition = Vector2.zero;
         private float valueMin;
         private float valueMax;
+        private float initAngle = 0;
+        private float currentAngle = 0;        
         private Widget topLevelWidget;
 
         public float Value
@@ -39,7 +41,7 @@ namespace GtkSharp.Gtk.Widgets
             }
         }
 
-        public Knob(string filepath, int numSprites, GtkOrientation orientation, float valueMin, float valueMax)
+        public Knob(string filepath, int numSprites, GtkOrientation orientation, float valueMin, float valueMax, float value)
         {
             numSprites++;
             this.numSprites = numSprites;
@@ -72,6 +74,8 @@ namespace GtkSharp.Gtk.Widgets
             this.ButtonRelease += MouseUp;
             this.Draw += OnDrawKnob;
             this.DestroyEvent += OnDestroyWidget;
+
+            SetValue(value);
         }
 
         private float GetValue()
@@ -92,39 +96,7 @@ namespace GtkSharp.Gtk.Widgets
             float t = Mathf.InverseLerp(valueMin, valueMax, value);
             int v = (int)Mathf.Ceil(t * (numSprites - 1));
             spriteIndex = v;
-            this.QueueDraw();
-        }
-
-        private float initAngle = 0;
-        private float currentAngle = 0;
-
-        bool MouseMove(GdkEventMotion eventMotion)
-        {
-            mousePosition = new Vector2((float)eventMotion.x, (float)eventMotion.y);
-
-            if(mouseButtonState == MouseButtonState.Down)
-            {
-                Vector2 widgetPosition = GetWidgetPosition();
-                currentAngle = GetAngle(mousePosition, widgetPosition);
-
-                float angle = currentAngle - initAngle;
-
-                System.Console.WriteLine(angle);
-
-                // float adj = mousePosition.x - widgetPositionX;
-                // float opp = mousePosition.y - widgetPositionY;
-                // float angle = Mathf.Atan2(opp, adj);                        
-
-                // angle = angle / (Mathf.PI / 180.0f);                        
-                angle = Mathf.Clamp(angle, -135.0f, 135.0f);
-                angle = Mathf.InverseLerp(-135.0f, 135.0f, angle);
-
-                spriteIndex = (int)Mathf.Floor(angle * (numSprites - 1 ));
-                QueueDraw();
-
-            }
-            
-            return false;
+            QueueDraw();
         }
 
         private Vector2 GetWidgetPosition()
@@ -150,10 +122,29 @@ namespace GtkSharp.Gtk.Widgets
             return position;
         }
 
-        private float GetAngle(Vector2 mousePosition, Vector2 widgetPosition)
+        private float GetRotationAngle(Vector2 mousePosition, Vector2 widgetPosition)
         {
             Vector2 currentVector = mousePosition - widgetPosition;
             return Mathf.Atan2(currentVector.y, currentVector.x) * Mathf.Rad2Deg;
+        }
+
+        bool MouseMove(GdkEventMotion eventMotion)
+        {
+            mousePosition = new Vector2((float)eventMotion.x, (float)eventMotion.y);
+
+            if(mouseButtonState == MouseButtonState.Down)
+            {
+                Vector2 widgetPosition = GetWidgetPosition();
+                currentAngle = GetRotationAngle(mousePosition, widgetPosition);
+                float angle = currentAngle - initAngle;                        
+                angle = Mathf.Clamp(angle, -135.0f, 135.0f);
+                angle = Mathf.InverseLerp(-135.0f, 135.0f, angle);
+                spriteIndex = (int)Mathf.Floor(angle * (numSprites - 1 ));
+                SetToolTip(Value.ToString());
+                QueueDraw();
+            }
+            
+            return false;
         }
 
         private bool MouseDown(GdkEventButton eventButton)
@@ -162,7 +153,7 @@ namespace GtkSharp.Gtk.Widgets
             {
                 mouseButtonState = MouseButtonState.Down;
                 Vector2 widgetPosition = GetWidgetPosition();
-                initAngle = GetAngle(mousePosition, widgetPosition);
+                initAngle = GetRotationAngle(mousePosition, widgetPosition);
             }            
             return false;
         }
@@ -188,7 +179,7 @@ namespace GtkSharp.Gtk.Widgets
 
             cr.SetSourceSurface(surface, 0, 0);
             cr.Rectangle(0, 0, width, height);
-            cr.Fill();   
+            cr.Fill();
             
             return false;
         }
