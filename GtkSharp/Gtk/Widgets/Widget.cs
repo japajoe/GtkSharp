@@ -297,6 +297,32 @@ namespace GtkSharp.Gtk.Widgets
             NativeWidget.gtk_widget_queue_draw_area(handle, x, y, width, height);
         }
 
+        public bool TranslateCoordinates(Widget relativeWidget, int srcX, int srcY, out int destX, out int destY)
+        {
+            if(handle.IsNullPointer)
+            {
+                destX = 0;
+                destY = 0;
+                return false;
+            }
+
+            return NativeWidget.gtk_widget_translate_coordinates(handle, relativeWidget.handle, srcX, srcY, out destX, out destY);
+        }
+
+        public Widget GetTopLevel()
+        {
+            if(handle.IsNullPointer)
+                return null;
+
+            GtkWidgetPointer w = NativeWidget.gtk_widget_get_toplevel(handle);
+            
+            if(NativeWidget.gtk_widget_is_toplevel(w))
+            {
+                return new Widget(w.pointer);
+            }
+            return null;
+        }
+
         public void Destroy()
         {
             if(!handle.IsNullPointer)

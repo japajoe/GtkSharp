@@ -6,7 +6,7 @@ using GtkSharp.Utilities;
 
 namespace GtkSharp.Gtk.Widgets
 {
-    //Works a bit clumsy but it's a beginning :)
+    //Still works a bit clumsy but it's a beginning :)
     public class Knob : EventBox
     {
         public enum MouseButtonState
@@ -22,9 +22,10 @@ namespace GtkSharp.Gtk.Widgets
         private GtkOrientation orientation;
         private CairoImageSurface surface;
         private MouseButtonState mouseButtonState = MouseButtonState.Up;
-        private Vector2 curPosition = Vector2.zero;
+        private Vector2 mousePosition = Vector2.zero;
         private float valueMin;
         private float valueMax;
+        private Widget topLevelWidget;
 
         public float Value
         {
@@ -70,6 +71,7 @@ namespace GtkSharp.Gtk.Widgets
             this.ButtonPress += MouseDown;
             this.ButtonRelease += MouseUp;
             this.Draw += OnDrawKnob;
+            this.DestroyEvent += OnDestroyWidget;
         }
 
         private float GetValue()
@@ -97,12 +99,32 @@ namespace GtkSharp.Gtk.Widgets
         {
             if(mouseButtonState == MouseButtonState.Down)
             {
-                curPosition = new Vector2((float)eventMotion.x, (float)eventMotion.y);
-                float angle = (Mathf.Atan2(curPosition.y, curPosition.x) * 180.0f / Mathf.PI);
-                angle = Mathf.Clamp(angle, -135.0f, 135f);
-                float t = Mathf.InverseLerp(-135.0f, 135f, angle);
-                spriteIndex = (int)Mathf.Floor(t * (numSprites - 1 ));
-                this.QueueDraw();
+                if(topLevelWidget == null)
+                {
+                    topLevelWidget = GetTopLevel();
+                }
+
+                if(topLevelWidget != null)
+                {
+                    int widgetPositionX = 0;
+                    int widgetPositionY = 0;
+                    
+                    mousePosition = new Vector2((float)eventMotion.x, (float)eventMotion.y);
+
+                    if(TranslateCoordinates(topLevelWidget, 0, 0, out widgetPositionX, out widgetPositionY))
+                    {
+                        float adj = mousePosition.x - widgetPositionX;
+                        float opp = mousePosition.y - widgetPositionY;
+                        float angle = Mathf.Atan2(opp, adj);                        
+
+                        angle = angle / (Mathf.PI / 180.0f);                        
+                        angle = Mathf.Clamp(angle, -135.0f, 135.0f);
+                        angle = Mathf.InverseLerp(-135.0f, 135.0f, angle);
+
+                        spriteIndex = (int)Mathf.Floor(angle * (numSprites - 1 ));
+                        QueueDraw();
+                    }
+                }
             }
             
             return false;
@@ -137,10 +159,15 @@ namespace GtkSharp.Gtk.Widgets
                 cr.Translate(spriteIndex * -offset, 0);
 
             cr.SetSourceSurface(surface, 0, 0);
-            cr.Rectangle(0, 0, width, height);            
-            cr.Fill();            
+            cr.Rectangle(0, 0, width, height);
+            cr.Fill();   
             
             return false;
+        }
+
+        private void OnDestroyWidget()
+        {
+            surface.Destroy();
         }
     }
 }

@@ -82,6 +82,14 @@ namespace GtkSharp.Gdk.Types
             format = GdkImageFormat.FromPixbuf(handle);            
         }
 
+        public IntPtr GetPixels()
+        {
+            if(handle.IsNullPointer)
+                return IntPtr.Zero;
+            
+            return NativeGdkPixbuf.gdk_pixbuf_get_pixels(handle);
+        }
+
         public bool GetPixel(int x, int y, out GdkRGBA color)
         {
             color = new GdkRGBA();
