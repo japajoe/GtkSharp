@@ -314,7 +314,7 @@ namespace GtkSharp.Gtk.Widgets
         private void DrawFromImage(CairoInstance cr)
         {
             int width = image.Pixbuf.Format.width;
-            int height = image.Pixbuf.Format.height;
+            int height = image.Pixbuf.Format.height;           
 
             if(orientation == GtkOrientation.Vertical)
                 cr.Translate(0, spriteIndex * -offset);
