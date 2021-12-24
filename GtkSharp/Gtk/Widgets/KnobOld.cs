@@ -3,11 +3,12 @@ using GtkSharp.Gtk.Native.Widgets;
 using GtkSharp.Gdk.Types;
 using GtkSharp.Cairo.Types;
 using GtkSharp.Utilities;
+using System;
 
 namespace GtkSharp.Gtk.Widgets
 {
-    //Still works a bit clumsy but it's a beginning :)
-    public class Knob : EventBox
+    [Obsolete("KnobOld has been deprecated, use Knob instead")]
+    public class KnobOld : EventBox
     {
         public enum MouseButtonState
         {
@@ -29,8 +30,6 @@ namespace GtkSharp.Gtk.Widgets
         private float angleMax;
         private float initAngle = 0;
         private float currentAngle = 0;
-        private int steps;
-        private int stepInterval;
         private Widget topLevelWidget;
 
         public float Value
@@ -45,18 +44,8 @@ namespace GtkSharp.Gtk.Widgets
             }
         }
 
-        public Knob(string filepath, int numSprites, GtkOrientation orientation, float valueMin, float valueMax, float value, int steps, float angleMin = -135.0f, float angleMax = 135.0f)
+        public KnobOld(string filepath, int numSprites, GtkOrientation orientation, float valueMin, float valueMax, float value, float angleMin = -135.0f, float angleMax = 135.0f)
         {
-            if(steps < 2)
-                steps = 2;
-            if(steps > numSprites)
-                steps = numSprites;
-
-            steps -= 1;
-
-            this.steps = steps;
-            this.stepInterval = numSprites / steps;
-
             this.numSprites = numSprites;
             this.orientation = orientation;
             this.valueMin = valueMin;
@@ -144,17 +133,6 @@ namespace GtkSharp.Gtk.Widgets
             return Mathf.Atan2(currentVector.y, currentVector.x) * Mathf.Rad2Deg;
         }
 
-        float RoundToNearestStep(float pos, float stepSize)
-        {
-            float xDiff = pos % stepSize;
-            pos -= xDiff;
-            if (xDiff > (stepSize / 2))
-            {
-                pos += stepSize;
-            }
-            return pos;
-        }
-
         bool MouseMove(GdkEventMotion eventMotion)
         {
             mousePosition = new Vector2((float)eventMotion.x, (float)eventMotion.y);
@@ -166,9 +144,7 @@ namespace GtkSharp.Gtk.Widgets
                 float angle = currentAngle - initAngle;                        
                 angle = Mathf.Clamp(angle, angleMin, angleMax);
                 angle = Mathf.InverseLerp(angleMin, angleMax, angle);
-                angle = RoundToNearestStep(angle * (numSprites - 1 ), stepInterval);                
-                spriteIndex = (int)angle;
-                spriteIndex = Mathf.Clamp(spriteIndex, 0, numSprites - 1);
+                spriteIndex = (int)Mathf.Floor(angle * (numSprites - 1 ));
                 SetToolTip(Value.ToString());
                 QueueDraw();
             }
@@ -200,32 +176,18 @@ namespace GtkSharp.Gtk.Widgets
         {
             if(eventScroll.direction == GdkScrollDirection.Up)
             {
-                if((spriteIndex + stepInterval) <= (numSprites - 1))
+                if(spriteIndex < numSprites - 1)
                 {
-                    spriteIndex += stepInterval;
-                    spriteIndex = Mathf.Clamp(spriteIndex, 0, numSprites - 1);
+                    spriteIndex++;
                     SetToolTip(Value.ToString());
                     QueueDraw();
-                }
-                else
-                {
-                    spriteIndex = numSprites - 1;
-                    SetToolTip(Value.ToString());
-                    QueueDraw();                        
                 }
             }
             if(eventScroll.direction == GdkScrollDirection.Down)
             {
-                if((spriteIndex - stepInterval) >= 0)
+                if(spriteIndex > 0)
                 {
-                    spriteIndex -= stepInterval;
-                    spriteIndex = Mathf.Clamp(spriteIndex, 0, numSprites - 1);
-                    SetToolTip(Value.ToString());
-                    QueueDraw();
-                }
-                else
-                {
-                    spriteIndex = 0;
+                    spriteIndex--;
                     SetToolTip(Value.ToString());
                     QueueDraw();
                 }
