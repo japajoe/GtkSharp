@@ -33,7 +33,7 @@ namespace GtkSharp.Gtk.Native.Widgets
         internal static extern uint gtk_builder_add_objects_from_string(GObjectPointer builder, string buffer, ulong length, IntPtr[] object_ids, GErrorPointer error);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern IntPtr gtk_builder_get_object(GObjectPointer builder, string name);
+        internal static extern GObjectPointer gtk_builder_get_object(GObjectPointer builder, string name);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern GSListPointer gtk_builder_get_objects(GObjectPointer builder);

@@ -29,6 +29,9 @@ namespace GtkSharp.GLib.Native
 
         [DllImport(NATIVELIB_GOBJECT, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void g_free(IntPtr memory);
+
+        [DllImport(NATIVELIB_GOBJECT, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void g_object_unref(IntPtr obj);
         
         [DllImport(NATIVELIB_GOBJECT, CallingConvention = CallingConvention.Cdecl)]
         internal static extern uint g_timeout_add(uint interval, IntPtr sourceFunc, IntPtr data);
