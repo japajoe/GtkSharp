@@ -113,6 +113,11 @@ namespace GtkSharp.Utilities
             return t - Mathf.Floor(t / length) * length;
         }
 
+        public static float Round(float v)
+        {
+            return (float)Math.Round(v);
+        }
+
         public static float Sign(float f)
         {
             return (double)f >= 0.0 ? 1f : -1f;

@@ -20,7 +20,6 @@ namespace GtkSharp.Gtk.Widgets
         private int numSprites;
         private int offset = 0;
         private GtkOrientation orientation;
-        private CairoImageSurface surface;
         private Image image;
         private MouseButtonState mouseButtonState = MouseButtonState.Up;
         private Vector2 mousePosition = Vector2.zero;
@@ -33,7 +32,6 @@ namespace GtkSharp.Gtk.Widgets
         private int steps;
         private int stepInterval;
         private Widget topLevelWidget;
-        private bool useImage = false;
 
         public float Value
         {
@@ -47,59 +45,8 @@ namespace GtkSharp.Gtk.Widgets
             }
         }
 
-        public Knob(string filepath, int numSprites, GtkOrientation orientation, float valueMin, float valueMax, float value, int steps, float angleMin = -135.0f, float angleMax = 135.0f)
-        {
-            if(steps < 2)
-                steps = 2;
-            if(steps > numSprites)
-                steps = numSprites;
-
-            steps -= 1;
-
-            this.steps = steps;
-            this.stepInterval = numSprites / steps;
-
-            this.numSprites = numSprites;
-            this.orientation = orientation;
-            this.valueMin = valueMin;
-            this.valueMax = valueMax;
-            this.angleMin = angleMin;
-            this.angleMax = angleMax;
-
-            handle = NativeEventBox.gtk_event_box_new();
-            
-            surface = new CairoImageSurface(filepath);
-
-            if(orientation == GtkOrientation.Vertical)
-            {
-                dummy = new Image(new GdkPixbuf(GdkColorspace.RGB, true, 8, surface.Width, surface.Height / numSprites));
-                offset = surface.Height / numSprites;
-            }
-            else
-            {
-                dummy = new Image(new GdkPixbuf(GdkColorspace.RGB, true, 8, surface.Width / numSprites, surface.Height));
-                offset = surface.Width / numSprites;
-            }
-
-            dummy.Clear(new GdkRGBA(0.0, 0.0, 0.0, 0.0));
-            
-            this.Add(this.dummy);
-            this.AddEvents(GdkEventMask.PointerMotion | GdkEventMask.ButtonPress | GdkEventMask.ButtonRelease | GdkEventMask.Scroll);
-
-            this.MotionNotify += MouseMove;
-            this.ButtonPress += MouseDown;
-            this.ButtonRelease += MouseUp;
-            this.Scroll += MouseScroll;
-            this.Draw += OnDrawKnob;
-            this.DestroyEvent += OnDestroyWidget;
-
-            SetValue(value);
-        }
-
         public Knob(Image image, int numSprites, GtkOrientation orientation, float valueMin, float valueMax, float value, int steps, float angleMin = -135.0f, float angleMax = 135.0f)
         {
-            useImage = true;
-
             if(steps < 2)
                 steps = 2;
             if(steps > numSprites)
@@ -288,31 +235,6 @@ namespace GtkSharp.Gtk.Widgets
 
         private bool OnDrawKnob(CairoInstance cr)
         {
-            if(!useImage)
-                DrawFromSurface(cr);
-            else
-                DrawFromImage(cr);
-            
-            return false;
-        }
-
-        private void DrawFromSurface(CairoInstance cr)
-        {
-            int width = surface.Width;
-            int height = surface.Height;
-
-            if(orientation == GtkOrientation.Vertical)
-                cr.Translate(0, spriteIndex * -offset);
-            else
-                cr.Translate(spriteIndex * -offset, 0);
-
-            cr.SetSourceSurface(surface, 0, 0);
-            cr.Rectangle(0, 0, width, height);
-            cr.Fill();
-        }
-
-        private void DrawFromImage(CairoInstance cr)
-        {
             int width = image.Pixbuf.Format.width;
             int height = image.Pixbuf.Format.height;           
 
@@ -324,11 +246,8 @@ namespace GtkSharp.Gtk.Widgets
             cr.SetSourcePixbuf(image.Pixbuf, 0, 0);
             cr.Rectangle(0, 0, width, height);
             cr.Fill();
-        }
-
-        private void OnDestroyWidget()
-        {
-            surface.Destroy();
+            
+            return false;
         }
     }
 }
