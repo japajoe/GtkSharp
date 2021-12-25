@@ -15,7 +15,6 @@ namespace GtkSharp.Gtk.Widgets
             Up
         }
 
-        private Image dummy;
         private int spriteIndex = 0;
         private int numSprites;
         private int offset = 0;
@@ -56,32 +55,27 @@ namespace GtkSharp.Gtk.Widgets
 
             this.steps = steps;
             this.stepInterval = numSprites / steps;
-
             this.numSprites = numSprites;
             this.orientation = orientation;
             this.valueMin = valueMin;
             this.valueMax = valueMax;
             this.angleMin = angleMin;
             this.angleMax = angleMax;
-
-            handle = NativeEventBox.gtk_event_box_new();
-            
             this.image = image;
+
+            handle = NativeEventBox.gtk_event_box_new();            
 
             if(orientation == GtkOrientation.Vertical)
             {
-                dummy = new Image(new GdkPixbuf(GdkColorspace.RGB, true, 8, image.Pixbuf.Format.width, image.Pixbuf.Format.height / numSprites));
+                this.SetSizeRequest(image.Pixbuf.Format.width, image.Pixbuf.Format.height / numSprites);
                 offset = image.Pixbuf.Format.height / numSprites;
             }
             else
             {
-                dummy = new Image(new GdkPixbuf(GdkColorspace.RGB, true, 8, image.Pixbuf.Format.width / numSprites, image.Pixbuf.Format.height));
+                this.SetSizeRequest( image.Pixbuf.Format.width / numSprites, image.Pixbuf.Format.height);
                 offset = image.Pixbuf.Format.width / numSprites;
             }
 
-            dummy.Clear(new GdkRGBA(0.0, 0.0, 0.0, 0.0));
-            
-            this.Add(this.dummy);
             this.AddEvents(GdkEventMask.PointerMotion | GdkEventMask.ButtonPress | GdkEventMask.ButtonRelease | GdkEventMask.Scroll);
 
             this.MotionNotify += MouseMove;
@@ -143,7 +137,7 @@ namespace GtkSharp.Gtk.Widgets
             return Mathf.Atan2(currentVector.y, currentVector.x) * Mathf.Rad2Deg;
         }
 
-        float RoundToNearestStep(float pos, float stepSize)
+        private float RoundToNearestStep(float pos, float stepSize)
         {
             float xDiff = pos % stepSize;
             pos -= xDiff;
@@ -154,7 +148,7 @@ namespace GtkSharp.Gtk.Widgets
             return pos;
         }
 
-        bool MouseMove(GdkEventMotion eventMotion)
+        private bool MouseMove(GdkEventMotion eventMotion)
         {
             mousePosition = new Vector2((float)eventMotion.x, (float)eventMotion.y);
 
