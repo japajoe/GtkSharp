@@ -1,7 +1,6 @@
 using System.Runtime.InteropServices;
 using GtkSharp.Gdk.Native.Types;
 using GtkSharp.Glib.Native.Types;
-using GtkSharp.Gtk.Native.Types;
 
 namespace GtkSharp.Gtk.Native.Widgets
 {
@@ -11,54 +10,54 @@ namespace GtkSharp.Gtk.Native.Widgets
         internal static extern ulong gtk_gl_area_get_type();
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_gl_area_new();
+        internal static extern GObjectPointer gtk_gl_area_new();
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_gl_area_set_required_version(GtkWidgetPointer area, int major, int minor);
+        internal static extern void gtk_gl_area_set_required_version(GObjectPointer area, int major, int minor);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_gl_area_get_required_version(GtkWidgetPointer area, out int major, out int minor);
+        internal static extern void gtk_gl_area_get_required_version(GObjectPointer area, out int major, out int minor);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_gl_area_get_has_alpha(GtkWidgetPointer area);
+        internal static extern bool gtk_gl_area_get_has_alpha(GObjectPointer area);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_gl_area_set_has_alpha(GtkWidgetPointer area, bool has_alpha);
+        internal static extern void gtk_gl_area_set_has_alpha(GObjectPointer area, bool has_alpha);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_gl_area_get_has_depth_buffer(GtkWidgetPointer area);
+        internal static extern bool gtk_gl_area_get_has_depth_buffer(GObjectPointer area);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_gl_area_set_has_depth_buffer(GtkWidgetPointer area, bool has_depth_buffer);
+        internal static extern void gtk_gl_area_set_has_depth_buffer(GObjectPointer area, bool has_depth_buffer);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_gl_area_get_has_stencil_buffer(GtkWidgetPointer area);
+        internal static extern bool gtk_gl_area_get_has_stencil_buffer(GObjectPointer area);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_gl_area_set_has_stencil_buffer(GtkWidgetPointer area, bool has_stencil_buffer);
+        internal static extern void gtk_gl_area_set_has_stencil_buffer(GObjectPointer area, bool has_stencil_buffer);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_gl_area_get_auto_render(GtkWidgetPointer area);
+        internal static extern bool gtk_gl_area_get_auto_render(GObjectPointer area);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_gl_area_set_auto_render(GtkWidgetPointer area, bool auto_render);
+        internal static extern void gtk_gl_area_set_auto_render(GObjectPointer area, bool auto_render);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_gl_area_queue_render(GtkWidgetPointer area);
+        internal static extern void gtk_gl_area_queue_render(GObjectPointer area);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GdkGLContextPointer gtk_gl_area_get_context(GtkWidgetPointer area);
+        internal static extern GdkGLContextPointer gtk_gl_area_get_context(GObjectPointer area);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_gl_area_make_current(GtkWidgetPointer area);
+        internal static extern void gtk_gl_area_make_current(GObjectPointer area);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_gl_area_attach_buffers(GtkWidgetPointer area);
+        internal static extern void gtk_gl_area_attach_buffers(GObjectPointer area);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_gl_area_set_error(GtkWidgetPointer area, GErrorPointer error);
+        internal static extern void gtk_gl_area_set_error(GObjectPointer area, GErrorPointer error);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GErrorPointer gtk_gl_area_get_error(GtkWidgetPointer area);
+        internal static extern GErrorPointer gtk_gl_area_get_error(GObjectPointer area);
     }
 }

@@ -6,9 +6,7 @@ using GtkSharp.Gtk.Native.Widgets;
 namespace GtkSharp.Gtk.Types
 {
     public class GtkTextTag : GObject
-    {
-        internal GObjectPointer handle;
-        
+    {        
         public GtkTextTag(string text)
         {
             handle = NativeTextTag.gtk_text_tag_new(text);

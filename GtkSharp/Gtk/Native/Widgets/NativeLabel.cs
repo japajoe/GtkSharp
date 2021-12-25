@@ -1,5 +1,5 @@
 using System.Runtime.InteropServices;
-using GtkSharp.Gtk.Native.Types;
+using GtkSharp.Glib.Native.Types;
 using GtkSharp.Gtk.Types;
 using GtkSharp.Pango.Native.Types;
 using GtkSharp.Pango.Types;
@@ -12,153 +12,153 @@ namespace GtkSharp.Gtk.Native.Widgets
         internal static extern ulong gtk_label_get_type();
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_label_new(string str);
+        internal static extern GObjectPointer gtk_label_new(string str);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_label_new_with_mnemonic(string str);
+        internal static extern GObjectPointer gtk_label_new_with_mnemonic(string str);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_label_set_text(GtkWidgetPointer label, string str);
+        internal static extern void gtk_label_set_text(GObjectPointer label, string str);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern string gtk_label_get_text(GtkWidgetPointer label);
+        internal static extern string gtk_label_get_text(GObjectPointer label);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_label_set_attributes(GtkWidgetPointer label, PangoAttrListPointer attrs);
+        internal static extern void gtk_label_set_attributes(GObjectPointer label, PangoAttrListPointer attrs);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern PangoAttrListPointer gtk_label_get_attributes(GtkWidgetPointer label);
+        internal static extern PangoAttrListPointer gtk_label_get_attributes(GObjectPointer label);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_label_set_label(GtkWidgetPointer label, string str);
+        internal static extern void gtk_label_set_label(GObjectPointer label, string str);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern string  gtk_label_get_label(GtkWidgetPointer label);
+        internal static extern string  gtk_label_get_label(GObjectPointer label);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_label_set_markup(GtkWidgetPointer label, string str);
+        internal static extern void gtk_label_set_markup(GObjectPointer label, string str);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_label_set_use_markup(GtkWidgetPointer label, bool setting);
+        internal static extern void gtk_label_set_use_markup(GObjectPointer label, bool setting);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_label_get_use_markup(GtkWidgetPointer label);
+        internal static extern bool gtk_label_get_use_markup(GObjectPointer label);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_label_set_use_underline(GtkWidgetPointer label, bool setting);
+        internal static extern void gtk_label_set_use_underline(GObjectPointer label, bool setting);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_label_get_use_underline(GtkWidgetPointer label); 
+        internal static extern bool gtk_label_get_use_underline(GObjectPointer label); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_label_set_markup_with_mnemonic(GtkWidgetPointer label, string str);
+        internal static extern void gtk_label_set_markup_with_mnemonic(GObjectPointer label, string str);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern uint gtk_label_get_mnemonic_keyval(GtkWidgetPointer label);
+        internal static extern uint gtk_label_get_mnemonic_keyval(GObjectPointer label);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_label_set_mnemonic_widget(GtkWidgetPointer label, GtkWidgetPointer widget);
+        internal static extern void gtk_label_set_mnemonic_widget(GObjectPointer label, GObjectPointer widget);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_label_get_mnemonic_widget(GtkWidgetPointer label);
+        internal static extern GObjectPointer gtk_label_get_mnemonic_widget(GObjectPointer label);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_label_set_text_with_mnemonic(GtkWidgetPointer label, string str);
+        internal static extern void gtk_label_set_text_with_mnemonic(GObjectPointer label, string str);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_label_set_justify(GtkWidgetPointer label, GtkJustification jtype);
+        internal static extern void gtk_label_set_justify(GObjectPointer label, GtkJustification jtype);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkJustification gtk_label_get_justify(GtkWidgetPointer label);
+        internal static extern GtkJustification gtk_label_get_justify(GObjectPointer label);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_label_set_ellipsize(GtkWidgetPointer label, PangoEllipsizeMode mode);
+        internal static extern void gtk_label_set_ellipsize(GObjectPointer label, PangoEllipsizeMode mode);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern PangoEllipsizeMode gtk_label_get_ellipsize(GtkWidgetPointer label);
+        internal static extern PangoEllipsizeMode gtk_label_get_ellipsize(GObjectPointer label);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_label_set_width_chars(GtkWidgetPointer label, int n_chars);
+        internal static extern void gtk_label_set_width_chars(GObjectPointer label, int n_chars);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern int gtk_label_get_width_chars(GtkWidgetPointer label);
+        internal static extern int gtk_label_get_width_chars(GObjectPointer label);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_label_set_max_width_chars(GtkWidgetPointer label, int n_chars);
+        internal static extern void gtk_label_set_max_width_chars(GObjectPointer label, int n_chars);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern int gtk_label_get_max_width_chars(GtkWidgetPointer label);
+        internal static extern int gtk_label_get_max_width_chars(GObjectPointer label);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_label_set_lines(GtkWidgetPointer label, int lines);
+        internal static extern void gtk_label_set_lines(GObjectPointer label, int lines);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern int gtk_label_get_lines(GtkWidgetPointer label);
+        internal static extern int gtk_label_get_lines(GObjectPointer label);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_label_set_pattern(GtkWidgetPointer label, string pattern);
+        internal static extern void gtk_label_set_pattern(GObjectPointer label, string pattern);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_label_set_line_wrap(GtkWidgetPointer label, bool wrap);
+        internal static extern void gtk_label_set_line_wrap(GObjectPointer label, bool wrap);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_label_get_line_wrap(GtkWidgetPointer label);
+        internal static extern bool gtk_label_get_line_wrap(GObjectPointer label);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_label_set_line_wrap_mode(GtkWidgetPointer label, PangoWrapMode wrap_mode);
+        internal static extern void gtk_label_set_line_wrap_mode(GObjectPointer label, PangoWrapMode wrap_mode);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern PangoWrapMode gtk_label_get_line_wrap_mode(GtkWidgetPointer label);
+        internal static extern PangoWrapMode gtk_label_get_line_wrap_mode(GObjectPointer label);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_label_set_selectable(GtkWidgetPointer label, bool setting);
+        internal static extern void gtk_label_set_selectable(GObjectPointer label, bool setting);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_label_get_selectable(GtkWidgetPointer label);
+        internal static extern bool gtk_label_get_selectable(GObjectPointer label);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_label_set_angle(GtkWidgetPointer label, double angle);
+        internal static extern void gtk_label_set_angle(GObjectPointer label, double angle);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern double gtk_label_get_angle(GtkWidgetPointer label);
+        internal static extern double gtk_label_get_angle(GObjectPointer label);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_label_select_region(GtkWidgetPointer label, int start_offset, int end_offset);
+        internal static extern void gtk_label_select_region(GObjectPointer label, int start_offset, int end_offset);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_label_get_selection_bounds(GtkWidgetPointer label, out int start, out int end); 
+        internal static extern bool gtk_label_get_selection_bounds(GObjectPointer label, out int start, out int end); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern PangoLayoutPointer gtk_label_get_layout(GtkWidgetPointer label);
+        internal static extern PangoLayoutPointer gtk_label_get_layout(GObjectPointer label);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_label_get_layout_offsets(GtkWidgetPointer label, out int x, out int y); 
+        internal static extern void gtk_label_get_layout_offsets(GObjectPointer label, out int x, out int y); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_label_set_single_line_mode(GtkWidgetPointer label, bool single_line_mode);
+        internal static extern void gtk_label_set_single_line_mode(GObjectPointer label, bool single_line_mode);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_label_get_single_line_mode(GtkWidgetPointer label); 
+        internal static extern bool gtk_label_get_single_line_mode(GObjectPointer label); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern string gtk_label_get_current_uri(GtkWidgetPointer label);
+        internal static extern string gtk_label_get_current_uri(GObjectPointer label);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_label_set_track_visited_links(GtkWidgetPointer label, bool track_links);
+        internal static extern void gtk_label_set_track_visited_links(GObjectPointer label, bool track_links);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_label_get_track_visited_links(GtkWidgetPointer label); 
+        internal static extern bool gtk_label_get_track_visited_links(GObjectPointer label); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_label_set_xalign(GtkWidgetPointer label, float xalign); 
+        internal static extern void gtk_label_set_xalign(GObjectPointer label, float xalign); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern float gtk_label_get_xalign(GtkWidgetPointer label); 
+        internal static extern float gtk_label_get_xalign(GObjectPointer label); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_label_set_yalign(GtkWidgetPointer label, float yalign); 
+        internal static extern void gtk_label_set_yalign(GObjectPointer label, float yalign); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern float gtk_label_get_yalign(GtkWidgetPointer label);
+        internal static extern float gtk_label_get_yalign(GObjectPointer label);
     }
 }

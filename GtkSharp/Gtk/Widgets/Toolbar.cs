@@ -166,7 +166,7 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return null;
 
-            GtkWidgetPointer w = NativeToolBar.gtk_toolbar_get_nth_item(handle, index);
+            var w = NativeToolBar.gtk_toolbar_get_nth_item(handle, index);
             
             if(w.IsNullPointer)
                 return null;

@@ -1,3 +1,4 @@
+using GtkSharp.Glib.Native.Types;
 using GtkSharp.Gtk.Native.Types;
 using GtkSharp.Gtk.Native.Widgets;
 
@@ -55,7 +56,7 @@ namespace GtkSharp.Gtk.Widgets
             Add(widget);
         }
 
-        internal ToolItem(GtkWidgetPointer handle)
+        internal ToolItem(GObjectPointer handle)
         {
             this.handle = handle;
         }

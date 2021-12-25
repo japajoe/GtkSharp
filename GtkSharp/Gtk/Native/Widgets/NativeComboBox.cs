@@ -2,6 +2,7 @@ using System;
 using System.Runtime.InteropServices;
 using GtkSharp.Atk.Native.Types;
 using GtkSharp.Gdk.Native.Types;
+using GtkSharp.Glib.Native.Types;
 using GtkSharp.Gtk.Native.Types;
 using GtkSharp.Gtk.Types;
 
@@ -13,126 +14,126 @@ namespace GtkSharp.Gtk.Native.Widgets
         internal static extern ulong gtk_combo_box_get_type();
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_combo_box_new();
+        internal static extern GObjectPointer gtk_combo_box_new();
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_combo_box_new_with_area(GtkWidgetPointer cellArea);
+        internal static extern GObjectPointer gtk_combo_box_new_with_area(GObjectPointer cellArea);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_combo_box_new_with_area_and_entry(GtkWidgetPointer cellArea);
+        internal static extern GObjectPointer gtk_combo_box_new_with_area_and_entry(GObjectPointer cellArea);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_combo_box_new_with_entry();
+        internal static extern GObjectPointer gtk_combo_box_new_with_entry();
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_combo_box_new_with_model(GtkTreeModelPointer model);
+        internal static extern GObjectPointer gtk_combo_box_new_with_model(GtkTreeModelPointer model);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_combo_box_new_with_model_and_entry(GtkTreeModelPointer model); 
+        internal static extern GObjectPointer gtk_combo_box_new_with_model_and_entry(GtkTreeModelPointer model); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern int gtk_combo_box_get_wrap_width(GtkWidgetPointer combo_box);
+        internal static extern int gtk_combo_box_get_wrap_width(GObjectPointer combo_box);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_combo_box_set_wrap_width(GtkWidgetPointer combo_box, int width);
+        internal static extern void gtk_combo_box_set_wrap_width(GObjectPointer combo_box, int width);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern int gtk_combo_box_get_row_span_column(GtkWidgetPointer combo_box);
+        internal static extern int gtk_combo_box_get_row_span_column(GObjectPointer combo_box);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_combo_box_set_row_span_column(GtkWidgetPointer combo_box, int row_span);
+        internal static extern void gtk_combo_box_set_row_span_column(GObjectPointer combo_box, int row_span);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern int gtk_combo_box_get_column_span_column(GtkWidgetPointer combo_box);
+        internal static extern int gtk_combo_box_get_column_span_column(GObjectPointer combo_box);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_combo_box_set_column_span_column(GtkWidgetPointer combo_box, int column_span); 
+        internal static extern void gtk_combo_box_set_column_span_column(GObjectPointer combo_box, int column_span); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_combo_box_get_add_tearoffs(GtkWidgetPointer combo_box);
+        internal static extern bool gtk_combo_box_get_add_tearoffs(GObjectPointer combo_box);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_combo_box_set_add_tearoffs(GtkWidgetPointer combo_box, bool add_tearoffs); 
+        internal static extern void gtk_combo_box_set_add_tearoffs(GObjectPointer combo_box, bool add_tearoffs); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern string gtk_combo_box_get_title(GtkWidgetPointer combo_box);
+        internal static extern string gtk_combo_box_get_title(GObjectPointer combo_box);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_combo_box_set_title(GtkWidgetPointer combo_box, string title); 
+        internal static extern void gtk_combo_box_set_title(GObjectPointer combo_box, string title); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_combo_box_get_focus_on_click(GtkWidgetPointer combo);
+        internal static extern bool gtk_combo_box_get_focus_on_click(GObjectPointer combo);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_combo_box_set_focus_on_click(GtkWidgetPointer combo, bool focus_on_click); 
+        internal static extern void gtk_combo_box_set_focus_on_click(GObjectPointer combo, bool focus_on_click); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern int gtk_combo_box_get_active(GtkWidgetPointer combo_box);
+        internal static extern int gtk_combo_box_get_active(GObjectPointer combo_box);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_combo_box_set_active(GtkWidgetPointer combo_box, int index_);
+        internal static extern void gtk_combo_box_set_active(GObjectPointer combo_box, int index_);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_combo_box_get_active_iter(GtkWidgetPointer combo_box, out GtkTreeIter iter);
+        internal static extern bool gtk_combo_box_get_active_iter(GObjectPointer combo_box, out GtkTreeIter iter);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_combo_box_set_active_iter(GtkWidgetPointer combo_box, ref GtkTreeIter iter); 
+        internal static extern void gtk_combo_box_set_active_iter(GObjectPointer combo_box, ref GtkTreeIter iter); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_combo_box_set_model(GtkWidgetPointer combo_box, GtkTreeModelPointer model);
+        internal static extern void gtk_combo_box_set_model(GObjectPointer combo_box, GtkTreeModelPointer model);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkTreeModelPointer gtk_combo_box_get_model(GtkWidgetPointer combo_box); 
+        internal static extern GtkTreeModelPointer gtk_combo_box_get_model(GObjectPointer combo_box); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern IntPtr gtk_combo_box_get_row_separator_func(GtkWidgetPointer combo_box);
+        internal static extern IntPtr gtk_combo_box_get_row_separator_func(GObjectPointer combo_box);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_combo_box_set_row_separator_func(GtkWidgetPointer combo_box, IntPtr treeViewRowSeparatorFunc, IntPtr data, IntPtr destroyNotifyFunc); 
+        internal static extern void gtk_combo_box_set_row_separator_func(GObjectPointer combo_box, IntPtr treeViewRowSeparatorFunc, IntPtr data, IntPtr destroyNotifyFunc); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_combo_box_set_button_sensitivity(GtkWidgetPointer combo_box, GtkSensitivityType sensitivity);
+        internal static extern void gtk_combo_box_set_button_sensitivity(GObjectPointer combo_box, GtkSensitivityType sensitivity);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkSensitivityType gtk_combo_box_get_button_sensitivity(GtkWidgetPointer combo_box); 
+        internal static extern GtkSensitivityType gtk_combo_box_get_button_sensitivity(GObjectPointer combo_box); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_combo_box_get_has_entry(GtkWidgetPointer combo_box);
+        internal static extern bool gtk_combo_box_get_has_entry(GObjectPointer combo_box);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_combo_box_set_entry_text_column(GtkWidgetPointer combo_box, int text_column);
+        internal static extern void gtk_combo_box_set_entry_text_column(GObjectPointer combo_box, int text_column);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern int gtk_combo_box_get_entry_text_column(GtkWidgetPointer combo_box); 
+        internal static extern int gtk_combo_box_get_entry_text_column(GObjectPointer combo_box); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_combo_box_set_popup_fixed_width(GtkWidgetPointer combo_box, bool fixxed);
+        internal static extern void gtk_combo_box_set_popup_fixed_width(GObjectPointer combo_box, bool fixxed);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_combo_box_get_popup_fixed_width(GtkWidgetPointer combo_box); 
+        internal static extern bool gtk_combo_box_get_popup_fixed_width(GObjectPointer combo_box); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_combo_box_popup(GtkWidgetPointer combo_box);
+        internal static extern void gtk_combo_box_popup(GObjectPointer combo_box);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_combo_box_popup_for_device(GtkWidgetPointer combo_box, GdkDevicePointer device);
+        internal static extern void gtk_combo_box_popup_for_device(GObjectPointer combo_box, GdkDevicePointer device);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_combo_box_popdown(GtkWidgetPointer combo_box);
+        internal static extern void gtk_combo_box_popdown(GObjectPointer combo_box);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern AtkObjectPointer gtk_combo_box_get_popup_accessible(GtkWidgetPointer combo_box); 
+        internal static extern AtkObjectPointer gtk_combo_box_get_popup_accessible(GObjectPointer combo_box); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern int gtk_combo_box_get_id_column(GtkWidgetPointer combo_box);
+        internal static extern int gtk_combo_box_get_id_column(GObjectPointer combo_box);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_combo_box_set_id_column(GtkWidgetPointer combo_box, int id_column);
+        internal static extern void gtk_combo_box_set_id_column(GObjectPointer combo_box, int id_column);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern string gtk_combo_box_get_active_id(GtkWidgetPointer combo_box);
+        internal static extern string gtk_combo_box_get_active_id(GObjectPointer combo_box);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_combo_box_set_active_id(GtkWidgetPointer combo_box, string active_id);
+        internal static extern bool gtk_combo_box_set_active_id(GObjectPointer combo_box, string active_id);
     }
 }

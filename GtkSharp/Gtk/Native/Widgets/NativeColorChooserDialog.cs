@@ -1,5 +1,5 @@
 using System.Runtime.InteropServices;
-using GtkSharp.Gtk.Native.Types;
+using GtkSharp.Glib.Native.Types;
 
 namespace GtkSharp.Gtk.Native.Widgets
 {
@@ -9,6 +9,6 @@ namespace GtkSharp.Gtk.Native.Widgets
         internal static extern ulong gtk_color_chooser_dialog_get_type();
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_color_chooser_dialog_new(string title, GtkWidgetPointer parentWindow);
+        internal static extern GObjectPointer gtk_color_chooser_dialog_new(string title, GObjectPointer parentWindow);
     }
 }

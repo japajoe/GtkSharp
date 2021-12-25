@@ -11,7 +11,6 @@ namespace GtkSharp.Gtk.Types
 {
     public class GtkTextBufferBase : GObject
     {
-        internal GObjectPointer handle;
         protected GtkTextTagTable tagTable;
         private string text;
 

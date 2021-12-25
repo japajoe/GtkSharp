@@ -34,7 +34,7 @@ namespace GtkSharp.Gtk.Native.Widgets
         internal static extern GtkSourceCompletionInfoPointer gtk_source_completion_get_info_window(GtkSourceCompletionPointer completion);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_source_completion_get_view(GtkSourceCompletionPointer completion);
+        internal static extern GObjectPointer gtk_source_completion_get_view(GtkSourceCompletionPointer completion);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern GtkSourceCompletionContextPointer gtk_source_completion_create_context(GtkSourceCompletionPointer completion, ref GtkTextIter position);

@@ -13,114 +13,114 @@ namespace GtkSharp.Gtk.Native.Widgets
         internal static extern ulong gtk_source_view_get_type();
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_source_view_new();
+        internal static extern GObjectPointer gtk_source_view_new();
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_source_view_new_with_buffer(GObjectPointer buffer);
+        internal static extern GObjectPointer gtk_source_view_new_with_buffer(GObjectPointer buffer);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_source_view_set_show_line_numbers(GtkWidgetPointer view, bool show);
+        internal static extern void gtk_source_view_set_show_line_numbers(GObjectPointer view, bool show);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_source_view_get_show_line_numbers(GtkWidgetPointer view);
+        internal static extern bool gtk_source_view_get_show_line_numbers(GObjectPointer view);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_source_view_set_tab_width(GtkWidgetPointer view, uint width);
+        internal static extern void gtk_source_view_set_tab_width(GObjectPointer view, uint width);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern uint gtk_source_view_get_tab_width(GtkWidgetPointer view);
+        internal static extern uint gtk_source_view_get_tab_width(GObjectPointer view);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_source_view_set_indent_width(GtkWidgetPointer view, int width);
+        internal static extern void gtk_source_view_set_indent_width(GObjectPointer view, int width);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern int gtk_source_view_get_indent_width(GtkWidgetPointer view);
+        internal static extern int gtk_source_view_get_indent_width(GObjectPointer view);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_source_view_set_auto_indent(GtkWidgetPointer view, bool enable);
+        internal static extern void gtk_source_view_set_auto_indent(GObjectPointer view, bool enable);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_source_view_get_auto_indent(GtkWidgetPointer view);
+        internal static extern bool gtk_source_view_get_auto_indent(GObjectPointer view);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_source_view_set_insert_spaces_instead_of_tabs(GtkWidgetPointer view, bool enable);
+        internal static extern void gtk_source_view_set_insert_spaces_instead_of_tabs(GObjectPointer view, bool enable);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_source_view_get_insert_spaces_instead_of_tabs(GtkWidgetPointer view);
+        internal static extern bool gtk_source_view_get_insert_spaces_instead_of_tabs(GObjectPointer view);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_source_view_set_indent_on_tab(GtkWidgetPointer view, bool enable);
+        internal static extern void gtk_source_view_set_indent_on_tab(GObjectPointer view, bool enable);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_source_view_get_indent_on_tab(GtkWidgetPointer view);
+        internal static extern bool gtk_source_view_get_indent_on_tab(GObjectPointer view);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_source_view_indent_lines(GtkWidgetPointer view, ref GtkTextIter start, ref GtkTextIter end);
+        internal static extern void gtk_source_view_indent_lines(GObjectPointer view, ref GtkTextIter start, ref GtkTextIter end);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_source_view_unindent_lines(GtkWidgetPointer view, ref GtkTextIter start, ref GtkTextIter end);
+        internal static extern void gtk_source_view_unindent_lines(GObjectPointer view, ref GtkTextIter start, ref GtkTextIter end);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_source_view_set_highlight_current_line(GtkWidgetPointer view, bool highlight);
+        internal static extern void gtk_source_view_set_highlight_current_line(GObjectPointer view, bool highlight);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_source_view_get_highlight_current_line(GtkWidgetPointer view);
+        internal static extern bool gtk_source_view_get_highlight_current_line(GObjectPointer view);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_source_view_set_show_right_margin(GtkWidgetPointer view, bool show);
+        internal static extern void gtk_source_view_set_show_right_margin(GObjectPointer view, bool show);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_source_view_get_show_right_margin(GtkWidgetPointer view);
+        internal static extern bool gtk_source_view_get_show_right_margin(GObjectPointer view);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_source_view_set_right_margin_position(GtkWidgetPointer view, uint pos);
+        internal static extern void gtk_source_view_set_right_margin_position(GObjectPointer view, uint pos);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern uint gtk_source_view_get_right_margin_position(GtkWidgetPointer view);
+        internal static extern uint gtk_source_view_get_right_margin_position(GObjectPointer view);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_source_view_set_show_line_marks(GtkWidgetPointer view, bool show);
+        internal static extern void gtk_source_view_set_show_line_marks(GObjectPointer view, bool show);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_source_view_get_show_line_marks(GtkWidgetPointer view);
+        internal static extern bool gtk_source_view_get_show_line_marks(GObjectPointer view);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_source_view_set_mark_attributes(GtkWidgetPointer view, string category, GtkSourceMarkAttributesPointer attributes, int priority);
+        internal static extern void gtk_source_view_set_mark_attributes(GObjectPointer view, string category, GtkSourceMarkAttributesPointer attributes, int priority);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkSourceMarkAttributesPointer gtk_source_view_get_mark_attributes(GtkWidgetPointer view, string category, out int priority);
+        internal static extern GtkSourceMarkAttributesPointer gtk_source_view_get_mark_attributes(GObjectPointer view, string category, out int priority);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_source_view_set_smart_backspace(GtkWidgetPointer view, bool smart_backspace);
+        internal static extern void gtk_source_view_set_smart_backspace(GObjectPointer view, bool smart_backspace);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_source_view_get_smart_backspace(GtkWidgetPointer view);
+        internal static extern bool gtk_source_view_get_smart_backspace(GObjectPointer view);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_source_view_set_smart_home_end(GtkWidgetPointer view, GtkSourceSmartHomeEndType smart_home_end);
+        internal static extern void gtk_source_view_set_smart_home_end(GObjectPointer view, GtkSourceSmartHomeEndType smart_home_end);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkSourceSmartHomeEndType gtk_source_view_get_smart_home_end(GtkWidgetPointer view);
+        internal static extern GtkSourceSmartHomeEndType gtk_source_view_get_smart_home_end(GObjectPointer view);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_source_view_set_draw_spaces(GtkWidgetPointer view, GtkSourceDrawSpacesFlags flags);
+        internal static extern void gtk_source_view_set_draw_spaces(GObjectPointer view, GtkSourceDrawSpacesFlags flags);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkSourceDrawSpacesFlags gtk_source_view_get_draw_spaces(GtkWidgetPointer view);
+        internal static extern GtkSourceDrawSpacesFlags gtk_source_view_get_draw_spaces(GObjectPointer view);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern uint gtk_source_view_get_visual_column(GtkWidgetPointer view, ref GtkTextIter iter);
+        internal static extern uint gtk_source_view_get_visual_column(GObjectPointer view, ref GtkTextIter iter);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkSourceCompletionPointer gtk_source_view_get_completion(GtkWidgetPointer view);
+        internal static extern GtkSourceCompletionPointer gtk_source_view_get_completion(GObjectPointer view);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkSourceGutterPointer gtk_source_view_get_gutter(GtkWidgetPointer view, GtkTextWindowType window_type);
+        internal static extern GtkSourceGutterPointer gtk_source_view_get_gutter(GObjectPointer view, GtkTextWindowType window_type);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_source_view_set_background_pattern(GtkWidgetPointer view, GtkSourceBackgroundPatternType background_pattern);
+        internal static extern void gtk_source_view_set_background_pattern(GObjectPointer view, GtkSourceBackgroundPatternType background_pattern);
         
         [DllImport(NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkSourceBackgroundPatternType gtk_source_view_get_background_pattern(GtkWidgetPointer view);   
+        internal static extern GtkSourceBackgroundPatternType gtk_source_view_get_background_pattern(GObjectPointer view);   
     }
 }

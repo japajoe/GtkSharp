@@ -10,7 +10,7 @@ namespace GtkSharp.Gdk.Types
 {
     public class GdkPixbuf : GObject
     {
-        internal GdkPixbufPointer handle;
+        //internal GdkPixbufPointer handle;
         private GdkImageFormat format;
         private GEventHandler<DestroyNotifyCallback,DestroyNotifyEvent> destroyNotifyHandler = new GEventHandler<DestroyNotifyCallback, DestroyNotifyEvent>();
 
@@ -34,7 +34,7 @@ namespace GtkSharp.Gdk.Types
             }
         }
 
-        internal GdkPixbuf(GdkPixbufPointer handle)
+        internal GdkPixbuf(GObjectPointer handle)
         {
             this.handle = handle;
 

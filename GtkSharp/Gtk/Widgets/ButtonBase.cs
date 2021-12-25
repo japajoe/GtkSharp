@@ -150,7 +150,7 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return null;
 
-            GtkWidgetPointer w = NativeButton.gtk_button_get_image(handle);
+            var w = NativeButton.gtk_button_get_image(handle);
 
             if(w.IsNullPointer)
                 return null;

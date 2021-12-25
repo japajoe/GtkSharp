@@ -1,5 +1,6 @@
 using System.Runtime.InteropServices;
 using GtkSharp.Gdk.Native.Types;
+using GtkSharp.Glib.Native.Types;
 using GtkSharp.Gtk.Native.Types;
 using GtkSharp.Gtk.Types;
 
@@ -12,102 +13,102 @@ namespace GtkSharp.Gtk.Native.Widgets
         internal static extern ulong gtk_about_dialog_get_type();
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_about_dialog_new();
+        internal static extern GObjectPointer gtk_about_dialog_new();
         
         //[DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        //internal static extern void gtk_show_about_dialog(GtkWidgetPointer parentWindow, string first_property_name, ...);
+        //internal static extern void gtk_show_about_dialog(GObjectPointer parentWindow, string first_property_name, ...);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern string gtk_about_dialog_get_program_name(GtkWidgetPointer about);
+        internal static extern string gtk_about_dialog_get_program_name(GObjectPointer about);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_about_dialog_set_program_name(GtkWidgetPointer about, string name);
+        internal static extern void gtk_about_dialog_set_program_name(GObjectPointer about, string name);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern string gtk_about_dialog_get_version(GtkWidgetPointer about);
+        internal static extern string gtk_about_dialog_get_version(GObjectPointer about);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_about_dialog_set_version(GtkWidgetPointer about, string version);
+        internal static extern void gtk_about_dialog_set_version(GObjectPointer about, string version);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern string gtk_about_dialog_get_copyright(GtkWidgetPointer about);
+        internal static extern string gtk_about_dialog_get_copyright(GObjectPointer about);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_about_dialog_set_copyright(GtkWidgetPointer about, string copyright);
+        internal static extern void gtk_about_dialog_set_copyright(GObjectPointer about, string copyright);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern string gtk_about_dialog_get_comments(GtkWidgetPointer about);
+        internal static extern string gtk_about_dialog_get_comments(GObjectPointer about);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_about_dialog_set_comments(GtkWidgetPointer about, string comments);
+        internal static extern void gtk_about_dialog_set_comments(GObjectPointer about, string comments);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern string gtk_about_dialog_get_license(GtkWidgetPointer about);
+        internal static extern string gtk_about_dialog_get_license(GObjectPointer about);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_about_dialog_set_license(GtkWidgetPointer about, string license);
+        internal static extern void gtk_about_dialog_set_license(GObjectPointer about, string license);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_about_dialog_set_license_type(GtkWidgetPointer about, GtkLicense license_type);
+        internal static extern void gtk_about_dialog_set_license_type(GObjectPointer about, GtkLicense license_type);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkLicense gtk_about_dialog_get_license_type(GtkWidgetPointer about); 
+        internal static extern GtkLicense gtk_about_dialog_get_license_type(GObjectPointer about); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_about_dialog_get_wrap_license(GtkWidgetPointer about);
+        internal static extern bool gtk_about_dialog_get_wrap_license(GObjectPointer about);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_about_dialog_set_wrap_license(GtkWidgetPointer about, bool wrap_license); 
+        internal static extern void gtk_about_dialog_set_wrap_license(GObjectPointer about, bool wrap_license); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern string gtk_about_dialog_get_website(GtkWidgetPointer about);
+        internal static extern string gtk_about_dialog_get_website(GObjectPointer about);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_about_dialog_set_website(GtkWidgetPointer about, string website);
+        internal static extern void gtk_about_dialog_set_website(GObjectPointer about, string website);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern string gtk_about_dialog_get_website_label(GtkWidgetPointer about);
+        internal static extern string gtk_about_dialog_get_website_label(GObjectPointer about);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_about_dialog_set_website_label(GtkWidgetPointer about, string website_label);
+        internal static extern void gtk_about_dialog_set_website_label(GObjectPointer about, string website_label);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern string gtk_about_dialog_get_authors(GtkWidgetPointer about);
+        internal static extern string gtk_about_dialog_get_authors(GObjectPointer about);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_about_dialog_set_authors(GtkWidgetPointer about, string[] authors);
+        internal static extern void gtk_about_dialog_set_authors(GObjectPointer about, string[] authors);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern string gtk_about_dialog_get_documenters(GtkWidgetPointer about);
+        internal static extern string gtk_about_dialog_get_documenters(GObjectPointer about);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_about_dialog_set_documenters(GtkWidgetPointer about, string[] documenters);
+        internal static extern void gtk_about_dialog_set_documenters(GObjectPointer about, string[] documenters);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern string gtk_about_dialog_get_artists(GtkWidgetPointer about);
+        internal static extern string gtk_about_dialog_get_artists(GObjectPointer about);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_about_dialog_set_artists(GtkWidgetPointer about, string[] artists);
+        internal static extern void gtk_about_dialog_set_artists(GObjectPointer about, string[] artists);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern string gtk_about_dialog_get_translator_credits(GtkWidgetPointer about);
+        internal static extern string gtk_about_dialog_get_translator_credits(GObjectPointer about);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_about_dialog_set_translator_credits(GtkWidgetPointer about, string translator_credits);
+        internal static extern void gtk_about_dialog_set_translator_credits(GObjectPointer about, string translator_credits);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GdkPixbufPointer gtk_about_dialog_get_logo(GtkWidgetPointer about);
+        internal static extern GdkPixbufPointer gtk_about_dialog_get_logo(GObjectPointer about);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_about_dialog_set_logo(GtkWidgetPointer about, GdkPixbufPointer logo);
+        internal static extern void gtk_about_dialog_set_logo(GObjectPointer about, GdkPixbufPointer logo);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern string gtk_about_dialog_get_logo_icon_name(GtkWidgetPointer about);
+        internal static extern string gtk_about_dialog_get_logo_icon_name(GObjectPointer about);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_about_dialog_set_logo_icon_name(GtkWidgetPointer about, string icon_name);
+        internal static extern void gtk_about_dialog_set_logo_icon_name(GObjectPointer about, string icon_name);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_about_dialog_add_credit_section(GtkWidgetPointer about, string section_name, string[] people);        
+        internal static extern void gtk_about_dialog_add_credit_section(GObjectPointer about, string section_name, string[] people);        
     }
 }

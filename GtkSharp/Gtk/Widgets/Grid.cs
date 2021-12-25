@@ -160,7 +160,7 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return null;
 
-            GtkWidgetPointer w = NativeGrid.gtk_grid_get_child_at(handle, left, top);
+            var w = NativeGrid.gtk_grid_get_child_at(handle, left, top);
 
             if(w.IsNullPointer)
                 return null;

@@ -1,5 +1,6 @@
 using System.Runtime.InteropServices;
 using GtkSharp.Gdk.Types;
+using GtkSharp.Glib.Native.Types;
 using GtkSharp.Gtk.Native.Types;
 
 namespace GtkSharp.Gtk.Native.Widgets
@@ -10,42 +11,42 @@ namespace GtkSharp.Gtk.Native.Widgets
         internal static extern ulong gtk_color_button_get_type();
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_color_button_new();
+        internal static extern GObjectPointer gtk_color_button_new();
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_color_button_new_with_rgba(ref GdkRGBA rgba);
+        internal static extern GObjectPointer gtk_color_button_new_with_rgba(ref GdkRGBA rgba);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_color_button_set_title(GtkWidgetPointer button, string title);
+        internal static extern void gtk_color_button_set_title(GObjectPointer button, string title);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern string gtk_color_button_get_title(GtkWidgetPointer button); 
+        internal static extern string gtk_color_button_get_title(GObjectPointer button); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_color_button_new_with_color(ref GdkColor color);
+        internal static extern GObjectPointer gtk_color_button_new_with_color(ref GdkColor color);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_color_button_set_color(GtkWidgetPointer button, ref GdkColor color);
+        internal static extern void gtk_color_button_set_color(GObjectPointer button, ref GdkColor color);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_color_button_get_color(GtkWidgetPointer button, out GdkColor color);
+        internal static extern void gtk_color_button_get_color(GObjectPointer button, out GdkColor color);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_color_button_set_alpha(GtkWidgetPointer button, ushort alpha);
+        internal static extern void gtk_color_button_set_alpha(GObjectPointer button, ushort alpha);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern ushort gtk_color_button_get_alpha(GtkWidgetPointer button);
+        internal static extern ushort gtk_color_button_get_alpha(GObjectPointer button);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_color_button_set_use_alpha(GtkWidgetPointer button, bool use_alpha);
+        internal static extern void gtk_color_button_set_use_alpha(GObjectPointer button, bool use_alpha);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_color_button_get_use_alpha(GtkWidgetPointer button);
+        internal static extern bool gtk_color_button_get_use_alpha(GObjectPointer button);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_color_button_set_rgba(GtkWidgetPointer button, ref GdkRGBA rgba);
+        internal static extern void gtk_color_button_set_rgba(GObjectPointer button, ref GdkRGBA rgba);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_color_button_get_rgba(GtkWidgetPointer button, out GdkRGBA rgba);
+        internal static extern void gtk_color_button_get_rgba(GObjectPointer button, out GdkRGBA rgba);
     }
 }

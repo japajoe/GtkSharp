@@ -1,4 +1,3 @@
-using GtkSharp.Gdk.Native.Types;
 using GtkSharp.Gdk.Native;
 using GtkSharp.GLib.Types;
 
@@ -6,8 +5,6 @@ namespace GtkSharp.Gdk.Types
 {
     public class GdkScreen : GObject
     {
-        internal GdkScreenPointer handle;
-
         public int Width
         {
             get

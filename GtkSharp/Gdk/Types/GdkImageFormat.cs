@@ -1,5 +1,6 @@
 using GtkSharp.Gdk.Native.Types;
 using GtkSharp.Gdk.Native;
+using GtkSharp.Glib.Native.Types;
 
 namespace GtkSharp.Gdk.Types
 {
@@ -24,7 +25,7 @@ namespace GtkSharp.Gdk.Types
 			this.rowstride = rowstride;
 		}
 
-		public static GdkImageFormat FromPixbuf(GdkPixbufPointer pixbuf)
+		public static GdkImageFormat FromPixbuf(GObjectPointer pixbuf)
 		{
 			if(pixbuf.IsNullPointer)
 			{

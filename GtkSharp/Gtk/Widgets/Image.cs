@@ -1,10 +1,9 @@
 using System;
 using GtkSharp.Gtk.Native.Widgets;
-using GtkSharp.Gdk.Native.Types;
 using GtkSharp.Gdk.Types;
 using GtkSharp.GLib.Types;
-using GtkSharp.Gtk.Native.Types;
 using GtkSharp.Gtk.Types;
+using GtkSharp.Glib.Native.Types;
 
 namespace GtkSharp.Gtk.Widgets
 {
@@ -56,7 +55,7 @@ namespace GtkSharp.Gtk.Widgets
             GetPixbuf();
         }
 
-        internal Image(GtkWidgetPointer handle)
+        internal Image(GObjectPointer handle)
         {
             this.handle = handle;
             GetPixbuf();
@@ -67,7 +66,7 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return null;
             
-            GdkPixbufPointer p = NativeImage.gtk_image_get_pixbuf(handle);
+            var p = NativeImage.gtk_image_get_pixbuf(handle);
             if(pixbuf == null)
                 pixbuf = new GdkPixbuf(p);
             else

@@ -1,4 +1,5 @@
 using System.Runtime.InteropServices;
+using GtkSharp.Glib.Native.Types;
 using GtkSharp.Gtk.Native.Types;
 
 namespace GtkSharp.Gtk.Native.Widgets
@@ -9,6 +10,6 @@ namespace GtkSharp.Gtk.Native.Widgets
         internal static extern ulong gtk_drawing_area_get_type();
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_drawing_area_new();
+        internal static extern GObjectPointer gtk_drawing_area_new();
     }
 }

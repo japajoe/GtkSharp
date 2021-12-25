@@ -13,70 +13,70 @@ namespace GtkSharp.Gtk.Native.Widgets
         internal static extern ulong gtk_container_get_type();        
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_container_set_border_width(GtkWidgetPointer container, uint border_width);
+        internal static extern void gtk_container_set_border_width(GObjectPointer container, uint border_width);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern uint gtk_container_get_border_width(GtkWidgetPointer container);
+        internal static extern uint gtk_container_get_border_width(GObjectPointer container);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_container_add(GtkWidgetPointer container, GtkWidgetPointer widget);
+        internal static extern void gtk_container_add(GObjectPointer container, GObjectPointer widget);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_container_remove(GtkWidgetPointer container, GtkWidgetPointer widget); 
+        internal static extern void gtk_container_remove(GObjectPointer container, GObjectPointer widget); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_container_set_resize_mode(GtkWidgetPointer container, GtkResizeMode resize_mode);
+        internal static extern void gtk_container_set_resize_mode(GObjectPointer container, GtkResizeMode resize_mode);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkResizeMode gtk_container_get_resize_mode(GtkWidgetPointer container); 
+        internal static extern GtkResizeMode gtk_container_get_resize_mode(GObjectPointer container); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_container_check_resize(GtkWidgetPointer container); 
+        internal static extern void gtk_container_check_resize(GObjectPointer container); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_container_foreach(GtkWidgetPointer container, GtkCallbackPointer callback, IntPtr callback_data);
+        internal static extern void gtk_container_foreach(GObjectPointer container, GtkCallbackPointer callback, IntPtr callback_data);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GListPointer gtk_container_get_children(GtkWidgetPointer container); 
+        internal static extern GListPointer gtk_container_get_children(GObjectPointer container); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_container_propagate_draw(GtkWidgetPointer container, GtkWidgetPointer child, CairoPointer cr); 
+        internal static extern void gtk_container_propagate_draw(GObjectPointer container, GObjectPointer child, CairoPointer cr); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_container_set_focus_chain(GtkWidgetPointer container, GListPointer focusable_widgets);
+        internal static extern void gtk_container_set_focus_chain(GObjectPointer container, GListPointer focusable_widgets);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_container_get_focus_chain(GtkWidgetPointer container, GListPointer focusable_widgets);
+        internal static extern bool gtk_container_get_focus_chain(GObjectPointer container, GListPointer focusable_widgets);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_container_unset_focus_chain(GtkWidgetPointer container);
+        internal static extern void gtk_container_unset_focus_chain(GObjectPointer container);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_container_set_reallocate_redraws(GtkWidgetPointer container, bool needs_redraws);
+        internal static extern void gtk_container_set_reallocate_redraws(GObjectPointer container, bool needs_redraws);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_container_set_focus_child(GtkWidgetPointer container, GtkWidgetPointer child);
+        internal static extern void gtk_container_set_focus_child(GObjectPointer container, GObjectPointer child);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_container_get_focus_child(GtkWidgetPointer container);
+        internal static extern GObjectPointer gtk_container_get_focus_child(GObjectPointer container);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_container_set_focus_vadjustment(GtkWidgetPointer container, GtkAdjustmentPointer adjustment);
+        internal static extern void gtk_container_set_focus_vadjustment(GObjectPointer container, GtkAdjustmentPointer adjustment);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkAdjustmentPointer gtk_container_get_focus_vadjustment(GtkWidgetPointer container);
+        internal static extern GtkAdjustmentPointer gtk_container_get_focus_vadjustment(GObjectPointer container);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_container_set_focus_hadjustment(GtkWidgetPointer container, GtkAdjustmentPointer adjustment);
+        internal static extern void gtk_container_set_focus_hadjustment(GObjectPointer container, GtkAdjustmentPointer adjustment);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkAdjustmentPointer gtk_container_get_focus_hadjustment(GtkWidgetPointer container); 
+        internal static extern GtkAdjustmentPointer gtk_container_get_focus_hadjustment(GObjectPointer container); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_container_resize_children(GtkWidgetPointer container);
+        internal static extern void gtk_container_resize_children(GObjectPointer container);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern ulong gtk_container_child_type(GtkWidgetPointer container); 
+        internal static extern ulong gtk_container_child_type(GObjectPointer container); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void gtk_container_class_install_child_property(GtkContainerClassPointer cclass, uint property_id, GParamSpecPointer pspec);
@@ -91,24 +91,24 @@ namespace GtkSharp.Gtk.Native.Widgets
         internal static extern GParamSpecPointer gtk_container_class_list_child_properties(GObjectClassPointer cclass, out int n_properties);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_container_child_set_property(GtkWidgetPointer container, GtkWidgetPointer child, string property_name, GValuePointer value);
+        internal static extern void gtk_container_child_set_property(GObjectPointer container, GObjectPointer child, string property_name, GValuePointer value);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_container_child_get_property(GtkWidgetPointer container, GtkWidgetPointer child, string property_name, GValuePointer value);
+        internal static extern void gtk_container_child_get_property(GObjectPointer container, GObjectPointer child, string property_name, GValuePointer value);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_container_child_notify(GtkWidgetPointer container, GtkWidgetPointer child, string child_property); 
+        internal static extern void gtk_container_child_notify(GObjectPointer container, GObjectPointer child, string child_property); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_container_child_notify_by_pspec(GtkWidgetPointer container, GtkWidgetPointer child, GParamSpecPointer pspec);
+        internal static extern void gtk_container_child_notify_by_pspec(GObjectPointer container, GObjectPointer child, GParamSpecPointer pspec);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_container_forall(GtkWidgetPointer container, GtkCallbackPointer callback, IntPtr callback_data); 
+        internal static extern void gtk_container_forall(GObjectPointer container, GtkCallbackPointer callback, IntPtr callback_data); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void gtk_container_class_handle_border_width(GtkContainerClassPointer klass); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPathPointer gtk_container_get_path_for_child(GtkWidgetPointer container, GtkWidgetPointer child);        
+        internal static extern GtkWidgetPathPointer gtk_container_get_path_for_child(GObjectPointer container, GObjectPointer child);        
     }
 }

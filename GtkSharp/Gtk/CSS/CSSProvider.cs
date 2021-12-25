@@ -9,8 +9,6 @@ namespace GtkSharp.Gtk.CSS
 {
     public class CSSProvider : GObject
     {
-        internal GObjectPointer handle;
-
         public CSSProvider()
         {
             handle = NativeCSSProvider.gtk_css_provider_new();

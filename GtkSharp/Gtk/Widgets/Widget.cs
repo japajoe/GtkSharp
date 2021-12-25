@@ -12,7 +12,7 @@ namespace GtkSharp.Gtk.Widgets
 {
     public class Widget : GObject
     {
-        internal GtkWidgetPointer handle;
+        //internal GtkWidgetPointer handle;
         private CairoInstance cairo = new CairoInstance();
 
         private GEventHandler<WidgetDestroyCallback,WidgetDestroyEvent> destroyHandler = new GEventHandler<WidgetDestroyCallback, WidgetDestroyEvent>();
@@ -335,7 +335,7 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return null;
 
-            GtkWidgetPointer w = NativeWidget.gtk_widget_get_toplevel(handle);
+            var w = NativeWidget.gtk_widget_get_toplevel(handle);
             
             if(NativeWidget.gtk_widget_is_toplevel(w))
             {

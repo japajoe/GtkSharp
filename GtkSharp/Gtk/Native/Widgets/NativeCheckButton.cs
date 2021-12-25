@@ -1,4 +1,5 @@
 using System.Runtime.InteropServices;
+using GtkSharp.Glib.Native.Types;
 using GtkSharp.Gtk.Native.Types;
 
 namespace GtkSharp.Gtk.Native.Widgets
@@ -9,12 +10,12 @@ namespace GtkSharp.Gtk.Native.Widgets
         internal static extern ulong gtk_check_button_get_type();
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_check_button_new();
+        internal static extern GObjectPointer gtk_check_button_new();
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_check_button_new_with_label(string label);
+        internal static extern GObjectPointer gtk_check_button_new_with_label(string label);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_check_button_new_with_mnemonic(string label);
+        internal static extern GObjectPointer gtk_check_button_new_with_mnemonic(string label);
     }
 }

@@ -6,9 +6,7 @@ using GtkSharp.Gtk.Native.Widgets;
 namespace GtkSharp.Gtk.Types
 {
     public class GtkAdjustment : GObject
-    {
-        internal GObjectPointer handle;
-        
+    {        
         internal GtkAdjustment(IntPtr handle)
         {
             this.handle.pointer = handle;

@@ -9,180 +9,180 @@ namespace GtkSharp.Gtk.Native.Widgets
     internal static class NativeFileChooser
     {        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_file_chooser_set_action(GtkWidgetPointer chooser, GtkFileChooserAction action);
+        internal static extern void gtk_file_chooser_set_action(GObjectPointer chooser, GtkFileChooserAction action);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkFileChooserAction gtk_file_chooser_get_action(GtkWidgetPointer chooser);
+        internal static extern GtkFileChooserAction gtk_file_chooser_get_action(GObjectPointer chooser);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_file_chooser_set_local_only(GtkWidgetPointer chooser, bool local_only);
+        internal static extern void gtk_file_chooser_set_local_only(GObjectPointer chooser, bool local_only);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_file_chooser_get_local_only(GtkWidgetPointer chooser);
+        internal static extern bool gtk_file_chooser_get_local_only(GObjectPointer chooser);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_file_chooser_set_select_multiple(GtkWidgetPointer chooser, bool select_multiple);
+        internal static extern void gtk_file_chooser_set_select_multiple(GObjectPointer chooser, bool select_multiple);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_file_chooser_get_select_multiple(GtkWidgetPointer chooser);
+        internal static extern bool gtk_file_chooser_get_select_multiple(GObjectPointer chooser);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_file_chooser_set_show_hidden(GtkWidgetPointer chooser, bool show_hidden);
+        internal static extern void gtk_file_chooser_set_show_hidden(GObjectPointer chooser, bool show_hidden);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_file_chooser_get_show_hidden(GtkWidgetPointer chooser); 
+        internal static extern bool gtk_file_chooser_get_show_hidden(GObjectPointer chooser); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_file_chooser_set_do_overwrite_confirmation(GtkWidgetPointer chooser, bool do_overwrite_confirmation);
+        internal static extern void gtk_file_chooser_set_do_overwrite_confirmation(GObjectPointer chooser, bool do_overwrite_confirmation);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_file_chooser_get_do_overwrite_confirmation(GtkWidgetPointer chooser); 
+        internal static extern bool gtk_file_chooser_get_do_overwrite_confirmation(GObjectPointer chooser); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_file_chooser_set_create_folders(GtkWidgetPointer chooser, bool create_folders);
+        internal static extern void gtk_file_chooser_set_create_folders(GObjectPointer chooser, bool create_folders);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_file_chooser_get_create_folders(GtkWidgetPointer chooser); 
+        internal static extern bool gtk_file_chooser_get_create_folders(GObjectPointer chooser); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_file_chooser_set_current_name(GtkWidgetPointer chooser, string name);
+        internal static extern void gtk_file_chooser_set_current_name(GObjectPointer chooser, string name);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern IntPtr gtk_file_chooser_get_current_name(GtkWidgetPointer chooser); 
+        internal static extern IntPtr gtk_file_chooser_get_current_name(GObjectPointer chooser); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern IntPtr gtk_file_chooser_get_filename(GtkWidgetPointer chooser);
+        internal static extern IntPtr gtk_file_chooser_get_filename(GObjectPointer chooser);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_file_chooser_set_filename(GtkWidgetPointer chooser, string filename);
+        internal static extern bool gtk_file_chooser_set_filename(GObjectPointer chooser, string filename);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_file_chooser_select_filename(GtkWidgetPointer chooser, string filename);
+        internal static extern bool gtk_file_chooser_select_filename(GObjectPointer chooser, string filename);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_file_chooser_unselect_filename(GtkWidgetPointer chooser, string filename);
+        internal static extern void gtk_file_chooser_unselect_filename(GObjectPointer chooser, string filename);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_file_chooser_select_all(GtkWidgetPointer chooser);
+        internal static extern void gtk_file_chooser_select_all(GObjectPointer chooser);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_file_chooser_unselect_all(GtkWidgetPointer chooser);
+        internal static extern void gtk_file_chooser_unselect_all(GObjectPointer chooser);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GSListPointer gtk_file_chooser_get_filenames(GtkWidgetPointer chooser);
+        internal static extern GSListPointer gtk_file_chooser_get_filenames(GObjectPointer chooser);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_file_chooser_set_current_folder(GtkWidgetPointer chooser, string filename);
+        internal static extern bool gtk_file_chooser_set_current_folder(GObjectPointer chooser, string filename);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern IntPtr gtk_file_chooser_get_current_folder(GtkWidgetPointer chooser); 
+        internal static extern IntPtr gtk_file_chooser_get_current_folder(GObjectPointer chooser); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern IntPtr gtk_file_chooser_get_uri(GtkWidgetPointer chooser);
+        internal static extern IntPtr gtk_file_chooser_get_uri(GObjectPointer chooser);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_file_chooser_set_uri(GtkWidgetPointer chooser, string uri);
+        internal static extern bool gtk_file_chooser_set_uri(GObjectPointer chooser, string uri);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_file_chooser_select_uri(GtkWidgetPointer chooser, string uri);
+        internal static extern bool gtk_file_chooser_select_uri(GObjectPointer chooser, string uri);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_file_chooser_unselect_uri(GtkWidgetPointer chooser, string uri);
+        internal static extern void gtk_file_chooser_unselect_uri(GObjectPointer chooser, string uri);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GSListPointer gtk_file_chooser_get_uris(GtkWidgetPointer chooser);
+        internal static extern GSListPointer gtk_file_chooser_get_uris(GObjectPointer chooser);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_file_chooser_set_current_folder_uri(GtkWidgetPointer chooser, string uri);
+        internal static extern bool gtk_file_chooser_set_current_folder_uri(GObjectPointer chooser, string uri);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern IntPtr gtk_file_chooser_get_current_folder_uri(GtkWidgetPointer chooser); 
+        internal static extern IntPtr gtk_file_chooser_get_current_folder_uri(GObjectPointer chooser); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GFilePointer gtk_file_chooser_get_file(GtkWidgetPointer chooser);
+        internal static extern GFilePointer gtk_file_chooser_get_file(GObjectPointer chooser);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_file_chooser_set_file(GtkWidgetPointer chooser, GFilePointer file, GErrorPointer error);
+        internal static extern bool gtk_file_chooser_set_file(GObjectPointer chooser, GFilePointer file, GErrorPointer error);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_file_chooser_select_file(GtkWidgetPointer chooser, GFilePointer file, GErrorPointer error);
+        internal static extern bool gtk_file_chooser_select_file(GObjectPointer chooser, GFilePointer file, GErrorPointer error);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_file_chooser_unselect_file(GtkWidgetPointer chooser, GFilePointer file);
+        internal static extern void gtk_file_chooser_unselect_file(GObjectPointer chooser, GFilePointer file);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GSListPointer gtk_file_chooser_get_files(GtkWidgetPointer chooser);
+        internal static extern GSListPointer gtk_file_chooser_get_files(GObjectPointer chooser);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_file_chooser_set_current_folder_file(GtkWidgetPointer chooser, GFilePointer file, GErrorPointer error);
+        internal static extern bool gtk_file_chooser_set_current_folder_file(GObjectPointer chooser, GFilePointer file, GErrorPointer error);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GFilePointer gtk_file_chooser_get_current_folder_file(GtkWidgetPointer chooser); 
+        internal static extern GFilePointer gtk_file_chooser_get_current_folder_file(GObjectPointer chooser); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_file_chooser_set_preview_widget(GtkWidgetPointer chooser, GtkWidgetPointer preview_widget);
+        internal static extern void gtk_file_chooser_set_preview_widget(GObjectPointer chooser, GObjectPointer preview_widget);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_file_chooser_get_preview_widget(GtkWidgetPointer chooser);
+        internal static extern GObjectPointer gtk_file_chooser_get_preview_widget(GObjectPointer chooser);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_file_chooser_set_preview_widget_active(GtkWidgetPointer chooser, bool active);
+        internal static extern void gtk_file_chooser_set_preview_widget_active(GObjectPointer chooser, bool active);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_file_chooser_get_preview_widget_active(GtkWidgetPointer chooser);
+        internal static extern bool gtk_file_chooser_get_preview_widget_active(GObjectPointer chooser);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_file_chooser_set_use_preview_label(GtkWidgetPointer chooser, bool use_label);
+        internal static extern void gtk_file_chooser_set_use_preview_label(GObjectPointer chooser, bool use_label);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_file_chooser_get_use_preview_label(GtkWidgetPointer chooser); 
+        internal static extern bool gtk_file_chooser_get_use_preview_label(GObjectPointer chooser); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern IntPtr gtk_file_chooser_get_preview_filename(GtkWidgetPointer chooser);
+        internal static extern IntPtr gtk_file_chooser_get_preview_filename(GObjectPointer chooser);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern IntPtr gtk_file_chooser_get_preview_uri(GtkWidgetPointer chooser);
+        internal static extern IntPtr gtk_file_chooser_get_preview_uri(GObjectPointer chooser);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GFilePointer gtk_file_chooser_get_preview_file(GtkWidgetPointer chooser); 
+        internal static extern GFilePointer gtk_file_chooser_get_preview_file(GObjectPointer chooser); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_file_chooser_set_extra_widget(GtkWidgetPointer chooser, GtkWidgetPointer extra_widget);
+        internal static extern void gtk_file_chooser_set_extra_widget(GObjectPointer chooser, GObjectPointer extra_widget);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_file_chooser_get_extra_widget(GtkWidgetPointer chooser); 
+        internal static extern GObjectPointer gtk_file_chooser_get_extra_widget(GObjectPointer chooser); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_file_chooser_add_filter(GtkWidgetPointer chooser, GtkFileFilterPointer filter);
+        internal static extern void gtk_file_chooser_add_filter(GObjectPointer chooser, GtkFileFilterPointer filter);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_file_chooser_remove_filter(GtkWidgetPointer chooser, GtkFileFilterPointer filter);
+        internal static extern void gtk_file_chooser_remove_filter(GObjectPointer chooser, GtkFileFilterPointer filter);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GSListPointer gtk_file_chooser_list_filters(GtkWidgetPointer chooser); 
+        internal static extern GSListPointer gtk_file_chooser_list_filters(GObjectPointer chooser); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_file_chooser_set_filter(GtkWidgetPointer chooser, GtkFileFilterPointer filter);
+        internal static extern void gtk_file_chooser_set_filter(GObjectPointer chooser, GtkFileFilterPointer filter);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkFileFilterPointer gtk_file_chooser_get_filter(GtkWidgetPointer chooser); 
+        internal static extern GtkFileFilterPointer gtk_file_chooser_get_filter(GObjectPointer chooser); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_file_chooser_add_shortcut_folder(GtkWidgetPointer chooser, string folder, GErrorPointer error);
+        internal static extern bool gtk_file_chooser_add_shortcut_folder(GObjectPointer chooser, string folder, GErrorPointer error);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_file_chooser_remove_shortcut_folder(GtkWidgetPointer chooser, string folder, GErrorPointer error);
+        internal static extern bool gtk_file_chooser_remove_shortcut_folder(GObjectPointer chooser, string folder, GErrorPointer error);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GSListPointer gtk_file_chooser_list_shortcut_folders(GtkWidgetPointer chooser); 
+        internal static extern GSListPointer gtk_file_chooser_list_shortcut_folders(GObjectPointer chooser); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_file_chooser_add_shortcut_folder_uri(GtkWidgetPointer chooser, string uri, GErrorPointer error);
+        internal static extern bool gtk_file_chooser_add_shortcut_folder_uri(GObjectPointer chooser, string uri, GErrorPointer error);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_file_chooser_remove_shortcut_folder_uri(GtkWidgetPointer chooser, string uri, GErrorPointer error);
+        internal static extern bool gtk_file_chooser_remove_shortcut_folder_uri(GObjectPointer chooser, string uri, GErrorPointer error);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GSListPointer gtk_file_chooser_list_shortcut_folder_uris(GtkWidgetPointer chooser);
+        internal static extern GSListPointer gtk_file_chooser_list_shortcut_folder_uris(GObjectPointer chooser);
     }
 }

@@ -1,5 +1,5 @@
 using System.Runtime.InteropServices;
-using GtkSharp.Gtk.Native.Types;
+using GtkSharp.Glib.Native.Types;
 using GtkSharp.Pango.Types;
 
 namespace GtkSharp.Gtk.Native.Widgets
@@ -10,45 +10,45 @@ namespace GtkSharp.Gtk.Native.Widgets
         internal static extern ulong gtk_progress_bar_get_type();
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_progress_bar_new(); 
+        internal static extern GObjectPointer gtk_progress_bar_new(); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_progress_bar_pulse(GtkWidgetPointer pbar);
+        internal static extern void gtk_progress_bar_pulse(GObjectPointer pbar);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_progress_bar_set_text(GtkWidgetPointer pbar, string text);
+        internal static extern void gtk_progress_bar_set_text(GObjectPointer pbar, string text);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_progress_bar_set_fraction(GtkWidgetPointer pbar, double fraction); 
+        internal static extern void gtk_progress_bar_set_fraction(GObjectPointer pbar, double fraction); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_progress_bar_set_pulse_step(GtkWidgetPointer pbar, double fraction);
+        internal static extern void gtk_progress_bar_set_pulse_step(GObjectPointer pbar, double fraction);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_progress_bar_set_inverted(GtkWidgetPointer pbar, bool inverted); 
+        internal static extern void gtk_progress_bar_set_inverted(GObjectPointer pbar, bool inverted); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern string gtk_progress_bar_get_text(GtkWidgetPointer pbar);
+        internal static extern string gtk_progress_bar_get_text(GObjectPointer pbar);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern double gtk_progress_bar_get_fraction(GtkWidgetPointer pbar);
+        internal static extern double gtk_progress_bar_get_fraction(GObjectPointer pbar);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern double gtk_progress_bar_get_pulse_step(GtkWidgetPointer pbar); 
+        internal static extern double gtk_progress_bar_get_pulse_step(GObjectPointer pbar); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_progress_bar_get_inverted(GtkWidgetPointer pbar);
+        internal static extern bool gtk_progress_bar_get_inverted(GObjectPointer pbar);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_progress_bar_set_ellipsize(GtkWidgetPointer pbar, PangoEllipsizeMode mode);
+        internal static extern void gtk_progress_bar_set_ellipsize(GObjectPointer pbar, PangoEllipsizeMode mode);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern PangoEllipsizeMode gtk_progress_bar_get_ellipsize(GtkWidgetPointer pbar); 
+        internal static extern PangoEllipsizeMode gtk_progress_bar_get_ellipsize(GObjectPointer pbar); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_progress_bar_set_show_text(GtkWidgetPointer pbar, bool show_text);
+        internal static extern void gtk_progress_bar_set_show_text(GObjectPointer pbar, bool show_text);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_progress_bar_get_show_text(GtkWidgetPointer pbar);
+        internal static extern bool gtk_progress_bar_get_show_text(GObjectPointer pbar);
     }
 }

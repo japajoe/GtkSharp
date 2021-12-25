@@ -6,9 +6,7 @@ using GtkSharp.Gtk.Native.Widgets;
 namespace GtkSharp.Gtk.Types
 {
     public class GtkSourceLanguageManager : GObject
-    {
-        internal GObjectPointer handle;
-        
+    {        
         public GtkSourceLanguageManager()
         {
             handle = NativeSourceLanguageManager.gtk_source_language_manager_get_default();

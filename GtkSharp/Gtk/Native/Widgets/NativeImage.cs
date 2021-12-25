@@ -14,90 +14,90 @@ namespace GtkSharp.Gtk.Native.Widgets
         internal static extern ulong gtk_image_get_type();
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_image_new();
+        internal static extern GObjectPointer gtk_image_new();
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_image_new_from_file(string filename);
+        internal static extern GObjectPointer gtk_image_new_from_file(string filename);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_image_new_from_resource(string resource_path);
+        internal static extern GObjectPointer gtk_image_new_from_resource(string resource_path);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_image_new_from_pixbuf(GdkPixbufPointer pixbuf);
+        internal static extern GObjectPointer gtk_image_new_from_pixbuf(GObjectPointer pixbuf);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_image_new_from_stock(string stock_id, GtkIconSize size);
+        internal static extern GObjectPointer gtk_image_new_from_stock(string stock_id, GtkIconSize size);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_image_new_from_icon_set(GtkIconSetPointer icon_set, GtkIconSize size);
+        internal static extern GObjectPointer gtk_image_new_from_icon_set(GtkIconSetPointer icon_set, GtkIconSize size);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_image_new_from_animation(GdkPixbufAnimationPointer animation);
+        internal static extern GObjectPointer gtk_image_new_from_animation(GdkPixbufAnimationPointer animation);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_image_new_from_icon_name(string icon_name, GtkIconSize size);
+        internal static extern GObjectPointer gtk_image_new_from_icon_name(string icon_name, GtkIconSize size);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_image_new_from_gicon(GIconPointer icon, GtkIconSize size);
+        internal static extern GObjectPointer gtk_image_new_from_gicon(GObjectPointer icon, GtkIconSize size);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkWidgetPointer gtk_image_new_from_surface(CairoSurfacePointer surface);
+        internal static extern GObjectPointer gtk_image_new_from_surface(CairoSurfacePointer surface);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_image_clear(GtkWidgetPointer image);
+        internal static extern void gtk_image_clear(GObjectPointer image);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_image_set_from_file(GtkWidgetPointer image, string filename);
+        internal static extern void gtk_image_set_from_file(GObjectPointer image, string filename);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_image_set_from_resource(GtkWidgetPointer image, string resource_path);
+        internal static extern void gtk_image_set_from_resource(GObjectPointer image, string resource_path);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_image_set_from_pixbuf(GtkWidgetPointer image, GdkPixbufPointer pixbuf);
+        internal static extern void gtk_image_set_from_pixbuf(GObjectPointer image, GObjectPointer pixbuf);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_image_set_from_stock(GtkWidgetPointer image, string stock_id, GtkIconSize size);
+        internal static extern void gtk_image_set_from_stock(GObjectPointer image, string stock_id, GtkIconSize size);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_image_set_from_icon_set(GtkWidgetPointer image, GtkIconSetPointer icon_set, GtkIconSize size);
+        internal static extern void gtk_image_set_from_icon_set(GObjectPointer image, GtkIconSetPointer icon_set, GtkIconSize size);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_image_set_from_animation(GtkWidgetPointer image, GdkPixbufAnimationPointer animation);
+        internal static extern void gtk_image_set_from_animation(GObjectPointer image, GdkPixbufAnimationPointer animation);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_image_set_from_icon_name(GtkWidgetPointer image, string icon_name, GtkIconSize size);
+        internal static extern void gtk_image_set_from_icon_name(GObjectPointer image, string icon_name, GtkIconSize size);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_image_set_from_gicon(GtkWidgetPointer image, GIconPointer icon, GtkIconSize size);
+        internal static extern void gtk_image_set_from_gicon(GObjectPointer image, GObjectPointer icon, GtkIconSize size);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_image_set_from_surface(GtkWidgetPointer image, CairoSurfacePointer surface);
+        internal static extern void gtk_image_set_from_surface(GObjectPointer image, CairoSurfacePointer surface);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_image_set_pixel_size(GtkWidgetPointer image, int pixel_size);
+        internal static extern void gtk_image_set_pixel_size(GObjectPointer image, int pixel_size);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkImageType gtk_image_get_storage_type(GtkWidgetPointer image);
+        internal static extern GtkImageType gtk_image_get_storage_type(GObjectPointer image);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GdkPixbufPointer gtk_image_get_pixbuf(GtkWidgetPointer image);
+        internal static extern GObjectPointer gtk_image_get_pixbuf(GObjectPointer image);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_image_get_stock(GtkWidgetPointer image, IntPtr stock_id, ref GtkIconSize size);
+        internal static extern void gtk_image_get_stock(GObjectPointer image, IntPtr stock_id, ref GtkIconSize size);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_image_get_icon_set(GtkWidgetPointer image, GtkIconSetPointer icon_set, ref GtkIconSize size);
+        internal static extern void gtk_image_get_icon_set(GObjectPointer image, GtkIconSetPointer icon_set, ref GtkIconSize size);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GdkPixbufAnimationPointer gtk_image_get_animation(GtkWidgetPointer image);
+        internal static extern GdkPixbufAnimationPointer gtk_image_get_animation(GObjectPointer image);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_image_get_icon_name(GtkWidgetPointer image, IntPtr icon_name, out GtkIconSize size);
+        internal static extern void gtk_image_get_icon_name(GObjectPointer image, IntPtr icon_name, out GtkIconSize size);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_image_get_gicon(GtkWidgetPointer image, GIconPointer gicon, ref GtkIconSize size);
+        internal static extern void gtk_image_get_gicon(GObjectPointer image, GObjectPointer gicon, ref GtkIconSize size);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern int gtk_image_get_pixel_size(GtkWidgetPointer image);
+        internal static extern int gtk_image_get_pixel_size(GObjectPointer image);
     }
 }

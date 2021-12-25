@@ -7,7 +7,7 @@ namespace GtkSharp.Gtk.Widgets
     {
         public Widget GetChild()
         {
-            GtkWidgetPointer w = NativeBin.gtk_bin_get_child(handle);
+            var w = NativeBin.gtk_bin_get_child(handle);
             
             if(w.IsNullPointer)
                 return null;
