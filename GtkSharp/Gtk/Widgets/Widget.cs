@@ -7,6 +7,7 @@ using GtkSharp.Gdk.Types;
 using GtkSharp.Gdk.Native.Types;
 using GtkSharp.GLib.Types;
 using GtkSharp.Cairo.Types;
+using GtkSharp.Glib.Native.Types;
 
 namespace GtkSharp.Gtk.Widgets
 {
@@ -342,6 +343,15 @@ namespace GtkSharp.Gtk.Widgets
                 return new Widget(w.pointer);
             }
             return null;
+        }
+
+        public GdkWindow GetWindow()
+        {
+            if(handle.IsNullPointer)
+                return null;
+
+            GObjectPointer window = NativeWidget.gtk_widget_get_window(handle);
+            return new GdkWindow(window.pointer);
         }
 
         public void Destroy()

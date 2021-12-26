@@ -285,10 +285,10 @@ namespace GtkSharp.Gtk.Native.Widgets
         internal static extern GObjectPointer gtk_widget_get_parent(GObjectPointer widget); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_widget_set_parent_window(GObjectPointer widget, GdkWindowPointer parent_window);
+        internal static extern void gtk_widget_set_parent_window(GObjectPointer widget, GObjectPointer parent_window);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GdkWindowPointer gtk_widget_get_parent_window(GObjectPointer widget); 
+        internal static extern GObjectPointer gtk_widget_get_parent_window(GObjectPointer widget); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void gtk_widget_set_child_visible(GObjectPointer widget, bool is_visible);
@@ -297,16 +297,16 @@ namespace GtkSharp.Gtk.Native.Widgets
         internal static extern bool gtk_widget_get_child_visible(GObjectPointer widget); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_widget_set_window(GObjectPointer widget, GdkWindowPointer window);
+        internal static extern void gtk_widget_set_window(GObjectPointer widget, GObjectPointer window);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GdkWindowPointer gtk_widget_get_window(GObjectPointer widget);
+        internal static extern GObjectPointer gtk_widget_get_window(GObjectPointer widget);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_widget_register_window(GObjectPointer widget, GdkWindowPointer window);
+        internal static extern void gtk_widget_register_window(GObjectPointer widget, GObjectPointer window);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_widget_unregister_window(GObjectPointer widget, GdkWindowPointer window); 
+        internal static extern void gtk_widget_unregister_window(GObjectPointer widget, GObjectPointer window); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern int gtk_widget_get_allocated_width(GObjectPointer widget);
@@ -396,7 +396,7 @@ namespace GtkSharp.Gtk.Native.Widgets
         internal static extern GdkDisplayPointer gtk_widget_get_display(GObjectPointer widget);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GdkWindowPointer gtk_widget_get_root_window(GObjectPointer widget);
+        internal static extern GObjectPointer gtk_widget_get_root_window(GObjectPointer widget);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern GtkSettingsPointer gtk_widget_get_settings(GObjectPointer widget);
@@ -627,10 +627,10 @@ namespace GtkSharp.Gtk.Native.Widgets
         internal static extern bool gtk_widget_get_has_tooltip(GObjectPointer widget); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_cairo_should_draw_window(CairoPointer cr, GdkWindowPointer window);
+        internal static extern bool gtk_cairo_should_draw_window(CairoPointer cr, GObjectPointer window);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_cairo_transform_to_window(CairoPointer cr, GObjectPointer widget, GdkWindowPointer window); 
+        internal static extern void gtk_cairo_transform_to_window(CairoPointer cr, GObjectPointer widget, GObjectPointer window); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern ulong gtk_requisition_get_type();

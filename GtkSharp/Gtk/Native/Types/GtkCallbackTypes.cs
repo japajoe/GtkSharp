@@ -1,6 +1,5 @@
 using System;
 using GtkSharp.Gdk.Native.Types;
-using GtkSharp.Gdk.Types;
 using GtkSharp.Gtk.Types;
 
 namespace GtkSharp.Gtk.Native.Types
@@ -14,6 +13,8 @@ namespace GtkSharp.Gtk.Native.Types
     internal delegate void ButtonLeaveCallback(IntPtr widget, IntPtr data);
     internal delegate void ButtonPressedCallback(IntPtr widget, IntPtr data);
     internal delegate void ButtonReleasedCallback(IntPtr widget, IntPtr data);
+
+    internal delegate void ClipboardTextReceivedCallback(IntPtr clipboard,  string text, IntPtr data);
 
     internal delegate void ContainerAddCallback(IntPtr widget, IntPtr child, IntPtr data);
     internal delegate void ContainerCheckResizeCallback(IntPtr widget, IntPtr data);

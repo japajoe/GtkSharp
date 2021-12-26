@@ -15,6 +15,8 @@ namespace GtkSharp.Gtk.Types
     public delegate void ButtonPressedEvent();
     public delegate void ButtonReleasedEvent();
 
+    public delegate void ClipboardTextReceivedEvent(string text);
+
     public delegate void ContainerAddEvent(Widget child);
     public delegate void ContainerCheckResizeEvent();
     public delegate void ContainerRemoveEvent(Widget child);

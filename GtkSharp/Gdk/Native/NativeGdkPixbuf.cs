@@ -1,6 +1,5 @@
 using System;
 using System.Runtime.InteropServices;
-using GtkSharp.Gdk.Native.Types;
 using GtkSharp.Gdk.Types;
 using GtkSharp.Glib.Native.Types;
 

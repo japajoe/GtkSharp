@@ -7,6 +7,14 @@ namespace GtkSharp.GLib.Types
     {
         internal GObjectPointer handle;
 
+        public IntPtr Handle
+        {
+            get
+            {
+                return handle.pointer;
+            }
+        }
+
         public void Unreference()
         {
             if(handle.IsNullPointer)
