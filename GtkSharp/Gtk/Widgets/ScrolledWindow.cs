@@ -8,6 +8,11 @@ namespace GtkSharp.Gtk.Widgets
     {
         private GtkAdjustmentPointer hAdjustment;
         private GtkAdjustmentPointer vAdjustment;
+
+        public ScrolledWindow()
+        {
+            
+        }
         
         public ScrolledWindow(GtkPolicyType horizontalPolicy, GtkPolicyType verticalPolicy)
         {            

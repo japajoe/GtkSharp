@@ -55,7 +55,18 @@ namespace GtkSharp.Gtk.Widgets
         public override GtkResponseType ShowDialog()
         {
             if(handle.IsNullPointer)
-                return GtkResponseType.None;
+            {
+                handle = NativeFileChooserDialog.gtk_file_chooser_dialog_new(title,
+                                                                    parent.handle,
+                                                                    GtkFileChooserAction.Save,
+                                                                    "_Cancel",
+                                                                    GtkResponseType.Cancel,
+                                                                    "_Save",
+                                                                    GtkResponseType.Accept,
+                                                                    IntPtr.Zero);
+
+                NativeFileChooser.gtk_file_chooser_set_do_overwrite_confirmation(handle, true);
+            }
             
             GtkResponseType response = (GtkResponseType)NativeDialog.gtk_dialog_run(handle);
 

@@ -1,9 +1,8 @@
 using GtkSharp.Gtk.Native.Widgets;
-using GtkSharp.Gtk.Native.Types;
 
 namespace GtkSharp.Gtk.Widgets
 {
-    public abstract class Bin : Container
+    public class Bin : Container
     {
         public Widget GetChild()
         {

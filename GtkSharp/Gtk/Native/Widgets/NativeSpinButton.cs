@@ -1,6 +1,5 @@
 using System.Runtime.InteropServices;
 using GtkSharp.Glib.Native.Types;
-using GtkSharp.Gtk.Native.Types;
 using GtkSharp.Gtk.Types;
 
 namespace GtkSharp.Gtk.Native.Widgets
@@ -11,19 +10,19 @@ namespace GtkSharp.Gtk.Native.Widgets
         internal static extern ulong gtk_spin_button_get_type();
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_spin_button_configure(GObjectPointer spin_button, GtkAdjustmentPointer adjustment, double climb_rate, uint digits); 
+        internal static extern void gtk_spin_button_configure(GObjectPointer spin_button, GObjectPointer adjustment, double climb_rate, uint digits); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GObjectPointer gtk_spin_button_new(GtkAdjustmentPointer adjustment, double climb_rate, uint digits); 
+        internal static extern GObjectPointer gtk_spin_button_new(GObjectPointer adjustment, double climb_rate, uint digits); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern GObjectPointer gtk_spin_button_new_with_range(double min, double max, double step); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_spin_button_set_adjustment(GObjectPointer spin_button, GtkAdjustmentPointer adjustment); 
+        internal static extern void gtk_spin_button_set_adjustment(GObjectPointer spin_button, GObjectPointer adjustment); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkAdjustmentPointer gtk_spin_button_get_adjustment(GObjectPointer spin_button); 
+        internal static extern GObjectPointer gtk_spin_button_get_adjustment(GObjectPointer spin_button); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void gtk_spin_button_set_digits(GObjectPointer spin_button, uint digits);

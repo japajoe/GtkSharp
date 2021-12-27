@@ -30,7 +30,7 @@ namespace GtkSharp.Gtk.Widgets
         public GtkResponseType ShowDialog()
         {
             if(handle.IsNullPointer)
-                return GtkResponseType.None;
+                handle = NativeColorChooserDialog.gtk_color_chooser_dialog_new(title, parent.handle);
 
             GtkResponseType response = (GtkResponseType)NativeDialog.gtk_dialog_run(handle);            
 

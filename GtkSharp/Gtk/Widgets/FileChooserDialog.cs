@@ -1,5 +1,4 @@
 using System;
-using System.Text;
 using GtkSharp.GLib.Types;
 using GtkSharp.Gtk.Native.Types;
 using GtkSharp.Gtk.Types;

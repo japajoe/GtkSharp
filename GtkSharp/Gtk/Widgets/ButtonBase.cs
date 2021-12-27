@@ -6,7 +6,7 @@ using GtkSharp.Gtk.Native.Types;
 
 namespace GtkSharp.Gtk.Widgets
 {
-    public abstract class ButtonBase : Bin
+    public class ButtonBase : Bin
     {
         private GEventHandler<ButtonActivateCallback, ButtonActivateEvent> activateHandler = new GEventHandler<ButtonActivateCallback, ButtonActivateEvent>();
         private GEventHandler<ButtonClickedCallback, ButtonClickedEvent> clickedHandler = new GEventHandler<ButtonClickedCallback, ButtonClickedEvent>();

@@ -214,9 +214,9 @@ namespace GtkSharp.Gtk.Widgets
             
         }
 
-        internal Widget(IntPtr handle)
+        internal Widget(IntPtr handle) : base(handle)
         {
-            this.handle.pointer = handle;
+            
         }
 
         public void Show()

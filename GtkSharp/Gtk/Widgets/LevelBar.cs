@@ -22,6 +22,7 @@ namespace GtkSharp.Gtk.Widgets
                 SetMinValue(value);
             }
         }
+
         public double MaxValue
         {
             get
@@ -33,6 +34,7 @@ namespace GtkSharp.Gtk.Widgets
                 SetMaxValue(value);
             }
         }
+        
         public double Value
         {
             get

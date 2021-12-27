@@ -1,16 +1,16 @@
 using System.Runtime.InteropServices;
 
-namespace GtkSharp.Gtk
+namespace GtkSharp.Gtk.Native
 {
-    internal static class GtkLib
+    public static class GtkLib
     {        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_init(int argc, string[] argv);
+        public static extern void gtk_init(int argc, string[] argv);
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_main();
+        public static extern void gtk_main();
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_main_quit();
+        public static extern void gtk_main_quit();
     }
 }

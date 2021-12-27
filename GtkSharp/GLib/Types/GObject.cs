@@ -15,6 +15,16 @@ namespace GtkSharp.GLib.Types
             }
         }
 
+        public GObject()
+        {
+            
+        }
+
+        internal GObject(IntPtr handle)
+        {
+            this.handle.pointer = handle;
+        }
+
         public void Unreference()
         {
             if(handle.IsNullPointer)

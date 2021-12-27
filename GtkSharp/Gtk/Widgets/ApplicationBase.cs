@@ -1,3 +1,4 @@
+using GtkSharp.Gtk.Native;
 using GtkSharp.Gtk.Types;
 
 namespace GtkSharp.Gtk.Widgets

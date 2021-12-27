@@ -63,6 +63,15 @@ namespace GtkSharp.Gtk.Widgets
             }
         }
 
+        public GdkGLContextPointer Context
+        {
+            get
+            {
+                GetContext();
+                return context;
+            }
+        }
+
         public GLAreaCreateContextEvent CreateContext
         {
             get
@@ -131,7 +140,6 @@ namespace GtkSharp.Gtk.Widgets
             context = NativeGLArea.gtk_gl_area_get_context(handle);
             return true;
         }
-
         
         public void SetRequiredVersion(int major, int minor)
         {
@@ -224,19 +232,19 @@ namespace GtkSharp.Gtk.Widgets
             NativeGLArea.gtk_gl_area_set_auto_render(handle, auto);
         }
 
-        GdkGLContextPointer OnCreateContext(IntPtr area, IntPtr data)
+        private GdkGLContextPointer OnCreateContext(IntPtr area, IntPtr data)
         {
             context = NativeGLArea.gtk_gl_area_get_context(handle);
             CreateContext?.Invoke();
             return context;
         }
 
-        void OnResize(IntPtr area, int width, int height, IntPtr data)
+        private void OnResize(IntPtr area, int width, int height, IntPtr data)
         {
             Resize?.Invoke(width, height);
         }
 
-        bool OnRender(IntPtr area, IntPtr context)
+        private bool OnRender(IntPtr area, IntPtr context)
         {
             Render?.Invoke();
             return true;

@@ -1,12 +1,11 @@
-using GtkSharp.Glib.Native.Types;
+using System;
 
 namespace GtkSharp.GLib.Types
 {
     public class GIcon : GObject
     {
-        public GIcon()
+        internal GIcon(IntPtr handle) : base(handle)
         {
-            handle = new GObjectPointer();
         }
     }
 }

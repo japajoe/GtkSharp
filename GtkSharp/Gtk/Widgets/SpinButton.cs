@@ -1,10 +1,10 @@
 using GtkSharp.Gtk.Native.Widgets;
-using GtkSharp.Gtk.Native.Types;
 using GtkSharp.Gtk.Types;
+using GtkSharp.Glib.Native.Types;
 
 namespace GtkSharp.Gtk.Widgets
 {
-    public class SpinButton : Editable
+    public class SpinButton : Entry
     {
         private GtkAdjustment adjustment;
         private double buttonValue;
@@ -24,7 +24,7 @@ namespace GtkSharp.Gtk.Widgets
 
         public SpinButton(double climbRate, uint digits)
         {
-            GtkAdjustmentPointer adj = new GtkAdjustmentPointer();
+            GObjectPointer adj = new GObjectPointer();
             handle = NativeSpinButton.gtk_spin_button_new(adj, climbRate, digits);
             adj = NativeSpinButton.gtk_spin_button_get_adjustment(handle);
             adjustment = new GtkAdjustment(adj.pointer);
@@ -33,7 +33,7 @@ namespace GtkSharp.Gtk.Widgets
         public SpinButton(double valueMin, double valueMax, double stepSize)
         {            
             handle = NativeSpinButton.gtk_spin_button_new_with_range(valueMin, valueMax, stepSize);
-            GtkAdjustmentPointer adj = NativeSpinButton.gtk_spin_button_get_adjustment(handle);
+            GObjectPointer adj = NativeSpinButton.gtk_spin_button_get_adjustment(handle);
             adjustment = new GtkAdjustment(adj.pointer);
         }
 

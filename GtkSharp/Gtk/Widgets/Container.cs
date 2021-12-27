@@ -6,7 +6,7 @@ using GtkSharp.Gtk.Types;
 
 namespace GtkSharp.Gtk.Widgets
 {
-    public abstract class Container : Widget
+    public class Container : Widget
     {
         private GEventHandler<ContainerAddCallback,ContainerAddEvent> addHandler = new GEventHandler<ContainerAddCallback, ContainerAddEvent>();
         private GEventHandler<ContainerCheckResizeCallback,ContainerCheckResizeEvent> checkResizeHandler = new GEventHandler<ContainerCheckResizeCallback, ContainerCheckResizeEvent>();
