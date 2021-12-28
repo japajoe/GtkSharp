@@ -75,7 +75,7 @@ namespace GtkSharp.Gtk.Widgets
             set
             {
                 destroyedHandler.Event = value;
-                destroyedHandler.SignalConnect(handle.pointer, "destroy-event", OnDestroyed, handle.pointer);             
+                destroyedHandler.SignalConnect(handle.pointer, "destroy-event", OnDestroyed, handle.pointer);
             }
         }
 

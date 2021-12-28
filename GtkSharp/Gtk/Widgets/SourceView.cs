@@ -12,13 +12,13 @@ namespace GtkSharp.Gtk.Widgets
         private string text;
 
         public SourceView()
-        {
+        {            
             buffer = new GtkSourceBuffer();
             handle = NativeSourceView.gtk_source_view_new_with_buffer(buffer.handle);
         }
 
         public SourceView(string languageId)
-        {
+        {            
             languageManager = new GtkSourceLanguageManager();
             language = languageManager.GetLanguage(languageId);
             buffer = new GtkSourceBuffer(language);

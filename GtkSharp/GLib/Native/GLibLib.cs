@@ -43,6 +43,9 @@ namespace GtkSharp.GLib.Native
         internal static extern uint g_timeout_add_seconds(uint interval, IntPtr sourceFunc, IntPtr data);
         
         [DllImport(NATIVELIB_GOBJECT, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern uint g_timeout_add_seconds_full(int priority, uint interval, IntPtr sourceFunc, IntPtr data, IntPtr destroyNotifyFunc);        
+        internal static extern uint g_timeout_add_seconds_full(int priority, uint interval, IntPtr sourceFunc, IntPtr data, IntPtr destroyNotifyFunc);
+
+        [DllImport(NATIVELIB_GOBJECT, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void g_type_ensure(ulong gtype);
     }
 }
