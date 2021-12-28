@@ -8,13 +8,13 @@ namespace GtkSharp.Gtk.Widgets
         public Window()
         {
             handle = NativeWindow.gtk_window_new(GtkWindowType.TopLevel);
-            DestroyEvent += OnClosing;
+            DestroyWidget += OnClosing;
         }
 
         public Window(GtkWindowType type)
         {
             handle = NativeWindow.gtk_window_new(type);
-            DestroyEvent += OnClosing;
+            DestroyWidget += OnClosing;
         }
 
         public void SetTitle(string title)

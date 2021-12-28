@@ -60,7 +60,7 @@ namespace GtkSharp.Gtk.Widgets
             this.Add(this.dummy);
 
             this.Draw += OnDrawSprite;
-            this.DestroyEvent += OnDestroyWidget;
+            this.DestroyWidget += OnDestroyWidget;
 
             SetValue(value);
         }

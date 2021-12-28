@@ -53,7 +53,7 @@ namespace GtkSharp.Gtk.Widgets
             }
         }        
 
-        public WidgetDestroyEvent DestroyEvent
+        public WidgetDestroyEvent DestroyWidget
         {
             get
             {
@@ -425,7 +425,7 @@ namespace GtkSharp.Gtk.Widgets
 
         void OnDestroy(IntPtr widget, IntPtr userData)
         {
-            DestroyEvent?.Invoke();
+            DestroyWidget?.Invoke();
         }
 
         bool OnDestroyed(IntPtr widget, GdkEventPointer evnt, IntPtr userData)
