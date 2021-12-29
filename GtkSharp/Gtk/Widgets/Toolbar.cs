@@ -67,10 +67,10 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return;
 
-            if(item.handle.IsNullPointer)
+            if(item.Handle.IsNullPointer)
                 return;
 
-            NativeToolBar.gtk_toolbar_insert(handle, item.handle, position);
+            NativeToolBar.gtk_toolbar_insert(handle, item.Handle, position);
         }
 
         private GtkToolbarStyle GetStyle()
@@ -150,7 +150,7 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return -1;
             
-            return NativeToolBar.gtk_toolbar_get_item_index(handle, item.handle);
+            return NativeToolBar.gtk_toolbar_get_item_index(handle, item.Handle);
         }
 
         private int GetItemCount()

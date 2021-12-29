@@ -13,7 +13,6 @@ namespace GtkSharp.Gtk.Widgets
 {
     public class Widget : GObject
     {
-        //internal GtkWidgetPointer handle;
         private CairoInstance cairo = new CairoInstance();
 
         private GEventHandler<WidgetDestroyCallback,WidgetDestroyEvent> destroyHandler = new GEventHandler<WidgetDestroyCallback, WidgetDestroyEvent>();
@@ -51,7 +50,31 @@ namespace GtkSharp.Gtk.Widgets
             {
                 SetHorizontalAlignment(value);
             }
-        }        
+        }
+
+        public bool HorizontalExpand
+        {
+            get
+            {
+                return GetHorizontalExpand();
+            }
+            set
+            {
+                SetHorizontalExpand(value);
+            }
+        }
+
+        public bool VerticalExpand
+        {
+            get
+            {
+                return GetVerticalExpand();
+            }
+            set
+            {
+                SetVerticalExpand(value);
+            }
+        }
 
         public WidgetDestroyEvent DestroyWidget
         {
@@ -214,7 +237,7 @@ namespace GtkSharp.Gtk.Widgets
             
         }
 
-        internal Widget(IntPtr handle) : base(handle)
+        public Widget(IntPtr handle) : base(handle)
         {
             
         }
@@ -299,6 +322,34 @@ namespace GtkSharp.Gtk.Widgets
                 return;
 
             NativeWidget.gtk_widget_set_halign(handle, alignment);
+        }
+
+        public bool GetHorizontalExpand()
+        {
+            if(handle.IsNullPointer)
+                return false;
+            return NativeWidget.gtk_widget_get_hexpand(handle);
+        }
+
+        public void SetHorizontalExpand(bool expand)
+        {
+            if(handle.IsNullPointer)
+                return;
+            NativeWidget.gtk_widget_set_hexpand(handle, expand);
+        }
+
+        public bool GetVerticalExpand()
+        {
+            if(handle.IsNullPointer)
+                return false;
+            return NativeWidget.gtk_widget_get_vexpand(handle);
+        }
+
+        public void SetVerticalExpand(bool expand)
+        {
+            if(handle.IsNullPointer)
+                return;
+            NativeWidget.gtk_widget_get_vexpand(handle);
         }        
 
         public void AddEvents(GdkEventMask events)

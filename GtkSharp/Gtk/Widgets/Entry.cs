@@ -57,7 +57,7 @@ namespace GtkSharp.Gtk.Widgets
         public Entry(EntryBuffer buffer)
         {
             this.buffer = buffer;
-            handle = NativeEntry.gtk_entry_new_with_buffer(buffer.handle);
+            handle = NativeEntry.gtk_entry_new_with_buffer(buffer.Handle);
         }
 
         private string GetText()

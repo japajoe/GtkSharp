@@ -70,14 +70,14 @@ namespace GtkSharp.Gtk.Widgets
         {
             if(handle.IsNullPointer)
                 return;
-            NativeContainer.gtk_container_add(handle, widget.handle);
+            NativeContainer.gtk_container_add(handle, widget.Handle);
         }
 
         public void Remove(Widget widget)
         {
             if(handle.IsNullPointer)
                 return;
-            NativeContainer.gtk_container_remove(handle, widget.handle);
+            NativeContainer.gtk_container_remove(handle, widget.Handle);
         }
 
         void OnAdd(IntPtr widget, IntPtr obj, IntPtr data)

@@ -39,9 +39,9 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return;
             if(location == 0)
-                NativePaned.gtk_paned_pack1(handle, widget.handle, resize, shrink);
+                NativePaned.gtk_paned_pack1(handle, widget.Handle, resize, shrink);
             else
-                NativePaned.gtk_paned_pack2(handle, widget.handle, resize, shrink);
+                NativePaned.gtk_paned_pack2(handle, widget.Handle, resize, shrink);
         }
 
         private int GetHandlePosition()

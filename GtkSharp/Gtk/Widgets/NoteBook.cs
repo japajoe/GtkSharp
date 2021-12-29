@@ -171,7 +171,7 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return -1;
             
-            return NativeNoteBook.gtk_notebook_append_page(handle, widget.handle, label.handle);
+            return NativeNoteBook.gtk_notebook_append_page(handle, widget.Handle, label.Handle);
         }
 
         public int AppendPageMenu(Widget widget, Widget tabLabel, Widget menuLabel)
@@ -179,7 +179,7 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return -1;
             
-            return NativeNoteBook.gtk_notebook_append_page_menu(handle, widget.handle, tabLabel.handle, menuLabel.handle);
+            return NativeNoteBook.gtk_notebook_append_page_menu(handle, widget.Handle, tabLabel.Handle, menuLabel.Handle);
         }        
 
         public int PrependPage(Widget widget, Widget label)       
@@ -187,7 +187,7 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return -1;
 
-            return NativeNoteBook.gtk_notebook_prepend_page(handle, widget.handle, label.handle);
+            return NativeNoteBook.gtk_notebook_prepend_page(handle, widget.Handle, label.Handle);
         }
 
         public int PrependPageMenu(Widget widget, Widget tabLabel, Widget menuLabel)
@@ -195,7 +195,7 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return -1;
             
-            return NativeNoteBook.gtk_notebook_prepend_page_menu(handle, widget.handle, tabLabel.handle, menuLabel.handle);
+            return NativeNoteBook.gtk_notebook_prepend_page_menu(handle, widget.Handle, tabLabel.Handle, menuLabel.Handle);
         }
 
         public int InsertPage(Widget widget, Widget label, int index)
@@ -203,7 +203,7 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return -1;
             
-            return NativeNoteBook.gtk_notebook_insert_page(handle, widget.handle, label.handle, index);
+            return NativeNoteBook.gtk_notebook_insert_page(handle, widget.Handle, label.Handle, index);
         }
 
         public int InsertPageMenu(Widget widget, Widget tabLabel, Widget menuLabel, int index)
@@ -211,7 +211,7 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return -1;
             
-            return NativeNoteBook.gtk_notebook_insert_page_menu(handle, widget.handle, tabLabel.handle, menuLabel.handle, index);
+            return NativeNoteBook.gtk_notebook_insert_page_menu(handle, widget.Handle, tabLabel.Handle, menuLabel.Handle, index);
         }
 
         public void RemovePage(int index)

@@ -4,72 +4,72 @@ using GtkSharp.Gtk.Types;
 
 namespace GtkSharp.Gtk.Native.Widgets
 {
-    internal static class NativeGrid
+    public static class NativeGrid
     {
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern ulong gtk_grid_get_type();
+        public static extern ulong gtk_grid_get_type();
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GObjectPointer gtk_grid_new();
+        public static extern GObjectPointer gtk_grid_new();
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_grid_attach(GObjectPointer grid, GObjectPointer child, int left, int top, int width, int height);
+        public static extern void gtk_grid_attach(GObjectPointer grid, GObjectPointer child, int left, int top, int width, int height);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_grid_attach_next_to(GObjectPointer grid, GObjectPointer child, GObjectPointer sibling, GtkPositionType side, int width, int height);
+        public static extern void gtk_grid_attach_next_to(GObjectPointer grid, GObjectPointer child, GObjectPointer sibling, GtkPositionType side, int width, int height);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GObjectPointer gtk_grid_get_child_at(GObjectPointer grid, int left, int top);
+        public static extern GObjectPointer gtk_grid_get_child_at(GObjectPointer grid, int left, int top);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_grid_insert_row(GObjectPointer grid, int position);
+        public static extern void gtk_grid_insert_row(GObjectPointer grid, int position);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_grid_insert_column(GObjectPointer grid, int position);
+        public static extern void gtk_grid_insert_column(GObjectPointer grid, int position);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_grid_remove_row(GObjectPointer grid, int position);
+        public static extern void gtk_grid_remove_row(GObjectPointer grid, int position);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_grid_remove_column(GObjectPointer grid, int position);
+        public static extern void gtk_grid_remove_column(GObjectPointer grid, int position);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_grid_insert_next_to(GObjectPointer grid, GObjectPointer sibling, GtkPositionType side);
+        public static extern void gtk_grid_insert_next_to(GObjectPointer grid, GObjectPointer sibling, GtkPositionType side);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_grid_set_row_homogeneous(GObjectPointer grid, bool homogeneous);
+        public static extern void gtk_grid_set_row_homogeneous(GObjectPointer grid, bool homogeneous);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_grid_get_row_homogeneous(GObjectPointer grid);
+        public static extern bool gtk_grid_get_row_homogeneous(GObjectPointer grid);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_grid_set_row_spacing(GObjectPointer grid, uint spacing);
+        public static extern void gtk_grid_set_row_spacing(GObjectPointer grid, uint spacing);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern uint gtk_grid_get_row_spacing(GObjectPointer grid);
+        public static extern uint gtk_grid_get_row_spacing(GObjectPointer grid);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_grid_set_column_homogeneous(GObjectPointer grid, bool homogeneous);
+        public static extern void gtk_grid_set_column_homogeneous(GObjectPointer grid, bool homogeneous);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern bool gtk_grid_get_column_homogeneous(GObjectPointer grid);
+        public static extern bool gtk_grid_get_column_homogeneous(GObjectPointer grid);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_grid_set_column_spacing(GObjectPointer grid, uint spacing);
+        public static extern void gtk_grid_set_column_spacing(GObjectPointer grid, uint spacing);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern uint gtk_grid_get_column_spacing(GObjectPointer grid);
+        public static extern uint gtk_grid_get_column_spacing(GObjectPointer grid);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_grid_set_row_baseline_position(GObjectPointer grid, int row, GtkBaselinePosition pos);
+        public static extern void gtk_grid_set_row_baseline_position(GObjectPointer grid, int row, GtkBaselinePosition pos);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GtkBaselinePosition gtk_grid_get_row_baseline_position(GObjectPointer grid, int row);
+        public static extern GtkBaselinePosition gtk_grid_get_row_baseline_position(GObjectPointer grid, int row);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gtk_grid_set_baseline_row(GObjectPointer grid, int row);
+        public static extern void gtk_grid_set_baseline_row(GObjectPointer grid, int row);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern int gtk_grid_get_baseline_row(GObjectPointer grid);
+        public static extern int gtk_grid_get_baseline_row(GObjectPointer grid);
     }
 }

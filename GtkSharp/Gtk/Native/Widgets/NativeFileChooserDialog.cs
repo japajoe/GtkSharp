@@ -5,12 +5,12 @@ using GtkSharp.Gtk.Types;
 
 namespace GtkSharp.Gtk.Native.Widgets
 {
-    internal static class NativeFileChooserDialog
+    public static class NativeFileChooserDialog
     {        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern ulong gtk_file_chooser_dialog_get_type();
+        public static extern ulong gtk_file_chooser_dialog_get_type();
 
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GObjectPointer gtk_file_chooser_dialog_new(string title, GObjectPointer parentWindow, GtkFileChooserAction action, string first_button_text, GtkResponseType first_button_reponse, string second_button_text, GtkResponseType second_button_reponse, IntPtr terminator);
+        public static extern GObjectPointer gtk_file_chooser_dialog_new(string title, GObjectPointer parentWindow, GtkFileChooserAction action, string first_button_text, GtkResponseType first_button_reponse, string second_button_text, GtkResponseType second_button_reponse, IntPtr terminator);
     }
 }

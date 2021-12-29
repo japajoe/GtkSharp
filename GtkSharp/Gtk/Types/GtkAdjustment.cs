@@ -6,7 +6,7 @@ namespace GtkSharp.Gtk.Types
 {
     public class GtkAdjustment : GObject
     {
-        internal GtkAdjustment(IntPtr handle) : base(handle)
+        public GtkAdjustment(IntPtr handle) : base(handle)
         {
         }
 

@@ -50,7 +50,7 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return;
                 
-            NativeMenuShell.gtk_menu_shell_append(handle, menuItem.handle);
+            NativeMenuShell.gtk_menu_shell_append(handle, menuItem.Handle);
         }
     } 
 }

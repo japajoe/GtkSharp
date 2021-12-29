@@ -14,7 +14,7 @@ namespace GtkSharp.Gtk.Widgets
         public SourceView()
         {            
             buffer = new GtkSourceBuffer();
-            handle = NativeSourceView.gtk_source_view_new_with_buffer(buffer.handle);
+            handle = NativeSourceView.gtk_source_view_new_with_buffer(buffer.Handle);
         }
 
         public SourceView(string languageId)
@@ -22,7 +22,7 @@ namespace GtkSharp.Gtk.Widgets
             languageManager = new GtkSourceLanguageManager();
             language = languageManager.GetLanguage(languageId);
             buffer = new GtkSourceBuffer(language);
-            handle = NativeSourceView.gtk_source_view_new_with_buffer(buffer.handle);
+            handle = NativeSourceView.gtk_source_view_new_with_buffer(buffer.Handle);
             NativeSourceView.gtk_source_view_set_tab_width(handle, 4);
             NativeSourceView.gtk_source_view_set_show_line_numbers(handle, true);        
         }

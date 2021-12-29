@@ -27,14 +27,14 @@ namespace GtkSharp.Gtk.Types
         public GtkClipboard()
         {
             display = new GdkDisplay();            
-            handle = NativeClipboard.gtk_clipboard_get_default(display.handle);
+            handle = NativeClipboard.gtk_clipboard_get_default(display.Handle);
             textReceivedHandler.Callback = OnTextReceived;
         }
 
         public GtkClipboard(GdkDisplay display)
         {
             this.display = display;
-            handle = NativeClipboard.gtk_clipboard_get_default(display.handle);
+            handle = NativeClipboard.gtk_clipboard_get_default(display.Handle);
             textReceivedHandler.Callback = OnTextReceived;
         }
 

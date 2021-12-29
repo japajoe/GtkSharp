@@ -5,7 +5,7 @@ namespace GtkSharp.Cairo.Types
 {
     public class CairoSurface
     {
-        internal CairoSurfacePointer handle;
+        public CairoSurfacePointer handle;
 
         public CairoSurface(CairoSurface other, CairoContent content, int width, int height)
         {

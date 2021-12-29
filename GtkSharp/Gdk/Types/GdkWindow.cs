@@ -18,7 +18,7 @@ namespace GtkSharp.Gdk.Types
                 return;
             }
             
-            NativeGdkWindow.gdk_window_set_cursor(handle, cursor.handle);
+            NativeGdkWindow.gdk_window_set_cursor(handle, cursor.Handle);
         }
     }
 }

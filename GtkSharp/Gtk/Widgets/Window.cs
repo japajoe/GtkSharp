@@ -37,10 +37,10 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return;
             
-            if(widget.handle.IsNullPointer)
+            if(widget.Handle.IsNullPointer)
                 return;
                 
-            NativeWindow.gtk_window_set_titlebar(handle, widget.handle);
+            NativeWindow.gtk_window_set_titlebar(handle, widget.Handle);
         }
 
         public void Close()

@@ -1,6 +1,5 @@
 using GtkSharp.Gtk.Types;
 using GtkSharp.Gtk.Native.Widgets;
-using GtkSharp.Gtk.Native.Types;
 
 namespace GtkSharp.Gtk.Widgets
 {
@@ -174,7 +173,7 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return;
             
-            NativeGrid.gtk_grid_attach(handle, child.handle, left, top, width, height);
+            NativeGrid.gtk_grid_attach(handle, child.Handle, left, top, width, height);
         }
 
         public void AttachNextTo(Widget child, Widget sibling, GtkPositionType side, int width, int height)
@@ -182,7 +181,7 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return;
 
-            NativeGrid.gtk_grid_attach_next_to(handle, child.handle, sibling.handle, side, width, height);
+            NativeGrid.gtk_grid_attach_next_to(handle, child.Handle, sibling.Handle, side, width, height);
         }
 
         public void InsertNextTo(Widget sibling, GtkPositionType side)
@@ -190,7 +189,7 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return;
 
-            NativeGrid.gtk_grid_insert_next_to(handle, sibling.handle, side);
+            NativeGrid.gtk_grid_insert_next_to(handle, sibling.Handle, side);
         }
 
         public void InsertRow(int position)

@@ -19,14 +19,14 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return;
             
-            NativeFixed.gtk_fixed_put(handle, widget.handle, x, y);
+            NativeFixed.gtk_fixed_put(handle, widget.Handle, x, y);
         }
 
         public void Move(Widget widget, int x, int y)
         {
             if(handle.IsNullPointer)
                 return;            
-            NativeFixed.gtk_fixed_move(handle, widget.handle, x, y);
+            NativeFixed.gtk_fixed_move(handle, widget.Handle, x, y);
         }
     }
 }

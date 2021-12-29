@@ -25,7 +25,7 @@ namespace GtkSharp.Gtk.Widgets
             this.title = "Save File";
 
             handle = NativeFileChooserDialog.gtk_file_chooser_dialog_new(title,
-                                                                parent.handle,
+                                                                parent.Handle,
                                                                 GtkFileChooserAction.Save,
                                                                 "_Cancel",
                                                                 GtkResponseType.Cancel,
@@ -57,7 +57,7 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
             {
                 handle = NativeFileChooserDialog.gtk_file_chooser_dialog_new(title,
-                                                                    parent.handle,
+                                                                    parent.Handle,
                                                                     GtkFileChooserAction.Save,
                                                                     "_Cancel",
                                                                     GtkResponseType.Cancel,

@@ -44,7 +44,7 @@ namespace GtkSharp.Gtk.Widgets
 
         public Dialog(string title, Window parent, GtkDialogFlags flags, string fbText, GtkResponseType fbResponse, string sbText, GtkResponseType sbResponse)
         {
-            handle = NativeDialog.gtk_dialog_new_with_buttons(title, parent.handle, flags, fbText, fbResponse, sbText, sbResponse);
+            handle = NativeDialog.gtk_dialog_new_with_buttons(title, parent.Handle, flags, fbText, fbResponse, sbText, sbResponse);
         }
 
         private void OnClosing(IntPtr widget, IntPtr data)

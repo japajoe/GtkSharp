@@ -7,7 +7,7 @@ namespace GtkSharp.Cairo.Types
 {
     public class CairoInstance
     {
-        internal CairoPointer cr;
+        public CairoPointer cr;
 
         public CairoInstance()
         {
@@ -74,7 +74,7 @@ namespace GtkSharp.Cairo.Types
         {
             if(cr.IsNullPointer)
                 return;
-            NativeGdkCairo.gdk_cairo_set_source_pixbuf(cr, pixbuf.handle, x, y);
+            NativeGdkCairo.gdk_cairo_set_source_pixbuf(cr, pixbuf.Handle, x, y);
         }
 
         public void SetSourceSurface(CairoSurface surface, double x, double y)

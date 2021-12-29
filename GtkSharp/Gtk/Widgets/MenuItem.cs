@@ -30,7 +30,7 @@ namespace GtkSharp.Gtk.Widgets
 
         public void SetSubMenu(Menu menu)
         {
-            NativeMenuItem.gtk_menu_item_set_submenu(handle, menu.handle);
+            NativeMenuItem.gtk_menu_item_set_submenu(handle, menu.Handle);
         }
 
         private void OnActivate(IntPtr widget, IntPtr data)

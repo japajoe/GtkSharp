@@ -162,10 +162,10 @@ namespace GtkSharp.Gtk.Widgets
         {
             if(handle.IsNullPointer)
                 return;
-            if(image.handle.IsNullPointer)
+            if(image.Handle.IsNullPointer)
                 return;
 
-            NativeButton.gtk_button_set_image(handle, image.handle);
+            NativeButton.gtk_button_set_image(handle, image.Handle);
         }
 
         private string GetLabel()

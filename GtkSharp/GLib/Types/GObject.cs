@@ -5,13 +5,17 @@ namespace GtkSharp.GLib.Types
 {
     public class GObject
     {
-        internal GObjectPointer handle;
+        protected GObjectPointer handle;
 
-        public IntPtr Handle
+        public GObjectPointer Handle
         {
             get
             {
-                return handle.pointer;
+                return handle;
+            }
+            set
+            {
+                handle = value;
             }
         }
 
@@ -20,7 +24,7 @@ namespace GtkSharp.GLib.Types
             
         }
 
-        internal GObject(IntPtr handle)
+        public GObject(IntPtr handle)
         {
             this.handle.pointer = handle;
         }

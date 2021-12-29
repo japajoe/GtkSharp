@@ -52,14 +52,14 @@ namespace GtkSharp.Gtk.Widgets
         {
             if(handle.IsNullPointer)
                 return;
-            NativeBox.gtk_box_pack_start(handle, widget.handle, expand, fill, padding);
+            NativeBox.gtk_box_pack_start(handle, widget.Handle, expand, fill, padding);
         }
 
         public void PackEnd(Widget widget, bool expand, bool fill, uint padding)
         {
             if(handle.IsNullPointer)
                 return;
-            NativeBox.gtk_box_pack_end(handle, widget.handle, expand, fill, padding);
+            NativeBox.gtk_box_pack_end(handle, widget.Handle, expand, fill, padding);
         }        
     }
 }

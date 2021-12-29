@@ -56,7 +56,7 @@ namespace GtkSharp.Gtk.Types
                 return null;
 
             T instance = new T();
-            instance.handle = ptr;
+            instance.Handle = ptr;
             return instance;
         }
     }

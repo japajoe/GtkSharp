@@ -50,12 +50,12 @@ namespace GtkSharp.Gtk.Widgets
 
         public void ShellAppend(MenuItem menuItem)
         {
-            NativeMenuShell.gtk_menu_shell_append(handle, menuItem.handle);
+            NativeMenuShell.gtk_menu_shell_append(handle, menuItem.Handle);
         }
 
         public void ShellPrepend(MenuItem menuItem)
         {
-            NativeMenuShell.gtk_menu_shell_prepend(handle, menuItem.handle);
+            NativeMenuShell.gtk_menu_shell_prepend(handle, menuItem.Handle);
         }
 
         private void OnMoveScroll(IntPtr widget, IntPtr scrollType, IntPtr data)

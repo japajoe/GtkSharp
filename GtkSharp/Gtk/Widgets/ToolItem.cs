@@ -55,7 +55,7 @@ namespace GtkSharp.Gtk.Widgets
             Add(widget);
         }
 
-        internal ToolItem(GObjectPointer handle)
+        public ToolItem(GObjectPointer handle)
         {
             this.handle = handle;
         }

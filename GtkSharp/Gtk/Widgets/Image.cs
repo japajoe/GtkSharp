@@ -37,15 +37,15 @@ namespace GtkSharp.Gtk.Widgets
 
         public Image(GdkPixbuf pixbuf)
         {
-            if(!pixbuf.handle.IsNullPointer)
-                handle = NativeImage.gtk_image_new_from_pixbuf(pixbuf.handle);
+            if(!pixbuf.Handle.IsNullPointer)
+                handle = NativeImage.gtk_image_new_from_pixbuf(pixbuf.Handle);
             
             GetPixbuf();
         }
 
         public Image(GIcon icon, GtkIconSize size)
         {
-            handle = NativeImage.gtk_image_new_from_gicon(icon.handle, size);
+            handle = NativeImage.gtk_image_new_from_gicon(icon.Handle, size);
             GetPixbuf();
         }
 
@@ -55,7 +55,7 @@ namespace GtkSharp.Gtk.Widgets
             GetPixbuf();
         }
 
-        internal Image(GObjectPointer handle)
+        public Image(GObjectPointer handle)
         {
             this.handle = handle;
             GetPixbuf();
@@ -70,7 +70,7 @@ namespace GtkSharp.Gtk.Widgets
             if(pixbuf == null)
                 pixbuf = new GdkPixbuf(p);
             else
-                pixbuf.handle = p;
+                pixbuf.Handle = p;
             return pixbuf;
         }
 
@@ -86,7 +86,7 @@ namespace GtkSharp.Gtk.Widgets
             
             pixbuf.Scale(scaleX, scaleY);
 
-            NativeImage.gtk_image_set_from_pixbuf(handle, pixbuf.handle);
+            NativeImage.gtk_image_set_from_pixbuf(handle, pixbuf.Handle);
         }
 
         public bool GetPixel(int x, int y, out GdkRGBA color)

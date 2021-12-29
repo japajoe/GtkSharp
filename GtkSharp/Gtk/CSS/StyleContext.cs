@@ -16,10 +16,10 @@ namespace GtkSharp.Gtk.CSS
             if(handle.IsNullPointer)
                 return;
             
-            if(screen.handle.IsNullPointer)
+            if(screen.Handle.IsNullPointer)
                 return;
 
-            NativeStyleContext.gtk_style_context_add_provider_for_screen(screen.handle, provider.handle, (uint)priority);
+            NativeStyleContext.gtk_style_context_add_provider_for_screen(screen.Handle, provider.Handle, (uint)priority);
         }
     }
 }

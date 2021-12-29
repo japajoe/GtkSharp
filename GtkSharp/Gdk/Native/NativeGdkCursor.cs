@@ -5,42 +5,42 @@ using GtkSharp.Glib.Native.Types;
 
 namespace GtkSharp.Gdk.Native
 {
-    internal static class NativeGdkCursor
+    public static class NativeGdkCursor
     {        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern ulong gdk_cursor_get_type();
+        public static extern ulong gdk_cursor_get_type();
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GObjectPointer gdk_cursor_new_for_display(GObjectPointer display, GdkCursorType cursor_type);
+        public static extern GObjectPointer gdk_cursor_new_for_display(GObjectPointer display, GdkCursorType cursor_type);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GObjectPointer gdk_cursor_new(GdkCursorType cursor_type);
+        public static extern GObjectPointer gdk_cursor_new(GdkCursorType cursor_type);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GObjectPointer gdk_cursor_new_from_pixbuf(GObjectPointer display, GObjectPointer pixbuf, int x, int y);
+        public static extern GObjectPointer gdk_cursor_new_from_pixbuf(GObjectPointer display, GObjectPointer pixbuf, int x, int y);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GObjectPointer gdk_cursor_new_from_surface(GObjectPointer display, CairoSurfacePointer surface, double x, double y);
+        public static extern GObjectPointer gdk_cursor_new_from_surface(GObjectPointer display, CairoSurfacePointer surface, double x, double y);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GObjectPointer gdk_cursor_new_from_name(GObjectPointer display, string name);
+        public static extern GObjectPointer gdk_cursor_new_from_name(GObjectPointer display, string name);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GObjectPointer gdk_cursor_get_display(GObjectPointer cursor);
+        public static extern GObjectPointer gdk_cursor_get_display(GObjectPointer cursor);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GObjectPointer gdk_cursor_ref(GObjectPointer cursor);
+        public static extern GObjectPointer gdk_cursor_ref(GObjectPointer cursor);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void gdk_cursor_unref(GObjectPointer cursor);
+        public static extern void gdk_cursor_unref(GObjectPointer cursor);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GObjectPointer gdk_cursor_get_image(GObjectPointer cursor);
+        public static extern GObjectPointer gdk_cursor_get_image(GObjectPointer cursor);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern CairoSurfacePointer gdk_cursor_get_surface(GObjectPointer cursor, ref double x_hot, ref double y_hot);
+        public static extern CairoSurfacePointer gdk_cursor_get_surface(GObjectPointer cursor, ref double x_hot, ref double y_hot);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern GdkCursorType gdk_cursor_get_cursor_type(GObjectPointer cursor);
+        public static extern GdkCursorType gdk_cursor_get_cursor_type(GObjectPointer cursor);
     }
 }

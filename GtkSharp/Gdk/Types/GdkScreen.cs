@@ -27,7 +27,7 @@ namespace GtkSharp.Gdk.Types
             handle = NativeGdkScreen.gdk_screen_get_default();
         }
 
-        internal GdkScreen(IntPtr pointer)
+        public GdkScreen(IntPtr pointer)
         {
             handle.pointer = pointer;
         }

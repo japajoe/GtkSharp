@@ -218,7 +218,7 @@ namespace GtkSharp.Gtk.Widgets
         public TextView(GtkTextBuffer buffer)
         {
             this.buffer = buffer;
-            handle = NativeTextView.gtk_text_view_new_with_buffer(buffer.handle);
+            handle = NativeTextView.gtk_text_view_new_with_buffer(buffer.Handle);
         }
 
         private bool GetReadOnly()
