@@ -235,6 +235,21 @@ namespace GtkSharp.Gtk.Widgets
             NativeWidget.gtk_widget_show_all(handle);
         }
 
+        public bool GetSizeRequest(out int width, out int height)
+        {
+            if(handle.IsNullPointer)
+            {
+                width = height = 0;
+                return false;
+            }
+
+            GtkRequisition r;
+            NativeWidget.gtk_widget_size_request(handle, out r);
+            width = r.width;
+            height = r.height;
+            return true;
+        }
+
         public void SetSizeRequest(int width, int height)
         {
             if(handle.IsNullPointer)
@@ -269,7 +284,6 @@ namespace GtkSharp.Gtk.Widgets
 
             NativeWidget.gtk_widget_set_valign(handle, alignment);
         }
-
 
         private GtkAlign GetHorizontalAlignment()
         {
