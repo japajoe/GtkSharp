@@ -46,5 +46,8 @@ namespace GtkSharp.Gdk.Native
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         public static extern GObjectPointer gdk_display_get_default_group(GObjectPointer display);
+
+        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void gdk_display_warp_pointer(GObjectPointer display, GObjectPointer screen, int x, int y);
     }
 }

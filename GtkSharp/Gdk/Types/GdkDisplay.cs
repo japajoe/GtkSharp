@@ -44,5 +44,16 @@ namespace GtkSharp.Gdk.Types
 
             return NativeGdkDisplay.gdk_display_get_name(handle);
         }
+
+        public void WarpPointer(int x, int y, GdkScreen screen)
+        {
+            if(handle.IsNullPointer)
+                return;
+            
+            if(screen.Handle.IsNullPointer)
+                return;
+            
+            NativeGdkDisplay.gdk_display_warp_pointer(handle, screen.Handle, x, y);
+        }
     }
 }
