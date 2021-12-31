@@ -89,10 +89,10 @@ namespace GtkSharp.Gdk.Native
         public static extern GObjectPointer gdk_window_get_cursor(GObjectPointer window);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void gdk_window_set_device_cursor(GObjectPointer window, GdkDevicePointer device, GObjectPointer cursor);
+        public static extern void gdk_window_set_device_cursor(GObjectPointer window, GObjectPointer device, GObjectPointer cursor);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        public static extern GObjectPointer gdk_window_get_device_cursor(GObjectPointer window, GdkDevicePointer device);
+        public static extern GObjectPointer gdk_window_get_device_cursor(GObjectPointer window, GObjectPointer device);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         public static extern void gdk_window_get_user_data(GObjectPointer window, IntPtr data);
@@ -134,10 +134,10 @@ namespace GtkSharp.Gdk.Native
         public static extern GObjectPointer gdk_window_get_pointer(GObjectPointer window, out int x, out int y, ref GdkModifierType mask); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        public static extern GObjectPointer gdk_window_get_device_position(GObjectPointer window, GdkDevicePointer device, out int x, out int y, out GdkModifierType mask);
+        public static extern GObjectPointer gdk_window_get_device_position(GObjectPointer window, GObjectPointer device, out int x, out int y, out GdkModifierType mask);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        public static extern GObjectPointer gdk_window_get_device_position_double(GObjectPointer window, GdkDevicePointer device, out double x, out double y, out GdkModifierType mask);
+        public static extern GObjectPointer gdk_window_get_device_position_double(GObjectPointer window, GObjectPointer device, out double x, out double y, out GdkModifierType mask);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         public static extern GObjectPointer gdk_window_get_parent(GObjectPointer window);
@@ -167,10 +167,10 @@ namespace GtkSharp.Gdk.Native
         public static extern void gdk_window_set_events(GObjectPointer window, GdkEventMask event_mask);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void gdk_window_set_device_events(GObjectPointer window, GdkDevicePointer device, GdkEventMask event_mask);
+        public static extern void gdk_window_set_device_events(GObjectPointer window, GObjectPointer device, GdkEventMask event_mask);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        public static extern GdkEventMask gdk_window_get_device_events(GObjectPointer window, GdkDevicePointer device); 
+        public static extern GdkEventMask gdk_window_get_device_events(GObjectPointer window, GObjectPointer device); 
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         public static extern void gdk_window_set_source_events(GObjectPointer window, GdkInputSource source, GdkEventMask event_mask);
@@ -260,13 +260,13 @@ namespace GtkSharp.Gdk.Native
         public static extern void gdk_window_begin_resize_drag(GObjectPointer window, GdkWindowEdge edge, int button, int root_x, int root_y, uint timestamp);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void gdk_window_begin_resize_drag_for_device(GObjectPointer window, GdkWindowEdge edge, GdkDevicePointer device, int button, int root_x, int root_y, uint timestamp);
+        public static extern void gdk_window_begin_resize_drag_for_device(GObjectPointer window, GdkWindowEdge edge, GObjectPointer device, int button, int root_x, int root_y, uint timestamp);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         public static extern void gdk_window_begin_move_drag(GObjectPointer window, int button, int root_x, int root_y, uint timestamp);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void gdk_window_begin_move_drag_for_device(GObjectPointer window, GdkDevicePointer device, int button, int root_x, int root_y, uint timestamp);
+        public static extern void gdk_window_begin_move_drag_for_device(GObjectPointer window, GObjectPointer device, int button, int root_x, int root_y, uint timestamp);
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         public static extern void gdk_window_invalidate_rect(GObjectPointer window, ref GdkRectangle rect, bool invalidate_children);

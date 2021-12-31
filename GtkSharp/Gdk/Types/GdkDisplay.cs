@@ -37,6 +37,15 @@ namespace GtkSharp.Gdk.Types
             return NativeGdkDisplay.gdk_display_get_n_screens(handle);
         }
 
+        public GdkDeviceManager GetDeviceManager()
+        {
+            if(handle.IsNullPointer)
+                return null;
+
+            GObjectPointer obj = NativeGdkDisplay.gdk_display_get_device_manager(handle);
+            return new GdkDeviceManager(obj.pointer);
+        }
+
         public string GetName()
         {
             if(handle.IsNullPointer)

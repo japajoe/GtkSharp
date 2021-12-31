@@ -20,5 +20,19 @@ namespace GtkSharp.Gdk.Types
             
             NativeGdkWindow.gdk_window_set_cursor(handle, cursor.Handle);
         }
+
+        public bool GetDevicePosition(GdkDevice device, out int x, out int y, out GdkModifierType modifierType)
+        {
+            if(handle.IsNullPointer)
+            {
+                x = 0;
+                y = 0;
+                modifierType = GdkModifierType.Button1Mask;
+                return false;
+            }
+            
+            NativeGdkWindow.gdk_window_get_device_position(handle, device.Handle, out x, out y, out modifierType);
+            return true;
+        }
     }
 }

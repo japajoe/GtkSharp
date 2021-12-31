@@ -1,4 +1,3 @@
-using GtkSharp.Gdk.Native.Types;
 using GtkSharp.Gdk.Native;
 using GtkSharp.Glib.Native.Types;
 
