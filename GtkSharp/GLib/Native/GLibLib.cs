@@ -31,6 +31,9 @@ namespace GtkSharp.GLib.Native
         public static extern void g_free(IntPtr memory);
 
         [DllImport(NATIVELIB_GOBJECT, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe void g_free(void* memory);
+
+        [DllImport(NATIVELIB_GOBJECT, CallingConvention = CallingConvention.Cdecl)]
         public static extern void g_object_unref(IntPtr obj);
         
         [DllImport(NATIVELIB_GOBJECT, CallingConvention = CallingConvention.Cdecl)]
