@@ -7,17 +7,17 @@ namespace GtkSharp.Gdk.Types
     {
         public GdkKeymap()
         {
-            handle = NativeGdkKeymap.gdk_keymap_get_default();
+            handle = NativeGdkKeys.gdk_keymap_get_default();
         }
 
         public GdkKeymap(GdkDisplay display)
         {
-            handle = NativeGdkKeymap.gdk_keymap_get_for_display(display.Handle);
+            handle = NativeGdkKeys.gdk_keymap_get_for_display(display.Handle);
         }
 
         public GdkKeymapKey[] GetEntriesForKeyVal(uint keyval)
         {
-            if(NativeGdkKeymap.gdk_keymap_get_entries_for_keyval(handle, keyval, out GdkKeymapKey[] keymap))
+            if(NativeGdkKeys.gdk_keymap_get_entries_for_keyval(handle, keyval, out GdkKeymapKey[] keymap))
             {
                 return keymap;
             }

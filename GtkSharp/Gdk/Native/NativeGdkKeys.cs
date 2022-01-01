@@ -1,3 +1,4 @@
+using System;
 using System.Runtime.InteropServices;
 using GtkSharp.Gdk.Types;
 using GtkSharp.Glib.Native.Types;
@@ -5,7 +6,7 @@ using GtkSharp.Pango.Types;
 
 namespace GtkSharp.Gdk.Native
 {
-    public static class NativeGdkKeymap
+    public static class NativeGdkKeys
     {        
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         public static extern ulong gdk_keymap_get_type();
@@ -80,5 +81,32 @@ namespace GtkSharp.Gdk.Native
         
         [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
         public static extern GdkModifierType gdk_keymap_get_modifier_mask(GObjectPointer keymap, GdkModifierIntent intent);
+        
+        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr gdk_keyval_name(uint keyval);
+        
+        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        public static extern uint gdk_keyval_from_name(string keyval_name);
+        
+        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void gdk_keyval_convert_case(uint symbol, ref uint lower, ref uint upper);
+        
+        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        public static extern uint gdk_keyval_to_upper(uint keyval);
+        
+        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        public static extern uint gdk_keyval_to_lower(uint keyval);
+        
+        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        public static extern bool gdk_keyval_is_upper(uint keyval);
+        
+        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        public static extern bool gdk_keyval_is_lower(uint keyval);
+        
+        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        public static extern uint gdk_keyval_to_unicode(uint keyval);
+        
+        [DllImport(GtkSharpBase.NATIVELIBNAME, CallingConvention = CallingConvention.Cdecl)]
+        public static extern uint gdk_unicode_to_keyval(uint wc);
     }
 }
