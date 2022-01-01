@@ -163,3 +163,7 @@ namespace GtkSharpApplication
     }
 }
 ```
+
+# Applications made with GtkSharp
+
+![](SharpAudioExample.png)
