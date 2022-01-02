@@ -8,6 +8,7 @@ using GtkSharp.Gdk.Native.Types;
 using GtkSharp.GLib.Types;
 using GtkSharp.Cairo.Types;
 using GtkSharp.Glib.Native.Types;
+using GtkSharp.Utilities;
 
 namespace GtkSharp.Gtk.Widgets
 {
@@ -27,6 +28,7 @@ namespace GtkSharp.Gtk.Widgets
         private GEventHandler<WidgetDrawCallback,WidgetDrawEvent> drawHandler = new GEventHandler<WidgetDrawCallback, WidgetDrawEvent>();
         private GEventHandler<WidgetRealizeCallback,WidgetRealizeEvent> realizeHandler = new GEventHandler<WidgetRealizeCallback, WidgetRealizeEvent>();
         private GEventHandler<WidgetUnrealizeCallback,WidgetUnrealizeEvent> unrealizeHandler = new GEventHandler<WidgetUnrealizeCallback, WidgetUnrealizeEvent>();
+        private GEventHandler<WindowStateEventCallback,WindowStateEventEvent> windowStateEventHandler = new GEventHandler<WindowStateEventCallback, WindowStateEventEvent>();
 
         public GtkAlign VerticalAlignment
         {
@@ -232,6 +234,19 @@ namespace GtkSharp.Gtk.Widgets
             }
         }
 
+        public WindowStateEventEvent WindowStateEvent
+        {
+            get
+            {
+                return windowStateEventHandler.Event;
+            }
+            set
+            {
+                windowStateEventHandler.Event = value;
+                windowStateEventHandler.SignalConnect(handle.pointer, "window-state-event", OnWindowStateEvent, handle.pointer);
+            }
+        }
+
         public Widget()
         {
             
@@ -421,11 +436,11 @@ namespace GtkSharp.Gtk.Widgets
 
         public void Destroy()
         {
-            if(!handle.IsNullPointer)
-            {
-                NativeWidget.gtk_widget_destroy(handle);
-                handle.pointer = IntPtr.Zero;
-            }
+            if(handle.IsNullPointer)
+                return;
+
+            NativeWidget.gtk_widget_destroy(handle);
+            handle.pointer = IntPtr.Zero;
         }
 
         bool OnKeyPress(IntPtr widget, GdkEventKeyPointer eventKey, IntPtr userData)
@@ -509,7 +524,7 @@ namespace GtkSharp.Gtk.Widgets
             }
         }
 
-        private bool OnDraw(IntPtr widget, IntPtr cr, IntPtr data)
+        bool OnDraw(IntPtr widget, IntPtr cr, IntPtr data)
         {
             cairo.cr.pointer = cr;
             
@@ -520,14 +535,24 @@ namespace GtkSharp.Gtk.Widgets
             return false;
         }
 
-        private void OnRealize(IntPtr widget, IntPtr data)
+        void OnRealize(IntPtr widget, IntPtr data)
         {
             Realize?.Invoke();
         }
 
-        private void OnUnrealize(IntPtr widget, IntPtr data)
+        void OnUnrealize(IntPtr widget, IntPtr data)
         {
             Unrealize?.Invoke();
-        }        
+        }
+
+        bool OnWindowStateEvent(IntPtr widget, GdkEventWindowStatePointer evnt, IntPtr data)
+        {
+            if(WindowStateEvent != null)
+            {
+                GdkEventWindowState e = Marshal.PtrToStructure<GdkEventWindowState>(evnt.pointer);
+                return WindowStateEvent(e);
+            }
+            return false;
+        }
     }
 }

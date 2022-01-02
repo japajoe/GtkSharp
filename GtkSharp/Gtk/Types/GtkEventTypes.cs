@@ -109,4 +109,6 @@ namespace GtkSharp.Gtk.Types
     public delegate bool WidgetDrawEvent(CairoInstance cr);
     public delegate void WidgetRealizeEvent();
     public delegate void WidgetUnrealizeEvent();
+    
+    public delegate bool WindowStateEventEvent(GdkEventWindowState evnt);
 }

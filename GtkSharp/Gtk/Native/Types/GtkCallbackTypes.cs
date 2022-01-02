@@ -1,5 +1,6 @@
 using System;
 using GtkSharp.Gdk.Native.Types;
+using GtkSharp.Gdk.Types;
 using GtkSharp.Gtk.Types;
 
 namespace GtkSharp.Gtk.Native.Types
@@ -14,7 +15,7 @@ namespace GtkSharp.Gtk.Native.Types
     public delegate void ButtonPressedCallback(IntPtr widget, IntPtr data);
     public delegate void ButtonReleasedCallback(IntPtr widget, IntPtr data);
 
-    public delegate void ClipboardTextReceivedCallback(IntPtr clipboard,  string text, IntPtr data);
+    public delegate void ClipboardTextReceivedCallback(IntPtr clipboard, string text, IntPtr data);
 
     public delegate void ContainerAddCallback(IntPtr widget, IntPtr child, IntPtr data);
     public delegate void ContainerCheckResizeCallback(IntPtr widget, IntPtr data);
@@ -105,8 +106,10 @@ namespace GtkSharp.Gtk.Native.Types
     public delegate bool WidgetButtonPressCallback(IntPtr widget, GdkEventButtonPointer eventButton, IntPtr data);
     public delegate bool WidgetButtonReleaseCallback(IntPtr widget, GdkEventButtonPointer eventButton, IntPtr data);
     public delegate bool WidgetMotionNotifyCallback(IntPtr widget, GdkEventMotionPointer eventMotion, IntPtr data);
-    public delegate bool WidgetScrollCallback(IntPtr widget, GdkEventScrollPointer eventScroll, IntPtr user_data);
+    public delegate bool WidgetScrollCallback(IntPtr widget, GdkEventScrollPointer eventScroll, IntPtr data);
     public delegate bool WidgetDrawCallback(IntPtr widget, IntPtr cr, IntPtr data);
     public delegate void WidgetRealizeCallback(IntPtr widget, IntPtr data);
     public delegate void WidgetUnrealizeCallback(IntPtr widget, IntPtr data);
+
+    public delegate bool WindowStateEventCallback(IntPtr widget, GdkEventWindowStatePointer evnt, IntPtr data);
 }
