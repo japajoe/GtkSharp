@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace GtkSharp.Utilities
 {
     public class Spline
@@ -10,26 +8,75 @@ namespace GtkSharp.Utilities
             Quadratic
         }
 
-        public Vector2[] controlPoints = new Vector2[4];
-        public List<Vector2> points = new List<Vector2>();
-        public BezierType type; 
+        private Vector2[] controlPoints;
+        private Vector2[] points;
+        private BezierType type;
+        private int numPoints;
+
+        public Vector2[] ControlPoints
+        {
+            get
+            {
+                return controlPoints;
+            }
+            set
+            {
+                controlPoints = value;
+            }
+        }
+
+        public Vector2[] Points
+        {
+            get
+            {
+                return points;
+            }
+        }
+
+        public BezierType Type
+        {
+            get
+            {
+                return type;
+            }
+            set
+            {
+                type = value;
+                if(type == BezierType.Quadratic)
+                {
+                    controlPoints = new Vector2[3];
+                }
+                else
+                {
+                    controlPoints = new Vector2[4];
+                }
+            }
+        }
+
+        public int NumPoints
+        {
+            get
+            {
+                return numPoints;
+            }
+            set
+            {
+                numPoints = value;
+                points = new Vector2[numPoints];
+            }
+        }
 
         public Spline(int numPoints, BezierType type)
         {
-            this.type = type;
-            
-            for(int i = 0; i < controlPoints.Length; i++)
-                controlPoints[i] = Vector2.zero;
-
-            for(int i = 0; i < numPoints; i++)
-                points.Add(new Vector2());
+            Type = type;
+            NumPoints = numPoints;
         }
 
         public void Generate()
         {
-            float t = 1.0f / (points.Count - 1);
+            float t = 1.0f / (points.Length - 1);
 
-            for(int i = 0; i < points.Count; i++)
+            for(int i = 0; i < points.Length; i++)
             {
                 if(type == BezierType.Cubic)
                     points[i] = GetBezierPointCubic(controlPoints[0], controlPoints[1], controlPoints[2], controlPoints[3], t * i);

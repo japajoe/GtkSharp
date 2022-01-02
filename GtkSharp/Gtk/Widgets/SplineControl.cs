@@ -91,19 +91,19 @@ namespace GtkSharp.Gtk.Widgets
             cr.Fill();
 
             cr.SetSourceRGBA(ControlPointColor);
-            cr.Rectangle(spline.controlPoints[0].x, spline.controlPoints[0].y, 5, 5);
-            cr.Rectangle(spline.controlPoints[1].x, spline.controlPoints[1].y, 5, 5);
-            cr.Rectangle(spline.controlPoints[2].x, spline.controlPoints[2].y, 5, 5);
+            cr.Rectangle(spline.ControlPoints[0].x, spline.ControlPoints[0].y, 5, 5);
+            cr.Rectangle(spline.ControlPoints[1].x, spline.ControlPoints[1].y, 5, 5);
+            cr.Rectangle(spline.ControlPoints[2].x, spline.ControlPoints[2].y, 5, 5);
             cr.Fill();
 
             cr.SetSourceRGBA(Color);
 
-            for(int i = 0; i < spline.points.Count; i++)
+            for(int i = 0; i < spline.Points.Length; i++)
             {
                 if(i == 0)
-                    cr.MoveTo(spline.points[i].x, spline.points[i].y);
+                    cr.MoveTo(spline.Points[i].x, spline.Points[i].y);
                 else
-                    cr.LineTo(spline.points[i].x, spline.points[i].y);
+                    cr.LineTo(spline.Points[i].x, spline.Points[i].y);
             }
 
             cr.Stroke();
