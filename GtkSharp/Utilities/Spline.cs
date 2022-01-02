@@ -4,11 +4,20 @@ namespace GtkSharp.Utilities
 {
     public class Spline
     {
+        public enum BezierType
+        {
+            Cubic,
+            Quadratic
+        }
+
         public Vector2[] controlPoints = new Vector2[4];
         public List<Vector2> points = new List<Vector2>();
+        public BezierType type; 
 
-        public Spline(int numPoints)
+        public Spline(int numPoints, BezierType type)
         {
+            this.type = type;
+            
             for(int i = 0; i < controlPoints.Length; i++)
                 controlPoints[i] = Vector2.zero;
 
@@ -22,8 +31,21 @@ namespace GtkSharp.Utilities
 
             for(int i = 0; i < points.Count; i++)
             {
-                points[i] = Mathf.GetBezierPoint(controlPoints[0], controlPoints[1], controlPoints[2], controlPoints[3], t * i);
+                if(type == BezierType.Cubic)
+                    points[i] = GetBezierPointCubic(controlPoints[0], controlPoints[1], controlPoints[2], controlPoints[3], t * i);
+                else
+                    points[i] = GetBezierPointQuadratic(controlPoints[0], controlPoints[1], controlPoints[2], t * i);
             }
+        }
+
+        public Vector2 GetBezierPointCubic(Vector2 p0, Vector2 p1, Vector2 p2, Vector2 p3, float t)
+        {
+            return (1 - t)*((1 - t)*(p0 + t*(p1 - p0)) + t*(p1 + t*(p2 - p1))) + t*((1 - t)*(p1 + t*(p2 - p1)) + t*(p2 + t*(p3 - p2)));
+        }
+
+        public Vector2 GetBezierPointQuadratic(Vector2 p0, Vector2 p1, Vector2 p2, float t)
+        {
+            return (1 - t)*(p0 + t*(p1 - p0)) + t*(p1 + t*(p2 - p1));
         }
 
         public void SetControlPointPosition(int index, Vector2 position)

@@ -114,6 +114,13 @@ namespace GtkSharp.Utilities
             return lhs;
         }
 
+        public static Vector2 operator *(float lhs, Vector2 rhs)
+        {
+            rhs.x *= lhs;
+            rhs.y *= lhs;
+            return rhs;
+        }        
+
         public static Vector2 operator /(Vector2 lhs, float rhs)
         {
             lhs.x /= rhs;

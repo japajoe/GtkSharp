@@ -71,11 +71,10 @@ namespace GtkSharp.Gtk.Widgets
             ControlPointColor = new GdkRGBA(1.0, 0.0, 0.0, 1.0);
             Color = new GdkRGBA(1.0, 1.0, 1.0, 1.0);
 
-            spline = new Spline(numPoints);
+            spline = new Spline(numPoints, Spline.BezierType.Quadratic);
             spline.SetControlPointPosition(0, new Vector2(0, 32));
             spline.SetControlPointPosition(1, new Vector2(32, 32));
             spline.SetControlPointPosition(2, new Vector2(64, 32));
-            spline.SetControlPointPosition(3, new Vector2(96, 32));
             spline.Generate();
 
             this.AddEvents(GdkEventMask.PointerMotion | GdkEventMask.ButtonPress | GdkEventMask.ButtonRelease | GdkEventMask.Scroll);
@@ -95,7 +94,6 @@ namespace GtkSharp.Gtk.Widgets
             cr.Rectangle(spline.controlPoints[0].x, spline.controlPoints[0].y, 5, 5);
             cr.Rectangle(spline.controlPoints[1].x, spline.controlPoints[1].y, 5, 5);
             cr.Rectangle(spline.controlPoints[2].x, spline.controlPoints[2].y, 5, 5);
-            cr.Rectangle(spline.controlPoints[3].x, spline.controlPoints[3].y, 5, 5);
             cr.Fill();
 
             cr.SetSourceRGBA(Color);
