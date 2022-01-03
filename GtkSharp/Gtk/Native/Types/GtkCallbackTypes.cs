@@ -1,6 +1,5 @@
 using System;
 using GtkSharp.Gdk.Native.Types;
-using GtkSharp.Gdk.Types;
 using GtkSharp.Gtk.Types;
 
 namespace GtkSharp.Gtk.Native.Types

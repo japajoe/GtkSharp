@@ -130,7 +130,6 @@ namespace GtkSharp.Gtk.Widgets
             {
                 mousePosition = new Vector2((float)eventMotion.x, (float)eventMotion.y);
 
-
                 if(spline.MouseNearControlPoint(mousePosition, 10.0f, out int index))
                 {
                     if(currentIndex == -1)

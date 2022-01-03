@@ -8,7 +8,6 @@ using GtkSharp.Gdk.Native.Types;
 using GtkSharp.GLib.Types;
 using GtkSharp.Cairo.Types;
 using GtkSharp.Glib.Native.Types;
-using GtkSharp.Utilities;
 
 namespace GtkSharp.Gtk.Widgets
 {
