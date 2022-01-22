@@ -4,10 +4,32 @@ using GtkSharp.Cairo.Native.Types;
 
 namespace GtkSharp.Gdk.Types
 {
-    [StructLayout(LayoutKind.Sequential)]
+    //Untested
+    [StructLayout(LayoutKind.Explicit)]
     public struct GdkEvent
-    {        
-        public GdkEventAny any;
+    {
+        [FieldOffset(0)] public GdkEventType type;
+        [FieldOffset(0)] public GdkEventAny any;
+        [FieldOffset(0)] public GdkEventExpose expose;
+        [FieldOffset(0)] public GdkEventVisibility visibility;
+        [FieldOffset(0)] public GdkEventMotion motion;
+        [FieldOffset(0)] public GdkEventButton button;
+        [FieldOffset(0)] public GdkEventTouch touch;
+        [FieldOffset(0)] public GdkEventScroll scroll;
+        [FieldOffset(0)] public GdkEventKey key;
+        [FieldOffset(0)] public GdkEventCrossing crossing;
+        [FieldOffset(0)] public GdkEventFocus focus_change;
+        [FieldOffset(0)] public GdkEventConfigure configure;
+        [FieldOffset(0)] public GdkEventProperty property;
+        [FieldOffset(0)] public GdkEventSelection selection;
+        [FieldOffset(0)] public GdkEventOwnerChange owner_change;
+        [FieldOffset(0)] public GdkEventProximity proximity;
+        [FieldOffset(0)] public GdkEventDND dnd;
+        [FieldOffset(0)] public GdkEventWindowState window_state;
+        [FieldOffset(0)] public GdkEventSetting setting;
+        [FieldOffset(0)] public GdkEventGrabBroken grab_broken;
+        [FieldOffset(0)] public GdkEventTouchpadSwipe touchpad_swipe;
+        [FieldOffset(0)] public GdkEventTouchpadPinch touchpad_pinch;
     }
 
 
