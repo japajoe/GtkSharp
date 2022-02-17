@@ -168,4 +168,6 @@ namespace GtkSharpApplication
 
 ![](SharpAudioExample.png)
 
+![](ShaderMakerExample.png)
+
 ![](GLSharpExample.png)

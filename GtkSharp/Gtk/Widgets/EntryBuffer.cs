@@ -36,7 +36,7 @@ namespace GtkSharp.Gtk.Widgets
                 insertedTextHandler.Event = value;
                 insertedTextHandler.SignalConnect(handle.pointer, "inserted-text", OnInsertedText, handle.pointer);
             }
-        }        
+        }
                 
         public EntryBuffer(GtkEntryBufferPointer buffer)
         {
@@ -45,7 +45,23 @@ namespace GtkSharp.Gtk.Widgets
 
         public EntryBuffer()
         {
-            handle = NativeEntryBuffer.gtk_entry_buffer_new(null, -1);
+            handle = NativeEntryBuffer.gtk_entry_buffer_new(string.Empty, -1);
+        }
+
+        public string GetText()
+        {
+            if(handle.IsNullPointer)
+                return string.Empty;
+            
+            return NativeEntryBuffer.gtk_entry_buffer_get_text(handle);
+        }
+
+        public void SetText(string text)
+        {
+            if(handle.IsNullPointer)
+                return;
+
+            NativeEntryBuffer.gtk_entry_buffer_set_text(handle, text, text.Length);
         }
 
         void OnDeletedText(IntPtr widget, uint position, uint n_chars, IntPtr data)

@@ -65,9 +65,7 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return string.Empty;
 
-            text = NativeEntry.gtk_entry_get_text(handle);
-            
-            return text;
+            return NativeEntry.gtk_entry_get_text(handle);
         }
 
         private void SetText(string text)
@@ -75,7 +73,7 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return;
 
-            NativeEntry.gtk_entry_set_text(handle, text);
+            NativeEntry.gtk_entry_set_text(handle, text);            
         }
 
         void OnActivate(IntPtr widget, IntPtr data)

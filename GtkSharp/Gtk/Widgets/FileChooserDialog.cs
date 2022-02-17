@@ -15,11 +15,17 @@ namespace GtkSharp.Gtk.Widgets
 
         protected Window parent;
         protected string fileName;
+        protected string[] fileNames;
         protected string title;
 
         public string FileName
         {
             get { return fileName; }
+        }
+
+        public string[] FileNames
+        {
+            get { return fileNames; }
         }
 
         public string Title
