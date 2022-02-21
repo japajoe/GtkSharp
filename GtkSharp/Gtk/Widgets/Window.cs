@@ -1,3 +1,4 @@
+using GtkSharp.Gdk.Types;
 using GtkSharp.Gtk.Native.Widgets;
 using GtkSharp.Gtk.Types;
 
@@ -22,6 +23,13 @@ namespace GtkSharp.Gtk.Widgets
             if(handle.IsNullPointer)
                 return;            
             NativeWindow.gtk_window_set_title(handle, title);
+        }
+
+        public void SetIcon(string filepath)
+        {
+            if(handle.IsNullPointer)
+                return;
+            NativeWindow.gtk_window_set_icon_from_file(handle, filepath, new Glib.Native.Types.GErrorPointer());
         }
 
         public void SetPosition(GtkWindowPosition position)

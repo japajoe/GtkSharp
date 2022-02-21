@@ -3,10 +3,13 @@ using GtkSharp.Gtk.Types;
 
 namespace GtkSharp.Gtk.Widgets
 {
+    public delegate void SplashScreenEvent();
+
     public class ApplicationBase
     {
         public Window window;
         public event ApplicationQuitEvent onQuit;
+        public event SplashScreenEvent splash;
 
         private string title;
         private int width;
@@ -37,7 +40,11 @@ namespace GtkSharp.Gtk.Widgets
 
             window.SetTitle(title);
             window.SetSizeRequest(width, height);
-            window.ShowAll();
+            
+            if(splash != null)
+                splash();
+            else
+                window.ShowAll();
 
             GtkLib.gtk_main();
         }

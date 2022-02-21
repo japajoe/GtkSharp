@@ -246,7 +246,7 @@ namespace GtkSharp.Gtk.Widgets
             }
         }
 
-        public Widget()
+        public Widget() : base()
         {
             
         }
